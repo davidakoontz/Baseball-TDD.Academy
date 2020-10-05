@@ -55,6 +55,7 @@
 		636D51B9252AAF1F00BB80D4 /* PlayGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayGenerator.swift; sourceTree = "<group>"; };
 		636D51BE252AAF3900BB80D4 /* Situation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Situation.swift; sourceTree = "<group>"; };
 		636D51C3252AAF4E00BB80D4 /* Play.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Play.swift; sourceTree = "<group>"; };
+		636D51D7252AC5A400BB80D4 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +86,7 @@
 		636D5175252AABB000BB80D4 = {
 			isa = PBXGroup;
 			children = (
+				636D51D7252AC5A400BB80D4 /* README.md */,
 				636D5180252AABB000BB80D4 /* Baseball-TDD */,
 				636D5192252AABB500BB80D4 /* Baseball-TDDTests */,
 				636D519D252AABB500BB80D4 /* Baseball-TDDUITests */,
