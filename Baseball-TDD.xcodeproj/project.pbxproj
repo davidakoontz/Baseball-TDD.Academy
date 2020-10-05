@@ -13,6 +13,11 @@
 		636D5189252AABB500BB80D4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 636D5188252AABB500BB80D4 /* Preview Assets.xcassets */; };
 		636D5194252AABB500BB80D4 /* Baseball_TDDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636D5193252AABB500BB80D4 /* Baseball_TDDTests.swift */; };
 		636D519F252AABB500BB80D4 /* Baseball_TDDUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636D519E252AABB500BB80D4 /* Baseball_TDDUITests.swift */; };
+		636D51B0252AAEDE00BB80D4 /* Scorecard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636D51AF252AAEDE00BB80D4 /* Scorecard.swift */; };
+		636D51B5252AAEFF00BB80D4 /* FieldSimulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636D51B4252AAEFF00BB80D4 /* FieldSimulator.swift */; };
+		636D51BA252AAF1F00BB80D4 /* PlayGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636D51B9252AAF1F00BB80D4 /* PlayGenerator.swift */; };
+		636D51BF252AAF3900BB80D4 /* Situation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636D51BE252AAF3900BB80D4 /* Situation.swift */; };
+		636D51C4252AAF4E00BB80D4 /* Play.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636D51C3252AAF4E00BB80D4 /* Play.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +50,11 @@
 		636D519A252AABB500BB80D4 /* Baseball-TDDUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Baseball-TDDUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		636D519E252AABB500BB80D4 /* Baseball_TDDUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Baseball_TDDUITests.swift; sourceTree = "<group>"; };
 		636D51A0252AABB500BB80D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		636D51AF252AAEDE00BB80D4 /* Scorecard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scorecard.swift; sourceTree = "<group>"; };
+		636D51B4252AAEFF00BB80D4 /* FieldSimulator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldSimulator.swift; sourceTree = "<group>"; };
+		636D51B9252AAF1F00BB80D4 /* PlayGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayGenerator.swift; sourceTree = "<group>"; };
+		636D51BE252AAF3900BB80D4 /* Situation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Situation.swift; sourceTree = "<group>"; };
+		636D51C3252AAF4E00BB80D4 /* Play.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Play.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +107,11 @@
 			children = (
 				636D5181252AABB000BB80D4 /* Baseball_TDDApp.swift */,
 				636D5183252AABB000BB80D4 /* ContentView.swift */,
+				636D51C3252AAF4E00BB80D4 /* Play.swift */,
+				636D51BE252AAF3900BB80D4 /* Situation.swift */,
+				636D51B4252AAEFF00BB80D4 /* FieldSimulator.swift */,
+				636D51B9252AAF1F00BB80D4 /* PlayGenerator.swift */,
+				636D51AF252AAEDE00BB80D4 /* Scorecard.swift */,
 				636D5185252AABB500BB80D4 /* Assets.xcassets */,
 				636D518A252AABB500BB80D4 /* Info.plist */,
 				636D5187252AABB500BB80D4 /* Preview Content */,
@@ -259,8 +274,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				636D51BF252AAF3900BB80D4 /* Situation.swift in Sources */,
+				636D51B0252AAEDE00BB80D4 /* Scorecard.swift in Sources */,
 				636D5184252AABB000BB80D4 /* ContentView.swift in Sources */,
 				636D5182252AABB000BB80D4 /* Baseball_TDDApp.swift in Sources */,
+				636D51C4252AAF4E00BB80D4 /* Play.swift in Sources */,
+				636D51BA252AAF1F00BB80D4 /* PlayGenerator.swift in Sources */,
+				636D51B5252AAEFF00BB80D4 /* FieldSimulator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

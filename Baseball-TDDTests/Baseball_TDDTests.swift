@@ -23,6 +23,51 @@ class Baseball_TDDTests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 
+    func testHelloWorld() throws {
+        XCTAssertTrue("Hello World".contains("World"))
+    }
+    
+    func testVeryBasicPlay() throws {
+        // setup a basic play
+        let play1 = Play()
+        
+        XCTAssertTrue(play1.description.contains("baseball"))
+    }
+    
+    func testBasicSituationAtStart() throws {
+        let sit1 = Situation()
+        
+        XCTAssertTrue( sit1.outs == 0 )
+    }
+    
+    func testBasicPlayGenerator() throws {
+        let situation = Situation()
+        let generator = PlayGenerator()
+        let play = generator.startPlay(situation)
+        
+        XCTAssertTrue( play.number == 1 )
+    }
+    
+    func testBasicFieldSimulator() throws {
+        let situation = Situation()
+        let generator = PlayGenerator()
+        let play = generator.startPlay(situation)
+        let HR = FieldSimulator.isHitAHomeRun( play )
+        
+        XCTAssertFalse( HR )
+    }
+    
+    func testBasicScorecard() throws {
+        let situation = Situation()
+        let generator = PlayGenerator()
+        let play = generator.startPlay(situation)
+        let HR = FieldSimulator.isHitAHomeRun( play )
+        let SC = Scorecard.score( play )
+        
+        XCTAssertTrue( SC.contains("Scorecard") )
+    }
+    
+    //====== Performance Test =============
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
         self.measure {
