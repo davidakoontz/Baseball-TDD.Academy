@@ -8,9 +8,11 @@ We tried to fix the Scorecard test that we left unfinished last time... Got the 
 So then we moved on to reading in a JSON file as a Player object - using the Bundle extension from Paul Hudson - Hacking with Swift.
 Looked briefly (way-too-long) at the FieldView code to draw a baseball field on the screen.
 Talked about the PlayerRowView - a nicely formated row of data for each Player object.
-And then discussed and pondered on how to test a JSON data object/file and what to use inside of test.  Seems we have options that I just don't fully understand the cost benefits of each:  - Static Data like Player.example; the data.json file;  a network URL resource of JSON; a "data-object" like a string-blog; maybe others.
+And then discussed and pondered on how to test a JSON data object/file and what to use inside of test.  Seems we have options that I just don't fully understand the cost benefits of each:  - Static Data like Player.example; the data.json file;  a network URL resource of JSON; a "data-object" like a string-blob; maybe others.
 We also discussed and pondered on how to test a Swift View - like PlayerRowView... which is very simple to look at and say - yeah that looks good... but maybe impossible to automate a test to do it...
 { and this is where the learning happens }
+
+Lance is suggesting that experience tells him to solve the testing problem of slow-UI-test early (NOW!) and not wait for the mud-hole to get as wide as the mississippi river.
 
 Later that evening - I couldn't stand it ... all those Obj Modle classes being ignored... so I put them in a Model folder and the Views also...
 
