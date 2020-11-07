@@ -11,6 +11,8 @@ And then discussed and pondered on how to test a JSON data object/file and what 
 We also discussed and pondered on how to test a Swift View - like PlayerRowView... which is very simple to look at and say - yeah that looks good... but maybe impossible to automate a test to do it...
 [ and this is where the learning happens ]
 
+Later that evening - I couldn't stand it ... all those Obj Modle classes being ignored... so I put them in a Model folder and the Views also...
+
 ## This release has some very very basic Baseball Object Model Classes:
 
 - Play.swift - a message and data that gets passed around to determine the outcome
