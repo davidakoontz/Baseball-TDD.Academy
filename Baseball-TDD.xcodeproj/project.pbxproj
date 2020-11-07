@@ -123,18 +123,9 @@
 		636D5180252AABB000BB80D4 /* Baseball-TDD */ = {
 			isa = PBXGroup;
 			children = (
+				63817A0C25565687007BDECE /* Model */,
 				636D5181252AABB000BB80D4 /* Baseball_TDDApp.swift */,
-				637782042555E79B00766772 /* Bundle_extension.swift */,
-				6377820E2555E89300766772 /* Player.swift */,
-				637782092555E82000766772 /* data.json */,
-				636D5183252AABB000BB80D4 /* ContentView.swift */,
-				6377821D2555F2CE00766772 /* PlayerRowView.swift */,
-				637782182555F21A00766772 /* FieldView.swift */,
-				636D51C3252AAF4E00BB80D4 /* Play.swift */,
-				636D51BE252AAF3900BB80D4 /* Situation.swift */,
-				636D51B4252AAEFF00BB80D4 /* FieldSimulator.swift */,
-				636D51B9252AAF1F00BB80D4 /* PlayGenerator.swift */,
-				636D51AF252AAEDE00BB80D4 /* Scorecard.swift */,
+				63817A10255656D4007BDECE /* View */,
 				636D5185252AABB500BB80D4 /* Assets.xcassets */,
 				636D518A252AABB500BB80D4 /* Info.plist */,
 				636D5187252AABB500BB80D4 /* Preview Content */,
@@ -169,6 +160,31 @@
 				636D51A0252AABB500BB80D4 /* Info.plist */,
 			);
 			path = "Baseball-TDDUITests";
+			sourceTree = "<group>";
+		};
+		63817A0C25565687007BDECE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				637782042555E79B00766772 /* Bundle_extension.swift */,
+				637782092555E82000766772 /* data.json */,
+				6377820E2555E89300766772 /* Player.swift */,
+				636D51C3252AAF4E00BB80D4 /* Play.swift */,
+				636D51BE252AAF3900BB80D4 /* Situation.swift */,
+				636D51B4252AAEFF00BB80D4 /* FieldSimulator.swift */,
+				636D51B9252AAF1F00BB80D4 /* PlayGenerator.swift */,
+				636D51AF252AAEDE00BB80D4 /* Scorecard.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		63817A10255656D4007BDECE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				636D5183252AABB000BB80D4 /* ContentView.swift */,
+				6377821D2555F2CE00766772 /* PlayerRowView.swift */,
+				637782182555F21A00766772 /* FieldView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
