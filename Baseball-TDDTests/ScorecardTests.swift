@@ -6,8 +6,9 @@
 //
 
 import XCTest
-@testable import Baseball_TDD
 import Foundation
+@testable import Baseball_TDD
+
 
 public class ScorecardTests : XCTestCase {
     
