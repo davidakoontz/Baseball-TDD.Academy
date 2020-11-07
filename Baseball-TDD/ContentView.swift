@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    // Find our data.json in the Main App Bundle and parse it.
+    let player = Bundle.main.decode(Player.self, from: "data.json")
+ 
     var body: some View {
-        Text("Hello, world!")
+        Text("Hello, \(player.name)")
             .padding()
     }
 }
