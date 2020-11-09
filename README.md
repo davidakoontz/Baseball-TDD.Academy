@@ -2,6 +2,18 @@
 
 ## This code is being TDD.Academy test driven - follow along on https://www.twitch.tv/tddacademy
 
+## Nov 8th
+Let's try to install https://github.com/nalexn/ViewInspector 
+Swift Package Manager
+
+In Xcode select File ⭢ Swift Packages ⭢ Add Package Dependency...
+Copy-paste repository URL: https://github.com/nalexn/ViewInspector
+Hit Next two times, under Add to Target select your test target. There is no need to add it to the build target.
+Hit Finish
+
+Learn to use the Inspector:  https://github.com/nalexn/ViewInspector/blob/master/guide.md
+
+
 ## Nov 6th 
 We tried to fix the Scorecard test that we left unfinished last time... Got the test to GREEN and started refactoring the toString() *JAVA* code to use the Swifty CustomStringConvertible protocol.  All was going great when the newbie's couldn't figure out how to use the stinking thing... after a bit of fumbling about - we punted!   {come to find out - we just needed the String(describing: card) paramerter name in the call.}
 
