@@ -25,7 +25,7 @@ class PlayerRowViewTests: XCTestCase {
         
         let hStack = try view.inspect().hStack()
         let name = try hStack.text(2).string() // 4. step FOUR inspect the view (see Guide.md for methods)
-        let atBat = try hStack.text(6).string()  // 4.
+        let atBat = try hStack.text(6).string()  // 4. (the 2 & 6) are indexes in the HStack
         
         // TDD - Assert step  (or BDD - THEN)
         XCTAssertEqual(name, "Taylor Swift")
