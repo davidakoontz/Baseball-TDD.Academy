@@ -2,6 +2,11 @@
 
 ## This code is being TDD.Academy test driven - follow along on https://www.twitch.tv/tddacademy
 
+## Nov 12th ViewInspector - for TDD to make QUICK tests.
+Wrote some Test After code (what does one call that style - it's not TDD... its TAD = Test After Design?)
+But we have proven that the ViewInspector can work to speed up the validation of the UI Views.
+Examples:  Baseball-TDDTests/SimpleTDDViewTests.swift & /PlayerRowViewTests.swift
+
 ## Nov 8th
 Let's try to install https://github.com/nalexn/ViewInspector 
 Swift Package Manager
