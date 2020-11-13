@@ -13,7 +13,8 @@ import ViewInspector // 1.
 
 extension SimpleTDDView: Inspectable {} // 2.
 
-
+// let's use the simplest thing that might work to validate ViewInspector works.
+// David forgot to do step #2 the first attmpt... bet this works much better...
 class SimpleTDDViewTests: XCTestCase {
    
     
