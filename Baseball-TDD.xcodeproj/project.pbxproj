@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		63215BDF255F3C3E007F006A /* ContentViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63215BDE255F3C3E007F006A /* ContentViewTests.swift */; };
 		634837732558CDEE00FA407F /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = 634837722558CDEE00FA407F /* ViewInspector */; };
 		634D3A51255E25810024521D /* PlayerRowView-UITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634D3A50255E25810024521D /* PlayerRowView-UITest.swift */; };
 		634D3A56255E275A0024521D /* SimpleTDDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634D3A55255E275A0024521D /* SimpleTDDView.swift */; };
@@ -50,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		63215BDE255F3C3E007F006A /* ContentViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewTests.swift; sourceTree = "<group>"; };
 		634D3A50255E25810024521D /* PlayerRowView-UITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlayerRowView-UITest.swift"; sourceTree = "<group>"; };
 		634D3A55255E275A0024521D /* SimpleTDDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTDDView.swift; sourceTree = "<group>"; };
 		634D3A5A255E27BA0024521D /* SimpleTDDViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTDDViewTests.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				637781FF2555E04200766772 /* ScorecardTests.swift */,
 				637782132555E90F00766772 /* PlayerTest.swift */,
 				6377822C255626FF00766772 /* PlayerRowViewTests.swift */,
+				63215BDE255F3C3E007F006A /* ContentViewTests.swift */,
 				634D3A5A255E27BA0024521D /* SimpleTDDViewTests.swift */,
 				636D5195252AABB500BB80D4 /* Info.plist */,
 			);
@@ -353,6 +356,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63215BDF255F3C3E007F006A /* ContentViewTests.swift in Sources */,
 				634D3A5B255E27BA0024521D /* SimpleTDDViewTests.swift in Sources */,
 				637782002555E04200766772 /* ScorecardTests.swift in Sources */,
 				637782142555E90F00766772 /* PlayerTest.swift in Sources */,

@@ -21,9 +21,9 @@ class PlayerRowViewTests: XCTestCase {
         let taylor = Player(name: "Taylor Swift", number: "17", position: "8", atBat: "BB")
         
         // TDD - Act step  (or BDD - WHEN)
-        let view = PlayerRowView(player: taylor)
+        let prView = PlayerRowView(player: taylor)
         
-        let hStack = try view.inspect().hStack()
+        let hStack = try prView.inspect().hStack()
         let name = try hStack.text(2).string() // 4. step FOUR inspect the view (see Guide.md for methods)
         let atBat = try hStack.text(6).string()  // 4. (the 2 & 6) are indexes in the HStack
         
