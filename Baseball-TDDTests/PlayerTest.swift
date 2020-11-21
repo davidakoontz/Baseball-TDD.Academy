@@ -19,8 +19,8 @@ class PlayerTest: XCTestCase {
     }
 
     func testExamplePlayerHasName() throws {
-        XCTAssertTrue( Player.example.name.contains("Swift") )
-        XCTAssertTrue( Player.example.atBat.contains("BB"))     // a base on balls - a walk
+        XCTAssertTrue( Player.example[0].name.contains("Swift") )
+        XCTAssertTrue( Player.example[0].atBat.contains("BB"))     // a base on balls - a walk
     }
 
 }

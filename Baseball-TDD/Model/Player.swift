@@ -21,13 +21,14 @@ public class Player : Codable, Identifiable {
         self.position = position
         self.atBat = atBat
     }
-    
-    
+
     static let taylor = Player(name: "Taylor Swift", number: "17", position: "8", atBat: "BB")
     static let bill = Player(name: "Bill Swift", number: "18", position: "1", atBat: "K")
+    static let jonathan = Player(name: "Jonathan Swift", number: "67", position: "4", atBat: "1B")
+    static let bob = Player(name: "Bob Swift", number: "22", position: "2", atBat: "DP")
     
     static var example: [Player] =  [
-        taylor, bill
+        taylor, bill, jonathan, bob
     ]
 
 }
