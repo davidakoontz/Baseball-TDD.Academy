@@ -15,7 +15,7 @@ struct PlayerRowView : View {
     var body: some View {
         HStack(alignment: .bottom, spacing: 1) {
             Spacer()
-            Text("#\(player.number) ")
+            Text("#\(player.number)")
             Text(player.name)
             Spacer()
             Text(player.position)
@@ -32,6 +32,6 @@ struct PlayerRowView : View {
 
 struct PlayerRowView_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerRowView(player: Player.example)
+        PlayerRowView(player: Player.example[0])
     }
 }

@@ -22,9 +22,12 @@ public class Player : Codable, Identifiable {
         self.atBat = atBat
     }
     
-    static var example: Player {
-        let taylor = Player(name: "Taylor Swift", number: "17", position: "8", atBat: "BB")
-        //let bill = Player(name: "Bill Swift", number: "18", position: "1", atBat: "K")
-        return taylor
-    }
+    
+    static let taylor = Player(name: "Taylor Swift", number: "17", position: "8", atBat: "BB")
+    static let bill = Player(name: "Bill Swift", number: "18", position: "1", atBat: "K")
+    
+    static var example: [Player] =  [
+        taylor, bill
+    ]
+
 }

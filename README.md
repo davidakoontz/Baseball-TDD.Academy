@@ -2,6 +2,25 @@
 
 ## This code is being TDD.Academy test driven - follow along on https://www.twitch.tv/tddacademy
 
+
+## Nov 20th TDD.Academy Live
+Let's review what READING the Guide could teach us about ViewInspector.
+Where to Next:  I started down a strict TDD tiny steps path of wanting a TEST to prove the ContentView has a
+PlayerRowView with a player displayed.  This results in some learning... several Test FAIL and I have 
+yet another HACK to make the player an empty array.  I need to be able to INJECT (pass on construction)
+the player to the View.
+Next: get ContentView to display multiple players in a List
+
+## Nov 14th Doh'  - Reading the Guide.md of ViewInspector
+Gee,  picky software <scarsim> it could not handle me skipping Step 2:
+   extension ContentView: Inspectable {}    // don't skip this step!
+And we also learned that we needed to use the class name in traversing the View hiearchy like:
+   let prView = try cView.inspect().view(PlayerRowView.self)     // << magic ViewInspector sauce
+
+## Nov 13th TDD.Academy Live via Twitch.TV
+Wrote some more test to test PlayerRowView.swift (a view for each player in our stream/file) but
+could NOT figure out how to inspect the "custom View" class with ViewInspector.  Tried lots of stuff and may have gotten everyone confused.  Lesson to learn here is... RTFM (Read The F.... fine Manual).
+
 ## Nov 12th ViewInspector - for TDD to make QUICK tests.
 Wrote some Test After code (what does one call that style - it's not TDD... its TAD = Test After Design?)
 But we have proven that the ViewInspector can work to speed up the validation of the UI Views.
