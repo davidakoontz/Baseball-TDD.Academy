@@ -24,8 +24,9 @@ class PlayerRowView_UITest: XCTestCase {
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
-    func test_Taylor_at_Bat_get_walked() throws {
+    
+    // DISABLED - via: Test Inspector - right click (test name) > Disable
+    func test_Taylor_at_Bat_gets_walked() throws {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
