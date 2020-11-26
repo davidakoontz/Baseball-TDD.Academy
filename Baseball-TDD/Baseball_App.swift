@@ -1,5 +1,5 @@
 //
-//  Baseball_TDDApp.swift
+//  Baseball_App.swift
 //  Baseball-TDD
 //
 //  Created by David on 10/4/20.
@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct Baseball_TDDApp: App {
+struct Baseball_App: App {
     
     // Find our data.json in the Main App Bundle and parse it.
     //let players: [Player] = []
