@@ -26,9 +26,16 @@ public class Player : Codable, Identifiable {
     static let bill = Player(name: "Bill Swift", number: "18", position: "1", atBat: "K")
     static let jonathan = Player(name: "Jonathan Swift", number: "67", position: "4", atBat: "1B")
     static let bob = Player(name: "Bob Swift", number: "22", position: "2", atBat: "DP")
+    // top of 1st inning
+    static let duke = Player(name: "Duke Java", number: "33", position: "7", atBat: "1B")
+    static let james = Player(name: "James Gosling", number: "34", position: "5", atBat: "2B")
+    static let scott = Player(name: "Scott McNealy", number: "37", position: "8", atBat: "K..")
+    static let billJoy = Player(name: "Bill Joy", number: "39", position: "9", atBat: "F8")
+    static let andy = Player(name: "Andy Bechtolsheim", number: "41", position: "1", atBat: "BB")
+    static let larry = Player(name: "Larry Ellison", number: "52", position: "1", atBat: "K..")
     
     static var example: [Player] =  [
-        taylor, bill, jonathan, bob
+        taylor, bill, jonathan, bob, duke, james, scott, billJoy, andy, larry
     ]
 
 }
