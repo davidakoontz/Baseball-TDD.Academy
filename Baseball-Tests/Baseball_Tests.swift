@@ -61,7 +61,7 @@ class Baseball_Tests: XCTestCase {
         let situation = Situation()
         let generator = PlayGenerator()
         let play = generator.startPlay(situation)
-        let HR = FieldSimulator.isHitAHomeRun( play )
+        _ = FieldSimulator.isHitAHomeRun( play )
         let SC = Scorecard.score( play )
         
         XCTAssertTrue( SC.contains("Scorecard") )
