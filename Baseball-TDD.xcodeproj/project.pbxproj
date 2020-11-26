@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		63215BDF255F3C3E007F006A /* ContentViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63215BDE255F3C3E007F006A /* ContentViewTests.swift */; };
 		634837732558CDEE00FA407F /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = 634837722558CDEE00FA407F /* ViewInspector */; };
-		634D3A56255E275A0024521D /* SimpleTDDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634D3A55255E275A0024521D /* SimpleTDDView.swift */; };
+		634D3A56255E275A0024521D /* SimpleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634D3A55255E275A0024521D /* SimpleView.swift */; };
 		634D3A5B255E27BA0024521D /* SimpleViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634D3A5A255E27BA0024521D /* SimpleViewTests.swift */; };
 		636D5182252AABB000BB80D4 /* Baseball_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636D5181252AABB000BB80D4 /* Baseball_App.swift */; };
 		636D5184252AABB000BB80D4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636D5183252AABB000BB80D4 /* ContentView.swift */; };
@@ -53,7 +53,7 @@
 /* Begin PBXFileReference section */
 		63215BDE255F3C3E007F006A /* ContentViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewTests.swift; sourceTree = "<group>"; };
 		634D3A50255E25810024521D /* PlayerRowView_UI_Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRowView_UI_Test.swift; sourceTree = "<group>"; };
-		634D3A55255E275A0024521D /* SimpleTDDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTDDView.swift; sourceTree = "<group>"; };
+		634D3A55255E275A0024521D /* SimpleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleView.swift; sourceTree = "<group>"; };
 		634D3A5A255E27BA0024521D /* SimpleViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleViewTests.swift; sourceTree = "<group>"; };
 		636D517E252AABB000BB80D4 /* Baseball-TDD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Baseball-TDD.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		636D5181252AABB000BB80D4 /* Baseball_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Baseball_App.swift; sourceTree = "<group>"; };
@@ -196,7 +196,7 @@
 				636D5183252AABB000BB80D4 /* ContentView.swift */,
 				6377821D2555F2CE00766772 /* PlayerRowView.swift */,
 				637782182555F21A00766772 /* FieldView.swift */,
-				634D3A55255E275A0024521D /* SimpleTDDView.swift */,
+				634D3A55255E275A0024521D /* SimpleView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -348,7 +348,7 @@
 				6377820F2555E89300766772 /* Player.swift in Sources */,
 				637782052555E79B00766772 /* Bundle_extension.swift in Sources */,
 				637782192555F21A00766772 /* FieldView.swift in Sources */,
-				634D3A56255E275A0024521D /* SimpleTDDView.swift in Sources */,
+				634D3A56255E275A0024521D /* SimpleView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
