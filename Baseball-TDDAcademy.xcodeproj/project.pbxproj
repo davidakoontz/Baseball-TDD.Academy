@@ -282,7 +282,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 636D5179252AABB000BB80D4 /* Build configuration list for PBXProject "Baseball-TDD" */;
+			buildConfigurationList = 636D5179252AABB000BB80D4 /* Build configuration list for PBXProject "Baseball-TDDAcademy" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -568,7 +568,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Baseball-TDD.app/Baseball";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Baseball-TDDAcademy.app/Baseball";
 			};
 			name = Debug;
 		};
@@ -590,7 +590,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Baseball-TDD.app/Baseball";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Baseball-TDDAcademy.app/Baseball";
 			};
 			name = Release;
 		};
@@ -639,7 +639,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		636D5179252AABB000BB80D4 /* Build configuration list for PBXProject "Baseball-TDD" */ = {
+		636D5179252AABB000BB80D4 /* Build configuration list for PBXProject "Baseball-TDDAcademy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				636D51A1252AABB500BB80D4 /* Debug */,
