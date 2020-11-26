@@ -55,7 +55,7 @@
 		634D3A50255E25810024521D /* PlayerRowView_UI_Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRowView_UI_Test.swift; sourceTree = "<group>"; };
 		634D3A55255E275A0024521D /* SimpleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleView.swift; sourceTree = "<group>"; };
 		634D3A5A255E27BA0024521D /* SimpleViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleViewTests.swift; sourceTree = "<group>"; };
-		636D517E252AABB000BB80D4 /* Baseball-TDD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Baseball-TDD.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		636D517E252AABB000BB80D4 /* Baseball.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Baseball.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		636D5181252AABB000BB80D4 /* Baseball_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Baseball_App.swift; sourceTree = "<group>"; };
 		636D5183252AABB000BB80D4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		636D5185252AABB500BB80D4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -123,7 +123,7 @@
 		636D517F252AABB000BB80D4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				636D517E252AABB000BB80D4 /* Baseball-TDD.app */,
+				636D517E252AABB000BB80D4 /* Baseball.app */,
 				636D518F252AABB500BB80D4 /* Baseball-Tests.xctest */,
 				636D519A252AABB500BB80D4 /* Baseball-UI-Tests.xctest */,
 			);
@@ -204,9 +204,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		636D517D252AABB000BB80D4 /* Baseball-TDD */ = {
+		636D517D252AABB000BB80D4 /* Baseball */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 636D51A3252AABB500BB80D4 /* Build configuration list for PBXNativeTarget "Baseball-TDD" */;
+			buildConfigurationList = 636D51A3252AABB500BB80D4 /* Build configuration list for PBXNativeTarget "Baseball" */;
 			buildPhases = (
 				636D517A252AABB000BB80D4 /* Sources */,
 				636D517B252AABB000BB80D4 /* Frameworks */,
@@ -216,9 +216,9 @@
 			);
 			dependencies = (
 			);
-			name = "Baseball-TDD";
+			name = Baseball;
 			productName = "Baseball-TDD";
-			productReference = 636D517E252AABB000BB80D4 /* Baseball-TDD.app */;
+			productReference = 636D517E252AABB000BB80D4 /* Baseball.app */;
 			productType = "com.apple.product-type.application";
 		};
 		636D518E252AABB500BB80D4 /* Baseball-Tests */ = {
@@ -298,7 +298,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				636D517D252AABB000BB80D4 /* Baseball-TDD */,
+				636D517D252AABB000BB80D4 /* Baseball */,
 				636D518E252AABB500BB80D4 /* Baseball-Tests */,
 				636D5199252AABB500BB80D4 /* Baseball-UI-Tests */,
 			);
@@ -379,12 +379,12 @@
 /* Begin PBXTargetDependency section */
 		636D5191252AABB500BB80D4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 636D517D252AABB000BB80D4 /* Baseball-TDD */;
+			target = 636D517D252AABB000BB80D4 /* Baseball */;
 			targetProxy = 636D5190252AABB500BB80D4 /* PBXContainerItemProxy */;
 		};
 		636D519C252AABB500BB80D4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 636D517D252AABB000BB80D4 /* Baseball-TDD */;
+			target = 636D517D252AABB000BB80D4 /* Baseball */;
 			targetProxy = 636D519B252AABB500BB80D4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -512,16 +512,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Baseball-TDD/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Baseball/Preview Content\"";
 				DEVELOPMENT_TEAM = 99568KA9SE;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "Baseball-TDD/Info.plist";
+				INFOPLIST_FILE = Baseball/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.LifeWorksIQ.Baseball-TDD";
+				PRODUCT_BUNDLE_IDENTIFIER = com.LifeWorksIQ.Baseball;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -534,16 +534,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Baseball-TDD/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Baseball/Preview Content\"";
 				DEVELOPMENT_TEAM = 99568KA9SE;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "Baseball-TDD/Info.plist";
+				INFOPLIST_FILE = Baseball/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.LifeWorksIQ.Baseball-TDD";
+				PRODUCT_BUNDLE_IDENTIFIER = com.LifeWorksIQ.Baseball;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -648,7 +648,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		636D51A3252AABB500BB80D4 /* Build configuration list for PBXNativeTarget "Baseball-TDD" */ = {
+		636D51A3252AABB500BB80D4 /* Build configuration list for PBXNativeTarget "Baseball" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				636D51A4252AABB500BB80D4 /* Debug */,
