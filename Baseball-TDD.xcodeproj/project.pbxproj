@@ -113,7 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				636D51D7252AC5A400BB80D4 /* README.md */,
-				636D5180252AABB000BB80D4 /* Baseball-TDD */,
+				636D5180252AABB000BB80D4 /* Baseball */,
 				636D5192252AABB500BB80D4 /* Baseball-Tests */,
 				636D519D252AABB500BB80D4 /* Baseball-UI-Tests */,
 				636D517F252AABB000BB80D4 /* Products */,
@@ -130,7 +130,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		636D5180252AABB000BB80D4 /* Baseball-TDD */ = {
+		636D5180252AABB000BB80D4 /* Baseball */ = {
 			isa = PBXGroup;
 			children = (
 				63817A0C25565687007BDECE /* Model */,
@@ -140,7 +140,7 @@
 				636D518A252AABB500BB80D4 /* Info.plist */,
 				636D5187252AABB500BB80D4 /* Preview Content */,
 			);
-			path = "Baseball-TDD";
+			path = Baseball;
 			sourceTree = "<group>";
 		};
 		636D5187252AABB500BB80D4 /* Preview Content */ = {
