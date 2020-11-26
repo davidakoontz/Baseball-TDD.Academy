@@ -7,7 +7,7 @@
 
 import XCTest
 
-class PlayerRowView_UITest: XCTestCase {
+class PlayerRowView_UI_Test: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -25,10 +25,20 @@ class PlayerRowView_UITest: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-    // DISABLED - via: Test Inspector - right click (test name) > Disable
+
     func test_Taylor_at_Bat_gets_walked() throws {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        let app = XCUIApplication()
+
+        
+        XCTAssertTrue( app.staticTexts["#17"].exists )
+        XCTAssertTrue( app.staticTexts["Taylor Swift"].exists )
+        XCTAssertTrue( app.staticTexts["8"].exists )
+        XCTAssertTrue( app.staticTexts["BB"].exists )
+        
     }
+
 
 }
