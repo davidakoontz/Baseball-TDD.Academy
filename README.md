@@ -3,6 +3,9 @@
 ## This code is being TDD.Academy test driven - follow along on https://www.twitch.tv/tddacademy
 
 
+## Nov 25th Renamed files & folders & project
+Removed "TDD" from file names and most of source/tests 
+
 ## Nov 20th TDD.Academy Live
 Let's review what READING the Guide could teach us about ViewInspector.
 Where to Next:  I started down a strict TDD tiny steps path of wanting a TEST to prove the ContentView has a
