@@ -64,7 +64,7 @@
 		636D518F252AABB500BB80D4 /* Baseball-TDDTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Baseball-TDDTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		636D5193252AABB500BB80D4 /* Baseball_TDDTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Baseball_TDDTests.swift; sourceTree = "<group>"; };
 		636D5195252AABB500BB80D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		636D519A252AABB500BB80D4 /* Baseball-TDDUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Baseball-TDDUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		636D519A252AABB500BB80D4 /* Baseball-UI-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Baseball-UI-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		636D519E252AABB500BB80D4 /* Baseball_UI_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Baseball_UI_Tests.swift; sourceTree = "<group>"; };
 		636D51A0252AABB500BB80D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		636D51AF252AAEDE00BB80D4 /* Scorecard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scorecard.swift; sourceTree = "<group>"; };
@@ -115,7 +115,7 @@
 				636D51D7252AC5A400BB80D4 /* README.md */,
 				636D5180252AABB000BB80D4 /* Baseball-TDD */,
 				636D5192252AABB500BB80D4 /* Baseball-TDDTests */,
-				636D519D252AABB500BB80D4 /* Baseball-TDDUITests */,
+				636D519D252AABB500BB80D4 /* Baseball-UI-Tests */,
 				636D517F252AABB000BB80D4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -125,7 +125,7 @@
 			children = (
 				636D517E252AABB000BB80D4 /* Baseball-TDD.app */,
 				636D518F252AABB500BB80D4 /* Baseball-TDDTests.xctest */,
-				636D519A252AABB500BB80D4 /* Baseball-TDDUITests.xctest */,
+				636D519A252AABB500BB80D4 /* Baseball-UI-Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -165,14 +165,14 @@
 			path = "Baseball-TDDTests";
 			sourceTree = "<group>";
 		};
-		636D519D252AABB500BB80D4 /* Baseball-TDDUITests */ = {
+		636D519D252AABB500BB80D4 /* Baseball-UI-Tests */ = {
 			isa = PBXGroup;
 			children = (
 				636D519E252AABB500BB80D4 /* Baseball_UI_Tests.swift */,
 				634D3A50255E25810024521D /* PlayerRowView_UI_Test.swift */,
 				636D51A0252AABB500BB80D4 /* Info.plist */,
 			);
-			path = "Baseball-TDDUITests";
+			path = "Baseball-UI-Tests";
 			sourceTree = "<group>";
 		};
 		63817A0C25565687007BDECE /* Model */ = {
@@ -242,9 +242,9 @@
 			productReference = 636D518F252AABB500BB80D4 /* Baseball-TDDTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		636D5199252AABB500BB80D4 /* Baseball-TDDUITests */ = {
+		636D5199252AABB500BB80D4 /* Baseball-UI-Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 636D51A9252AABB500BB80D4 /* Build configuration list for PBXNativeTarget "Baseball-TDDUITests" */;
+			buildConfigurationList = 636D51A9252AABB500BB80D4 /* Build configuration list for PBXNativeTarget "Baseball-UI-Tests" */;
 			buildPhases = (
 				636D5196252AABB500BB80D4 /* Sources */,
 				636D5197252AABB500BB80D4 /* Frameworks */,
@@ -255,9 +255,9 @@
 			dependencies = (
 				636D519C252AABB500BB80D4 /* PBXTargetDependency */,
 			);
-			name = "Baseball-TDDUITests";
+			name = "Baseball-UI-Tests";
 			productName = "Baseball-TDDUITests";
-			productReference = 636D519A252AABB500BB80D4 /* Baseball-TDDUITests.xctest */;
+			productReference = 636D519A252AABB500BB80D4 /* Baseball-UI-Tests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -300,7 +300,7 @@
 			targets = (
 				636D517D252AABB000BB80D4 /* Baseball-TDD */,
 				636D518E252AABB500BB80D4 /* Baseball-TDDTests */,
-				636D5199252AABB500BB80D4 /* Baseball-TDDUITests */,
+				636D5199252AABB500BB80D4 /* Baseball-UI-Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -600,14 +600,15 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 99568KA9SE;
-				INFOPLIST_FILE = "Baseball-TDDUITests/Info.plist";
+				INFOPLIST_FILE = "Baseball-UI-Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.LifeWorksIQ.Baseball-TDDUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.LifeWorksIQ.Baseball-UI-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = "Baseball-TDD";
@@ -620,14 +621,15 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 99568KA9SE;
-				INFOPLIST_FILE = "Baseball-TDDUITests/Info.plist";
+				INFOPLIST_FILE = "Baseball-UI-Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.LifeWorksIQ.Baseball-TDDUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.LifeWorksIQ.Baseball-UI-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = "Baseball-TDD";
@@ -664,7 +666,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		636D51A9252AABB500BB80D4 /* Build configuration list for PBXNativeTarget "Baseball-TDDUITests" */ = {
+		636D51A9252AABB500BB80D4 /* Build configuration list for PBXNativeTarget "Baseball-UI-Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				636D51AA252AABB500BB80D4 /* Debug */,
