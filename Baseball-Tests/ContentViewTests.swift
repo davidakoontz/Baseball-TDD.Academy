@@ -55,7 +55,7 @@ class ContentViewTests: XCTestCase {
         // arrange
         let taylor = Player(name: "Taylor Swift", number: "17", position: "8", atBat: "BB")
         let bill = Player(name: "Bill Swift", number: "18", position: "1", atBat: "K")
-        var array: [Player]  = [ taylor, bill ]
+        let array: [Player]  = [ taylor, bill ]
         
         
         // Currently the ContentView -> ForEach -> PlayerRowView -> HStack ->  Text...
