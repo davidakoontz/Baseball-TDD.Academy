@@ -9,7 +9,7 @@ import Foundation
 import XCTest
 import ViewInspector // 1. step ONE of ViewInspector
 
-@testable import Baseball_TDD
+@testable import Baseball
 
 
 extension ContentView: Inspectable {} // 2. step TWO Extend the View to be Inspectable

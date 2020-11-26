@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import Baseball_TDD
+@testable import Baseball
 
 class Baseball_Tests: XCTestCase {
 

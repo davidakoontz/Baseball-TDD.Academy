@@ -9,7 +9,7 @@ import Foundation
 import XCTest
 import ViewInspector // 1.
 
-@testable import Baseball_TDD
+@testable import Baseball
 
 extension SimpleView: Inspectable {} // 2.
 

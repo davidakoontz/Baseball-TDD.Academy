@@ -7,7 +7,7 @@
 
 import XCTest
 import Foundation
-@testable import Baseball_TDD
+@testable import Baseball
 
 
 public class ScorecardTests : XCTestCase {
