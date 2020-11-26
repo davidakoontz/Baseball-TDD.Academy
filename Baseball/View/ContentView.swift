@@ -15,10 +15,15 @@ struct ContentView: View {
         if players.isEmpty {
             Text("No Players!")
         } else {
-            ForEach(players) { player in
-                PlayerRowView(player: player)
+            List {
+                Section(header: Text("Scorecard"), footer: Text("...more...")) {
+                    ForEach(players) { player in
+                        PlayerRowView(player: player)
 
-            }
+                    } //forEach
+                }//section
+            }//list
+            .listStyle(GroupedListStyle())
         }
     }
 }

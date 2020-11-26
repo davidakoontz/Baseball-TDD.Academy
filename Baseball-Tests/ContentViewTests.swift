@@ -38,7 +38,7 @@ class ContentViewTests: XCTestCase {
         let cView = ContentView(players: [taylor])
 
         // note: ViewInspector notation for a Custom View
-        let prView = try cView.inspect().forEach().view(PlayerRowView.self, 0)
+        let prView = try cView.inspect().list().section(0).forEach(0).view(PlayerRowView.self, 0)
         let hStack = try prView.hStack()
         let name = try hStack.text(2).string() // 4. step FOUR inspect the view (see Guide.md for methods)
         let atBat = try hStack.text(6).string()  // 4. (the 2 & 6) are indexes in the HStack
@@ -63,7 +63,7 @@ class ContentViewTests: XCTestCase {
         let cView = ContentView(players: array)
 
         // note: ViewInspector notation for a Custom View
-        let prView = try cView.inspect().forEach().view(PlayerRowView.self, 0) // the 0th item in forEach
+        let prView = try cView.inspect().list().section(0).forEach(0).view(PlayerRowView.self, 0) // the 0th item in forEach
         let hStack = try prView.hStack()
         let name = try hStack.text(2).string() // 4. step FOUR inspect the view (see Guide.md for methods)
         let position = try hStack.text(4).string()
@@ -78,7 +78,7 @@ class ContentViewTests: XCTestCase {
         XCTAssertEqual(atBat, "BB")
         
         // note: ViewInspector notation for a Custom View
-        let prView2 = try cView.inspect().forEach().view(PlayerRowView.self, 1)
+        let prView2 = try cView.inspect().list().section(0).forEach(0).view(PlayerRowView.self, 1)
         let hStack2 = try prView2.hStack()
         let name2 = try hStack2.text(2).string() // 4. step FOUR inspect the view (see Guide.md for methods)
         let position2 = try hStack2.text(4).string()
