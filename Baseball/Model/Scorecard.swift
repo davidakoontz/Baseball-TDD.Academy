@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class Scorecard : CustomStringConvertible {
+public class Scorecard: CustomStringConvertible {
     public var description: String { return "{17, Henry, D, 9, BB}"}
 
     

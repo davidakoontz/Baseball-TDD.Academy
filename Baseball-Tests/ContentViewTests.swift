@@ -17,7 +17,7 @@ extension ContentView: Inspectable {} // 2. step TWO Extend the View to be Inspe
 class ContentViewTests: XCTestCase {
     
     func test_empty_Player_array() throws {
-        let emptyPlayers : [Player] = []
+        let emptyPlayers: [Player] = []
         let emptyPlayerInning = Inning(number: "1", top: emptyPlayers, bottom: [], summary: "0 to 0")
         let arrayOfInnings: [Inning]  = [ emptyPlayerInning]
         

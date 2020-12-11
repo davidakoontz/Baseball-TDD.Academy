@@ -14,7 +14,7 @@ import Foundation
 // Runners on 1st
 
 public class Situation {
-    var outs : Int   // the current (offense) team's count of outs - they only get 3.
+    var outs: Int   // the current (offense) team's count of outs - they only get 3.
     
     init() {
         outs = 0

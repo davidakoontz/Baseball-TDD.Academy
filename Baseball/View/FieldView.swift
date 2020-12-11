@@ -39,12 +39,18 @@ struct BallField: Shape {
         let modifiedEnd = endAngle - rotationAdjustment
 
         path.move(to: CGPoint(x: rect.midX, y: rect.maxY))      //  start point
-        path.addArc(center: CGPoint(x: rect.midX, y: rect.maxY), radius: rect.height * 1.3, startAngle: modifiedStart, endAngle: modifiedEnd, clockwise: !clockwise)
+        path.addArc(center: CGPoint(x: rect.midX, y: rect.maxY),
+                    radius: rect.height * 1.3,
+                    startAngle: modifiedStart,
+                    endAngle: modifiedEnd, clockwise: !clockwise)
         path.addLine(to: CGPoint(x: rect.midX, y: rect.maxY))   // home plate point
 
         // Out-Field line the Fence
         path.move(to: CGPoint(x: rect.midX, y: rect.maxY))      //  start point
-        path.addArc(center: CGPoint(x: rect.midX, y: rect.maxY), radius: rect.height * 2, startAngle: modifiedStart, endAngle: modifiedEnd, clockwise: !clockwise)
+        path.addArc(center: CGPoint(x: rect.midX, y: rect.maxY),
+                    radius: rect.height * 2,
+                    startAngle: modifiedStart,
+                    endAngle: modifiedEnd, clockwise: !clockwise)
         path.addLine(to: CGPoint(x: rect.midX, y: rect.maxY))   // home plate point
 
                 
@@ -119,7 +125,11 @@ struct OutFieldLine: Shape {
         let modifiedEnd = endAngle - rotationAdjustment
 
         var path = Path()
-        path.addArc(center: CGPoint(x: rect.midX, y: rect.maxY), radius: rect.height * 2, startAngle: modifiedStart, endAngle: modifiedEnd, clockwise: !clockwise)
+        path.addArc(center: CGPoint(x: rect.midX, y: rect.maxY),
+                    radius: rect.height * 2,
+                    startAngle: modifiedStart,
+                    endAngle: modifiedEnd,
+                    clockwise: !clockwise)
 
         return path
     }
@@ -137,9 +147,12 @@ struct InFieldLine: Shape {
         let modifiedEnd = endAngle - rotationAdjustment
 
         var path = Path()
-        path.addArc(center: CGPoint(x: rect.midX, y: rect.maxY), radius: rect.height * 1.3, startAngle: modifiedStart, endAngle: modifiedEnd, clockwise: !clockwise)
+        path.addArc(center: CGPoint(x: rect.midX, y: rect.maxY),
+                    radius: rect.height * 1.3,
+                    startAngle: modifiedStart,
+                    endAngle: modifiedEnd,
+                    clockwise: !clockwise)
 
         return path
     }
 }
-

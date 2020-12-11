@@ -10,7 +10,7 @@ import Foundation
 @testable import Baseball
 
 
-public class ScorecardTests : XCTestCase {
+public class ScorecardTests: XCTestCase {
     
     func testWalkFirstBatter() {
         let card = Scorecard()

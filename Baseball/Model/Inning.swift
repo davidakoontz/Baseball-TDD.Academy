@@ -13,14 +13,15 @@ public class Inning {
     var bottom: [Player]
     var summary: String = "0 to 0"  // the inning's score:  Home to Visitor
     
-    init(number: String, top: [Player], bottom:  [Player], summary: String) {
+    init(number: String, top: [Player], bottom: [Player], summary: String) {
         self.number = number
         self.top = top
         self.bottom = bottom
         self.summary = summary
     }
     
-    static let zero = Inning(number: "0", top: [], bottom: [], summary: "0 to 0")       // just so array indexes match names
+    // just so array indexes match names
+    static let zero = Inning(number: "0", top: [], bottom: [], summary: "0 to 0")
     
         static let taylor = Player(name: "Taylor Swift", number: "17", position: "8", atBat: "BB")
         static let bill = Player(name: "Bill Swift", number: "18", position: "1", atBat: "K")
@@ -35,7 +36,10 @@ public class Inning {
         static let andy = Player(name: "Andy Bechtolsheim", number: "41", position: "1", atBat: "BB")
         static let larry = Player(name: "Larry Ellison", number: "2", position: "1", atBat: "K")
     
-    static let first = Inning(number: "1", top: [taylor, bill, jonathan, bob], bottom: [duke, james, scott, billJoy, andy, larry], summary: "0 to 0")
+    static let first = Inning(number: "1",
+                              top: [taylor, bill, jonathan, bob],
+                              bottom: [duke, james, scott, billJoy, andy, larry],
+                              summary: "0 to 0")
     
     static let second = Inning(number: "2", top: [], bottom: [], summary: "0 to 0")
     static let third = Inning(number: "3", top: [], bottom: [], summary: "0 to 0")

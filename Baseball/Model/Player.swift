@@ -8,7 +8,7 @@
 import Foundation
 
 
-public class Player : Codable, Identifiable {
+public class Player: Codable, Identifiable {
 
     var name: String
     var number: String

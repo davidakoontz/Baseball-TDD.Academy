@@ -8,6 +8,7 @@
 import XCTest
 @testable import Baseball
 
+// swiftlint:disable type_name
 class Baseball_Tests: XCTestCase {
 
     override func setUpWithError() throws {
@@ -52,9 +53,9 @@ class Baseball_Tests: XCTestCase {
         let situation = Situation()
         let generator = PlayGenerator()
         let play = generator.startPlay(situation)
-        let HR = FieldSimulator.isHitAHomeRun( play )
+        let HRun = FieldSimulator.isHitAHomeRun( play )
         
-        XCTAssertFalse( HR )
+        XCTAssertFalse( HRun )
     }
     
     func testBasicScorecard() throws {
@@ -62,9 +63,9 @@ class Baseball_Tests: XCTestCase {
         let generator = PlayGenerator()
         let play = generator.startPlay(situation)
         _ = FieldSimulator.isHitAHomeRun( play )
-        let SC = Scorecard.score( play )
+        let SCard = Scorecard.score( play )
         
-        XCTAssertTrue( SC.contains("Scorecard") )
+        XCTAssertTrue( SCard.contains("Scorecard") )
     }
     
 //    func testWalkTheBatter() throws {
@@ -76,11 +77,14 @@ class Baseball_Tests: XCTestCase {
 //    }
     
     /*
-     * Vision: To actively enjoy the game and be connected and engaged, the Baseball Scorecard is a realtimeish score card, that allwos you to product stats or consume states that you can watch on your device.
+     * Vision: To actively enjoy the game and be connected and engaged,
+     * the Baseball Scorecard is a realtimeish score card,
+     * that allwos you to product stats or consume states that you can watch on your device.
      *
      * User Stories:
      * Bootstrap: Late to the game scernario: catch scorecard up to the current game.
-     * Produce: Once you publish, your are signal to  a server that you'll be sending more updates and people can then subscribe. (Producer consumer relationship)
+     * Produce: Once you publish, your are signal to  a server that you'll be sending more updates
+     * and people can then subscribe. (Producer consumer relationship)
      * Consume: Subscribe to a game, being passive by enjoying the game and watching the stats.
      * Interact with data and producer:
      */
