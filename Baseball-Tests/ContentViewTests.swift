@@ -17,9 +17,11 @@ extension ContentView: Inspectable {} // 2. step TWO Extend the View to be Inspe
 class ContentViewTests: XCTestCase {
     
     func test_empty_Player_array() throws {
-        let players : [Player] = []
+        let emptyPlayers : [Player] = []
+        let emptyPlayerInning = Inning(number: "1", top: emptyPlayers, bottom: [], summary: "0 to 0")
+        let arrayOfInnings: [Inning]  = [ emptyPlayerInning]
         
-        let cView = ContentView(players: players)
+        let cView = ContentView(game: arrayOfInnings)
         
         //let feView = try cView.inspect().forEach().view(PlayerRowView.self, 0)
         
@@ -32,16 +34,16 @@ class ContentViewTests: XCTestCase {
     func test_Has_a_Player() throws {
         // arrange
         let taylor = Player(name: "Taylor Swift", number: "17", position: "8", atBat: "BB")
-        
+        let inning = Inning(number: "1", top: [taylor], bottom: [], summary: "0 to 0")
+        let arrayOfInnings: [Inning]  = [ inning]
         // Currently the ContentView -> PlayerRowView -> HStack ->  Text...
         // act
-        let cView = ContentView(players: [taylor])
+        let cView = ContentView(game: arrayOfInnings)
 
-        // note: ViewInspector notation for a Custom View
-        let prView = try cView.inspect().list().section(0).forEach(0).view(PlayerRowView.self, 0)
-        let hStack = try prView.hStack()
-        let name = try hStack.text(2).string() // 4. step FOUR inspect the view (see Guide.md for methods)
-        let atBat = try hStack.text(6).string()  // 4. (the 2 & 6) are indexes in the HStack
+
+        
+        let name = try cView.inspect().scrollView().lazyVGrid().section(0).forEach(0).tupleView(0).text(2).string()
+        let atBat = try cView.inspect().scrollView().lazyVGrid().section(0).forEach(0).tupleView(0).text(4).string()
         
         
         // TDD - Assert step  (or BDD - THEN)
@@ -57,18 +59,18 @@ class ContentViewTests: XCTestCase {
         let bill = Player(name: "Bill Swift", number: "18", position: "1", atBat: "K")
         let array: [Player]  = [ taylor, bill ]
         
+        let inning = Inning(number: "1", top: array, bottom: [], summary: "0 to 0")
+        let arrayOfInnings: [Inning]  = [ inning]
         
         // Currently the ContentView -> ForEach -> PlayerRowView -> HStack ->  Text...
         // act
-        let cView = ContentView(players: array)
+        let cView = ContentView(game: arrayOfInnings)
 
-        // note: ViewInspector notation for a Custom View
-        let prView = try cView.inspect().list().section(0).forEach(0).view(PlayerRowView.self, 0) // the 0th item in forEach
-        let hStack = try prView.hStack()
-        let name = try hStack.text(2).string() // 4. step FOUR inspect the view (see Guide.md for methods)
-        let position = try hStack.text(4).string()
-        let jersey = try hStack.text(1).string()
-        let atBat = try hStack.text(6).string()  // 4. (the 2 & 6) are indexes in the HStack
+
+        let jersey = try cView.inspect().scrollView().lazyVGrid().section(0).forEach(0).tupleView(0).text(1).string()
+        let name = try cView.inspect().scrollView().lazyVGrid().section(0).forEach(0).tupleView(0).text(2).string()
+        let position = try cView.inspect().scrollView().lazyVGrid().section(0).forEach(0).tupleView(0).text(3).string()
+        let atBat = try cView.inspect().scrollView().lazyVGrid().section(0).forEach(0).tupleView(0).text(4).string()
         
         
         // TDD - Assert step  (or BDD - THEN)
@@ -77,13 +79,12 @@ class ContentViewTests: XCTestCase {
         XCTAssertEqual(jersey, "#17")
         XCTAssertEqual(atBat, "BB")
         
-        // note: ViewInspector notation for a Custom View
-        let prView2 = try cView.inspect().list().section(0).forEach(0).view(PlayerRowView.self, 1)
-        let hStack2 = try prView2.hStack()
-        let name2 = try hStack2.text(2).string() // 4. step FOUR inspect the view (see Guide.md for methods)
-        let position2 = try hStack2.text(4).string()
-        let jersey2 = try hStack2.text(1).string()
-        let atBat2 = try hStack2.text(6).string()  // 4. (the 2 & 6) are indexes in the HStack
+
+        let jersey2 = try cView.inspect().scrollView().lazyVGrid().section(0).forEach(0).tupleView(1).text(1).string()
+        let name2 = try cView.inspect().scrollView().lazyVGrid().section(0).forEach(0).tupleView(1).text(2).string()
+        let position2 = try cView.inspect().scrollView().lazyVGrid().section(0).forEach(0).tupleView(1).text(3).string()
+        let atBat2 = try cView.inspect().scrollView().lazyVGrid().section(0).forEach(0).tupleView(1).text(4).string()
+        
         
         
         // TDD - Assert step  (or BDD - THEN)

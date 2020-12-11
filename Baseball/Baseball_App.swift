@@ -17,7 +17,7 @@ struct Baseball_App: App {
  
     var body: some Scene {
         WindowGroup {
-            ContentView(players: Player.example)
+            ContentView(game: Inning.exampleGame)
         }
     }
 }
