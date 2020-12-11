@@ -1,0 +1,13 @@
+# SwiftLint configuration file
+# rule identifiers turned on by default to exclude from running
+disabled_rules:
+- vertical_whitespace
+- trailing_whitespace
+- force_cast
+- force_unwrapping
+- force_try
+
+# You may also skip checking files with
+excluded:
+- fileThatIsNotLinted
+- folderThatIsExcludedFromLint
