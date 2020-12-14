@@ -8,8 +8,11 @@
 import Foundation
 
 
-public class Player: Codable, Identifiable {
+public class Player: Codable, Hashable, Identifiable {
 
+    
+    //swiftlint:disable identifier_name
+    public var id = UUID()     //  for Identifiable protocol
     var name: String
     var number: String
     var position: String
@@ -22,10 +25,23 @@ public class Player: Codable, Identifiable {
         self.atBat = atBat
     }
 
-    static let taylor = Player(name: "Taylor Swift", number: "17", position: "8", atBat: "BB")
-    static let bill = Player(name: "Bill Swift", number: "18", position: "1", atBat: "K")
-    static let jonathan = Player(name: "Jonathan Swift", number: "67", position: "4", atBat: "1B")
-    static let bob = Player(name: "Bob Swift", number: "2", position: "2", atBat: "DP")
+    
+     // players may change positions and have various atBats - but jersy # & name remain the same for a game
+     public static func == (lhs: Player, rhs: Player) -> Bool {
+         return ( lhs.number == rhs.number &&
+                  lhs.name == rhs.name )
+     }
+     
+     // see: https://medium.com/better-programming/what-is-hashable-in-swift-6a51627f904
+     public func hash(into hasher: inout Hasher) {
+         hasher.combine(number)
+         hasher.combine(name)
+     }
+    
+    
+    // this code might be usefull for the Xcode Preview Canvas
+    //
+
     // top of 1st inning
     static let duke = Player(name: "Duke Java", number: "33", position: "7", atBat: "1B")
     static let james = Player(name: "James Gosling", number: "4", position: "5", atBat: "2B")
@@ -33,6 +49,11 @@ public class Player: Codable, Identifiable {
     static let billJoy = Player(name: "Bill Joy", number: "39", position: "9", atBat: "F8")
     static let andy = Player(name: "Andy Bechtolsheim", number: "41", position: "1", atBat: "BB")
     static let larry = Player(name: "Larry Ellison", number: "2", position: "1", atBat: "K..")
+    // home team - bottom of inning
+    static let taylor = Player(name: "Taylor Swift", number: "17", position: "8", atBat: "BB")
+    static let bill = Player(name: "Bill Swift", number: "18", position: "1", atBat: "K")
+    static let jonathan = Player(name: "Jonathan Swift", number: "67", position: "4", atBat: "1B")
+    static let bob = Player(name: "Bob Swift", number: "8", position: "2", atBat: "DP")
     
     static var example: [Player] =  [
         taylor, bill, jonathan, bob, duke, james, scott, billJoy, andy, larry
