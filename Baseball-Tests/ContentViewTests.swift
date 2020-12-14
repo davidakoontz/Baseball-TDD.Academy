@@ -16,38 +16,23 @@ extension ContentView: Inspectable {} // 2. step TWO Extend the View to be Inspe
 
 class ContentViewTests: XCTestCase {
     
-    func test_empty_Player_array() throws {
-        let emptyPlayers: [Player] = []
-        let emptyPlayerInning = Inning(number: "1", top: emptyPlayers, bottom: [], summary: "0 to 0")
-        let arrayOfInnings: [Inning]  = [ emptyPlayerInning]
-        
-        let cView = ContentView(game: arrayOfInnings)
-        
-        //let feView = try cView.inspect().forEach().view(PlayerRowView.self, 0)
-        
-        //hStack = try feView.hStack()
-        let message = try cView.inspect().text().string()
-        
-        XCTAssertEqual(message, "No Players!")
-    }
-    
     func test_Has_a_Player() throws {
         // arrange
         let taylor = Player(name: "Taylor Swift", number: "17", position: "8", atBat: "BB")
         let inning = Inning(number: "1", top: [taylor], bottom: [], summary: "0 to 0")
         let arrayOfInnings: [Inning]  = [ inning]
+        
+        print( inning.number )
+        print(arrayOfInnings.count)
         // Currently the ContentView -> PlayerRowView -> HStack ->  Text...
         // act
         let cView = ContentView(game: arrayOfInnings)
-
-
         
         let name = try cView.inspect().scrollView().lazyVGrid().section(0).forEach(0).tupleView(0).text(2).string()
         let atBat = try cView.inspect().scrollView().lazyVGrid().section(0).forEach(0).tupleView(0).text(4).string()
         
-        
         // TDD - Assert step  (or BDD - THEN)
-        XCTAssertEqual(name, "Taylor Swift")    // player from data.json
+        XCTAssertEqual(name, "Taylor Swift")    
         XCTAssertEqual(atBat, "BB")
         
     }
@@ -74,7 +59,7 @@ class ContentViewTests: XCTestCase {
         
         
         // TDD - Assert step  (or BDD - THEN)
-        XCTAssertEqual(name, "Taylor Swift")    // player from data.json
+        XCTAssertEqual(name, "Taylor Swift")
         XCTAssertEqual(position, "8")
         XCTAssertEqual(jersey, "#17")
         XCTAssertEqual(atBat, "BB")
@@ -88,7 +73,7 @@ class ContentViewTests: XCTestCase {
         
         
         // TDD - Assert step  (or BDD - THEN)
-        XCTAssertEqual(name2, "Bill Swift")    // player from data.json
+        XCTAssertEqual(name2, "Bill Swift")
         XCTAssertEqual(position2, "1")
         XCTAssertEqual(jersey2, "#18")
         XCTAssertEqual(atBat2, "K")

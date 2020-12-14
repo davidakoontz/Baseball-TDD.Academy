@@ -7,16 +7,6 @@
 
 import SwiftUI
 
-
-extension Color {
-    static var random: Color {
-        return Color(red: .random(in: 0...1),
-                     green: .random(in: 0...1),
-                     blue: .random(in: 0...1))
-    }
-}
-
-
 struct ContentView: View {
     var game: [Inning]
 //    var players : [Player]
@@ -31,6 +21,18 @@ struct ContentView: View {
         GridItem(.fixed(80), spacing: 16)   // diamon graphic
     ]
     
+    //swiftlint:disable large_tuple
+    fileprivate func playerRowView(atBats: [Player])
+        -> ForEach<[Player], String, TupleView<(Spacer, Text, Text, Text, Text)>> {
+        return ForEach(atBats) { player in
+            Spacer()
+            Text("#\(player.number)")
+            Text(player.name)
+            Text(player.position)
+            Text(player.atBat)
+        }
+    }
+    
     var body: some View {
 
         if game.isEmpty {
@@ -42,33 +44,18 @@ struct ContentView: View {
                           spacing: 16,
                           pinnedViews: [.sectionHeaders, .sectionFooters]
                 ) {
-                    let home = game[1].top
-                    Section(header: Text("Home Team" + "- inning #\(game[1].number)").font(.title2)) {
-                        ForEach(home) { player in
-                            Spacer()
-                            Text("#\(player.number)")
-                            Text(player.name)
-                            Text(player.position)
-                            Text(player.atBat)
-//                            BallField()
-//                                .stroke(Color.blue, lineWidth: 1)
-//                                .frame(width: 10, height: 10)
+                    
+                        let visitorsPlayers = game[0].top
+                        Section(header: Text("Visiting Team" + " - inning #\(game[0].number)").font(.title2)) {
+                            playerRowView(atBats: visitorsPlayers)
                         }
-                    }
-                    let visitors = game[1].bottom
-                    Section(header: Text("Visiting Team" + "- inning #\(game[1].number)").font(.title2)) {
-                        ForEach(visitors) { player in
-                            Spacer()
-                            Text("#\(player.number)")
-                            Text(player.name)
-                            Text(player.position)
-                            Text(player.atBat)
-//                            BallField()
-//                                .stroke(Color.blue, lineWidth: 1)
-//                                .frame(width: 10, height: 10)
+                        
+                        let homeTeamPlayers = game[0].bottom
+                        Section(header: Text("Home Team" + " - inning #\(game[0].number)").font(.title2)) {
+                            playerRowView(atBats: homeTeamPlayers)
                         }
-                    }
-                
+                    
+                    
                 }
             }
             
