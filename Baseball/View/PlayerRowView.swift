@@ -32,6 +32,6 @@ struct PlayerRowView: View {
 
 struct PlayerRowView_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerRowView(player: Player.example[0])
+        PlayerRowView(player: Player.atBatList[0])
     }
 }

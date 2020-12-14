@@ -8,11 +8,12 @@
 import Foundation
 
 
-public class Player: Codable, Hashable, Identifiable {
+public class Player: Hashable, Identifiable {
+    
 
     
     //swiftlint:disable identifier_name
-    public var id = UUID()     //  for Identifiable protocol
+    public var id = UUID().uuidString     //  for Identifiable protocol
     var name: String
     var number: String
     var position: String
@@ -27,9 +28,9 @@ public class Player: Codable, Hashable, Identifiable {
 
     
      // players may change positions and have various atBats - but jersy # & name remain the same for a game
+     // protocol Equatable
      public static func == (lhs: Player, rhs: Player) -> Bool {
-         return ( lhs.number == rhs.number &&
-                  lhs.name == rhs.name )
+         return ( lhs.id == rhs.id )
      }
      
      // see: https://medium.com/better-programming/what-is-hashable-in-swift-6a51627f904
@@ -55,7 +56,7 @@ public class Player: Codable, Hashable, Identifiable {
     static let jonathan = Player(name: "Jonathan Swift", number: "67", position: "4", atBat: "1B")
     static let bob = Player(name: "Bob Swift", number: "8", position: "2", atBat: "DP")
     
-    static var example: [Player] =  [
+    static var atBatList: [Player] =  [
         taylor, bill, jonathan, bob, duke, james, scott, billJoy, andy, larry
     ]
 
