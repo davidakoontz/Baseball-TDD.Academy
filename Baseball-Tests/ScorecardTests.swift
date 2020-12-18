@@ -14,17 +14,23 @@ public class ScorecardTests: XCTestCase {
     
     func testWalkFirstBatter() {
         let card = Scorecard()
-        //let atBatString = "{'17', 'Henry, D', '9', 'BB'}"
-        //card.read(atBatString)
-        //let outcome =  card.toString()  // This ain't no stinking JAVA!
+        let aPlay = Play("Taylor gets walked.")
         
-        // the proper Swifty way
-        // when card implements CustomStringConvertible protocol - e.g. has a public var description: String
+        let verbage = card.score(aPlay)
         
-        let outcome = String(describing: card)
-        
-        XCTAssertEqual(outcome, "{17, Henry, D, 9, BB}")    // we are aware this is invalid JSON
+        XCTAssertEqual(verbage, "Taylor gets walked.")
         
     }
     
+    func testThereIsAList() {
+        let card = Scorecard()
+        let aPlay = Play("Taylor gets walked.")
+        
+        _ = card.score(aPlay)
+        let count = card.listOfPlays.count
+        let desc = card.listOfPlays[0].description
+        
+        XCTAssertEqual(count, 1)
+        XCTAssertEqual(desc, "Taylor gets walked.")
+    }
 }

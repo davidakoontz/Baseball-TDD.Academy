@@ -8,11 +8,12 @@
 import Foundation
 
 public class Play {
-    public let number: Int
-    public let description: String
+    public var number: Int
+    public var description: String
     
-    init() {
+    
+    init(_ description: String) {
         self.number = 1
-        self.description = "a very beginging play in baseball"
+        self.description = description
     }
 }

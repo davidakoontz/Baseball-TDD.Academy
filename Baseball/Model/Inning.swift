@@ -58,6 +58,9 @@ public class Inning {
                                bottom: [kay, patrick, todd, connor, ellen],
                                summary: "0 to 0")
     
+    // visitors always bat first (top of innings)
+    //static let duke = Player(name: "Duke Java", number: "33", position: "7", atBat: "2B")
+    
     static let third = Inning(number: "3", top: [], bottom: [], summary: "0 to 0")
     static let fourth = Inning(number: "4", top: [], bottom: [], summary: "0 to 0")
     static let fifth = Inning(number: "5", top: [], bottom: [], summary: "0 to 0")

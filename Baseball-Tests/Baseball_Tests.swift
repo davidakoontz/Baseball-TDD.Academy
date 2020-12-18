@@ -30,7 +30,7 @@ class Baseball_Tests: XCTestCase {
     
     func testVeryBasicPlay() throws {
         // setup a basic play
-        let play1 = Play()
+        let play1 = Play("This baseball is a great game")
         
         XCTAssertTrue(play1.description.contains("baseball"))
     }
@@ -63,40 +63,11 @@ class Baseball_Tests: XCTestCase {
         let generator = PlayGenerator()
         let play = generator.startPlay(situation)
         _ = FieldSimulator.isHitAHomeRun( play )
-        let SCard = Scorecard.score( play )
+
+        let card = Scorecard()
+        let desc = card.score( play )
         
-        XCTAssertTrue( SCard.contains("Scorecard") )
+        XCTAssertEqual(desc, "Hey batter swing")        // a hardcoded Play description from the Generator
     }
     
-//    func testWalkTheBatter() throws {
-//        let situation = Situation()
-//        let generator = PlayGenerator()
-//        let play = generator.startPlay(situation)
-//        let walk = FieldSimulator
-//        let SC = Scorecard.score( play )
-//    }
-    
-    /*
-     * Vision: To actively enjoy the game and be connected and engaged,
-     * the Baseball Scorecard is a realtimeish score card,
-     * that allwos you to product stats or consume states that you can watch on your device.
-     *
-     * User Stories:
-     * Bootstrap: Late to the game scernario: catch scorecard up to the current game.
-     * Produce: Once you publish, your are signal to  a server that you'll be sending more updates
-     * and people can then subscribe. (Producer consumer relationship)
-     * Consume: Subscribe to a game, being passive by enjoying the game and watching the stats.
-     * Interact with data and producer:
-     */
-    
-    
-    
-    //====== Performance Test =============
-//    func testPerformanceExample() throws {
-//        // This is an example of a performance test case.
-//        self.measure {
-//            // Put the code you want to measure the time of here.
-//        }
-//    }
-
 }

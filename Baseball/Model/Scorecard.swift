@@ -7,16 +7,19 @@
 
 import Foundation
 
-public class Scorecard: CustomStringConvertible {
-    public var description: String { return "{17, Henry, D, 9, BB}"}
+public class Scorecard {
 
+    var listOfPlays: [Play] = []
     
-    public static func score( _ play: Play ) -> String {
-        let output = "Scorecard"
+    public func score( _ play: Play ) -> String {
         
-        print(output)
+        // do some math stuff to record this play
         
-        return output
+        // keep this in our List
+        listOfPlays.append(play)
+        print("Scorecard:score where output is \(play.description)")
+
+        return play.description
     }
     
     init() {

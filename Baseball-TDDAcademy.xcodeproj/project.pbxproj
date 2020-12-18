@@ -30,6 +30,7 @@
 		637782192555F21A00766772 /* FieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637782182555F21A00766772 /* FieldView.swift */; };
 		6377821E2555F2CE00766772 /* PlayerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6377821D2555F2CE00766772 /* PlayerRowView.swift */; };
 		6377822D255626FF00766772 /* PlayerRowViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6377822C255626FF00766772 /* PlayerRowViewTests.swift */; };
+		63D779BE258C638200EFDC23 /* PlayTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D779BD258C638200EFDC23 /* PlayTest.swift */; };
 		63E7D8A225831C550059AC9D /* InningTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7D8A125831C550059AC9D /* InningTest.swift */; };
 		63E7D8A725831D590059AC9D /* Inning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7D8A625831D590059AC9D /* Inning.swift */; };
 		63E9BBFD256F35B4001C9114 /* PlayerRowView_UI_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634D3A50255E25810024521D /* PlayerRowView_UI_Test.swift */; };
@@ -83,6 +84,7 @@
 		637782182555F21A00766772 /* FieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldView.swift; sourceTree = "<group>"; };
 		6377821D2555F2CE00766772 /* PlayerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRowView.swift; sourceTree = "<group>"; };
 		6377822C255626FF00766772 /* PlayerRowViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRowViewTests.swift; sourceTree = "<group>"; };
+		63D779BD258C638200EFDC23 /* PlayTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayTest.swift; sourceTree = "<group>"; };
 		63E7D8A125831C550059AC9D /* InningTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InningTest.swift; sourceTree = "<group>"; };
 		63E7D8A625831D590059AC9D /* Inning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inning.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -160,6 +162,7 @@
 			children = (
 				636D5193252AABB500BB80D4 /* Baseball_Tests.swift */,
 				63E7D8A125831C550059AC9D /* InningTest.swift */,
+				63D779BD258C638200EFDC23 /* PlayTest.swift */,
 				637781FF2555E04200766772 /* ScorecardTests.swift */,
 				637782132555E90F00766772 /* PlayerTest.swift */,
 				6377822C255626FF00766772 /* PlayerRowViewTests.swift */,
@@ -392,6 +395,7 @@
 				6377822D255626FF00766772 /* PlayerRowViewTests.swift in Sources */,
 				636D5194252AABB500BB80D4 /* Baseball_Tests.swift in Sources */,
 				63E7D8A225831C550059AC9D /* InningTest.swift in Sources */,
+				63D779BE258C638200EFDC23 /* PlayTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

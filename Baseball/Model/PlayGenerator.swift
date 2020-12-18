@@ -17,7 +17,7 @@ public class PlayGenerator {
     
     public func startPlay(_ situation: Situation) -> Play {
         self.situation = situation
-        play = Play()
+        play = Play("Hey batter swing")
         
         return play
     }
@@ -25,7 +25,7 @@ public class PlayGenerator {
     init() {
         // nothing for now
         situation = Situation()
-        play = Play()
+        play = Play("Hey batter swing")
         
     }
 }
