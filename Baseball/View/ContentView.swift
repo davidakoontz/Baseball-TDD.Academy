@@ -17,24 +17,24 @@ struct ContentView: View {
         GridItem(.fixed(10)),   // left margin
         GridItem(.fixed(40), spacing: 16, alignment: .trailing),   // player number
         GridItem(.fixed(200), spacing: 16, alignment: .leading),  // name
-        GridItem(.fixed(20), spacing: 16),   // position
-        GridItem(.fixed(80), spacing: 16)   // diamon graphic
+        GridItem(.fixed(20), spacing: 16)   // position
+        //GridItem(.fixed(80), spacing: 16)   // atBat
     ]
     
     //swiftlint:disable large_tuple
     fileprivate func playerRowView(atBats: [Player])
-        -> ForEach<[Player], String, TupleView<(Spacer, Text, Text, Text, Text)>> {
+        -> ForEach<[Player], String, TupleView<(Spacer, Text, Text, Text)>> {
         return ForEach(atBats) { player in
             Spacer()
             Text("#\(player.number)")
             Text(player.name)
-            Text(player.position)
-            Text(player.atBat)
+            Text(player.position.rawValue)
+
         }
     }
     
     var body: some View {
-
+        
         if game.isEmpty {
             Text("No Players!")
         } else {
@@ -45,35 +45,18 @@ struct ContentView: View {
                           pinnedViews: [.sectionHeaders, .sectionFooters]
                 ) {
                     
-                        let visitorsPlayers = game[0].top
-                        Section(header: Text("Visiting Team" + " - inning #\(game[0].number)").font(.title2)) {
-                            playerRowView(atBats: visitorsPlayers)
-                        }
-                        
-                        let homeTeamPlayers = game[0].bottom
-                        Section(header: Text("Home Team" + " - inning #\(game[0].number)").font(.title2)) {
-                            playerRowView(atBats: homeTeamPlayers)
-                        }
+                    let visitorsPlayers = game[0].top
+                    Section(header: Text("Visiting Team" + " - inning #\(game[0].number)").font(.title2)) {
+                        playerRowView(atBats: visitorsPlayers)
+                    }
                     
+                    let homeTeamPlayers = game[0].bottom
+                    Section(header: Text("Home Team" + " - inning #\(game[0].number)").font(.title2)) {
+                        playerRowView(atBats: homeTeamPlayers)
+                    }
                     
                 }
             }
-            
-            
-            
-            
-            
-            /* original code
-            List {
-                Section(header: Text("Scorecard"), footer: Text("...more...")) {
-                    ForEach(players) { player in
-                        PlayerRowView(player: player)
-
-                    } //forEach
-                }//section
-            }//list
-            .listStyle(GroupedListStyle())
-            */
         } // if else
     }
 }
