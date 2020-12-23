@@ -15,9 +15,20 @@ public class PlayGenerator {
     var situation: Situation
     var play: Play
     
+    // a random play will require a roster of players and a pointer to the next player in the lineup
+    public func getRandomPlay() -> Play {
+        //let randomPlay = AtBat.allCases.randomElement() ?? AtBat.error
+        // having AtBat enum conform to CaseIterable provides allCases & randomElement() for FREE
+        let randomAtBat = AtBat.allCases.randomElement() ?? AtBat.error
+        let batter = Player(name: "Random PlayerName", number: "00", position: .firstBase)
+        let aPlay = Play(description: "random play", batter: batter, atBat: randomAtBat)
+        return aPlay
+    }
+    
     public func startPlay(_ situation: Situation) -> Play {
         self.situation = situation
-        play = Play("Hey batter swing")
+        let batter = Player(name: "Random PlayerName", number: "00", position: .firstBase)
+        play = Play(description: "Hey batter swing", batter: batter, atBat: AtBat.single)
         
         return play
     }
@@ -25,7 +36,10 @@ public class PlayGenerator {
     init() {
         // nothing for now
         situation = Situation()
-        play = Play("Hey batter swing")
+        let batter = Player(name: "Random PlayerName", number: "00", position: .firstBase)
+        play = Play(description: "Hey batter swing", batter: batter, atBat: AtBat.single)
         
     }
+    
+
 }
