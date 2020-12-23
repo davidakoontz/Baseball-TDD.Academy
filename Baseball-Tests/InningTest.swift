@@ -26,8 +26,8 @@ class InningTest: XCTestCase {
     }
 
     func testInit() throws {
-        let bob = Player(name: "Bob Swift", number: "3", position: "6", atBat: "K")
-        let larry = Player(name: "Larry Ellison", number: "2", position: "2", atBat: "K")
+        let bob = Player(name: "Bob Swift", number: "3", position: .shortStop)
+        let larry = Player(name: "Larry Ellison", number: "2", position: .catcher)
     
         let first = Inning(number: "1",
                               top: [ bob ],
@@ -53,17 +53,17 @@ class InningTest: XCTestCase {
     //        static let jonathan = Player(name: "Jonathan Swift", number: "67", position: "4", atBat: "1B")
     func testInningOneJonathanHitsSingle() throws {
         
-        let duke = Player(name: "Duke Java", number: "33", position: "7", atBat: "1B")
-        let james = Player(name: "James Gosling", number: "4", position: "5", atBat: "2B")
-        let scott = Player(name: "Scott McNealy", number: "37", position: "8", atBat: "K..")
-        let billJoy = Player(name: "Bill Joy", number: "39", position: "9", atBat: "F8")
-        let andy = Player(name: "Andy Bechtolsheim", number: "41", position: "1", atBat: "BB")
-        let larry = Player(name: "Larry Ellison", number: "2", position: "2", atBat: "K")
+        let duke = Player(name: "Duke Java", number: "33", position: .leftField)
+        let james = Player(name: "James Gosling", number: "4", position: .thirdBase)
+        let scott = Player(name: "Scott McNealy", number: "37", position: .centerField)
+        let billJoy = Player(name: "Bill Joy", number: "39", position: .rightField)
+        let andy = Player(name: "Andy Bechtolsheim", number: "41", position: .pitcher)
+        let larry = Player(name: "Larry Ellison", number: "2", position: .catcher)
        // home team (bottom of innings)
-        let taylor = Player(name: "Taylor Swift", number: "17", position: "8", atBat: "BB")
-        let bill = Player(name: "Bill Swift", number: "18", position: "1", atBat: "K")
-        let jonathan = Player(name: "Jonathan Swift", number: "67", position: "4", atBat: "1B")
-        let bob = Player(name: "Bob Swift", number: "2", position: "2", atBat: "DP")
+        let taylor = Player(name: "Taylor Swift", number: "17", position: .centerField)
+        let bill = Player(name: "Bill Swift", number: "18", position: .pitcher)
+        let jonathan = Player(name: "Jonathan Swift", number: "67", position: .secondBase)
+        let bob = Player(name: "Bob Swift", number: "2", position: .catcher)
        
    
        let firstInning = Inning(number: "1",
@@ -72,7 +72,19 @@ class InningTest: XCTestCase {
                              summary: "0 to 0")
         
         XCTAssertTrue( firstInning.bottom[2].name.contains("Jonathan") )
-        XCTAssertTrue( firstInning.bottom[2].atBat.contains("1B") )
+     
     }
     
+    func testInningConsistOfPlays() throws {
+        let aPlayer = Player(name: "Test PlayerName", number: "00", position: .catcher)
+        let aPlay = Play(description: "this is a test", batter: aPlayer, atBat: AtBat.baseOnBalls)
+        let firstInning = Inning(number: "1",
+                                 top: [],
+                                 bottom: [],
+                                 summary: "0 to 0")
+        
+        firstInning.top.append(aPlay)
+        
+        XCTAssertEqual(firstInning.top[0].something, Play.atBat().description)
+    }
 }

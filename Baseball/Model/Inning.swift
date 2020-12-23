@@ -24,17 +24,17 @@ public class Inning {
     //static let zero = Inning(number: "0", top: [], bottom: [], summary: "0 to 0")
 
         // visitors always bat first (top of innings)
-        static let duke = Player(name: "Duke Java", number: "33", position: "7", atBat: "1B")
-        static let james = Player(name: "James Gosling", number: "4", position: "5", atBat: "2B")
-        static let scott = Player(name: "Scott McNealy", number: "37", position: "8", atBat: "K..")
-        static let billJoy = Player(name: "Bill Joy", number: "39", position: "9", atBat: "F8")
-        static let andy = Player(name: "Andy Bechtolsheim", number: "41", position: "1", atBat: "BB")
-        static let larry = Player(name: "Larry Ellison", number: "2", position: "2", atBat: "K")
+    static let duke = Player(name: "Duke Java", number: "33", position: .leftField)
+    static let james = Player(name: "James Gosling", number: "4", position: .thirdBase)
+    static let scott = Player(name: "Scott McNealy", number: "37", position: .centerField)
+    static let billJoy = Player(name: "Bill Joy", number: "39", position: .rightField)
+    static let andy = Player(name: "Andy Bechtolsheim", number: "41", position: .pitcher)
+    static let larry = Player(name: "Larry Ellison", number: "2", position: .catcher)
         // home team (bottom of innings)
-        static let taylor = Player(name: "Taylor Swift", number: "17", position: "8", atBat: "BB")
-        static let bill = Player(name: "Bill Swift", number: "18", position: "1", atBat: "K")
-        static let jonathan = Player(name: "Jonathan Swift", number: "67", position: "4", atBat: "1B")
-        static let bob = Player(name: "Bob Swift", number: "8", position: "2", atBat: "DP")
+    static let taylor = Player(name: "Taylor Swift", number: "17", position: .centerField)
+    static let bill = Player(name: "Bill Swift", number: "18", position: .pitcher)
+    static let jonathan = Player(name: "Jonathan Swift", number: "67", position: .secondBase)
+    static let bob = Player(name: "Bob Swift", number: "8", position: .catcher)
         
     
     static let first = Inning(number: "1",
@@ -42,24 +42,21 @@ public class Inning {
                               bottom: [taylor, bill, jonathan, bob],
                               summary: "0 to 0")
     
-        static let kay = Player(name: "Kay Swift", number: "87", position: "3", atBat: "BK")
-        static let patrick = Player(name: "Patrick Swift", number: "55", position: "4", atBat: "K")
-        static let todd = Player(name: "Todd Swift", number: "73", position: "5", atBat: "2B")
-        static let connor = Player(name: "Connor Swift", number: "6", position: "9", atBat: "1B")
-        static let ellen = Player(name: "Ellen Swift", number: "88", position: "6", atBat: "DP")
+    static let kay = Player(name: "Kay Swift", number: "87", position: .firstBase)
+    static let patrick = Player(name: "Patrick Swift", number: "55", position: .secondBase)
+    static let todd = Player(name: "Todd Swift", number: "73", position: .thirdBase)
+    static let connor = Player(name: "Connor Swift", number: "6", position: .rightField)
+    static let ellen = Player(name: "Ellen Swift", number: "88", position: .shortStop)
      
-        static let sun  = Player(name: "Sun Li", number: "62", position: "3", atBat: "1B")
-        static let tzu = Player(name: "Sun Tzu", number: "99", position: "4", atBat: "2B")
-        static let nike = Player(name: "Nike Sun", number: "42", position: "6", atBat: "TP")
+    static let sun  = Player(name: "Sun Li", number: "62", position: .firstBase)
+    static let tzu = Player(name: "Sun Tzu", number: "99", position: .secondBase)
+    static let nike = Player(name: "Nike Sun", number: "42", position: .shortStop)
        
            
     static let second = Inning(number: "2",
                                top: [sun, tzu, nike],
                                bottom: [kay, patrick, todd, connor, ellen],
                                summary: "0 to 0")
-    
-    // visitors always bat first (top of innings)
-    //static let duke = Player(name: "Duke Java", number: "33", position: "7", atBat: "2B")
     
     static let third = Inning(number: "3", top: [], bottom: [], summary: "0 to 0")
     static let fourth = Inning(number: "4", top: [], bottom: [], summary: "0 to 0")
