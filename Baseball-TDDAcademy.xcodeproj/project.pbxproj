@@ -28,8 +28,6 @@
 		6377820F2555E89300766772 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6377820E2555E89300766772 /* Player.swift */; };
 		637782142555E90F00766772 /* PlayerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637782132555E90F00766772 /* PlayerTest.swift */; };
 		637782192555F21A00766772 /* FieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637782182555F21A00766772 /* FieldView.swift */; };
-		6377821E2555F2CE00766772 /* PlayerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6377821D2555F2CE00766772 /* PlayerRowView.swift */; };
-		6377822D255626FF00766772 /* PlayerRowViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6377822C255626FF00766772 /* PlayerRowViewTests.swift */; };
 		63D779BE258C638200EFDC23 /* PlayTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D779BD258C638200EFDC23 /* PlayTest.swift */; };
 		63E7D8A225831C550059AC9D /* InningTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7D8A125831C550059AC9D /* InningTest.swift */; };
 		63E7D8A725831D590059AC9D /* Inning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7D8A625831D590059AC9D /* Inning.swift */; };
@@ -82,8 +80,6 @@
 		6377820E2555E89300766772 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		637782132555E90F00766772 /* PlayerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTest.swift; sourceTree = "<group>"; };
 		637782182555F21A00766772 /* FieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldView.swift; sourceTree = "<group>"; };
-		6377821D2555F2CE00766772 /* PlayerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRowView.swift; sourceTree = "<group>"; };
-		6377822C255626FF00766772 /* PlayerRowViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRowViewTests.swift; sourceTree = "<group>"; };
 		63D779BD258C638200EFDC23 /* PlayTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayTest.swift; sourceTree = "<group>"; };
 		63E7D8A125831C550059AC9D /* InningTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InningTest.swift; sourceTree = "<group>"; };
 		63E7D8A625831D590059AC9D /* Inning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inning.swift; sourceTree = "<group>"; };
@@ -165,7 +161,6 @@
 				63D779BD258C638200EFDC23 /* PlayTest.swift */,
 				637781FF2555E04200766772 /* ScorecardTests.swift */,
 				637782132555E90F00766772 /* PlayerTest.swift */,
-				6377822C255626FF00766772 /* PlayerRowViewTests.swift */,
 				63215BDE255F3C3E007F006A /* ContentViewTests.swift */,
 				634D3A5A255E27BA0024521D /* SimpleViewTests.swift */,
 				636D5195252AABB500BB80D4 /* Info.plist */,
@@ -203,7 +198,6 @@
 			isa = PBXGroup;
 			children = (
 				636D5183252AABB000BB80D4 /* ContentView.swift */,
-				6377821D2555F2CE00766772 /* PlayerRowView.swift */,
 				637782182555F21A00766772 /* FieldView.swift */,
 				634D3A55255E275A0024521D /* SimpleView.swift */,
 			);
@@ -370,7 +364,6 @@
 			files = (
 				636D51BF252AAF3900BB80D4 /* Situation.swift in Sources */,
 				636D51B0252AAEDE00BB80D4 /* Scorecard.swift in Sources */,
-				6377821E2555F2CE00766772 /* PlayerRowView.swift in Sources */,
 				636D5184252AABB000BB80D4 /* ContentView.swift in Sources */,
 				636D5182252AABB000BB80D4 /* Baseball_App.swift in Sources */,
 				636D51C4252AAF4E00BB80D4 /* Play.swift in Sources */,
@@ -392,7 +385,6 @@
 				634D3A5B255E27BA0024521D /* SimpleViewTests.swift in Sources */,
 				637782002555E04200766772 /* ScorecardTests.swift in Sources */,
 				637782142555E90F00766772 /* PlayerTest.swift in Sources */,
-				6377822D255626FF00766772 /* PlayerRowViewTests.swift in Sources */,
 				636D5194252AABB500BB80D4 /* Baseball_Tests.swift in Sources */,
 				63E7D8A225831C550059AC9D /* InningTest.swift in Sources */,
 				63D779BE258C638200EFDC23 /* PlayTest.swift in Sources */,
