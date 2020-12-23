@@ -30,9 +30,12 @@ class Baseball_Tests: XCTestCase {
     
     func testVeryBasicPlay() throws {
         // setup a basic play
-        let play1 = Play("This baseball is a great game")
+        let batter = Player(name: "Random PlayerName", number: "00", position: .firstBase)
+        let play1 = Play(description: "This baseball is a great game", batter: batter, atBat: .baseOnBalls)
         
         XCTAssertTrue(play1.description.contains("baseball"))
+        XCTAssertEqual( play1.atBat(), "BB" )
+        XCTAssertEqual( play1.batter.name, "Random PlayerName")
     }
     
     func testBasicSituationAtStart() throws {
@@ -44,9 +47,19 @@ class Baseball_Tests: XCTestCase {
     func testBasicPlayGenerator() throws {
         let situation = Situation()
         let generator = PlayGenerator()
+        // set play's sequence number to 100
+        sequenceNumber = 100
         let play = generator.startPlay(situation)
         
-        XCTAssertTrue( play.number == 1 )
+        XCTAssertEqual( play.number, 101 )
+    }
+    
+    func testPlayGeneratorRandomPlay() throws {
+        let generator = PlayGenerator()
+        
+        let aPlay = generator.getRandomPlay()
+        
+        XCTAssertEqual( aPlay.description, "random play")  // description of random 
     }
     
     func testBasicFieldSimulator() throws {

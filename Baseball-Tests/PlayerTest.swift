@@ -19,19 +19,22 @@ class PlayerTest: XCTestCase {
     }
 
     func testAtBatListHasPlayerInfo() throws {
-         let taylor = Player(name: "Taylor Swift", number: "17", position: "8", atBat: "BB")
-         let bill = Player(name: "Bill Swift", number: "18", position: "1", atBat: "K")
-         let jonathan = Player(name: "Jonathan Swift", number: "67", position: "4", atBat: "1B")
-         let bob = Player(name: "Bob Swift", number: "8", position: "2", atBat: "DP")
-        
+        let taylor = Player(name: "Taylor Swift", number: "17", position: .centerField)
+        let bill = Player(name: "Bill Swift", number: "18", position: .pitcher)
+
+        // this List becomes a player Roster... future
          let atBatList: [Player] =  [
-            taylor, bill, jonathan, bob
+            taylor, bill
             ]
         
         XCTAssertTrue( atBatList[0].name.contains("Taylor") )
         XCTAssertEqual( atBatList[0].number, "17")
-        XCTAssertEqual( atBatList[0].position, "8")
-        XCTAssertTrue( atBatList[0].atBat.contains("BB"))     // a base on balls - a walk
+        XCTAssertEqual( atBatList[0].position, .centerField)
+
+        
+        XCTAssertTrue( atBatList[1].name.contains("Bill") )
+        XCTAssertEqual( atBatList[1].number, "18")
+        XCTAssertEqual( atBatList[1].position, .pitcher)
     }
 
     // Test Player ==

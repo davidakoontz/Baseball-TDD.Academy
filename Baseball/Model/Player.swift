@@ -9,21 +9,18 @@ import Foundation
 
 
 public class Player: Hashable, Identifiable {
-    
 
-    
     //swiftlint:disable identifier_name
     public var id = UUID().uuidString     //  for Identifiable protocol
     var name: String
     var number: String
-    var position: String
-    var atBat: String
+    var position: Position
+
     
-    init(name: String, number: String, position: String, atBat: String) {
+    init(name: String, number: String, position: Position) {
         self.name = name
         self.number = number
         self.position = position
-        self.atBat = atBat
     }
 
     
@@ -44,20 +41,35 @@ public class Player: Hashable, Identifiable {
     //
 
     // top of 1st inning
-    static let duke = Player(name: "Duke Java", number: "33", position: "7", atBat: "1B")
-    static let james = Player(name: "James Gosling", number: "4", position: "5", atBat: "2B")
-    static let scott = Player(name: "Scott McNealy", number: "37", position: "8", atBat: "K..")
-    static let billJoy = Player(name: "Bill Joy", number: "39", position: "9", atBat: "F8")
-    static let andy = Player(name: "Andy Bechtolsheim", number: "41", position: "1", atBat: "BB")
-    static let larry = Player(name: "Larry Ellison", number: "2", position: "1", atBat: "K..")
+    static let duke = Player(name: "Duke Java", number: "33", position: .leftField)
+    static let james = Player(name: "James Gosling", number: "4", position: .thirdBase)
+    static let scott = Player(name: "Scott McNealy", number: "37", position: .centerField)
+    static let billJoy = Player(name: "Bill Joy", number: "39", position: .rightField)
+    static let andy = Player(name: "Andy Bechtolsheim", number: "41", position: .pitcher)
+    static let larry = Player(name: "Larry Ellison", number: "2", position: .secondBase)
     // home team - bottom of inning
-    static let taylor = Player(name: "Taylor Swift", number: "17", position: "8", atBat: "BB")
-    static let bill = Player(name: "Bill Swift", number: "18", position: "1", atBat: "K")
-    static let jonathan = Player(name: "Jonathan Swift", number: "67", position: "4", atBat: "1B")
-    static let bob = Player(name: "Bob Swift", number: "8", position: "2", atBat: "DP")
+    static let taylor = Player(name: "Taylor Swift", number: "17", position: .centerField)
+    static let bill = Player(name: "Bill Swift", number: "18", position: .pitcher)
+    static let jonathan = Player(name: "Jonathan Swift", number: "67", position: .secondBase)
+    static let bob = Player(name: "Bob Swift", number: "8", position: .catcher)
     
     static var atBatList: [Player] =  [
         taylor, bill, jonathan, bob, duke, james, scott, billJoy, andy, larry
     ]
 
+}
+
+
+public enum Position: String, CaseIterable {
+    case pitcher = "1"
+    case catcher = "2"
+    case firstBase = "3"
+    case secondBase = "4"
+    case thirdBase = "5"
+    case shortStop = "6"
+    case leftField = "7"
+    case centerField = "8"
+    case rightField = "9"
+    case extraOutfielder = "10"     // only in Softball - not in baseball
+    case designatedHitter = "DH"    // a batter but doesn't go onto the field - bats instead of pitcher
 }
