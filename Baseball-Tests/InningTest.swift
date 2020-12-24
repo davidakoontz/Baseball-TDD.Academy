@@ -83,8 +83,8 @@ class InningTest: XCTestCase {
                                  bottom: [],
                                  summary: "0 to 0")
         
-        firstInning.top.append(aPlay)
+        firstInning.top.append(aPlayer)
         
-        XCTAssertEqual(firstInning.top[0].something, Play.atBat().description)
+        XCTFail() //(firstInning.top[0].something, Play.atBat().description)
     }
 }
