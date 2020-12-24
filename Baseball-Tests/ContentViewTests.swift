@@ -19,7 +19,9 @@ class ContentViewTests: XCTestCase {
     func test_Has_a_Player() throws {
         // arrange
         let taylor = Player(name: "Taylor Swift", number: "17", position: .centerField)
-        let inning = Inning(number: "1", top: [taylor], bottom: [], summary: "0 to 0")
+        let play = Play(description: "that a great play", batter: taylor, atBat: .single)
+        
+        let inning = Inning(number: "1", top: [play], bottom: [], summary: "0 to 0")
         let arrayOfInnings: [Inning]  = [ inning]
         
         print( inning.number )
@@ -42,9 +44,11 @@ class ContentViewTests: XCTestCase {
         // arrange
         let taylor = Player(name: "Taylor Swift", number: "17", position: .centerField)
         let bill = Player(name: "Bill Swift", number: "18", position: .pitcher)
-        let array: [Player]  = [ taylor, bill ]
+        let play1 = Play(description: "that a great play", batter: taylor, atBat: .walk)
+        let play2 = Play(description: "that a great play", batter: bill, atBat: .strikeoutLooking )
         
-        let inning = Inning(number: "1", top: array, bottom: [], summary: "0 to 0")
+        
+        let inning = Inning(number: "1", top: [ play1, play2 ], bottom: [], summary: "0 to 0")
         let arrayOfInnings: [Inning]  = [ inning]
         
         // Currently the ContentView -> ForEach -> PlayerRowView -> HStack ->  Text...

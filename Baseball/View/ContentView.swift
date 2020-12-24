@@ -22,13 +22,13 @@ struct ContentView: View {
     ]
     
     //swiftlint:disable large_tuple
-    fileprivate func playerRowView(atBats: [Player])
-        -> ForEach<[Player], String, TupleView<(Spacer, Text, Text, Text)>> {
-        return ForEach(atBats) { player in
+    fileprivate func playerRowView(atBats: [Play])
+        -> ForEach<[Play], String, TupleView<(Spacer, Text, Text, Text)>> {
+        return ForEach(atBats) { play in
             Spacer()
-            Text("#\(player.number)")
-            Text(player.name)
-            Text(player.position.rawValue)
+            Text("#\(play.batter.number)")
+            Text(play.batter.name)
+            Text(play.batter.position.rawValue)
 
         }
     }

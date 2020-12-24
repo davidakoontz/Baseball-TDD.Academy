@@ -28,15 +28,17 @@ class InningTest: XCTestCase {
     func testInit() throws {
         let bob = Player(name: "Bob Swift", number: "3", position: .shortStop)
         let larry = Player(name: "Larry Ellison", number: "2", position: .catcher)
-    
+        let play1 = Play(description: "that a great play", batter: bob, atBat: .walk)
+        let play2 = Play(description: "that a great play", batter: larry, atBat: .strikeoutLooking )
+        
         let first = Inning(number: "1",
-                              top: [ bob ],
-                              bottom: [ larry],
+                              top: [ play1 ],
+                              bottom: [ play2 ],
                               summary: "0 to 0")
 
         XCTAssertTrue( first.number.contains("1") )
-        XCTAssertTrue( first.top[0].name.contains("Swift"))
-        XCTAssertTrue( first.bottom[0].name.contains("Ellison"))
+        XCTAssertTrue( first.top[0].batter.name.contains("Swift"))
+        XCTAssertTrue( first.bottom[0].batter.name.contains("Ellison"))
         XCTAssertTrue( first.summary.contains("0 to 0") )
 
     }
@@ -53,38 +55,37 @@ class InningTest: XCTestCase {
     //        static let jonathan = Player(name: "Jonathan Swift", number: "67", position: "4", atBat: "1B")
     func testInningOneJonathanHitsSingle() throws {
         
-        let duke = Player(name: "Duke Java", number: "33", position: .leftField)
-        let james = Player(name: "James Gosling", number: "4", position: .thirdBase)
-        let scott = Player(name: "Scott McNealy", number: "37", position: .centerField)
-        let billJoy = Player(name: "Bill Joy", number: "39", position: .rightField)
-        let andy = Player(name: "Andy Bechtolsheim", number: "41", position: .pitcher)
-        let larry = Player(name: "Larry Ellison", number: "2", position: .catcher)
-       // home team (bottom of innings)
-        let taylor = Player(name: "Taylor Swift", number: "17", position: .centerField)
-        let bill = Player(name: "Bill Swift", number: "18", position: .pitcher)
-        let jonathan = Player(name: "Jonathan Swift", number: "67", position: .secondBase)
-        let bob = Player(name: "Bob Swift", number: "2", position: .catcher)
-       
+//        let duke = Player(name: "Duke Java", number: "33", position: .leftField)
+//        let james = Player(name: "James Gosling", number: "4", position: .thirdBase)
+//        let scott = Player(name: "Scott McNealy", number: "37", position: .centerField)
+//        let billJoy = Player(name: "Bill Joy", number: "39", position: .rightField)
+//        let andy = Player(name: "Andy Bechtolsheim", number: "41", position: .pitcher)
+//        let larry = Player(name: "Larry Ellison", number: "2", position: .catcher)
+//       // home team (bottom of innings)
+//        let taylor = Player(name: "Taylor Swift", number: "17", position: .centerField)
+//        let bill = Player(name: "Bill Swift", number: "18", position: .pitcher)
+//        let jonathan = Player(name: "Jonathan Swift", number: "67", position: .secondBase)
+//        let bob = Player(name: "Bob Swift", number: "2", position: .catcher)
+//
    
        let firstInning = Inning(number: "1",
-                             top: [duke, james, scott, billJoy, andy, larry],
-                             bottom: [taylor, bill, jonathan, bob],
+                             top: [],
+                             bottom: [Inning.play7],
                              summary: "0 to 0")
         
-        XCTAssertTrue( firstInning.bottom[2].name.contains("Jonathan") )
+        XCTAssertTrue( firstInning.bottom[0].batter.name.contains("Jonathan") )
      
     }
     
     func testInningConsistOfPlays() throws {
         let aPlayer = Player(name: "Test PlayerName", number: "00", position: .catcher)
         let aPlay = Play(description: "this is a test", batter: aPlayer, atBat: AtBat.baseOnBalls)
+        
         let firstInning = Inning(number: "1",
-                                 top: [],
+                                 top: [aPlay],
                                  bottom: [],
                                  summary: "0 to 0")
         
-        firstInning.top.append(aPlayer)
-        
-        XCTFail() //(firstInning.top[0].something, Play.atBat().description)
+        XCTAssertEqual(firstInning.top[0].description, "this is a test")
     }
 }

@@ -14,8 +14,9 @@ var sequenceNumber: Int = 0
 // The play continues if the batter hits the ball (In Play) and then the fielders get the ball and try to
 // throw the ball to an infielder to tag a player or the base.
 //
-public class Play {
+public class Play: Identifiable {
     var number: Int
+    public var id = UUID().uuidString     //  for Identifiable protocol
     var description: String
     var batter: Player
     var outcome: AtBat
