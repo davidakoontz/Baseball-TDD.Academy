@@ -19,7 +19,7 @@ class GameTest: XCTestCase {
     }
 
     private func getInning() -> Inning {
-        return Inning(0: "", top: [], bottom: [], summary: "")
+        return Inning(number: "", top: [], bottom: [], summary: "")
     }
     
     

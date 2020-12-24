@@ -15,10 +15,10 @@ var sequenceNumber: Int = 0
 // throw the ball to an infielder to tag a player or the base.
 //
 public class Play {
-    public var number: Int
-    public var description: String
-    public var batter: Player
-    public var outcome: AtBat
+    var number: Int
+    var description: String
+    var batter: Player
+    var outcome: AtBat
     
     
     

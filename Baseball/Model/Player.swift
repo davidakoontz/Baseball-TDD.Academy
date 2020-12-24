@@ -13,7 +13,7 @@ public class Player: Hashable, Identifiable {
     //swiftlint:disable identifier_name
     public var id = UUID().uuidString     //  for Identifiable protocol
     var name: String
-    var number: String
+    var number: String      // jeresy number
     var position: Position
 
     

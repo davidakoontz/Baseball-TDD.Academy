@@ -27,7 +27,8 @@ class PlayTest: XCTestCase {
         let aPlay = Play(description: "say something on the air", batter: batter, atBat: AtBat.single )
         
         XCTAssertEqual(aPlay.description, "say something on the air")
-        XCTAssertEqual( "1B", aPlay.atBat() )
+        XCTAssertEqual( aPlay.atBat(), "1B" )
+        XCTAssertTrue(aPlay.batter.name.contains("PlayerName"))
     }
 
 

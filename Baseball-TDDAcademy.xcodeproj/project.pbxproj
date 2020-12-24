@@ -188,10 +188,10 @@
 			children = (
 				637782042555E79B00766772 /* Bundle_extension.swift */,
 				637782092555E82000766772 /* data.json */,
-				6377820E2555E89300766772 /* Player.swift */,
-				63E7D8A625831D590059AC9D /* Inning.swift */,
-				636D51C3252AAF4E00BB80D4 /* Play.swift */,
 				63484B35259419860011E918 /* Game.swift */,
+				63E7D8A625831D590059AC9D /* Inning.swift */,
+				6377820E2555E89300766772 /* Player.swift */,
+				636D51C3252AAF4E00BB80D4 /* Play.swift */,
 				636D51BE252AAF3900BB80D4 /* Situation.swift */,
 				636D51B4252AAEFF00BB80D4 /* FieldSimulator.swift */,
 				636D51B9252AAF1F00BB80D4 /* PlayGenerator.swift */,
