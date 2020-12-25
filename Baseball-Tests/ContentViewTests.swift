@@ -21,22 +21,24 @@ class ContentViewTests: XCTestCase {
         let taylor = Player(name: "Taylor Swift", number: "17", position: .centerField)
         let play = Play(description: "that a great play", batter: taylor, atBat: .single)
         
-        let inning = Inning(number: "1", top: [play], bottom: [], summary: "0 to 0")
+        let inning = Inning(number: "1", top: [play], bottom: [play], summary: "0 to 0")
         let arrayOfInnings: [Inning]  = [ inning]
         let aGame = Game(innings: arrayOfInnings)
         
-        print( inning.number )
-        print(arrayOfInnings.count)
+        print("Inning #\( inning.number ) with a count of \(arrayOfInnings.count) innings")
+        
         // Currently the ContentView -> PlayerRowView -> HStack ->  Text...
         // act
         let cView = ContentView(game: aGame)
         
-        let name = try cView.inspect().scrollView().lazyVGrid().section(0).forEach(0).tupleView(0).text(2).string()
-        //let atBat = try cView.inspect().scrollView().lazyVGrid().section(0).forEach(0).tupleView(0).text(4).string()
+        let name = try cView.inspect().scrollView().lazyVGrid().forEach(0).tupleView(0).section(0).forEach(0).tupleView(0).text(2).string()
+        let atBat = try cView.inspect().scrollView().lazyVGrid().forEach(0).tupleView(0).section(0).forEach(0).tupleView(0).text(4).string()
         
+        print( name )
+        print( atBat )
         // TDD - Assert step  (or BDD - THEN)
         XCTAssertEqual(name, "Taylor Swift")    
-        //XCTAssertEqual(atBat, "BB")
+        XCTAssertEqual(atBat, "1B")
         
     }
     
@@ -49,32 +51,33 @@ class ContentViewTests: XCTestCase {
         let play2 = Play(description: "that a great play", batter: bill, atBat: .strikeoutLooking )
         
         
-        let inning = Inning(number: "1", top: [ play1, play2 ], bottom: [], summary: "0 to 0")
-        let arrayOfInnings: [Inning]  = [ inning]
+        let firstInning = Inning(number: "1", top: [ play1, play2 ], bottom: [ play1, play2], summary: "0 to 0")
+        let arrayOfInnings: [Inning]  = [ firstInning ]
         let aGame = Game(innings: arrayOfInnings)
         
-        // Currently the ContentView -> ForEach -> PlayerRowView -> HStack ->  Text...
+        print("Inning #\( firstInning.number ) with a count of \(arrayOfInnings.count) innings")
+        
         // act
         let cView = ContentView(game: aGame)
 
 
-        let jersey = try cView.inspect().scrollView().lazyVGrid().section(0).forEach(0).tupleView(0).text(1).string()
-        let name = try cView.inspect().scrollView().lazyVGrid().section(0).forEach(0).tupleView(0).text(2).string()
-        let position = try cView.inspect().scrollView().lazyVGrid().section(0).forEach(0).tupleView(0).text(3).string()
-        //let atBat = try cView.inspect().scrollView().lazyVGrid().section(0).forEach(0).tupleView(0).text(4).string()
+        let jersey = try cView.inspect().scrollView().lazyVGrid().forEach(0).tupleView(0).section(0).forEach(0).tupleView(0).text(1).string()
+        let name = try cView.inspect().scrollView().lazyVGrid().forEach(0).tupleView(0).section(0).forEach(0).tupleView(0).text(2).string()
+        let position = try cView.inspect().scrollView().lazyVGrid().forEach(0).tupleView(0).section(0).forEach(0).tupleView(0).text(3).string()
+        let atBat = try cView.inspect().scrollView().lazyVGrid().forEach(0).tupleView(0).section(0).forEach(0).tupleView(0).text(4).string()
         
         
         // TDD - Assert step  (or BDD - THEN)
         XCTAssertEqual(name, "Taylor Swift")
         XCTAssertEqual(position, "8")
         XCTAssertEqual(jersey, "#17")
-       // XCTAssertEqual(atBat, "BB")
+        XCTAssertEqual(atBat, "W")
         
 
-        let jersey2 = try cView.inspect().scrollView().lazyVGrid().section(0).forEach(0).tupleView(1).text(1).string()
-        let name2 = try cView.inspect().scrollView().lazyVGrid().section(0).forEach(0).tupleView(1).text(2).string()
-        let position2 = try cView.inspect().scrollView().lazyVGrid().section(0).forEach(0).tupleView(1).text(3).string()
-       // let atBat2 = try cView.inspect().scrollView().lazyVGrid().section(0).forEach(0).tupleView(1).text(4).string()
+        let jersey2 = try cView.inspect().scrollView().lazyVGrid().forEach(0).tupleView(0).section(0).forEach(0).tupleView(1).text(1).string()
+        let name2 = try cView.inspect().scrollView().lazyVGrid().forEach(0).tupleView(0).section(0).forEach(0).tupleView(1).text(2).string()
+        let position2 = try cView.inspect().scrollView().lazyVGrid().forEach(0).tupleView(0).section(0).forEach(0).tupleView(1).text(3).string()
+        let atBat2 = try cView.inspect().scrollView().lazyVGrid().forEach(0).tupleView(0).section(0).forEach(0).tupleView(1).text(4).string()
         
         
         
@@ -82,8 +85,52 @@ class ContentViewTests: XCTestCase {
         XCTAssertEqual(name2, "Bill Swift")
         XCTAssertEqual(position2, "1")
         XCTAssertEqual(jersey2, "#18")
-       // XCTAssertEqual(atBat2, "K")
+        XCTAssertEqual(atBat2, "K..")
         
     }
 
+    func test_Has_Two_Innings() throws {
+        // arrange
+        let taylor = Player(name: "Taylor Swift", number: "17", position: .centerField)
+        let bill = Player(name: "Bill Swift", number: "18", position: .pitcher)
+        let play1 = Play(description: "that a great play", batter: taylor, atBat: .walk)
+        let play2 = Play(description: "that a great play", batter: bill, atBat: .strikeoutLooking )
+        
+        let inning1 = Inning(number: "1", top: [play1], bottom: [play2], summary: "0 to 0")
+        let inning2 = Inning(number: "0", top: [play1], bottom: [play2], summary: "0 to 0")
+        let arrayOfInnings: [Inning]  = [ inning1]
+        let aGame = Game(innings: arrayOfInnings)
+        aGame.append(inning: inning2)
+        
+
+        
+        // Currently the ContentView -> PlayerRowView -> HStack ->  Text...
+        // act
+        let cView = ContentView(game: aGame)
+        
+        let inningNo = try cView.inspect().scrollView().lazyVGrid().forEach(0).tupleView(0).section(0).header().text().string()
+       
+        let name = try cView.inspect().scrollView().lazyVGrid().forEach(0).tupleView(0).section(0).forEach(0).tupleView(0).text(2).string()
+        let atBat = try cView.inspect().scrollView().lazyVGrid().forEach(0).tupleView(0).section(0).forEach(0).tupleView(0).text(4).string()
+        
+        print(" Inning #\(inningNo) Player \(name) atBat \(atBat)")
+
+        // TDD - Assert step  (or BDD - THEN)
+        XCTAssertTrue(inningNo.contains("inning #1") )
+        XCTAssertEqual(name, "Taylor Swift")
+        XCTAssertEqual(atBat, "W")
+        
+        let inningNo2 = try cView.inspect().scrollView().lazyVGrid().forEach(0).tupleView(1).section(0).header().text().string()
+       
+        let name4 = try cView.inspect().scrollView().lazyVGrid().forEach(0).tupleView(1).section(0).forEach(0).tupleView(0).text(2).string()
+        let atBat4 = try cView.inspect().scrollView().lazyVGrid().forEach(0).tupleView(1).section(0).forEach(0).tupleView(0).text(4).string()
+        
+        print(" Inning #\(inningNo2) Player \(name4) atBat \(atBat4)")
+
+        // TDD - Assert step  (or BDD - THEN)
+        XCTAssertTrue(inningNo2.contains("inning #2") )
+        XCTAssertEqual(name4, "Taylor Swift")
+        XCTAssertEqual(atBat4, "W")
+    }
+    
 }
