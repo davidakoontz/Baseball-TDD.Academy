@@ -70,7 +70,7 @@ class InningTest: XCTestCase {
    
        let firstInning = Inning(number: "1",
                              top: [],
-                             bottom: [Inning.play7],
+                             bottom: [Game.play7],
                              summary: "0 to 0")
         
         XCTAssertTrue( firstInning.bottom[0].batter.name.contains("Jonathan") )

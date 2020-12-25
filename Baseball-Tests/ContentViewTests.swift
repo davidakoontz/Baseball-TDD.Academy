@@ -23,12 +23,13 @@ class ContentViewTests: XCTestCase {
         
         let inning = Inning(number: "1", top: [play], bottom: [], summary: "0 to 0")
         let arrayOfInnings: [Inning]  = [ inning]
+        let aGame = Game(innings: arrayOfInnings)
         
         print( inning.number )
         print(arrayOfInnings.count)
         // Currently the ContentView -> PlayerRowView -> HStack ->  Text...
         // act
-        let cView = ContentView(game: arrayOfInnings)
+        let cView = ContentView(game: aGame)
         
         let name = try cView.inspect().scrollView().lazyVGrid().section(0).forEach(0).tupleView(0).text(2).string()
         //let atBat = try cView.inspect().scrollView().lazyVGrid().section(0).forEach(0).tupleView(0).text(4).string()
@@ -50,10 +51,11 @@ class ContentViewTests: XCTestCase {
         
         let inning = Inning(number: "1", top: [ play1, play2 ], bottom: [], summary: "0 to 0")
         let arrayOfInnings: [Inning]  = [ inning]
+        let aGame = Game(innings: arrayOfInnings)
         
         // Currently the ContentView -> ForEach -> PlayerRowView -> HStack ->  Text...
         // act
-        let cView = ContentView(game: arrayOfInnings)
+        let cView = ContentView(game: aGame)
 
 
         let jersey = try cView.inspect().scrollView().lazyVGrid().section(0).forEach(0).tupleView(0).text(1).string()

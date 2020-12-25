@@ -24,24 +24,27 @@ class GameTest: XCTestCase {
     
     
     func testaNewGamehasZerosInnings() throws {
-        let aGame = Game()
+        //let first = Inning(number: "", top: [], bottom: [], summary: "")
+        let aGame = Game(innings: [])
 
         XCTAssertEqual(aGame.inningCount(), 0 )
     }
     
     func testAddAnInning() throws {
-        let aGame = Game()
+        let first = Inning(number: "", top: [], bottom: [], summary: "")
+        let aGame = Game(innings: [first])
         aGame.append(inning: getInning())
         
-        XCTAssertEqual(aGame.inningCount(), 1)
+        XCTAssertEqual(aGame.inningCount(), 2)
     }
 
     func testAddingTwoInning() throws {
-        let aGame = Game()
+        let first = Inning(number: "", top: [], bottom: [], summary: "")
+        let aGame = Game(innings: [first])
         aGame.append(inning: getInning())
         aGame.append(inning: getInning())
         
-        XCTAssertEqual(aGame.inningCount(), 2 )
+        XCTAssertEqual(aGame.inningCount(), 3 )
     }
     
 }
