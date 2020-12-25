@@ -16,9 +16,12 @@ struct Baseball_App: App {
     //let players: [Player] = Bundle.main.decode([Player].self, from: "data.json")
     //let player = Bundle.main.decode(Player.self, from: "data.json")
  
+    var game = Game(innings: Game.exampleInnings)
+
+    
     var body: some Scene {
         WindowGroup {
-            ContentView(game: Inning.exampleGame)
+            ContentView(game: game)
         }
     }
 }
