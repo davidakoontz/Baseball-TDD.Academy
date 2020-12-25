@@ -7,14 +7,29 @@
 
 import Foundation
 
-public class Game {
-     var innings: [Inning] = []
+public class Game: Sequence, IteratorProtocol {
     
-    func nextInning() -> Inning {
-        return innings[0]
+     var innings: [Inning] = []
+    // future properties like home & away team names; score; play by play; etc
+    
+    // IteratorProtocol requirement
+    public typealias Element = Inning
+    
+    var nextInning = 0  // the starting index of Innings
+    // Iterator & Sequence
+    public func next() -> Inning? {
+       
+        guard nextInning >= 0 && nextInning < innings.count
+            else { return nil }
+        defer { nextInning += 1 }
+        return innings[nextInning]
     }
+
+    
     
     func append(inning: Inning) {
+        let currentInning = innings.count + 1
+        inning.number = String(currentInning)   // set the inning number
         innings.append(inning)
     }
     

@@ -45,7 +45,7 @@ struct ContentView: View {
                           spacing: 16,
                           pinnedViews: [.sectionHeaders, .sectionFooters]
                 ) {
-                    let inning = game.nextInning()
+                    let inning = game.next()!       // OUCH! unwrap innings
                     let visitorsPlays = inning.top
                     let homeTeamPlays = inning.bottom
                     

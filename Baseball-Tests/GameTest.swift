@@ -47,4 +47,20 @@ class GameTest: XCTestCase {
         XCTAssertEqual(aGame.inningCount(), 3 )
     }
     
+    func testSequenceIterator() throws {
+        let first = Inning(number: "1", top: [], bottom: [], summary: "")
+        let aGame = Game(innings: [first])
+        aGame.append(inning: getInning())
+        aGame.append(inning: getInning())
+        
+        XCTAssertEqual(aGame.inningCount(), 3)
+        let firstInning = aGame.next()!
+        let secondInning = aGame.next()!
+        let thridInning = aGame.next()!
+        
+        XCTAssertEqual( firstInning.number, "1")
+        XCTAssertEqual( secondInning.number, "2")
+        XCTAssertEqual( thridInning.number, "3")
+        
+    }
 }
