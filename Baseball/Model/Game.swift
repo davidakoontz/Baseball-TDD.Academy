@@ -104,8 +104,24 @@ public class Game: Sequence, IteratorProtocol {
                                top: [play11, play12, play13, play14 ],
                                bottom: [play15, play16, play17],
                                summary: "0 to 2")
+    // Third Inning
+    static let play18 = Play(description: "Nike gets a double", batter: nike, atBat: .double)
+    static let play19 = Play(description: "Duke is eliminated with a fast ball to the inside corner", batter: duke, atBat: .strikeoutLooking )
+    static let play20 = Play(description: "James hits a short hopper to center", batter: james, atBat: .single)
+    static let play21 = Play(description: "Scott Tzu hits into a classic 6-4-3 double play", batter: scott, atBat: .doublePlay)
+    // Third Inning - bottom half
+    static let play22 = Play(description: "Taylor walks", batter: taylor, atBat: .walk)
+    static let play23 = Play(description: "Bill hits a double", batter: bill, atBat: .double)
+    static let play24 = Play(description: "Jonathan hits a triple", batter: jonathan, atBat: .triple)
+    static let play25 = Play(description: "Bob hits a scrafice fly to left filed - scoring Jonathan", batter: bob, atBat: .sacrificeFly)
+    static let play26 = Play(description: "Kay goes down looking", batter: kay, atBat: .strikeoutLooking)
+    static let play27 = Play(description: "Patrick lines out to short", batter: patrick, atBat: .lineOut)
     
-    static let third = Inning(number: "3", top: [], bottom: [], summary: "0 to 0")
+    static let third = Inning(number: "3",
+                              top: [play18, play19, play20, play21],
+                              bottom: [play22, play23, play24, play25, play26, play27],
+                              summary: "0 to 3")
+    
     static let fourth = Inning(number: "4", top: [], bottom: [], summary: "0 to 0")
     static let fifth = Inning(number: "5", top: [], bottom: [], summary: "0 to 0")
     static let sixth = Inning(number: "6", top: [], bottom: [], summary: "0 to 0")
