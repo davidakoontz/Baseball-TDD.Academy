@@ -33,6 +33,7 @@ public class ScorecardTests: XCTestCase {
         let desc = card.listOfPlays[0].description
         let outcome = card.listOfPlays[0].atBat()
         
+        // note: XCT order of the expected vs actual does not matter... XCT is annostic on order!
         XCTAssertEqual(count, 1)
         XCTAssertEqual("Taylor gets walked.", desc )
         XCTAssertEqual(outcome, "BB" )

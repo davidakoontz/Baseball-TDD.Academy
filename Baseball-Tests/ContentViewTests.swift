@@ -27,7 +27,7 @@ class ContentViewTests: XCTestCase {
         
         print("Inning #\( inning.number ) with a count of \(arrayOfInnings.count) innings")
         
-        // Currently the ContentView -> PlayerRowView -> HStack ->  Text...
+
         // act
         let cView = ContentView(game: aGame)
         

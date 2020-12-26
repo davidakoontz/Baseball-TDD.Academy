@@ -20,14 +20,12 @@ class PlayTest: XCTestCase {
     }
 
     func testBasicPlayInit() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-       // let aPlay = Play(description: "say something on the air", atBat: "1B")
+
         let batter = Player(name: "Random PlayerName", number: "00", position: .firstBase)
         let aPlay = Play(description: "say something on the air", batter: batter, atBat: AtBat.single )
         
         XCTAssertEqual(aPlay.description, "say something on the air")
-        XCTAssertEqual( aPlay.atBat(), "1B" )
+        XCTAssertEqual(aPlay.atBat(), "1B")
         XCTAssertTrue(aPlay.batter.name.contains("PlayerName"))
     }
 
