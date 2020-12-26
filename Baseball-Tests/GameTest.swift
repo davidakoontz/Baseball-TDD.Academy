@@ -18,7 +18,7 @@ class GameTest: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    private func getInning() -> Inning {
+    private func createInning() -> Inning {
         return Inning(number: "", top: [], bottom: [], summary: "")
     }
     
@@ -33,7 +33,7 @@ class GameTest: XCTestCase {
     func testAddAnInning() throws {
         let first = Inning(number: "", top: [], bottom: [], summary: "")
         let aGame = Game(innings: [first])
-        aGame.append(inning: getInning())
+        aGame.append(inning: createInning())
         
         XCTAssertEqual(aGame.inningCount(), 2)
     }
@@ -41,8 +41,8 @@ class GameTest: XCTestCase {
     func testAddingTwoInning() throws {
         let first = Inning(number: "", top: [], bottom: [], summary: "")
         let aGame = Game(innings: [first])
-        aGame.append(inning: getInning())
-        aGame.append(inning: getInning())
+        aGame.append(inning: createInning())
+        aGame.append(inning: createInning())
         
         XCTAssertEqual(aGame.inningCount(), 3 )
     }
@@ -50,8 +50,8 @@ class GameTest: XCTestCase {
     func testSequenceIterator() throws {
         let first = Inning(number: "1", top: [], bottom: [], summary: "")
         let aGame = Game(innings: [first])
-        aGame.append(inning: getInning())
-        aGame.append(inning: getInning())
+        aGame.append(inning: createInning())
+        aGame.append(inning: createInning())
         
         XCTAssertEqual(aGame.inningCount(), 3)
         let firstInning = aGame.next()!
