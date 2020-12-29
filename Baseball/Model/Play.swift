@@ -15,16 +15,16 @@ var sequenceNumber: Int = 0
 // throw the ball to an infielder to tag a player or the base.
 //
 public class Play: Identifiable {
-    var number: Int
-    public var id = UUID().uuidString     //  for Identifiable protocol
-    var description: String
-    var batter: Player
-    var outcome: AtBat
+    public private(set) var number: Int
+    public private(set) var id = UUID().uuidString     //  for Identifiable protocol
+    public private(set) var description: String
+    public private(set) var batter: Player
+    public private(set) var outcome: AtBat
     
     
     
     init( description: String, batter: Player, atBat: AtBat) {
-        sequenceNumber += 1     // increment the number
+        sequenceNumber += 1                     // increment the number
         self.number = sequenceNumber            // sequence count of the plays in the game
         self.description = description          // imagine the announcer calling the game
         self.batter = batter                    // the Player at bat

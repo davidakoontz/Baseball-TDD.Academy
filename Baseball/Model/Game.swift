@@ -29,7 +29,8 @@ public class Game: Sequence, IteratorProtocol {
     
     func append(inning: Inning) {
         let currentInning = innings.count + 1
-        inning.number = String(currentInning)   // set the inning number
+        //inning.number = String(currentInning)   // set the inning number
+        inning.setNumber( String(currentInning) )
         innings.append(inning)
     }
     

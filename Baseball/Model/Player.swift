@@ -11,10 +11,10 @@ import Foundation
 public class Player: Hashable, Identifiable {
 
     //swiftlint:disable identifier_name
-    public var id = UUID().uuidString     //  for Identifiable protocol
-    var name: String
-    var number: String      // jeresy number
-    var position: Position
+    public private(set) var id = UUID().uuidString     //  for Identifiable protocol
+    public private(set)var name: String
+    public private(set)var number: String      // jeresy number
+    public private(set)var position: Position
 
     
     init(name: String, number: String, position: Position) {
@@ -57,6 +57,7 @@ public class Player: Hashable, Identifiable {
         taylor, bill, jonathan, bob, duke, james, scott, billJoy, andy, larry
     ]
 
+    
 }
 
 
