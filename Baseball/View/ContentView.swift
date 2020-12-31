@@ -30,7 +30,7 @@ struct ContentView: View {
             Text("#\(play.batter.number)")
             Text(play.batter.name)
             Text(play.batter.position.rawValue)
-            Text(play.outcome.rawValue)
+            Text(play.outcome.rawValue)     // outcome is a Enum AtBat
         }
     }
     
@@ -55,13 +55,15 @@ struct ContentView: View {
                         }
                         
                         
-                        Section(header: Text("Home Team" + " - inning #\(inning.number)").font(.title2)) {
+                        Section(header: Text("Home Team" + " - inning #\(inning.number)").font(.title2), footer: Text("score: \(inning.summary)")) {
                             playerRowView(plays: homeTeamPlays)
                         }
+                        
                     } // for loop
                     
                 }
-            }
+                //Text("Game final score: 0 to 0")  // game.finalScore
+            } // ScrollView
         } // if else
     }
 }

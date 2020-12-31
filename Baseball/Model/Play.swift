@@ -20,7 +20,7 @@ public class Play: Identifiable {
     public private(set) var description: String
     public private(set) var batter: Player
     public private(set) var outcome: AtBat
-    
+    private var runnerOutcomes = RunnerOutcomes()
     
     
     init( description: String, batter: Player, atBat: AtBat) {
@@ -35,6 +35,41 @@ public class Play: Identifiable {
     public func atBat() -> String {
         return outcome.rawValue
     }
+    
+    func whosonbase() -> RunnerOutcomes {
+        return runnerOutcomes        // should this be a copy?
+    }
+    
+    func runnerAdvances(action: String, base: Bases) {
+        switch base {
+        case .firstBase:
+            runnerOutcomes.firstBase = action
+        case .secondBase:
+            runnerOutcomes.secondBase = action
+        case .thirdBase:
+            runnerOutcomes.thirdBase = action
+        }
+    }
+        
+}
+
+struct RunnerOutcomes {
+    var firstBase: String
+    var secondBase: String
+    var thirdBase: String
+    
+    init() {
+        firstBase = ""
+        secondBase = ""
+        thirdBase = ""
+    }
+}
+
+
+enum Bases: String {
+    case firstBase = "1B"
+    case secondBase = "2B"
+    case thirdBase = "3B"
 }
 
 // The outcome of a batter's attempt to hit
