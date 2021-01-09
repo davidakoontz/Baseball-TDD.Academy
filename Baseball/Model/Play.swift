@@ -20,7 +20,7 @@ public class Play: Identifiable {
     public private(set) var description: String
     public private(set) var batter: Player
     public private(set) var outcome: AtBat
-    private var runnerOutcomes = RunnerOutcomes()
+    private var runnerOutcomes : RunnerOutcomes
     
     
     init( description: String, batter: Player, atBat: AtBat) {
@@ -30,41 +30,56 @@ public class Play: Identifiable {
         self.batter = batter                    // the Player at bat
         // more properties
         self.outcome = atBat
+        runnerOutcomes = RunnerOutcomes()
     }
     
     public func atBat() -> String {
         return outcome.rawValue
     }
     
-    func whosonbase() -> RunnerOutcomes {
+    func whosOn() -> RunnerOutcomes {
         return runnerOutcomes        // should this be a copy?
     }
     
-    func runnerAdvances(action: String, base: Bases) {
-        switch base {
-        case .firstBase:
-            runnerOutcomes.firstBase = action
-        case .secondBase:
-            runnerOutcomes.secondBase = action
-        case .thirdBase:
-            runnerOutcomes.thirdBase = action
-        }
+    func runnerAdvances(action: RunnerActions, base: Bases) {
+        /*switch base {
+         case .firstBase:
+         if action == RunnerActions.advances {
+         runnerOutcomes.secondBase = "H"
+         //runnerOutcomes.firstBase = ""
+         }
+         runnerOutcomes.firstBase = action.rawValue
+         case .secondBase:
+         runnerOutcomes.secondBase = action.rawValue
+         case .thirdBase:
+         runnerOutcomes.thirdBase = action.rawValue
+         }
+         }
+         
+         */
     }
-        
+}
+
+class EmptyPlayer : Player{
+    init() {
+        super.init(name:"", number: "0", position: .designatedHitter)
+    }
 }
 
 struct RunnerOutcomes {
-    var firstBase: String
-    var secondBase: String
-    var thirdBase: String
-    
-    init() {
-        firstBase = ""
-        secondBase = ""
-        thirdBase = ""
-    }
+    var firstBase: Player = EmptyPlayer()
+    var firstBaseOutcomes: String = ""
+    var secondBase: Player = EmptyPlayer()
+    var secondBaseOutcomes: String = ""
+    var thirdBase: Player = EmptyPlayer()
+    var thirdBaseOutcomes: String = ""
 }
 
+enum RunnerActions: String {
+    case advances = "AB"
+    case caughtStealing = "CS"
+    case baseIsHeld = "H"
+}
 
 enum Bases: String {
     case firstBase = "1B"
@@ -83,9 +98,9 @@ public enum AtBat: String, CaseIterable {
     
     case walk = "W"         // base on balls or a walk
     case baseOnBalls = "BB" // base on balls or a walk
-
+    
     case fildersChoice = "FC"   // typicalling a hit, but filder makes a choice to put out the lead runner
-
+    
     // types of Outs - numbers are the positions that interact with the ball
     case doublePlay = "DP"
     case caughtStealing = "CS"
@@ -109,3 +124,4 @@ public enum AtBat: String, CaseIterable {
     case passedBall = "PB"      // ball get's passed the catcher
     case wildPitch = "WP"       // pitcher has a bad throw
 }
+

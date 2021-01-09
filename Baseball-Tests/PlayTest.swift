@@ -39,30 +39,55 @@ class PlayTest: XCTestCase {
 */
 
     
-    func testAssociateRunnerOnFirstAction() throws {
-        let batter = Player(name: "Random PlayerName", number: "00", position: .firstBase)
-        let aPlay = Play(description: "say something on the air", batter: batter, atBat: AtBat.single )
-        aPlay.runnerAdvances(action: "CS", base: Bases.firstBase )
-        
-        XCTAssertEqual( aPlay.whosonbase().firstBase, "CS" )
+//        func testrunnerAdvances_CaughtStealing() throws {
+//        let batter = Player(name: "Random PlayerName", number: "00", position: .firstBase)
+//        let aPlay = Play(description: "say something on the air", batter: batter, atBat: AtBat.single )
+//        aPlay.runnerAdvances(action: .caughtStealing, base: Bases.firstBase )
+//
+//            XCTAssertEqual( aPlay.whosOn().runnerOutcome.firstBase , "CS" )
+//
+//    }
 
-    }
-
-    func testAssociateRunnerOnSecondAction() throws {
+    func testrunnerAdvances_Single() throws {
         let batter = Player(name: "Random PlayerName", number: "00", position: .centerField)
         let aPlay = Play(description: "say something on the air", batter: batter, atBat: AtBat.single )
-        aPlay.runnerAdvances(action: "AB4", base: Bases.secondBase )
         
-        XCTAssertEqual( aPlay.whosonbase().secondBase, "AB4" )
-
+        XCTAssertEqual( aPlay.whosOn().firstBase, batter )
+        XCTAssertEqual(aPlay.whosOn().firstBaseOutcomes, "H")
     }
     
-    func testAssociateRunnerOnThirdAction() throws {
+    func testBaseEmptyAtInit() throws {
         let batter = Player(name: "Random PlayerName", number: "00", position: .centerField)
         let aPlay = Play(description: "say something on the air", batter: batter, atBat: AtBat.single )
 
         // when no runner on third
-        XCTAssertEqual( aPlay.whosonbase().thirdBase, "" )
-
+        XCTAssertEqual( aPlay.whosOn().firstBase.name, "")
+        XCTAssertEqual( aPlay.whosOn().firstBaseOutcomes, "" )
+        XCTAssertEqual( aPlay.whosOn().secondBase.name, "")
+        XCTAssertEqual( aPlay.whosOn().secondBaseOutcomes, "" )
+        XCTAssertEqual( aPlay.whosOn().thirdBase.name, "")
+        XCTAssertEqual( aPlay.whosOn().thirdBaseOutcomes, "" )
+    }
+    
+    
+    func testAssociatedRunnerScoresARun() throws {
+        let batter = Player(name: "Random PlayerName", number: "00", position: .centerField)
+//        let aPlay = Play(description: "say something on the air", batter: batter, atBat: AtBat.single )
+//        aPlay.runnerAdvances(action: .advances, base: Bases.thirdBase )
+//        
+//        XCTAssertEqual( aPlay.whosonbase().thirdBase, .advances)
+//        XCTAssertEqual( aPlay.whosonbase()().home, .aRun)
+    }
+    
+    func testRunnerAdvancesBase() throws {
+        let batter1 = Player(name: "Runner", number: "00", position: .centerField)
+        let batter2 = Player(name: "Batter", number: "00", position: .rightField)
+        let aPlay = Play(description: "say something on the air", batter: batter1, atBat: AtBat.single )
+        let secondPlay = Play(description: "say something on the air", batter: batter2, atBat: AtBat.single )
+        
+        aPlay.runnerAdvances(action: .advances, base: Bases.firstBase )
+        
+        // XCTAssertEqual(aPlay.whosOn().player, batter1)
+//        XCTAssertEquals(aPlay.whosOn().firstBase, "")
     }
 }
