@@ -16,11 +16,12 @@ public class Game: Sequence, IteratorProtocol {
     var nextInning = 0  // the starting index of Innings
     var visitorLineUp = RingBuffer<Player>(count: 9)
     var homeLineUp = RingBuffer<Player>(count: 9)
+    var bases: Bases
 
     //var roster: [Player]  // the platters on the team
     // future properties like home & away team names; score; play by play; etc
-     var runnerOutcomes : RunnerOutcomes
-     var bases: Bases
+
+
     
     
     // Iterator & Sequence
@@ -82,19 +83,16 @@ public class Game: Sequence, IteratorProtocol {
     
     init() {
         self.innings = []
-        self.runnerOutcomes = RunnerOutcomes()
         self.bases = Bases()
     }
     
     init(innings: [Inning]) {
         self.innings = innings
-        self.runnerOutcomes = RunnerOutcomes()
         self.bases = Bases()
     }
 
     init(first: Inning, second: Inning, thrid: Inning, fourth: Inning, fifth: Inning, sixth: Inning, seventh: Inning, eighth: Inning, nineth: Inning) {
         self.innings = [ first, second, thrid, fourth, fifth, sixth, seventh, eighth, nineth ]
-        self.runnerOutcomes = RunnerOutcomes()
         self.bases = Bases()
     }
     
