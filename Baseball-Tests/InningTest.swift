@@ -28,8 +28,10 @@ class InningTest: XCTestCase {
     func testInit() throws {
         let bob = Player(name: "Bob Swift", number: "3", position: .shortStop)
         let larry = Player(name: "Larry Ellison", number: "2", position: .catcher)
-        let play1 = Play(description: "that a great play", batter: bob, atBat: .walk)
-        let play2 = Play(description: "that a great play", batter: larry, atBat: .strikeoutLooking )
+        let play1 = Play(description: "that a great play", batter: bob)
+        play1.called(.walk)
+        let play2 = Play(description: "that a great play", batter: larry)
+        play2.called(.strikeoutLooking)
         
         let first = Inning(number: "1",
                               top: [ play1 ],
@@ -79,8 +81,8 @@ class InningTest: XCTestCase {
     
     func testInningConsistOfPlays() throws {
         let aPlayer = Player(name: "Test PlayerName", number: "00", position: .catcher)
-        let aPlay = Play(description: "this is a test", batter: aPlayer, atBat: AtBat.baseOnBalls)
-        
+        let aPlay = Play(description: "this is a test", batter: aPlayer)
+        aPlay.called(.baseOnBalls)
         let firstInning = Inning(number: "1",
                                  top: [aPlay],
                                  bottom: [],

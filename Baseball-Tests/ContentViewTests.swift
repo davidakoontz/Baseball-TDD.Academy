@@ -19,7 +19,8 @@ class ContentViewTests: XCTestCase {
     func test_Has_a_Player() throws {
         // arrange
         let taylor = Player(name: "Taylor Swift", number: "17", position: .centerField)
-        let play = Play(description: "that a great play", batter: taylor, atBat: .single)
+        let play = Play(description: "that a great play", batter: taylor)
+        play.called(.single)
         
         let inning = Inning(number: "1", top: [play], bottom: [play], summary: "0 to 0")
         let arrayOfInnings: [Inning]  = [ inning]
@@ -47,8 +48,10 @@ class ContentViewTests: XCTestCase {
         // arrange
         let taylor = Player(name: "Taylor Swift", number: "17", position: .centerField)
         let bill = Player(name: "Bill Swift", number: "18", position: .pitcher)
-        let play1 = Play(description: "that a great play", batter: taylor, atBat: .walk)
-        let play2 = Play(description: "that a great play", batter: bill, atBat: .strikeoutLooking )
+        let play1 = Play(description: "that a great play", batter: taylor)
+        play1.called(.walk)
+        let play2 = Play(description: "that a great play", batter: bill)
+        play2.called(.strikeoutLooking)
         
         
         let firstInning = Inning(number: "1", top: [ play1, play2 ], bottom: [ play1, play2], summary: "0 to 0")
@@ -93,8 +96,10 @@ class ContentViewTests: XCTestCase {
         // arrange
         let taylor = Player(name: "Taylor Swift", number: "17", position: .centerField)
         let bill = Player(name: "Bill Swift", number: "18", position: .pitcher)
-        let play1 = Play(description: "that a great play", batter: taylor, atBat: .walk)
-        let play2 = Play(description: "that a great play", batter: bill, atBat: .strikeoutLooking )
+        let play1 = Play(description: "that a great play", batter: taylor)
+        play1.called(.walk)
+        let play2 = Play(description: "that a great play", batter: bill)
+        play2.called(.strikeoutLooking)
         
         let inning1 = Inning(number: "1", top: [play1], bottom: [play2], summary: "0 to 0")
         let inning2 = Inning(number: "0", top: [play1], bottom: [play2], summary: "0 to 0")

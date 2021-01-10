@@ -19,14 +19,28 @@ class PlayTest: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testBasicPlayInit() throws {
+    func testInit_BasicPlay() throws {
 
         let batter = Player(name: "Random PlayerName", number: "00", position: .firstBase)
-        let aPlay = Play(description: "say something on the air", batter: batter, atBat: AtBat.single )
+        let aPlay = Play(description: "say something on the air", batter: batter )
         
         XCTAssertEqual(aPlay.description, "say something on the air")
-        XCTAssertEqual(aPlay.atBat(), "1B")
+        XCTAssertEqual(aPlay.atBat().rawValue, "AT")        // player is still AT bat
         XCTAssertTrue(aPlay.batter.name.contains("PlayerName"))
+    }
+    
+    func testInit_BaseEmptyAtInit() throws {
+        let batter = Player(name: "Random PlayerName", number: "00", position: .centerField)
+        let aPlay = Play(description: "say something on the air", batter: batter)
+
+        // when no runner on any bases
+        XCTAssertEqual( aPlay.atBat(), AtBat.inBox)
+        XCTAssertEqual( aPlay.whosOn().firstBase.name, "")
+        XCTAssertEqual( aPlay.whosOn().firstBaseOutcomes, "" )
+        XCTAssertEqual( aPlay.whosOn().secondBase.name, "")
+        XCTAssertEqual( aPlay.whosOn().secondBaseOutcomes, "" )
+        XCTAssertEqual( aPlay.whosOn().thirdBase.name, "")
+        XCTAssertEqual( aPlay.whosOn().thirdBaseOutcomes, "" )
     }
 /*
     * Story: Runner Advancement <priority 1-A>
@@ -48,26 +62,15 @@ class PlayTest: XCTestCase {
 //
 //    }
 
-    func testrunnerAdvances_Single() throws {
-        let batter = Player(name: "Random PlayerName", number: "00", position: .centerField)
-        let aPlay = Play(description: "say something on the air", batter: batter, atBat: AtBat.single )
-        
-        XCTAssertEqual( aPlay.whosOn().firstBase, batter )
-        XCTAssertEqual(aPlay.whosOn().firstBaseOutcomes, "H")
-    }
+//    func testrunnerAdvances_Single() throws {
+//        let batter = Player(name: "Random PlayerName", number: "00", position: .centerField)
+//        let aPlay = Play(description: "say something on the air", batter: batter, atBat: AtBat.single )
+//
+//        XCTAssertEqual( aPlay.whosOn().firstBase, batter )
+//        XCTAssertEqual(aPlay.whosOn().firstBaseOutcomes, "H")
+//    }
     
-    func testBaseEmptyAtInit() throws {
-        let batter = Player(name: "Random PlayerName", number: "00", position: .centerField)
-        let aPlay = Play(description: "say something on the air", batter: batter, atBat: AtBat.single )
 
-        // when no runner on third
-        XCTAssertEqual( aPlay.whosOn().firstBase.name, "")
-        XCTAssertEqual( aPlay.whosOn().firstBaseOutcomes, "" )
-        XCTAssertEqual( aPlay.whosOn().secondBase.name, "")
-        XCTAssertEqual( aPlay.whosOn().secondBaseOutcomes, "" )
-        XCTAssertEqual( aPlay.whosOn().thirdBase.name, "")
-        XCTAssertEqual( aPlay.whosOn().thirdBaseOutcomes, "" )
-    }
     
     
     func testAssociatedRunnerScoresARun() throws {
@@ -82,8 +85,10 @@ class PlayTest: XCTestCase {
     func testRunnerAdvancesBase() throws {
         let batter1 = Player(name: "Runner", number: "00", position: .centerField)
         let batter2 = Player(name: "Batter", number: "00", position: .rightField)
-        let aPlay = Play(description: "say something on the air", batter: batter1, atBat: AtBat.single )
-        let secondPlay = Play(description: "say something on the air", batter: batter2, atBat: AtBat.single )
+        let aPlay = Play(description: "say something on the air", batter: batter1)
+        aPlay.called(.single)
+        let secondPlay = Play(description: "say something on the air", batter: batter2)
+        secondPlay.called(.single)
         
         aPlay.runnerAdvances(action: .advances, base: Bases.firstBase )
         

@@ -15,26 +15,31 @@ var sequenceNumber: Int = 0
 // throw the ball to an infielder to tag a player or the base.
 //
 public class Play: Identifiable {
-    public private(set) var number: Int
-    public private(set) var id = UUID().uuidString     //  for Identifiable protocol
-    public private(set) var description: String
-    public private(set) var batter: Player
-    public private(set) var outcome: AtBat
+    var number: Int
+    public var id = UUID().uuidString     //  for Identifiable protocol
+    var description: String
+    var batter: Player
+    var outcome: AtBat
+    
     private var runnerOutcomes : RunnerOutcomes
     
     
-    init( description: String, batter: Player, atBat: AtBat) {
+    init( description: String, batter: Player) {
         sequenceNumber += 1                     // increment the number
         self.number = sequenceNumber            // sequence count of the plays in the game
         self.description = description          // imagine the announcer calling the game
         self.batter = batter                    // the Player at bat
         // more properties
-        self.outcome = atBat
+        self.outcome = AtBat.inBox              // Batter in the batter's Box - still at bat
         runnerOutcomes = RunnerOutcomes()
     }
     
-    public func atBat() -> String {
-        return outcome.rawValue
+    func called(_ atBat: AtBat) {        // called by Umpire
+        outcome = atBat
+    }
+    
+    func atBat() -> AtBat {
+        return outcome
     }
     
     func whosOn() -> RunnerOutcomes {
@@ -90,6 +95,7 @@ enum Bases: String {
 // The outcome of a batter's attempt to hit
 public enum AtBat: String, CaseIterable {
     // typical name = Scrorecard shorthand notation
+    case inBox = "AT"       // batter still AT bat or inBox
     // ways to get on base
     case single = "1B"
     case double = "2B"

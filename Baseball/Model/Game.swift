@@ -9,13 +9,15 @@ import Foundation
 
 public class Game: Sequence, IteratorProtocol {
     
-     var innings: [Inning] = []
-    // future properties like home & away team names; score; play by play; etc
-    
-    // IteratorProtocol requirement
+    // Alis for IteratorProtocol requirement
     public typealias Element = Inning
     
+    var innings: [Inning] = []
     var nextInning = 0  // the starting index of Innings
+    // future properties like home & away team names; score; play by play; etc
+
+    
+    
     // Iterator & Sequence
     public func next() -> Inning? {
        
@@ -72,18 +74,18 @@ public class Game: Sequence, IteratorProtocol {
      
     
     // first Inning - top half
-    static let play1 = Play(description: "Duke hits a grounder to left field", batter: duke, atBat: .single)
-    static let play2 = Play(description: "James goes down swinning", batter: james, atBat: .strikeoutSwinging )
-    static let play3 = Play(description: "Scott flys out to right field", batter: scott, atBat: .flyOut)
-    static let play4 = Play(description: "Bill fouls out", batter: bill, atBat: .foulOut)
+    static let play1 = Play(description: "Duke hits a grounder to left field", batter: duke)
+    static let play2 = Play(description: "James goes down swinning", batter: james )
+    static let play3 = Play(description: "Scott flys out to right field", batter: scott)
+    static let play4 = Play(description: "Bill fouls out", batter: bill)
     
     // first Inning - bottom half
-    static let play5 = Play(description: "Taylor walks", batter: taylor, atBat: .walk)
-    static let play6 = Play(description: "Bill hits a double", batter: bill, atBat: .double)
-    static let play7 = Play(description: "Jonathan hits a triple", batter: jonathan, atBat: .triple)
-    static let play8 = Play(description: "Bob hits a scrafice fly to left filed - scoring Jonathan", batter: bob, atBat: .sacrificeFly)
-    static let play9 = Play(description: "Kay goes down looking", batter: kay, atBat: .strikeoutLooking)
-    static let play10 = Play(description: "Patrick lines out to short", batter: patrick, atBat: .lineOut)
+    static let play5 = Play(description: "Taylor walks", batter: taylor)
+    static let play6 = Play(description: "Bill hits a double", batter: bill)
+    static let play7 = Play(description: "Jonathan hits a triple", batter: jonathan)
+    static let play8 = Play(description: "Bob hits a scrafice fly to left filed - scoring Jonathan", batter: bob)
+    static let play9 = Play(description: "Kay goes down looking", batter: kay)
+    static let play10 = Play(description: "Patrick lines out to short", batter: patrick)
     
     static let firstInning = Inning(number: "1",
                               top: [play1, play2, play3, play4 ],
@@ -92,31 +94,31 @@ public class Game: Sequence, IteratorProtocol {
     
 
     // Second Inning
-    static let play11 = Play(description: "Andy gets a double", batter: andy, atBat: .double)
-    static let play12 = Play(description: "Larry is eliminated with a fast ball to the inside corner", batter: larry, atBat: .strikeoutLooking )
-    static let play13 = Play(description: "Sun Li hits a short hopper to center", batter: sun, atBat: .single)
-    static let play14 = Play(description: "Sun Tzu hits into a classic 6-4-3 double play", batter: tzu, atBat: .doublePlay)
+    static let play11 = Play(description: "Andy gets a double", batter: andy)
+    static let play12 = Play(description: "Larry is eliminated with a fast ball to the inside corner", batter: larry )
+    static let play13 = Play(description: "Sun Li hits a short hopper to center", batter: sun)
+    static let play14 = Play(description: "Sun Tzu hits into a classic 6-4-3 double play", batter: tzu)
     
-    static let play15 = Play(description: "Todd hits a line drive down the thridbase line", batter: todd, atBat: .single)
-    static let play16 = Play(description: "connor goes deep to right field - it's out of here!", batter: connor, atBat: .homeRun)
-    static let play17 = Play(description: "ellen is intentionally walked", batter: ellen, atBat: .intentionalWalk)
+    static let play15 = Play(description: "Todd hits a line drive down the thridbase line", batter: todd)
+    static let play16 = Play(description: "connor goes deep to right field - it's out of here!", batter: connor)
+    static let play17 = Play(description: "ellen is intentionally walked", batter: ellen)
     
     static let second = Inning(number: "2",
                                top: [play11, play12, play13, play14 ],
                                bottom: [play15, play16, play17],
                                summary: "0 to 2")
     // Third Inning
-    static let play18 = Play(description: "Nike gets a double", batter: nike, atBat: .double)
-    static let play19 = Play(description: "Duke is eliminated with a fast ball to the inside corner", batter: duke, atBat: .strikeoutLooking )
-    static let play20 = Play(description: "James hits a short hopper to center", batter: james, atBat: .single)
-    static let play21 = Play(description: "Scott Tzu hits into a classic 6-4-3 double play", batter: scott, atBat: .doublePlay)
+    static let play18 = Play(description: "Nike gets a double", batter: nike)
+    static let play19 = Play(description: "Duke is eliminated with a fast ball to the inside corner", batter: duke )
+    static let play20 = Play(description: "James hits a short hopper to center", batter: james)
+    static let play21 = Play(description: "Scott Tzu hits into a classic 6-4-3 double play", batter: scott)
     // Third Inning - bottom half
-    static let play22 = Play(description: "Taylor walks", batter: taylor, atBat: .walk)
-    static let play23 = Play(description: "Bill hits a double", batter: bill, atBat: .double)
-    static let play24 = Play(description: "Jonathan hits a triple", batter: jonathan, atBat: .triple)
-    static let play25 = Play(description: "Bob hits a scrafice fly to left filed - scoring Jonathan", batter: bob, atBat: .sacrificeFly)
-    static let play26 = Play(description: "Kay goes down looking", batter: kay, atBat: .strikeoutLooking)
-    static let play27 = Play(description: "Patrick lines out to short", batter: patrick, atBat: .lineOut)
+    static let play22 = Play(description: "Taylor walks", batter: taylor)
+    static let play23 = Play(description: "Bill hits a double", batter: bill)
+    static let play24 = Play(description: "Jonathan hits a triple", batter: jonathan)
+    static let play25 = Play(description: "Bob hits a scrafice fly to left filed - scoring Jonathan", batter: bob)
+    static let play26 = Play(description: "Kay goes down looking", batter: kay)
+    static let play27 = Play(description: "Patrick lines out to short", batter: patrick)
     
     static let third = Inning(number: "3",
                               top: [play18, play19, play20, play21],
