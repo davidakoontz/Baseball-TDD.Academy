@@ -19,7 +19,7 @@ class GameTest: XCTestCase {
     }
 
     private func createInning() -> Inning {
-        return Inning(number: "", top: [], bottom: [], summary: "")
+        return Inning(label: "", top: [], bottom: [], summary: "")
     }
     
     
@@ -31,7 +31,7 @@ class GameTest: XCTestCase {
     }
     
     func testAddAnInning() throws {
-        let first = Inning(number: "", top: [], bottom: [], summary: "")
+        let first = Inning(label: "", top: [], bottom: [], summary: "")
         let aGame = Game(innings: [first])
         aGame.append(inning: createInning())
         
@@ -39,7 +39,7 @@ class GameTest: XCTestCase {
     }
 
     func testAddingTwoInning() throws {
-        let first = Inning(number: "", top: [], bottom: [], summary: "")
+        let first = Inning(label: "", top: [], bottom: [], summary: "")
         let aGame = Game(innings: [first])
         aGame.append(inning: createInning())
         aGame.append(inning: createInning())
@@ -48,7 +48,7 @@ class GameTest: XCTestCase {
     }
     
     func testSequenceIterator() throws {
-        let first = Inning(number: "1", top: [], bottom: [], summary: "")
+        let first = Inning(label: "1", top: [], bottom: [], summary: "")
         let aGame = Game(innings: [first])
         aGame.append(inning: createInning())
         aGame.append(inning: createInning())
@@ -58,14 +58,14 @@ class GameTest: XCTestCase {
         let secondInning = aGame.next()!
         let thridInning = aGame.next()!
         
-        XCTAssertEqual( firstInning.number, "1")
-        XCTAssertEqual( secondInning.number, "2")
-        XCTAssertEqual( thridInning.number, "3")
+        XCTAssertEqual( firstInning.label, "1")
+        XCTAssertEqual( secondInning.label, "2")
+        XCTAssertEqual( thridInning.label, "3")
         
     }
     
     func test_nextBatter_FactoryMethod() throws {
-        let first = Inning(number: "1", top: [], bottom: [], summary: "")
+        let first = Inning(label: "1", top: [], bottom: [], summary: "")
         let aGame = Game(innings: [first])
         
         let Duke = Player(name: "Duke Java", number: "33", position: .leftField)

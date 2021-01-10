@@ -140,7 +140,7 @@ public class Game: Sequence, IteratorProtocol {
     static let play9 = Play(game: game, description: "Kay goes down looking", batter: kay, atBat: AtBat.strikeoutLooking)
     static let play10 = Play(game: game, description: "Patrick lines out to short", batter: patrick, atBat: AtBat.lineOut)
 
-    static let firstInning = Inning(number: "1",
+    static let firstInning = Inning(label: "1",
                               top: [play1, play2, play3, play4 ],
                               bottom: [play5, play6, play7, play8, play9, play10 ],
                               summary: "0 to 3")
@@ -156,7 +156,7 @@ public class Game: Sequence, IteratorProtocol {
     static let play16 = Play(game: game, description: "connor goes deep to right field - it's out of here!", batter: connor, atBat: AtBat.homeRun)
     static let play17 = Play(game: game, description: "ellen is intentionally walked", batter: ellen, atBat: AtBat.intentionalWalk)
 
-    static let second = Inning(number: "2",
+    static let second = Inning(label: "2",
                                top: [play11, play12, play13, play14 ],
                                bottom: [play15, play16, play17],
                                summary: "0 to 2")
@@ -173,17 +173,17 @@ public class Game: Sequence, IteratorProtocol {
     static let play26 = Play(game: game, description: "Kay goes down looking", batter: kay, atBat: AtBat.strikeoutLooking)
     static let play27 = Play(game: game, description: "Patrick lines out to short", batter: patrick, atBat: AtBat.lineOut)
 
-    static let third = Inning(number: "3",
+    static let third = Inning(label: "3",
                               top: [play18, play19, play20, play21],
                               bottom: [play22, play23, play24, play25, play26, play27],
                               summary: "0 to 3")
 
-    static let fourth = Inning(number: "4", top: [], bottom: [], summary: "0 to 0")
-    static let fifth = Inning(number: "5", top: [], bottom: [], summary: "0 to 0")
-    static let sixth = Inning(number: "6", top: [], bottom: [], summary: "0 to 0")
-    static let seventh = Inning(number: "7", top: [], bottom: [], summary: "0 to 0")
-    static let eighth = Inning(number: "8", top: [], bottom: [], summary: "0 to 0")
-    static let ninth = Inning(number: "9", top: [], bottom: [], summary: "0 to 0")
+    static let fourth = Inning(label: "4", top: [], bottom: [], summary: "0 to 0")
+    static let fifth = Inning(label: "5", top: [], bottom: [], summary: "0 to 0")
+    static let sixth = Inning(label: "6", top: [], bottom: [], summary: "0 to 0")
+    static let seventh = Inning(label: "7", top: [], bottom: [], summary: "0 to 0")
+    static let eighth = Inning(label: "8", top: [], bottom: [], summary: "0 to 0")
+    static let ninth = Inning(label: "9", top: [], bottom: [], summary: "0 to 0")
     
     static var exampleInnings: [Inning] =  [
         /* zero, */ firstInning, second, third, fourth, fifth, sixth, seventh, eighth, ninth

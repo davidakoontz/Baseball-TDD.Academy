@@ -45,17 +45,17 @@ struct ContentView: View {
                           spacing: 16,
                           pinnedViews: [.sectionHeaders, .sectionFooters]
                 ) {
-                    ForEach(game.innings, id: \.self.number ) { inning in
+                    ForEach(game.innings, id: \.self.label ) { inning in
                         //let inning = game.next()!       // OUCH! unwrap innings
                         let visitorsPlays = inning.top
                         let homeTeamPlays = inning.bottom
                         
-                        Section(header: Text("Visiting Team" + " - inning #\(inning.number)").font(.title2)) {
+                        Section(header: Text("Visiting Team" + " - inning #\(inning.label)").font(.title2)) {
                             playerRowView(plays: visitorsPlays)
                         }
                         
                         
-                        Section(header: Text("Home Team" + " - inning #\(inning.number)").font(.title2), footer: Text("score: \(inning.summary)")) {
+                        Section(header: Text("Home Team" + " - inning #\(inning.label)").font(.title2), footer: Text("score: \(inning.summary)")) {
                             playerRowView(plays: homeTeamPlays)
                         }
                         

@@ -8,13 +8,13 @@
 import Foundation
 
 public class Inning {
-    var number: String      // an inning number 1 - 9 typical game length
+    var label: String      // an inning number 1 - 9 typical game length
     var top: [Play]         // an array of plays in the TOP half of the inning
     var bottom: [Play]    // an array of Plays in the BOTTOM half of the inning
     var summary: String     // the inning's score:  Home to Visitor
     
-    init(number: String, top: [Play], bottom: [Play], summary: String) {
-        self.number = number
+    init(label: String, top: [Play], bottom: [Play], summary: String) {
+        self.label = label
         self.top = top
         self.bottom = bottom
         self.summary = summary
@@ -24,8 +24,8 @@ public class Inning {
     
     // public getter
     // private setter
-    public func setNumber(_ numberString: String) {
-        self.number = numberString
+    public func setNumber(_ labelString: String) {
+        self.label = labelString
     }
     
     public func appendTop(_ play: Play) {
