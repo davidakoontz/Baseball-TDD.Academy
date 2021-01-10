@@ -37,6 +37,18 @@ public class Play: Identifiable {
         runnerOutcomes = RunnerOutcomes()
     }
     
+    
+    init(game: Game, description: String, batter: Player, atBat: AtBat) {
+        self.game = game                        // a play needs to know the Game so it can access the bases, etc.
+        sequenceNumber += 1                     // increment the number
+        self.number = sequenceNumber            // sequence count of the plays in the game
+        self.description = description          // imagine the announcer calling the game
+        self.batter = batter                    // the Player at bat
+        // more properties
+        self.atBat = atBat                      // Batter in the batter's Box - still at bat
+        runnerOutcomes = RunnerOutcomes()
+    }
+    
     func called(_ atBat: AtBat) {        // called by Umpire
         self.atBat = atBat
         switch atBat {
