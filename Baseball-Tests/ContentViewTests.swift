@@ -60,7 +60,7 @@ class ContentViewTests: XCTestCase {
         let arrayOfInnings: [Inning]  = [ firstInning ]
         let aGame = Game(innings: arrayOfInnings)
         
-        print("Inning #\( firstInning.number ) with a count of \(arrayOfInnings.count) innings")
+        print("Inning #\( firstInning.label ) with a count of \(arrayOfInnings.count) innings")
         
         // act
         let cView = ContentView(game: aGame)
