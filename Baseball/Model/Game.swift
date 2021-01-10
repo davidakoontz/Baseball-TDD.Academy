@@ -22,11 +22,11 @@ public class Game: Sequence, IteratorProtocol {
     // future properties like home & away team names; score; play by play; etc
 
 
-    public func whichInning() -> Int {
+    func whichInning() -> Int {
         return innings.count
     }
     
-    // Iterator & Sequence
+    // Iterator & Sequence Protocol requires Public next method.
     public func next() -> Inning? {
        
         guard nextInning >= 0 && nextInning < innings.count
