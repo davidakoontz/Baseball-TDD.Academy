@@ -22,7 +22,9 @@ public class Game: Sequence, IteratorProtocol {
     // future properties like home & away team names; score; play by play; etc
 
 
-    
+    public func whichInning() -> Int {
+        return innings.count
+    }
     
     // Iterator & Sequence
     public func next() -> Inning? {

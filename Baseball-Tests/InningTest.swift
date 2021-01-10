@@ -92,4 +92,31 @@ class InningTest: XCTestCase {
         
         XCTAssertEqual(firstInning.top[0].description, "this is a test")
     }
+    
+    func test_whichHalf() {
+        let game = Game()
+        let aPlayer = Player(name: "Test PlayerName", number: "00", position: .catcher)
+        let aPlay = Play(game: game, description: "this is a test", batter: aPlayer)
+        aPlay.called(.baseOnBalls)
+        let firstInning = Inning(number: "1",
+                                 top: [aPlay],
+                                 bottom: [],
+                                 summary: "0 to 0")
+        
+        XCTAssertEqual(firstInning.whichHalf(), InningHalf.top)
+    }
+    
+    func test_whichInning() {
+        let game = Game()
+        let aPlayer = Player(name: "Test PlayerName", number: "00", position: .catcher)
+        let aPlay = Play(game: game, description: "this is a test", batter: aPlayer)
+        aPlay.called(.baseOnBalls)
+        let firstInning = Inning(number: "1",
+                                 top: [aPlay],
+                                 bottom: [aPlay],
+                                 summary: "0 to 0")
+        game.append(inning: firstInning)
+        XCTAssertEqual(game.whichInning(),  1)
+    }
+    
 }
