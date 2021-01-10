@@ -51,7 +51,7 @@ public class Player: Hashable, Identifiable {
     ]
 
     
-}
+} // end of Player class
 
 
 extension Player: Equatable {
