@@ -37,11 +37,11 @@ class PlayTest: XCTestCase {
         // when no runner on any bases
         XCTAssertEqual( aPlay.atBat, AtBat.inBox)
         XCTAssertEqual( aPlay.whosOn().firstBase, EmptyPlayer())
-        XCTAssertEqual( aPlay.runnerOutcomes.firstBaseLine, "" )
+        XCTAssertEqual( aPlay.runnerOutcomes.firstBaseLine, .blank )
         XCTAssertEqual( aPlay.whosOn().secondBase, EmptyPlayer())
-        XCTAssertEqual( aPlay.runnerOutcomes.secondBaseLine, "" )
+        XCTAssertEqual( aPlay.runnerOutcomes.secondBaseLine, .blank )
         XCTAssertEqual( aPlay.whosOn().thirdBase, EmptyPlayer())
-        XCTAssertEqual( aPlay.runnerOutcomes.thirdBaseLine, "" )
+        XCTAssertEqual( aPlay.runnerOutcomes.thirdBaseLine, .blank)
     }
 /*
     * Story: Runner Advancement <priority 1-A>
@@ -64,7 +64,7 @@ class PlayTest: XCTestCase {
         aPlay.called(.single)
 
         XCTAssertEqual( aPlay.whosOn().firstBase, batter )
-        XCTAssertEqual(aPlay.runnerOutcomes.firstBaseLine, "1B")
+        XCTAssertEqual(aPlay.runnerOutcomes.firstBaseLine.rawValue, "1B")
     }
     
     
@@ -85,7 +85,7 @@ class PlayTest: XCTestCase {
         
         XCTAssertEqual(firstPlay.whosOn().secondBase, batter1)
         XCTAssertEqual(secondPlay.whosOn().firstBase, batter2)
-        XCTAssertEqual(firstPlay.runnerOutcomes.secondBaseLine, "AB")
+        XCTAssertEqual(firstPlay.runnerOutcomes.secondBaseLine.rawValue, "AB")
     }
     
     

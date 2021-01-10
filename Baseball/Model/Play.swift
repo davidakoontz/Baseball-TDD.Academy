@@ -46,7 +46,7 @@ public class Play: Identifiable {
 //            runnerOutcome.firstBase = batter
         default:
             game.bases.firstBase = batter
-            runnerOutcomes.firstBaseLine = atBat.rawValue
+            runnerOutcomes.firstBaseLine = atBat
         }
     }
     
@@ -62,11 +62,11 @@ public class Play: Identifiable {
             if action == RunnerActions.advances {
                 game.bases.secondBase = game.bases.firstBase        // the player moves to second
             }
-            runnerOutcomes.secondBaseLine = action.rawValue
+            runnerOutcomes.secondBaseLine = action
         case BaseNames.secondBase:
-            runnerOutcomes.thirdBaseLine = action.rawValue
+            runnerOutcomes.thirdBaseLine = action
         case BaseNames.thirdBase:
-            runnerOutcomes.homeBaseLine = action.rawValue
+            runnerOutcomes.homeBaseLine = action
         }
     }
     
@@ -77,9 +77,17 @@ public class Play: Identifiable {
 /// runner outcomes are displayed on the baseLines (between bases) - there are 4 lines
 struct RunnerOutcomes {
 
-    var firstBaseLine: String = ""      // from batter's box (arround home plate) to first
-    var secondBaseLine: String = ""     // from first to second
-    var thirdBaseLine: String = ""      // from second to third
-    var homeBaseLine: String = ""       // from thrid to home plate
+    var firstBaseLine: AtBat = .blank               // from batter's box (arround home plate) to first
+    var secondBaseLine: RunnerActions = .blank      // from first to second
+    var thirdBaseLine: RunnerActions = .blank       // from second to third
+    var homeBaseLine: RunnerActions = .blank        // from thrid to home plate
 }
 
+
+enum RunnerActions: String {
+    case blank = "_"        // an empty or blank runner action
+    case advances = "AB"    // with a batter number e.g. AB4 = Advanced by Batter #4 in line up
+    case caughtStealing = "CS"
+    case baseIsHeld = "H"
+    
+}

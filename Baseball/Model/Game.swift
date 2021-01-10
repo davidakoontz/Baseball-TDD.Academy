@@ -198,11 +198,6 @@ public class Game: Sequence, IteratorProtocol {
 
 
 
-enum RunnerActions: String {
-    case advances = "AB"    // with a batter number e.g. AB4 = Advanced by Batter #4 in line up
-    case caughtStealing = "CS"
-    case baseIsHeld = "H"
-}
 
 struct Bases {
     var firstBase: Player = EmptyPlayer()
@@ -219,6 +214,7 @@ public enum BaseNames: String {
 // The outcome of a batter's attempt to hit
 public enum AtBat: String, CaseIterable {
     // typical name = Scrorecard shorthand notation
+    case blank = "_"        // blank or empty
     case inBox = "AT"       // batter still AT bat or inBox
     // ways to get on base
     case single = "1B"
