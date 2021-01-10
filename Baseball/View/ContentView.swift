@@ -30,7 +30,7 @@ struct ContentView: View {
             Text("#\(play.batter.number)")
             Text(play.batter.name)
             Text(play.batter.position.rawValue)
-            Text(play.outcome.rawValue)     // outcome is a Enum AtBat
+            Text(play.atBat.rawValue)     //  is a Enum AtBat
         }
     }
     

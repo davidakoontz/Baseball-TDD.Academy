@@ -63,4 +63,37 @@ class GameTest: XCTestCase {
         XCTAssertEqual( thridInning.number, "3")
         
     }
+    
+    func test_nextBatter_FactoryMethod() throws {
+        let first = Inning(number: "1", top: [], bottom: [], summary: "")
+        let aGame = Game(innings: [first])
+        
+        let Duke = Player(name: "Duke Java", number: "33", position: .leftField)
+        let James = Player(name: "James Gosling", number: "4", position: .thirdBase)
+        let Scott = Player(name: "Scott McNealy", number: "37", position: .centerField)
+        let BillJoy = Player(name: "Bill Joy", number: "39", position: .rightField)
+        let Andy = Player(name: "Andy Bechtolsheim", number: "41", position: .pitcher)
+        let Larry = Player(name: "Larry Ellison", number: "2", position: .catcher)
+        let Sun  = Player(name: "Sun Li", number: "62", position: .firstBase)
+        let Tzu = Player(name: "Sun Tzu", number: "99", position: .secondBase)
+        let Nike = Player(name: "Nike Sun", number: "42", position: .shortStop)
+        _ = aGame.visitorLineUp.write(Duke)
+        _ = aGame.visitorLineUp.write(James)
+        _ = aGame.visitorLineUp.write(Scott)
+        _ = aGame.visitorLineUp.write(BillJoy)
+        _ = aGame.visitorLineUp.write(Andy)
+        _ = aGame.visitorLineUp.write(Larry)
+        _ = aGame.visitorLineUp.write(Sun)
+        _ = aGame.visitorLineUp.write(Tzu)
+        _ = aGame.visitorLineUp.write(Nike)
+        
+        
+        let play1 = aGame.nextBatter()
+        
+        XCTAssertEqual(play1.batter, Duke)
+        
+        let play2 = aGame.nextBatter()
+        
+        XCTAssertEqual(play2.batter.name, "James Gosling")
+    }
 }

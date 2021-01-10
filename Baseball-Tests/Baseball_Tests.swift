@@ -28,23 +28,6 @@ class Baseball_Tests: XCTestCase {
         XCTAssertTrue("Hello World".contains("World"))
     }
     
-    func testVeryBasicPlay() throws {
-        // setup a basic play
-        let batter = Player(name: "Random PlayerName", number: "00", position: .firstBase)
-        let play1 = Play(description: "This baseball is a great game", batter: batter)
-        play1.called(.baseOnBalls)
-        
-        XCTAssertTrue(play1.description.contains("baseball"))
-        XCTAssertEqual( play1.atBat().rawValue, "BB" )
-        XCTAssertEqual( play1.batter.name, "Random PlayerName")
-    }
-    
-   
-    
-    
-    
-   
-    
     
     
     

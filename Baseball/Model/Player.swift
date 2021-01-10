@@ -22,13 +22,6 @@ public class Player: Hashable, Identifiable {
         self.number = number
         self.position = position
     }
-
-    
-     // players may change positions and have various atBats - but jersy # & name remain the same for a game
-     // protocol Equatable
-     public static func == (lhs: Player, rhs: Player) -> Bool {
-         return ( lhs.id == rhs.id )
-     }
      
      // see: https://medium.com/better-programming/what-is-hashable-in-swift-6a51627f904
      public func hash(into hasher: inout Hasher) {
@@ -60,6 +53,23 @@ public class Player: Hashable, Identifiable {
     
 }
 
+
+extension Player: Equatable {
+    public static func == (lhs: Player, rhs: Player) -> Bool {
+        return
+            lhs.name == rhs.name &&
+            lhs.number == rhs.number
+        
+        //  lhs.position == rhs.position &&  Player's may change position!
+    }
+}
+
+
+class EmptyPlayer : Player{
+    init() {
+        super.init(name:"EMPTY Player", number: "0", position: .designatedHitter)
+    }
+}
 
 public enum Position: String, CaseIterable {
     case pitcher = "1"

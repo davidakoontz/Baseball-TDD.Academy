@@ -18,8 +18,9 @@ class ContentViewTests: XCTestCase {
     
     func test_Has_a_Player() throws {
         // arrange
+        let game = Game()
         let taylor = Player(name: "Taylor Swift", number: "17", position: .centerField)
-        let play = Play(description: "that a great play", batter: taylor)
+        let play = Play(game: game, description: "that a great play", batter: taylor)
         play.called(.single)
         
         let inning = Inning(number: "1", top: [play], bottom: [play], summary: "0 to 0")
@@ -46,11 +47,12 @@ class ContentViewTests: XCTestCase {
 
     func test_Has_Two_Players() throws {
         // arrange
+        let game = Game()
         let taylor = Player(name: "Taylor Swift", number: "17", position: .centerField)
         let bill = Player(name: "Bill Swift", number: "18", position: .pitcher)
-        let play1 = Play(description: "that a great play", batter: taylor)
+        let play1 = Play(game: game, description: "that a great play", batter: taylor)
         play1.called(.walk)
-        let play2 = Play(description: "that a great play", batter: bill)
+        let play2 = Play(game: game, description: "that a great play", batter: bill)
         play2.called(.strikeoutLooking)
         
         
@@ -94,11 +96,12 @@ class ContentViewTests: XCTestCase {
 
     func test_Has_Two_Innings() throws {
         // arrange
+        let game = Game()
         let taylor = Player(name: "Taylor Swift", number: "17", position: .centerField)
         let bill = Player(name: "Bill Swift", number: "18", position: .pitcher)
-        let play1 = Play(description: "that a great play", batter: taylor)
+        let play1 = Play(game: game, description: "that a great play", batter: taylor)
         play1.called(.walk)
-        let play2 = Play(description: "that a great play", batter: bill)
+        let play2 = Play(game: game, description: "that a great play", batter: bill)
         play2.called(.strikeoutLooking)
         
         let inning1 = Inning(number: "1", top: [play1], bottom: [play2], summary: "0 to 0")

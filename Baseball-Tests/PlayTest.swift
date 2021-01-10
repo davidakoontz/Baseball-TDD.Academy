@@ -20,27 +20,28 @@ class PlayTest: XCTestCase {
     }
 
     func testInit_BasicPlay() throws {
-
+        let game = Game()
         let batter = Player(name: "Random PlayerName", number: "00", position: .firstBase)
-        let aPlay = Play(description: "say something on the air", batter: batter )
+        let aPlay = Play(game: game, description: "say something on the air", batter: batter )
         
         XCTAssertEqual(aPlay.description, "say something on the air")
-        XCTAssertEqual(aPlay.atBat().rawValue, "AT")        // player is still AT bat
-        XCTAssertTrue(aPlay.batter.name.contains("PlayerName"))
+        XCTAssertEqual(aPlay.atBat.rawValue, "AT")        // player is still AT bat
+        XCTAssertTrue(aPlay.batter == batter)
     }
     
     func testInit_BaseEmptyAtInit() throws {
+        let game = Game()
         let batter = Player(name: "Random PlayerName", number: "00", position: .centerField)
-        let aPlay = Play(description: "say something on the air", batter: batter)
+        let aPlay = Play(game: game, description: "say something on the air", batter: batter)
 
         // when no runner on any bases
-        XCTAssertEqual( aPlay.atBat(), AtBat.inBox)
-        XCTAssertEqual( aPlay.whosOn().firstBase.name, "")
-        XCTAssertEqual( aPlay.whosOn().firstBaseOutcomes, "" )
-        XCTAssertEqual( aPlay.whosOn().secondBase.name, "")
-        XCTAssertEqual( aPlay.whosOn().secondBaseOutcomes, "" )
-        XCTAssertEqual( aPlay.whosOn().thirdBase.name, "")
-        XCTAssertEqual( aPlay.whosOn().thirdBaseOutcomes, "" )
+        XCTAssertEqual( aPlay.atBat, AtBat.inBox)
+        XCTAssertEqual( aPlay.whosOn().firstBase, EmptyPlayer())
+        XCTAssertEqual( aPlay.runnerOutcomes.firstBaseLine, "" )
+        XCTAssertEqual( aPlay.whosOn().secondBase, EmptyPlayer())
+        XCTAssertEqual( aPlay.runnerOutcomes.secondBaseLine, "" )
+        XCTAssertEqual( aPlay.whosOn().thirdBase, EmptyPlayer())
+        XCTAssertEqual( aPlay.runnerOutcomes.thirdBaseLine, "" )
     }
 /*
     * Story: Runner Advancement <priority 1-A>
@@ -53,46 +54,57 @@ class PlayTest: XCTestCase {
 */
 
     
-//        func testrunnerAdvances_CaughtStealing() throws {
-//        let batter = Player(name: "Random PlayerName", number: "00", position: .firstBase)
-//        let aPlay = Play(description: "say something on the air", batter: batter, atBat: AtBat.single )
-//        aPlay.runnerAdvances(action: .caughtStealing, base: Bases.firstBase )
-//
-//            XCTAssertEqual( aPlay.whosOn().runnerOutcome.firstBase , "CS" )
-//
-//    }
 
-//    func testrunnerAdvances_Single() throws {
-//        let batter = Player(name: "Random PlayerName", number: "00", position: .centerField)
-//        let aPlay = Play(description: "say something on the air", batter: batter, atBat: AtBat.single )
-//
-//        XCTAssertEqual( aPlay.whosOn().firstBase, batter )
-//        XCTAssertEqual(aPlay.whosOn().firstBaseOutcomes, "H")
-//    }
-    
 
-    
-    
-    func testAssociatedRunnerScoresARun() throws {
+    func testrunnerAdvances_Single() throws {
+        let game = Game()
         let batter = Player(name: "Random PlayerName", number: "00", position: .centerField)
-//        let aPlay = Play(description: "say something on the air", batter: batter, atBat: AtBat.single )
-//        aPlay.runnerAdvances(action: .advances, base: Bases.thirdBase )
-//        
-//        XCTAssertEqual( aPlay.whosonbase().thirdBase, .advances)
-//        XCTAssertEqual( aPlay.whosonbase()().home, .aRun)
+        let aPlay = Play(game: game, description: "say something on the air", batter: batter )
+        
+        aPlay.called(.single)
+
+        XCTAssertEqual( aPlay.whosOn().firstBase, batter )
+        XCTAssertEqual(aPlay.runnerOutcomes.firstBaseLine, "1B")
     }
     
-    func testRunnerAdvancesBase() throws {
+    
+    func testRunnerAdvances_onSingleBySecondBatter() throws {
+        let game = Game()
+        
         let batter1 = Player(name: "Runner", number: "00", position: .centerField)
         let batter2 = Player(name: "Batter", number: "00", position: .rightField)
-        let aPlay = Play(description: "say something on the air", batter: batter1)
-        aPlay.called(.single)
-        let secondPlay = Play(description: "say something on the air", batter: batter2)
+        let firstPlay = Play(game: game, description: "say something on the air", batter: batter1)
+        let secondPlay = Play(game: game, description: "say something on the air", batter: batter2)
+        
+        firstPlay.called(.single)
+
+        firstPlay.runnerOn(.firstBase, action: .advances )
         secondPlay.called(.single)
+
         
-        aPlay.runnerAdvances(action: .advances, base: Bases.firstBase )
         
-        // XCTAssertEqual(aPlay.whosOn().player, batter1)
-//        XCTAssertEquals(aPlay.whosOn().firstBase, "")
+        XCTAssertEqual(firstPlay.whosOn().secondBase, batter1)
+        XCTAssertEqual(secondPlay.whosOn().firstBase, batter2)
+        XCTAssertEqual(firstPlay.runnerOutcomes.secondBaseLine, "AB")
     }
+    
+    
+//    func testrunnerAdvances_RunnerScoresARun() throws {
+//        let batter = Player(name: "Random PlayerName", number: "00", position: .centerField)
+//        let aPlay = Play(description: "say something on the air", batter: batter, atBat: AtBat.single )
+//        aPlay.runnerAdvances(action: .advances, base: Bases.thirdBase )
+//
+//        XCTAssertEqual( aPlay.whosonbase().thirdBase, .advances)
+//        XCTAssertEqual( aPlay.whosonbase()().home, .aRun)
+//    }
+  
+    
+    //        func testrunnerAdvances_CaughtStealing() throws {
+    //        let batter = Player(name: "Random PlayerName", number: "00", position: .firstBase)
+    //        let aPlay = Play(description: "say something on the air", batter: batter, atBat: AtBat.single )
+    //        aPlay.runnerAdvances(action: .caughtStealing, base: Bases.firstBase )
+    //
+    //            XCTAssertEqual( aPlay.whosOn().runnerOutcome.firstBase , "CS" )
+    //
+    //    }
 }
