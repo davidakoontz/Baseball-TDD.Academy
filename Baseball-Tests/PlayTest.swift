@@ -88,6 +88,77 @@ class PlayTest: XCTestCase {
         XCTAssertEqual(firstPlay.runnerOutcomes.secondBaseLine.rawValue, "AB")
     }
     
+    func testRunnerAdvances_BasesLoadedSituation() throws {
+        let game = Game()
+        
+        let batter1 = Player(name: "Runner 1", number: "1", position: .centerField)
+        let batter2 = Player(name: "Runner 2", number: "2", position: .rightField)
+        let batter3 = Player(name: "Batter", number: "3", position: .leftField)
+        let firstPlay = Play(game: game, description: "say something on the air", batter: batter1)
+        let secondPlay = Play(game: game, description: "say something on the air", batter: batter2)
+        let thirdPlay = Play(game: game, description: "say something on the air", batter: batter3)
+        
+        firstPlay.called(.single)
+
+        firstPlay.runnerOn(.firstBase, action: .advances )
+        secondPlay.called(.single)
+
+        firstPlay.runnerOn(.secondBase, action: .advances )
+        secondPlay.runnerOn(.firstBase, action: .advances )
+        thirdPlay.called(.single)
+        
+        
+        XCTAssertEqual(firstPlay.whosOn().thirdBase, batter1)
+        XCTAssertEqual(secondPlay.whosOn().secondBase, batter2)
+        XCTAssertEqual(thirdPlay.whosOn().firstBase, batter3)
+        XCTAssertEqual(firstPlay.runnerOutcomes.thirdBaseLine.rawValue, "AB")
+        XCTAssertEqual(firstPlay.runnerOutcomes.secondBaseLine.rawValue, "AB")
+        XCTAssertEqual(secondPlay.runnerOutcomes.secondBaseLine.rawValue, "AB")
+    }
+ 
+    func testRunnerAdvances_BatterWalksBasesLoadedSituation() throws {
+        let game = Game()
+        
+        let batter1 = Player(name: "Runner 1", number: "1", position: .centerField)
+        let batter2 = Player(name: "Runner 2", number: "2", position: .rightField)
+        let batter3 = Player(name: "Runner 3", number: "3", position: .leftField)
+        
+        let batter4 = Player(name: "Batter 4", number: "4", position: .firstBase)
+        
+        let firstPlay = Play(game: game, description: "say something on the air", batter: batter1)
+        let secondPlay = Play(game: game, description: "say something on the air", batter: batter2)
+        let thirdPlay = Play(game: game, description: "say something on the air", batter: batter3)
+        let fourthPlay = Play(game: game, description: "say something on the air", batter: batter4)
+        
+        
+        // having to explisitly move players around the bases - via method calls -- SUCKS << FixMe with automatic advancement
+        firstPlay.called(.single)
+
+        firstPlay.runnerOn(.firstBase, action: .advances )
+        secondPlay.called(.single)
+
+        firstPlay.runnerOn(.secondBase, action: .advances )
+        secondPlay.runnerOn(.firstBase, action: .advances )
+        thirdPlay.called(.single)
+
+        // the ORDER matters a lot - you must advance runners in batter order (play order)
+        firstPlay.runnerOn(.thirdBase, action: .advances)
+        secondPlay.runnerOn(.secondBase, action: .advances)
+        thirdPlay.runnerOn(.firstBase, action: .advances)
+        fourthPlay.called(.walk)
+        
+        XCTAssertEqual(firstPlay.whosOn().homePlate.name, batter1.name)
+        XCTAssertEqual(firstPlay.whosOn().thirdBase.name, batter2.name)
+        XCTAssertEqual(secondPlay.whosOn().secondBase.name, batter3.name)
+        XCTAssertEqual(thirdPlay.whosOn().firstBase.name, batter4.name)
+        
+        XCTAssertEqual(firstPlay.runnerOutcomes.thirdBaseLine.rawValue, "AB")
+        XCTAssertEqual(firstPlay.runnerOutcomes.secondBaseLine.rawValue, "AB")
+        XCTAssertEqual(secondPlay.runnerOutcomes.secondBaseLine.rawValue, "AB")
+        
+        XCTAssertEqual(firstPlay.runnerOutcomes.homeBaseLine.rawValue, "SCORES")
+    }
+    
     
 //    func testrunnerAdvances_RunnerScoresARun() throws {
 //        let batter = Player(name: "Random PlayerName", number: "00", position: .centerField)

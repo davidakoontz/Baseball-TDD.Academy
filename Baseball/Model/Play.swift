@@ -52,10 +52,10 @@ public class Play: Identifiable {
     func called(_ atBat: AtBat) {        // called by Umpire
         self.atBat = atBat
         switch atBat {
-//        case .balk, .baseOnBalls, .walk:
-//            runnerOutcomes.firstBase = batter
-//        case .single:
-//            runnerOutcome.firstBase = batter
+        //        case .balk, .baseOnBalls, .walk:
+        //            runnerOutcomes.firstBase = batter
+        //        case .single:
+        //            runnerOutcome.firstBase = batter
         default:
             game.bases.firstBase = batter
             runnerOutcomes.firstBaseLine = atBat
@@ -76,19 +76,31 @@ public class Play: Identifiable {
             }
             runnerOutcomes.secondBaseLine = action
         case BaseNames.secondBase:
+            if action == RunnerActions.advances {
+                game.bases.thirdBase = game.bases.secondBase        // the player moves to third
+            }
             runnerOutcomes.thirdBaseLine = action
         case BaseNames.thirdBase:
-            runnerOutcomes.homeBaseLine = action
+            if action == RunnerActions.advances {
+                game.bases.homePlate = game.bases.thirdBase        // the player moves to home
+                
+                runnerOutcomes.homeBaseLine = action
+                runnerOutcomes.homeBaseLine = RunnerActions.scores
+                game.score += 1
+            }
+        case BaseNames.homePlate:
+            // there is no action for home plate
+            print(game.score)
         }
     }
     
-
+    
 } // end of class Play
 
 
 /// runner outcomes are displayed on the baseLines (between bases) - there are 4 lines
 struct RunnerOutcomes {
-
+    
     var firstBaseLine: AtBat = .blank               // from batter's box (arround home plate) to first
     var secondBaseLine: RunnerActions = .blank      // from first to second
     var thirdBaseLine: RunnerActions = .blank       // from second to third
@@ -101,5 +113,6 @@ enum RunnerActions: String {
     case advances = "AB"    // with a batter number e.g. AB4 = Advanced by Batter #4 in line up
     case caughtStealing = "CS"
     case baseIsHeld = "H"
+    case scores = "SCORES"
     
 }

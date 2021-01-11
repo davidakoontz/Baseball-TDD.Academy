@@ -64,6 +64,7 @@ class GameTest: XCTestCase {
         
     }
     
+    // disabled
     func test_nextBatter_FactoryMethod() throws {
         let first = Inning(label: "1", top: [], bottom: [], summary: "")
         let aGame = Game(innings: [first])
@@ -95,5 +96,38 @@ class GameTest: XCTestCase {
         let play2 = aGame.nextBatter()
         
         XCTAssertEqual(play2.batter.name, "James Gosling")
+        
+        let play3 = aGame.nextBatter()
+        
+        XCTAssertEqual(play3.batter, Scott)
+        
+        let play4 = aGame.nextBatter()
+        
+        XCTAssertEqual(play4.batter.name, "Bill Joy")
+        
+        let play5 = aGame.nextBatter()
+        
+        XCTAssertEqual(play5.batter, Andy)
+        
+        let play6 = aGame.nextBatter()
+        
+        XCTAssertEqual(play6.batter.name, "Larry Ellison")
+        
+        let play7 = aGame.nextBatter()
+        
+        XCTAssertEqual(play7.batter, Sun)
+        
+        let play8 = aGame.nextBatter()
+        
+        XCTAssertEqual(play8.batter.name, "Sun Tzu")
+        
+        let play9 = aGame.nextBatter()
+        
+        XCTAssertEqual(play9.batter.name, "Nike Sun")
+        
+        // a RingBuffer should have no problem wrapping around the front again & again.
+        let play10 = aGame.nextBatter()
+        print("batter: \(play10.batter.name) \(play10.batter.number)")
+        XCTAssertEqual(play10.batter, Duke)
     }
 }

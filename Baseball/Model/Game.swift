@@ -17,14 +17,13 @@ public class Game: Sequence, IteratorProtocol {
     var visitorLineUp = RingBuffer<Player>(count: 9)
     var homeLineUp = RingBuffer<Player>(count: 9)
     var bases: Bases
+    
+    var score: Int = 0   // for now just a temp construct - need home & away
 
     //var roster: [Player]  // the platters on the team
     // future properties like home & away team names; score; play by play; etc
 
 
-    func whichInning() -> Int {
-        return innings.count
-    }
     
     // Iterator & Sequence Protocol requires Public next method.
     public func next() -> Inning? {
@@ -48,6 +47,15 @@ public class Game: Sequence, IteratorProtocol {
     func nextBatter() -> Play {
         let batter = batterUp()
         let thisPlay = Play(game: self, description: "...and up to bat is...\(batter.name) number \(batter.number) playing \(batter.position)", batter: batter)
+        // a play should be appended to the proper Inning half
+        let inning = currentInning()
+        let half = inning.whichHalf()
+        if half == InningHalf.top {
+            inning.appendTop(thisPlay)
+        } else {
+            inning.appendBottom(thisPlay)
+        }
+        
         return thisPlay
     }
     
@@ -77,6 +85,15 @@ public class Game: Sequence, IteratorProtocol {
         //inning.number = String(currentInning)   // set the inning number
         inning.setNumber( String(currentInning) )
         innings.append(inning)
+    }
+  
+    
+    func whichInning() -> Int {
+        return innings.count
+    }
+    
+    func currentInning() -> Inning {
+        return innings[inningCount()-1]
     }
     
     func inningCount() -> Int {
@@ -203,12 +220,14 @@ struct Bases {
     var firstBase: Player = EmptyPlayer()
     var secondBase: Player = EmptyPlayer()
     var thirdBase: Player = EmptyPlayer()
+    var homePlate: Player = EmptyPlayer()
 }
 
 public enum BaseNames: String {
     case firstBase = "first"
     case secondBase = "second"
     case thirdBase = "third"
+    case homePlate = "home"
 }
 
 // The outcome of a batter's attempt to hit

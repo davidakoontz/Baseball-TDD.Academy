@@ -37,6 +37,11 @@
                BlueprintName = "Baseball-Tests"
                ReferencedContainer = "container:Baseball-TDDAcademy.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "GameTest/test_nextBatter_FactoryMethod()">
+               </Test>
+            </SkippedTests>
          </TestableReference>
          <TestableReference
             skipped = "NO">
