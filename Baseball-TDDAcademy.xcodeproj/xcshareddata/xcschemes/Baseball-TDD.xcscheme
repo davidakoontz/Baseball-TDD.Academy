@@ -41,9 +41,6 @@
                <Test
                   Identifier = "GameTest/test_nextBatter_FactoryMethod()">
                </Test>
-               <Test
-                  Identifier = "RingBufferTest/test_read_FullBufferShouldWrapAround()">
-               </Test>
             </SkippedTests>
          </TestableReference>
          <TestableReference

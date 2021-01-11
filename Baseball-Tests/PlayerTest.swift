@@ -18,24 +18,6 @@ class PlayerTest: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testAtBatListHasPlayerInfo() throws {
-        let taylor = Player(name: "Taylor Swift", number: "17", position: .centerField)
-        let bill = Player(name: "Bill Swift", number: "18", position: .pitcher)
-
-        // this List becomes a player Roster... future
-         let atBatList: [Player] =  [
-            taylor, bill
-            ]
-        
-        XCTAssertTrue( atBatList[0].name.contains("Taylor") )
-        XCTAssertEqual( atBatList[0].number, "17")
-        XCTAssertEqual( atBatList[0].position, .centerField)
-
-        
-        XCTAssertTrue( atBatList[1].name.contains("Bill") )
-        XCTAssertEqual( atBatList[1].number, "18")
-        XCTAssertEqual( atBatList[1].position, .pitcher)
-    }
 
     // Test Player ==
     func testEqualOperator() throws {

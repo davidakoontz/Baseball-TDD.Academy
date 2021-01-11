@@ -17,27 +17,26 @@ class RingBufferTest: XCTestCase {
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
-
-
-    func test_read_FullBufferShouldWrapAround() {
-        var buffer = RingBuffer<Int>(count: 5)
-        
-        _ = buffer.write(1)
-        _ = buffer.write(2)
-        _ = buffer.write(3)
-        _ = buffer.write(4)
-        _ = buffer.write(5)     // full buffer
-        
-        
-        XCTAssertEqual(buffer.read()!, 1)
-        XCTAssertEqual(buffer.read()!, 2)
-        XCTAssertEqual(buffer.read()!, 3)
-        XCTAssertEqual(buffer.read()!, 4)
-        XCTAssertEqual(buffer.read()!, 5)
-        XCTAssertEqual(buffer.read()!, 1)
-        XCTAssertEqual(buffer.read()!, 2)
-        
-    }
+    
+    
+//    func test_read_FullBufferShouldWrapAround() {
+//        var buffer = RingBuffer<Int>(count: 5)
+//
+//        _ = buffer.write(1)
+//        _ = buffer.write(2)
+//        _ = buffer.write(3)
+//        _ = buffer.write(4)
+//        _ = buffer.write(5)     // full buffer
+//
+//
+//        XCTAssertEqual(buffer.read()!, 1)
+//        XCTAssertEqual(buffer.read()!, 2)
+//        XCTAssertEqual(buffer.read()!, 3)
+//        XCTAssertEqual(buffer.read()!, 4)
+//        XCTAssertEqual(buffer.read()!, 5)
+//        XCTAssertEqual(buffer.read()!, 1)
+//        XCTAssertEqual(buffer.read()!, 2)
+//
+//    }
 
 }
