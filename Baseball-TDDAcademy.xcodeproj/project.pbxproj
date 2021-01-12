@@ -147,9 +147,9 @@
 			isa = PBXGroup;
 			children = (
 				636D5193252AABB500BB80D4 /* Baseball_Tests.swift */,
+				63484B2A259417950011E918 /* GameTest.swift */,
 				63E7D8A125831C550059AC9D /* InningTest.swift */,
 				63D779BD258C638200EFDC23 /* PlayTest.swift */,
-				63484B2A259417950011E918 /* GameTest.swift */,
 				637782132555E90F00766772 /* PlayerTest.swift */,
 				63215BDE255F3C3E007F006A /* ContentViewTests.swift */,
 				63D662E625ABCE5D005E961E /* RingBufferTest.swift */,

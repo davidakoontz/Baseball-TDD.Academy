@@ -56,7 +56,7 @@ class PlayTest: XCTestCase {
     
 
 
-    func testrunnerAdvances_Single() throws {
+    func test_called_Single() throws {
         let game = Game()
         let batter = Player(name: "Random PlayerName", number: "00", position: .centerField)
         let aPlay = Play(game: game, description: "say something on the air", batter: batter )
@@ -68,7 +68,7 @@ class PlayTest: XCTestCase {
     }
     
     
-    func testRunnerAdvances_onSingleBySecondBatter() throws {
+    func testRunnerOn_onSingleBySecondBatter() throws {
         let game = Game()
         
         let batter1 = Player(name: "Runner", number: "00", position: .centerField)
@@ -88,7 +88,7 @@ class PlayTest: XCTestCase {
         XCTAssertEqual(firstPlay.runnerOutcomes.secondBaseLine.rawValue, "AB")
     }
     
-    func testRunnerAdvances_BasesLoadedSituation() throws {
+    func testRunnerOn_BasesLoadedSituation() throws {
         let game = Game()
         
         let batter1 = Player(name: "Runner 1", number: "1", position: .centerField)
@@ -116,7 +116,7 @@ class PlayTest: XCTestCase {
         XCTAssertEqual(secondPlay.runnerOutcomes.secondBaseLine.rawValue, "AB")
     }
  
-    func testRunnerAdvances_BatterWalksBasesLoadedSituation() throws {
+    func testRunnerOn_BatterWalksBasesLoadedSituation() throws {
         let game = Game()
         
         let batter1 = Player(name: "Runner 1", number: "1", position: .centerField)
@@ -145,6 +145,7 @@ class PlayTest: XCTestCase {
         firstPlay.runnerOn(.thirdBase, action: .advances)
         secondPlay.runnerOn(.secondBase, action: .advances)
         thirdPlay.runnerOn(.firstBase, action: .advances)
+        
         fourthPlay.called(.walk)
         
         XCTAssertEqual(firstPlay.whosOn().homePlate.name, batter1.name)
