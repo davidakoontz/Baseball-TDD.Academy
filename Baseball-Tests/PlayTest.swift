@@ -141,7 +141,7 @@ class PlayTest: XCTestCase {
         secondPlay.runnerOn(.firstBase, action: .advances )
         thirdPlay.called(.single)
 
-        // the ORDER matters a lot - you must advance runners in batter order (play order)
+        // the ORDER matters a lot - you must advance runners in (play order)
         firstPlay.runnerOn(.thirdBase, action: .advances)
         secondPlay.runnerOn(.secondBase, action: .advances)
         thirdPlay.runnerOn(.firstBase, action: .advances)
