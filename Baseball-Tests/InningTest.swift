@@ -103,11 +103,12 @@ class InningTest: XCTestCase {
                                  bottom: [],
                                  summary: "0 to 0")
         
-        XCTAssertEqual(firstInning.whichHalf(), InningHalf.top)
+        XCTAssertEqual(game.whichHalf(), InningHalf.top)
         
-        firstInning.appendBottom(aPlay)  // this should triger the inning Half change
+        firstInning.appendBottom(aPlay)
+        game.switchFields() // this should triger the inning Half change
         
-        XCTAssertEqual(firstInning.whichHalf(), InningHalf.bottom)
+        XCTAssertEqual(game.whichHalf(), InningHalf.bottom)
     }
     
     func test_whichInning() {

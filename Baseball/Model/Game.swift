@@ -14,9 +14,10 @@ public class Game: Sequence, IteratorProtocol {
     
     var innings: [Inning] = []
     var nextInning = 0  // the starting index of Innings
-    var visitorLineUp = RingBuffer<Player>(count: 9)
-    var homeLineUp = RingBuffer<Player>(count: 9)
+    var visitorLineUp = LineUp()
+    var homeLineUp = LineUp()
     var bases: Bases
+    var teamAtBat: Team = Team.visitor
     
     var score: Int = 0   // for now just a temp construct - need home & away
 
@@ -36,21 +37,38 @@ public class Game: Sequence, IteratorProtocol {
 
     /// returns next player to bat
     func batterUp() -> Player {
-        if let unwrapped = visitorLineUp.read() {
-            return unwrapped
+        if teamAtBat == Team.visitor {
+            return visitorLineUp.next()
         } else {
-            return EmptyPlayer()
+            return homeLineUp.next()
+        }
+    }
+    
+    func whichHalf() -> InningHalf {
+        if teamAtBat == Team.visitor {
+            return InningHalf.top
+        } else {
+            return InningHalf.bottom
+        }
+    }
+    
+    public func switchFields() {
+        // after 3 outs the teams switch fields
+        if teamAtBat == Team.visitor {
+            teamAtBat = Team.home
+        } else {
+            teamAtBat = Team.visitor
         }
     }
     
     /// factory method - creates a Play with next batter -> returns the Play
     func nextBatter() -> Play {
+        let inning = currentInning()
+ 
         let batter = batterUp()
         let thisPlay = Play(game: self, description: "...and up to bat is...\(batter.name) number \(batter.number) playing \(batter.position)", batter: batter)
         // a play should be appended to the proper Inning half
-        let inning = currentInning()
-        let half = inning.whichHalf()
-        if half == InningHalf.top {
+        if teamAtBat == Team.visitor {
             inning.appendTop(thisPlay)
         } else {
             inning.appendBottom(thisPlay)
@@ -69,20 +87,19 @@ public class Game: Sequence, IteratorProtocol {
         let Sun  = Player(name: "Sun Li", number: "62", position: .firstBase)
         let Tzu = Player(name: "Sun Tzu", number: "99", position: .secondBase)
         let Nike = Player(name: "Nike Sun", number: "42", position: .shortStop)
-        _ = visitorLineUp.write(Duke)
-        _ = visitorLineUp.write(James)
-        _ = visitorLineUp.write(Scott)
-        _ = visitorLineUp.write(BillJoy)
-        _ = visitorLineUp.write(Andy)
-        _ = visitorLineUp.write(Larry)
-        _ = visitorLineUp.write(Sun)
-        _ = visitorLineUp.write(Tzu)
-        _ = visitorLineUp.write(Nike)
+        visitorLineUp.add(Duke)
+        visitorLineUp.add(James)
+        visitorLineUp.add(Scott)
+        visitorLineUp.add(BillJoy)
+        visitorLineUp.add(Andy)
+        visitorLineUp.add(Larry)
+        visitorLineUp.add(Sun)
+        visitorLineUp.add(Tzu)
+        visitorLineUp.add(Nike)
     }
     
     func append(inning: Inning) {
         let currentInning = innings.count + 1
-        //inning.number = String(currentInning)   // set the inning number
         inning.setNumber( String(currentInning) )
         innings.append(inning)
     }
@@ -209,12 +226,19 @@ public class Game: Sequence, IteratorProtocol {
     static var example = Game(innings: exampleInnings)
 
 
+} // end of Game class
+
+
+
+public enum Team: String {
+    case visitor = "Visitors"
+    case home = "Home"
 }
 
-
-
-
-
+public enum InningHalf: String {
+    case top = "Top"
+    case bottom = "Bottom"
+}
 
 struct Bases {
     var firstBase: Player = EmptyPlayer()

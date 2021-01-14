@@ -40,20 +40,7 @@ public class Inning {
         self.summary = summary
     }
     
-    public func whichHalf() -> InningHalf {
-        if top.count == bottom.count {
-            return InningHalf.bottom
-        } else {
-            return InningHalf.top
-        }
-    }
-    
-
     
 }
 
 
-public enum InningHalf: String {
-    case top = "Top"
-    case bottom = "Bottom"
-}

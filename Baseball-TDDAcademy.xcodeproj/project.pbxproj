@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		63022FF825B001D600335203 /* LineUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63022FF725B001D600335203 /* LineUp.swift */; };
+		63022FFD25B001F800335203 /* LineUpTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63022FFC25B001F800335203 /* LineUpTest.swift */; };
 		63215BDF255F3C3E007F006A /* ContentViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63215BDE255F3C3E007F006A /* ContentViewTests.swift */; };
 		634837732558CDEE00FA407F /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = 634837722558CDEE00FA407F /* ViewInspector */; };
 		63484B2B259417950011E918 /* GameTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63484B2A259417950011E918 /* GameTest.swift */; };
@@ -21,8 +23,6 @@
 		6377820F2555E89300766772 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6377820E2555E89300766772 /* Player.swift */; };
 		637782142555E90F00766772 /* PlayerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637782132555E90F00766772 /* PlayerTest.swift */; };
 		637782192555F21A00766772 /* FieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637782182555F21A00766772 /* FieldView.swift */; };
-		63D662DC25AAC6D7005E961E /* RingBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D662DB25AAC6D7005E961E /* RingBuffer.swift */; };
-		63D662E725ABCE5D005E961E /* RingBufferTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D662E625ABCE5D005E961E /* RingBufferTest.swift */; };
 		63D779BE258C638200EFDC23 /* PlayTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D779BD258C638200EFDC23 /* PlayTest.swift */; };
 		63E7D8A225831C550059AC9D /* InningTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7D8A125831C550059AC9D /* InningTest.swift */; };
 		63E7D8A725831D590059AC9D /* Inning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7D8A625831D590059AC9D /* Inning.swift */; };
@@ -47,6 +47,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		63022FF725B001D600335203 /* LineUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineUp.swift; sourceTree = "<group>"; };
+		63022FFC25B001F800335203 /* LineUpTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineUpTest.swift; sourceTree = "<group>"; };
 		63215BDE255F3C3E007F006A /* ContentViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewTests.swift; sourceTree = "<group>"; };
 		63484B2A259417950011E918 /* GameTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTest.swift; sourceTree = "<group>"; };
 		63484B35259419860011E918 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
@@ -68,8 +70,6 @@
 		6377820E2555E89300766772 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		637782132555E90F00766772 /* PlayerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTest.swift; sourceTree = "<group>"; };
 		637782182555F21A00766772 /* FieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldView.swift; sourceTree = "<group>"; };
-		63D662DB25AAC6D7005E961E /* RingBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingBuffer.swift; sourceTree = "<group>"; };
-		63D662E625ABCE5D005E961E /* RingBufferTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingBufferTest.swift; sourceTree = "<group>"; };
 		63D779BD258C638200EFDC23 /* PlayTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayTest.swift; sourceTree = "<group>"; };
 		63E7D8A125831C550059AC9D /* InningTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InningTest.swift; sourceTree = "<group>"; };
 		63E7D8A625831D590059AC9D /* Inning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inning.swift; sourceTree = "<group>"; };
@@ -149,10 +149,10 @@
 				636D5193252AABB500BB80D4 /* Baseball_Tests.swift */,
 				63484B2A259417950011E918 /* GameTest.swift */,
 				63E7D8A125831C550059AC9D /* InningTest.swift */,
+				63022FFC25B001F800335203 /* LineUpTest.swift */,
 				63D779BD258C638200EFDC23 /* PlayTest.swift */,
 				637782132555E90F00766772 /* PlayerTest.swift */,
 				63215BDE255F3C3E007F006A /* ContentViewTests.swift */,
-				63D662E625ABCE5D005E961E /* RingBufferTest.swift */,
 				636D5195252AABB500BB80D4 /* Info.plist */,
 			);
 			path = "Baseball-Tests";
@@ -173,9 +173,9 @@
 			children = (
 				63484B35259419860011E918 /* Game.swift */,
 				63E7D8A625831D590059AC9D /* Inning.swift */,
+				63022FF725B001D600335203 /* LineUp.swift */,
 				6377820E2555E89300766772 /* Player.swift */,
 				636D51C3252AAF4E00BB80D4 /* Play.swift */,
-				63D662DB25AAC6D7005E961E /* RingBuffer.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -328,8 +328,8 @@
 				63484B36259419860011E918 /* Game.swift in Sources */,
 				636D5182252AABB000BB80D4 /* Baseball_App.swift in Sources */,
 				636D51C4252AAF4E00BB80D4 /* Play.swift in Sources */,
+				63022FF825B001D600335203 /* LineUp.swift in Sources */,
 				63E7D8A725831D590059AC9D /* Inning.swift in Sources */,
-				63D662DC25AAC6D7005E961E /* RingBuffer.swift in Sources */,
 				6377820F2555E89300766772 /* Player.swift in Sources */,
 				637782192555F21A00766772 /* FieldView.swift in Sources */,
 			);
@@ -344,8 +344,8 @@
 				637782142555E90F00766772 /* PlayerTest.swift in Sources */,
 				636D5194252AABB500BB80D4 /* Baseball_Tests.swift in Sources */,
 				63E7D8A225831C550059AC9D /* InningTest.swift in Sources */,
+				63022FFD25B001F800335203 /* LineUpTest.swift in Sources */,
 				63D779BE258C638200EFDC23 /* PlayTest.swift in Sources */,
-				63D662E725ABCE5D005E961E /* RingBufferTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
