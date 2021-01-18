@@ -3,13 +3,34 @@
 ## This code is being TDD.Academy test driven - follow along on https://www.twitch.tv/tddacademy
 ## YouTube Channel: https://www.youtube.com/channel/UCU1U6oPscxzKd_IWAIOm60w/featured
 
-
-## Jan 11th
+## Next Show (Jan 22)
 ToDo: 
-LineUp is a RingBuffer - that does NOT cycle like I want.
+
 Note: automatic advancement of runners on base - now the order of calls to advance runners matters.
-Counting of score (Visitor vs Home)
+
 Adding other atBat types…
+
+## Jan 18th
+- [x] Move Play method runnerOn(base, action) into Game class.
+    Requires: getting current Play from Inning and setting RunnerOutcomes
+    Requires: Play.whosOn() moving to Game also.
+- [x] Counting of score (Visitor & Home) in Struct on Game.score.
+    Also:
+    Play.called() >> umpCalled();  runnerOn() >> playRunnerOn() - and deprecated ;;
+    LineUp.next() >> nextBatterInLineUp() ... to distinguish from other nextBatter methods.
+    Inning.appendTop() .appendBottom() made private - use .append( play, teamAtBat)
+    made a Score struct to hold visitor & home Ints.
+    Game.runnerOn() is preferred method now - not play.runnerOn
+    move the if-test for which inning half into the Inning class;  made a append method that takes a Team parameter.
+    added game as parameter to inning init.
+    added properties: game & play to Inning class; as well as Inning.append() & Inning.currentPlay()
+    added EmptyPlay class
+    added EmptyInning class
+    Turned on Code Coverage tool in project.
+    
+## Jan 11th
+LineUp is a RingBuffer - that does NOT cycle like I want.
+Made a new LineUp class and used it.
 
 Move Play method runnerOn(base, action) into Game class.
 
