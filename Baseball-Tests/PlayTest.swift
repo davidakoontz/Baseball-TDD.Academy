@@ -36,11 +36,11 @@ class PlayTest: XCTestCase {
 
         // when no runner on any bases
         XCTAssertEqual( aPlay.atBat, AtBat.inBox)
-        XCTAssertEqual( aPlay.whosOn().firstBase, EmptyPlayer())
+        XCTAssertEqual( game.whosOn().firstBase, EmptyPlayer())
         XCTAssertEqual( aPlay.runnerOutcomes.firstBaseLine, .blank )
-        XCTAssertEqual( aPlay.whosOn().secondBase, EmptyPlayer())
+        XCTAssertEqual( game.whosOn().secondBase, EmptyPlayer())
         XCTAssertEqual( aPlay.runnerOutcomes.secondBaseLine, .blank )
-        XCTAssertEqual( aPlay.whosOn().thirdBase, EmptyPlayer())
+        XCTAssertEqual( game.whosOn().thirdBase, EmptyPlayer())
         XCTAssertEqual( aPlay.runnerOutcomes.thirdBaseLine, .blank)
     }
 /*
@@ -63,8 +63,8 @@ class PlayTest: XCTestCase {
         
         aPlay.umpCalled(.single)
 
-        XCTAssertEqual( aPlay.whosOn().firstBase, batter )
-        XCTAssertEqual(aPlay.runnerOutcomes.firstBaseLine.rawValue, "1B")
+        XCTAssertEqual( game.whosOn().firstBase, batter )
+        XCTAssertEqual( aPlay.runnerOutcomes.firstBaseLine.rawValue, "1B")
     }
     
     
@@ -74,8 +74,8 @@ class PlayTest: XCTestCase {
         let firstPlay = game.nextBatter()
         firstPlay.umpCalled(.single)
         
-        XCTAssertEqual(firstPlay.whosOn().secondBase.name, "EMPTY Player")
-        XCTAssertEqual(firstPlay.whosOn().firstBase.name, "Duke Java")
+        XCTAssertEqual(game.whosOn().secondBase.name, "EMPTY Player")
+        XCTAssertEqual(game.whosOn().firstBase.name, "Duke Java")
         XCTAssertEqual(firstPlay.runnerOutcomes.secondBaseLine.rawValue, "_")
 
         let secondPlay = game.nextBatter()
@@ -84,8 +84,8 @@ class PlayTest: XCTestCase {
 
         secondPlay.umpCalled(.single)
 
-        XCTAssertEqual(secondPlay.whosOn().secondBase.name, "Duke Java")
-        XCTAssertEqual(secondPlay.whosOn().firstBase.name, "James Gosling")
+        XCTAssertEqual(game.whosOn().secondBase.name, "Duke Java")
+        XCTAssertEqual(game.whosOn().firstBase.name, "James Gosling")
         XCTAssertEqual(secondPlay.runnerOutcomes.secondBaseLine.rawValue, "AB")
         
         XCTAssertEqual(game.currentPlay().runnerOutcomes.secondBaseLine.rawValue, "AB")
@@ -153,10 +153,10 @@ class PlayTest: XCTestCase {
         game.runnerOn(.firstBase, action: .advances)
         fourthPlay.umpCalled(.walk)
         
-        XCTAssertEqual(firstPlay.whosOn().homePlate.name, batter1.name)
-        XCTAssertEqual(firstPlay.whosOn().thirdBase.name, batter2.name)
-        XCTAssertEqual(secondPlay.whosOn().secondBase.name, batter3.name)
-        XCTAssertEqual(thirdPlay.whosOn().firstBase.name, batter4.name)
+        XCTAssertEqual(game.whosOn().homePlate.name, batter1.name)
+        XCTAssertEqual(game.whosOn().thirdBase.name, batter2.name)
+        XCTAssertEqual(game.whosOn().secondBase.name, batter3.name)
+        XCTAssertEqual(game.whosOn().firstBase.name, batter4.name)
         
         let thisPlay = game.currentPlay()
         XCTAssertEqual(thisPlay.runnerOutcomes.firstBaseLine.rawValue, "_")

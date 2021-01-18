@@ -61,40 +61,7 @@ public class Play: Identifiable {
             runnerOutcomes.firstBaseLine = atBat
         }
     }
-    
-    
-    func whosOn() -> Bases {
-        return game.bases        // should this be a copy?
-    }
-    
-    func playRunnerOn(_ base: BaseNames, action: RunnerActions) {
-        switch base {
-        // we do not record runner actions for the box to first base line - that's done in the called()
-        case BaseNames.firstBase:
-            if action == RunnerActions.advances {
-                game.bases.secondBase = game.bases.firstBase        // the player moves to second
-            }
-            runnerOutcomes.secondBaseLine = action
-        case BaseNames.secondBase:
-            if action == RunnerActions.advances {
-                game.bases.thirdBase = game.bases.secondBase        // the player moves to third
-            }
-            runnerOutcomes.thirdBaseLine = action
-        case BaseNames.thirdBase:
-            if action == RunnerActions.advances {
-                game.bases.homePlate = game.bases.thirdBase        // the player moves to home
 
-                runnerOutcomes.homeBaseLine = action
-                runnerOutcomes.homeBaseLine = RunnerActions.scores
-               // game.score.Add(runs: 1, teamAtBat: teamAtBat)
-            }
-        case BaseNames.homePlate:
-            // there is no action for home plate
-            print(game.score)
-        }
-    }
-    
-    
 } // end of class Play
 
 class EmptyPlay : Play {
