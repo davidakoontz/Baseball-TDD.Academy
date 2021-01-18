@@ -97,6 +97,11 @@ public class Play: Identifiable {
     
 } // end of class Play
 
+class EmptyPlay : Play {
+    init(theGame: Game) {
+        super.init(game: theGame, description: "Empty Play", batter: EmptyPlayer() )
+    }
+}
 
 /// runner outcomes are displayed on the baseLines (between bases) - there are 4 lines
 struct RunnerOutcomes {

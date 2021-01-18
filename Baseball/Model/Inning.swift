@@ -8,39 +8,65 @@
 import Foundation
 
 public class Inning {
-    var label: String      // an inning number 1 - 9 typical game length
-    var top: [Play]         // an array of plays in the TOP half of the inning
-    var bottom: [Play]    // an array of Plays in the BOTTOM half of the inning
-    var summary: String     // the inning's score:  Home to Visitor
+    var label: String           // an inning number 1 - 9 typical game length
+    var game: Game           // a game that this Inning belong to
+    var play: Play       // the current Play that is holding all the action
+    var top: [Play]             // an array of plays in the TOP half of the inning
+    var bottom: [Play]          // an array of Plays in the BOTTOM half of the inning
+    var summary: String         // the inning's score:  Home to Visitor
     
-    init(label: String, top: [Play], bottom: [Play], summary: String) {
+    init(label: String, game: Game, top: [Play], bottom: [Play], summary: String) {
         self.label = label
+        self.game = game
+        self.play = EmptyPlay(theGame: game)
         self.top = top
         self.bottom = bottom
         self.summary = summary
     }
     
 
+    func append(_ play: Play, teamAtBat: Team) {
+
+        if teamAtBat == Team.visitor {
+            appendTop(play)
+        } else {
+            appendBottom(play)
+        }
+        
+    }
     
-    // public getter
-    // private setter
-    public func setNumber(_ labelString: String) {
+    func currentPlay() -> Play {
+        return play
+    }
+    
+    
+    
+    func setLabel(_ labelString: String) {
         self.label = labelString
     }
     
-    public func appendTop(_ play: Play) {
+    func appendTop(_ play: Play) {
+        self.play = play
         top.append(play)
     }
     
-    public func appendBottom(_ play: Play) {
+    func appendBottom(_ play: Play) {
+        self.play = play
         bottom.append(play)
     }
     
-    public func setSummary(_ summary: String) {
+    func setSummary(_ summary: String) {
         self.summary = summary
     }
     
+
     
 }
 
+class EmptyInning : Inning {
+    init(game: Game) {
+        
+        super.init(label: "0", game: game, top: [], bottom: [], summary: "0 to 0")
+    }
+}
 

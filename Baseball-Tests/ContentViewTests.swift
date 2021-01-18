@@ -23,7 +23,7 @@ class ContentViewTests: XCTestCase {
         let play = Play(game: game, description: "that a great play", batter: taylor)
         play.called(.single)
         
-        let inning = Inning(label: "1", top: [play], bottom: [play], summary: "0 to 0")
+        let inning = Inning(label: "1", game: game, top: [play], bottom: [play], summary: "0 to 0")
         let arrayOfInnings: [Inning]  = [ inning]
         let aGame = Game(innings: arrayOfInnings)
         
@@ -56,7 +56,7 @@ class ContentViewTests: XCTestCase {
         play2.called(.strikeoutLooking)
         
         
-        let firstInning = Inning(label: "1", top: [ play1, play2 ], bottom: [ play1, play2], summary: "0 to 0")
+        let firstInning = Inning(label: "1", game: game, top: [ play1, play2 ], bottom: [ play1, play2], summary: "0 to 0")
         let arrayOfInnings: [Inning]  = [ firstInning ]
         let aGame = Game(innings: arrayOfInnings)
         
@@ -104,11 +104,11 @@ class ContentViewTests: XCTestCase {
         let play2 = Play(game: game, description: "that a great play", batter: bill)
         play2.called(.strikeoutLooking)
         
-        let inning1 = Inning(label: "1", top: [play1], bottom: [play2], summary: "0 to 0")
-        let inning2 = Inning(label: "0", top: [play1], bottom: [play2], summary: "0 to 0")
+        let inning1 = Inning(label: "1", game: game, top: [play1], bottom: [play2], summary: "0 to 0")
+        let inning2 = Inning(label: "0", game: game, top: [play1], bottom: [play2], summary: "0 to 0")
         let arrayOfInnings: [Inning]  = [ inning1]
         let aGame = Game(innings: arrayOfInnings)
-        aGame.append(inning: inning2)
+        aGame.appendInning(inning: inning2)
         
 
         

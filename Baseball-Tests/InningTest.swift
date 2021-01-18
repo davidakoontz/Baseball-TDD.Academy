@@ -20,10 +20,6 @@ class InningTest: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
 
     func testInit() throws {
         let game = Game()
@@ -34,20 +30,23 @@ class InningTest: XCTestCase {
         let play2 = Play(game: game, description: "that a great play", batter: larry)
         play2.called(.strikeoutLooking)
         
-        let first = Inning(label: "1",
+        let first = Inning(label: "1", game: game,
                               top: [ play1 ],
                               bottom: [ play2 ],
                               summary: "0 to 0")
-
+        game.appendInning(inning: first)
+        
         XCTAssertTrue( first.label.contains("1") )
         XCTAssertTrue( first.top[0].batter.name.contains("Swift"))
         XCTAssertTrue( first.bottom[0].batter.name.contains("Ellison"))
         XCTAssertTrue( first.summary.contains("0 to 0") )
+        XCTAssertEqual(game.currentInning().label, "1")
 
     }
 
     func testInningHasSummary() throws {
-        let firstInning = Inning(label: "1",
+        let game = Game()
+        let firstInning = Inning(label: "1", game: game,
                               top: [],
                               bottom: [],
                               summary: "0 to 0")
@@ -57,27 +56,13 @@ class InningTest: XCTestCase {
     
     //        static let jonathan = Player(name: "Jonathan Swift", number: "67", position: "4", atBat: "1B")
     func testInningOneJonathanHitsSingle() throws {
-        
-//        let duke = Player(name: "Duke Java", number: "33", position: .leftField)
-//        let james = Player(name: "James Gosling", number: "4", position: .thirdBase)
-//        let scott = Player(name: "Scott McNealy", number: "37", position: .centerField)
-//        let billJoy = Player(name: "Bill Joy", number: "39", position: .rightField)
-//        let andy = Player(name: "Andy Bechtolsheim", number: "41", position: .pitcher)
-//        let larry = Player(name: "Larry Ellison", number: "2", position: .catcher)
-//       // home team (bottom of innings)
-//        let taylor = Player(name: "Taylor Swift", number: "17", position: .centerField)
-//        let bill = Player(name: "Bill Swift", number: "18", position: .pitcher)
-//        let jonathan = Player(name: "Jonathan Swift", number: "67", position: .secondBase)
-//        let bob = Player(name: "Bob Swift", number: "2", position: .catcher)
-//
-   
-       let firstInning = Inning(label: "1",
+        let game = Game()
+        let firstInning = Inning(label: "1", game: game,
                              top: [],
                              bottom: [Game.play7],
                              summary: "0 to 0")
         
         XCTAssertTrue( firstInning.bottom[0].batter.name.contains("Jonathan") )
-     
     }
     
     func testInningConsistOfPlays() throws {
@@ -85,7 +70,7 @@ class InningTest: XCTestCase {
         let aPlayer = Player(name: "Test PlayerName", number: "00", position: .catcher)
         let aPlay = Play(game: game, description: "this is a test", batter: aPlayer)
         aPlay.called(.baseOnBalls)
-        let firstInning = Inning(label: "1",
+        let firstInning = Inning(label: "1", game: game,
                                  top: [aPlay],
                                  bottom: [],
                                  summary: "0 to 0")
@@ -93,12 +78,30 @@ class InningTest: XCTestCase {
         XCTAssertEqual(firstInning.top[0].description, "this is a test")
     }
     
+    func test_append_anInningWithTeamAtBat() {
+        
+        
+        // Not setting up a proper Game upon init.  can not call currentInning()
+        let game = Game()
+        let aPlayer = Player(name: "Test PlayerName", number: "00", position: .catcher)
+        let aPlay = Play(game: game, description: "this is a test", batter: aPlayer)
+        aPlay.called(.baseOnBalls)
+        let firstInning = Inning(label: "1", game: game, top: [], bottom: [], summary: "0 to 0")
+        game.appendInning(inning: firstInning)
+        firstInning.append(aPlay, teamAtBat: game.whichTeamAtBat() )
+        
+        XCTAssertEqual(game.whichHalf(), InningHalf.top)
+        XCTAssertEqual(game.currentInning().currentPlay().description, "this is a test")
+       
+    }
+    
+    
     func test_whichHalf() {
         let game = Game()
         let aPlayer = Player(name: "Test PlayerName", number: "00", position: .catcher)
         let aPlay = Play(game: game, description: "this is a test", batter: aPlayer)
         aPlay.called(.baseOnBalls)
-        let firstInning = Inning(label: "1",
+        let firstInning = Inning(label: "1", game: game,
                                  top: [aPlay],
                                  bottom: [],
                                  summary: "0 to 0")
@@ -116,11 +119,11 @@ class InningTest: XCTestCase {
         let aPlayer = Player(name: "Test PlayerName", number: "00", position: .catcher)
         let aPlay = Play(game: game, description: "this is a test", batter: aPlayer)
         aPlay.called(.baseOnBalls)
-        let firstInning = Inning(label: "1",
+        let firstInning = Inning(label: "1", game: game,
                                  top: [aPlay],
                                  bottom: [aPlay],
                                  summary: "0 to 0")
-        game.append(inning: firstInning)
+        game.appendInning(inning: firstInning)
         XCTAssertEqual(game.whichInning(),  1)
     }
     

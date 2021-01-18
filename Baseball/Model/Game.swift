@@ -35,22 +35,8 @@ public class Game: Sequence, IteratorProtocol {
         return innings[nextInning]
     }
 
-    /// returns next player to bat
-    func batterUp() -> Player {
-        if teamAtBat == Team.visitor {
-            return visitorLineUp.next()
-        } else {
-            return homeLineUp.next()
-        }
-    }
-    
-    func whichHalf() -> InningHalf {
-        if teamAtBat == Team.visitor {
-            return InningHalf.top
-        } else {
-            return InningHalf.bottom
-        }
-    }
+
+
     
     public func switchFields() {
         // after 3 outs the teams switch fields
@@ -61,20 +47,108 @@ public class Game: Sequence, IteratorProtocol {
         }
     }
     
-    /// factory method - creates a Play with next batter -> returns the Play
+    /// returns next player to bat
+    func batterUp() -> Player {
+        if teamAtBat == Team.visitor {
+            return visitorLineUp.next()
+        } else {
+            return homeLineUp.next()
+        }
+    }
+    
+    /// factory method - creates a Play with next batter, puts the Play in the Inning top/bottom then -> returns the Play
     func nextBatter() -> Play {
         let inning = currentInning()
  
         let batter = batterUp()
         let thisPlay = Play(game: self, description: "...and up to bat is...\(batter.name) number \(batter.number) playing \(batter.position)", batter: batter)
         // a play should be appended to the proper Inning half
-        if teamAtBat == Team.visitor {
-            inning.appendTop(thisPlay)
-        } else {
-            inning.appendBottom(thisPlay)
-        }
+        inning.append(thisPlay, teamAtBat: teamAtBat)
         
         return thisPlay
+    }
+    
+//    func runnerOn(_ base: BaseNames, action: RunnerActions) {
+//        let inning = currentInning()
+//        //let play = inning.
+//        switch base {
+//        // we do not record runner actions for the box to first base line - that's done in the called()
+//        case BaseNames.firstBase:
+//            if action == RunnerActions.advances {
+//                bases.secondBase = bases.firstBase        // the player moves to second
+//            }
+//            runnerOutcomes.secondBaseLine = action
+//        case BaseNames.secondBase:
+//            if action == RunnerActions.advances {
+//                bases.thirdBase = bases.secondBase        // the player moves to third
+//            }
+//            runnerOutcomes.thirdBaseLine = action
+//        case BaseNames.thirdBase:
+//            if action == RunnerActions.advances {
+//                bases.homePlate = bases.thirdBase        // the player moves to home
+//                score += 1
+//                runnerOutcomes.homeBaseLine = action
+//                runnerOutcomes.homeBaseLine = RunnerActions.scores
+//                
+//            }
+//        case BaseNames.homePlate:
+//            // there is no action for home plate
+//            print("baseball score is \(score)")
+//        }
+//    }
+    
+
+    
+    // MARK Inning operations
+    
+    func appendInning(inning: Inning) {
+        let currentInning = innings.count + 1
+        inning.setLabel( String(currentInning) )
+        innings.append(inning)
+    }
+  
+    func whichTeamAtBat() -> Team {
+        return teamAtBat
+    }
+    
+    func whichInning() -> Int {
+        return innings.count
+    }
+    
+    func whichHalf() -> InningHalf {
+        if teamAtBat == Team.visitor {
+            return InningHalf.top
+        } else {
+            return InningHalf.bottom
+        }
+    }
+    
+    func currentInning() -> Inning {
+        if inningCount() <= 0 {
+            return EmptyInning(game: self)
+        }
+        return innings[inningCount()-1]
+    }
+    
+    func inningCount() -> Int {
+        return innings.count
+    }
+    
+    // MARK Init
+    
+    init() {
+        self.innings = []
+        self.bases = Bases()
+    }
+    
+    init(innings: [Inning]) {
+        self.innings = innings
+        self.bases = Bases()
+    }
+
+    init(first: Inning, second: Inning, thrid: Inning, fourth: Inning, fifth: Inning, sixth: Inning, seventh: Inning, eighth: Inning, nineth: Inning) {
+        self.innings = [ first, second, thrid, fourth, fifth, sixth, seventh, eighth, nineth ]
+        self.bases = Bases()
     }
     
     func setVisitorTeamLineUp() {
@@ -97,42 +171,6 @@ public class Game: Sequence, IteratorProtocol {
         visitorLineUp.add(Tzu)
         visitorLineUp.add(Nike)
     }
-    
-    func append(inning: Inning) {
-        let currentInning = innings.count + 1
-        inning.setNumber( String(currentInning) )
-        innings.append(inning)
-    }
-  
-    
-    func whichInning() -> Int {
-        return innings.count
-    }
-    
-    func currentInning() -> Inning {
-        return innings[inningCount()-1]
-    }
-    
-    func inningCount() -> Int {
-        return innings.count
-    }
-    
-    init() {
-        self.innings = []
-        self.bases = Bases()
-    }
-    
-    init(innings: [Inning]) {
-        self.innings = innings
-        self.bases = Bases()
-    }
-
-    init(first: Inning, second: Inning, thrid: Inning, fourth: Inning, fifth: Inning, sixth: Inning, seventh: Inning, eighth: Inning, nineth: Inning) {
-        self.innings = [ first, second, thrid, fourth, fifth, sixth, seventh, eighth, nineth ]
-        self.bases = Bases()
-    }
-    
-    
     
         // visitors always bat first (top of innings)
     static let duke = Player(name: "Duke Java", number: "33", position: .leftField)
@@ -174,7 +212,7 @@ public class Game: Sequence, IteratorProtocol {
     static let play9 = Play(game: game, description: "Kay goes down looking", batter: kay, atBat: AtBat.strikeoutLooking)
     static let play10 = Play(game: game, description: "Patrick lines out to short", batter: patrick, atBat: AtBat.lineOut)
 
-    static let firstInning = Inning(label: "1",
+    static let firstInning = Inning(label: "1", game: game,
                               top: [play1, play2, play3, play4 ],
                               bottom: [play5, play6, play7, play8, play9, play10 ],
                               summary: "0 to 3")
@@ -190,7 +228,7 @@ public class Game: Sequence, IteratorProtocol {
     static let play16 = Play(game: game, description: "connor goes deep to right field - it's out of here!", batter: connor, atBat: AtBat.homeRun)
     static let play17 = Play(game: game, description: "ellen is intentionally walked", batter: ellen, atBat: AtBat.intentionalWalk)
 
-    static let second = Inning(label: "2",
+    static let second = Inning(label: "2", game: game,
                                top: [play11, play12, play13, play14 ],
                                bottom: [play15, play16, play17],
                                summary: "0 to 2")
@@ -207,17 +245,17 @@ public class Game: Sequence, IteratorProtocol {
     static let play26 = Play(game: game, description: "Kay goes down looking", batter: kay, atBat: AtBat.strikeoutLooking)
     static let play27 = Play(game: game, description: "Patrick lines out to short", batter: patrick, atBat: AtBat.lineOut)
 
-    static let third = Inning(label: "3",
+    static let third = Inning(label: "3", game: game,
                               top: [play18, play19, play20, play21],
                               bottom: [play22, play23, play24, play25, play26, play27],
                               summary: "0 to 3")
 
-    static let fourth = Inning(label: "4", top: [], bottom: [], summary: "0 to 0")
-    static let fifth = Inning(label: "5", top: [], bottom: [], summary: "0 to 0")
-    static let sixth = Inning(label: "6", top: [], bottom: [], summary: "0 to 0")
-    static let seventh = Inning(label: "7", top: [], bottom: [], summary: "0 to 0")
-    static let eighth = Inning(label: "8", top: [], bottom: [], summary: "0 to 0")
-    static let ninth = Inning(label: "9", top: [], bottom: [], summary: "0 to 0")
+    static let fourth = Inning(label: "4", game: game, top: [], bottom: [], summary: "0 to 0")
+    static let fifth = Inning(label: "5", game: game, top: [], bottom: [], summary: "0 to 0")
+    static let sixth = Inning(label: "6", game: game, top: [], bottom: [], summary: "0 to 0")
+    static let seventh = Inning(label: "7", game: game, top: [], bottom: [], summary: "0 to 0")
+    static let eighth = Inning(label: "8", game: game, top: [], bottom: [], summary: "0 to 0")
+    static let ninth = Inning(label: "9", game: game, top: [], bottom: [], summary: "0 to 0")
     
     static var exampleInnings: [Inning] =  [
         /* zero, */ firstInning, second, third, fourth, fifth, sixth, seventh, eighth, ninth

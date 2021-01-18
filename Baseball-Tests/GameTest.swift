@@ -19,7 +19,8 @@ class GameTest: XCTestCase {
     }
 
     private func createInning() -> Inning {
-        return Inning(label: "", top: [], bottom: [], summary: "")
+        let game = Game()
+        return Inning(label: "", game: game, top: [], bottom: [], summary: "")
     }
     
     
@@ -31,27 +32,30 @@ class GameTest: XCTestCase {
     }
     
     func testAddAnInning() throws {
-        let first = Inning(label: "", top: [], bottom: [], summary: "")
+        let game = Game()
+        let first = Inning(label: "", game: game, top: [], bottom: [], summary: "")
         let aGame = Game(innings: [first])
-        aGame.append(inning: createInning())
+        aGame.appendInning(inning: createInning())
         
         XCTAssertEqual(aGame.inningCount(), 2)
     }
 
     func testAddingTwoInning() throws {
-        let first = Inning(label: "", top: [], bottom: [], summary: "")
+        let game = Game()
+        let first = Inning(label: "", game: game, top: [], bottom: [], summary: "")
         let aGame = Game(innings: [first])
-        aGame.append(inning: createInning())
-        aGame.append(inning: createInning())
+        aGame.appendInning(inning: createInning())
+        aGame.appendInning(inning: createInning())
         
         XCTAssertEqual(aGame.inningCount(), 3 )
     }
     
     func testSequenceIterator() throws {
-        let first = Inning(label: "1", top: [], bottom: [], summary: "")
+        let game = Game()
+        let first = Inning(label: "1", game: game, top: [], bottom: [], summary: "")
         let aGame = Game(innings: [first])
-        aGame.append(inning: createInning())
-        aGame.append(inning: createInning())
+        aGame.appendInning(inning: createInning())
+        aGame.appendInning(inning: createInning())
         
         XCTAssertEqual(aGame.inningCount(), 3)
         let firstInning = aGame.next()!
@@ -66,7 +70,8 @@ class GameTest: XCTestCase {
     
 
     func test_nextBatter_FactoryMethodWrappsArround() throws {
-        let first = Inning(label: "1", top: [], bottom: [], summary: "")
+        let game = Game()
+        let first = Inning(label: "1", game: game, top: [], bottom: [], summary: "")
         let aGame = Game(innings: [first])
         
         let Duke = Player(name: "Duke Java", number: "33", position: .leftField)
@@ -133,7 +138,8 @@ class GameTest: XCTestCase {
     
     
     func test_nextBatter_SwitchesTeamsAsHalfInning() throws {
-        let first = Inning(label: "1", top: [], bottom: [], summary: "")
+        let game = Game()
+        let first = Inning(label: "1", game: game, top: [], bottom: [], summary: "")
         let aGame = Game(innings: [first])
         
         let Duke = Player(name: "Duke Java", number: "33", position: .leftField)
