@@ -61,31 +61,34 @@ class PlayTest: XCTestCase {
         let batter = Player(name: "Random PlayerName", number: "00", position: .centerField)
         let aPlay = Play(game: game, description: "say something on the air", batter: batter )
         
-        aPlay.called(.single)
+        aPlay.umpCalled(.single)
 
         XCTAssertEqual( aPlay.whosOn().firstBase, batter )
         XCTAssertEqual(aPlay.runnerOutcomes.firstBaseLine.rawValue, "1B")
     }
     
     
-    func testRunnerOn_onSingleBySecondBatter() throws {
+    func testRunnerOn_firstBaseSingleBySecondBatter() throws {
         let game = Game()
+        game.setVisitorTeamLineUp()          // game needs a lineUp to populate the next batter
+        let firstPlay = game.nextBatter()
+        firstPlay.umpCalled(.single)
         
-        let batter1 = Player(name: "Runner", number: "00", position: .centerField)
-        let batter2 = Player(name: "Batter", number: "00", position: .rightField)
-        let firstPlay = Play(game: game, description: "say something on the air", batter: batter1)
-        let secondPlay = Play(game: game, description: "say something on the air", batter: batter2)
-        
-        firstPlay.called(.single)
+        XCTAssertEqual(firstPlay.whosOn().secondBase.name, "EMPTY Player")
+        XCTAssertEqual(firstPlay.whosOn().firstBase.name, "Duke Java")
+        XCTAssertEqual(firstPlay.runnerOutcomes.secondBaseLine.rawValue, "_")
 
-        firstPlay.runnerOn(.firstBase, action: .advances )
-        secondPlay.called(.single)
+        let secondPlay = game.nextBatter()
 
+        game.runnerOn(.firstBase, action: .advances)
+
+        secondPlay.umpCalled(.single)
+
+        XCTAssertEqual(secondPlay.whosOn().secondBase.name, "Duke Java")
+        XCTAssertEqual(secondPlay.whosOn().firstBase.name, "James Gosling")
+        XCTAssertEqual(secondPlay.runnerOutcomes.secondBaseLine.rawValue, "AB")
         
-        
-        XCTAssertEqual(firstPlay.whosOn().secondBase, batter1)
-        XCTAssertEqual(secondPlay.whosOn().firstBase, batter2)
-        XCTAssertEqual(firstPlay.runnerOutcomes.secondBaseLine.rawValue, "AB")
+        XCTAssertEqual(game.currentPlay().runnerOutcomes.secondBaseLine.rawValue, "AB")
     }
     
     func testRunnerOn_BasesLoadedSituation() throws {
@@ -98,22 +101,25 @@ class PlayTest: XCTestCase {
         let secondPlay = Play(game: game, description: "say something on the air", batter: batter2)
         let thirdPlay = Play(game: game, description: "say something on the air", batter: batter3)
         
-        firstPlay.called(.single)
+        firstPlay.umpCalled(.single)
 
-        firstPlay.runnerOn(.firstBase, action: .advances )
-        secondPlay.called(.single)
+        game.runnerOn(.firstBase, action: .advances )
+        secondPlay.umpCalled(.single)
 
-        firstPlay.runnerOn(.secondBase, action: .advances )
-        secondPlay.runnerOn(.firstBase, action: .advances )
-        thirdPlay.called(.single)
+        game.runnerOn(.secondBase, action: .advances )
+        game.runnerOn(.firstBase, action: .advances )
+        thirdPlay.umpCalled(.single)
         
         
-        XCTAssertEqual(firstPlay.whosOn().thirdBase, batter1)
-        XCTAssertEqual(secondPlay.whosOn().secondBase, batter2)
-        XCTAssertEqual(thirdPlay.whosOn().firstBase, batter3)
-        XCTAssertEqual(firstPlay.runnerOutcomes.thirdBaseLine.rawValue, "AB")
-        XCTAssertEqual(firstPlay.runnerOutcomes.secondBaseLine.rawValue, "AB")
-        XCTAssertEqual(secondPlay.runnerOutcomes.secondBaseLine.rawValue, "AB")
+        XCTAssertEqual(game.whosOn().thirdBase, batter1)
+        XCTAssertEqual(game.whosOn().secondBase, batter2)
+        XCTAssertEqual(game.whosOn().firstBase, batter3)
+        
+        // from thrid to home plate
+        XCTAssertEqual(game.currentPlay().runnerOutcomes.thirdBaseLine.rawValue, "AB")      // from second to third
+        XCTAssertEqual(game.currentPlay().runnerOutcomes.secondBaseLine.rawValue, "AB")       // from first to second
+        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine.rawValue, "_")        // from batter's box (arround home plate) to first
+
     }
  
     func testRunnerOn_BatterWalksBasesLoadedSituation() throws {
@@ -132,32 +138,34 @@ class PlayTest: XCTestCase {
         
         
         // having to explisitly move players around the bases - via method calls -- SUCKS << FixMe with automatic advancement
-        firstPlay.called(.single)
+        firstPlay.umpCalled(.single)
 
-        firstPlay.runnerOn(.firstBase, action: .advances )
-        secondPlay.called(.single)
+        game.runnerOn(.firstBase, action: .advances )
+        secondPlay.umpCalled(.single)
 
-        firstPlay.runnerOn(.secondBase, action: .advances )
-        secondPlay.runnerOn(.firstBase, action: .advances )
-        thirdPlay.called(.single)
+        game.runnerOn(.secondBase, action: .advances )
+        game.runnerOn(.firstBase, action: .advances )
+        thirdPlay.umpCalled(.single)
 
         // the ORDER matters a lot - you must advance runners in (play order)
-        firstPlay.runnerOn(.thirdBase, action: .advances)
-        secondPlay.runnerOn(.secondBase, action: .advances)
-        thirdPlay.runnerOn(.firstBase, action: .advances)
-        
-        fourthPlay.called(.walk)
+        game.runnerOn(.thirdBase, action: .advances)
+        game.runnerOn(.secondBase, action: .advances)
+        game.runnerOn(.firstBase, action: .advances)
+        fourthPlay.umpCalled(.walk)
         
         XCTAssertEqual(firstPlay.whosOn().homePlate.name, batter1.name)
         XCTAssertEqual(firstPlay.whosOn().thirdBase.name, batter2.name)
         XCTAssertEqual(secondPlay.whosOn().secondBase.name, batter3.name)
         XCTAssertEqual(thirdPlay.whosOn().firstBase.name, batter4.name)
         
-        XCTAssertEqual(firstPlay.runnerOutcomes.thirdBaseLine.rawValue, "AB")
-        XCTAssertEqual(firstPlay.runnerOutcomes.secondBaseLine.rawValue, "AB")
-        XCTAssertEqual(secondPlay.runnerOutcomes.secondBaseLine.rawValue, "AB")
+        let thisPlay = game.currentPlay()
+        XCTAssertEqual(thisPlay.runnerOutcomes.firstBaseLine.rawValue, "_")
+        XCTAssertEqual(thisPlay.runnerOutcomes.secondBaseLine.rawValue, "AB")
+        XCTAssertEqual(thisPlay.runnerOutcomes.thirdBaseLine.rawValue, "AB")
+        XCTAssertEqual(thisPlay.runnerOutcomes.homeBaseLine.rawValue, "SCORES")
         
-        XCTAssertEqual(firstPlay.runnerOutcomes.homeBaseLine.rawValue, "SCORES")
+        XCTAssertEqual(game.score.visitor, 1)
+        XCTAssertEqual(game.score.home, 0)
     }
     
     

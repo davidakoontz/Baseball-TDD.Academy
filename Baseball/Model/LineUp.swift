@@ -18,7 +18,7 @@ class LineUp {
     
 
 
-    func next() -> Player {
+    func nextBatterInLineUp() -> Player {
         let player = theLineup[batter]
         batter += 1
         if batter >= theLineup.count {

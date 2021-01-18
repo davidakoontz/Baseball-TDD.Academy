@@ -68,7 +68,20 @@ class GameTest: XCTestCase {
         
     }
     
+    func text_scoreAdd_forVisitorTeam() throws {
+        let game = Game()
+        let first = Inning(label: "1", game: game, top: [], bottom: [], summary: "")
+        let aGame = Game(innings: [first] )
+        
+        game.score.Add(runs: 1, teamAtBat: Team.visitor)
+        
+        XCTAssertEqual(game.score.visitor, 1)
+    }
 
+    func text_scoreAdd_forHomeTeam() {
+        
+    }
+    
     func test_nextBatter_FactoryMethodWrappsArround() throws {
         let game = Game()
         let first = Inning(label: "1", game: game, top: [], bottom: [], summary: "")

@@ -26,9 +26,9 @@ class InningTest: XCTestCase {
         let bob = Player(name: "Bob Swift", number: "3", position: .shortStop)
         let larry = Player(name: "Larry Ellison", number: "2", position: .catcher)
         let play1 = Play(game: game, description: "that a great play", batter: bob)
-        play1.called(.walk)
+        play1.umpCalled(.walk)
         let play2 = Play(game: game, description: "that a great play", batter: larry)
-        play2.called(.strikeoutLooking)
+        play2.umpCalled(.strikeoutLooking)
         
         let first = Inning(label: "1", game: game,
                               top: [ play1 ],
@@ -69,7 +69,7 @@ class InningTest: XCTestCase {
         let game = Game()
         let aPlayer = Player(name: "Test PlayerName", number: "00", position: .catcher)
         let aPlay = Play(game: game, description: "this is a test", batter: aPlayer)
-        aPlay.called(.baseOnBalls)
+        aPlay.umpCalled(.baseOnBalls)
         let firstInning = Inning(label: "1", game: game,
                                  top: [aPlay],
                                  bottom: [],
@@ -85,7 +85,7 @@ class InningTest: XCTestCase {
         let game = Game()
         let aPlayer = Player(name: "Test PlayerName", number: "00", position: .catcher)
         let aPlay = Play(game: game, description: "this is a test", batter: aPlayer)
-        aPlay.called(.baseOnBalls)
+        aPlay.umpCalled(.baseOnBalls)
         let firstInning = Inning(label: "1", game: game, top: [], bottom: [], summary: "0 to 0")
         game.appendInning(inning: firstInning)
         firstInning.append(aPlay, teamAtBat: game.whichTeamAtBat() )
@@ -100,7 +100,7 @@ class InningTest: XCTestCase {
         let game = Game()
         let aPlayer = Player(name: "Test PlayerName", number: "00", position: .catcher)
         let aPlay = Play(game: game, description: "this is a test", batter: aPlayer)
-        aPlay.called(.baseOnBalls)
+        aPlay.umpCalled(.baseOnBalls)
         let firstInning = Inning(label: "1", game: game,
                                  top: [aPlay],
                                  bottom: [],
@@ -108,7 +108,8 @@ class InningTest: XCTestCase {
         
         XCTAssertEqual(game.whichHalf(), InningHalf.top)
         
-        firstInning.appendBottom(aPlay)
+        firstInning.append(aPlay, teamAtBat: game.teamAtBat)
+        
         game.switchFields() // this should triger the inning Half change
         
         XCTAssertEqual(game.whichHalf(), InningHalf.bottom)
@@ -118,7 +119,7 @@ class InningTest: XCTestCase {
         let game = Game()
         let aPlayer = Player(name: "Test PlayerName", number: "00", position: .catcher)
         let aPlay = Play(game: game, description: "this is a test", batter: aPlayer)
-        aPlay.called(.baseOnBalls)
+        aPlay.umpCalled(.baseOnBalls)
         let firstInning = Inning(label: "1", game: game,
                                  top: [aPlay],
                                  bottom: [aPlay],

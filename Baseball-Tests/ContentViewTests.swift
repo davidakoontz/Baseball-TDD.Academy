@@ -21,14 +21,11 @@ class ContentViewTests: XCTestCase {
         let game = Game()
         let taylor = Player(name: "Taylor Swift", number: "17", position: .centerField)
         let play = Play(game: game, description: "that a great play", batter: taylor)
-        play.called(.single)
+        play.umpCalled(.single)
         
         let inning = Inning(label: "1", game: game, top: [play], bottom: [play], summary: "0 to 0")
         let arrayOfInnings: [Inning]  = [ inning]
         let aGame = Game(innings: arrayOfInnings)
-        
-        print("Inning #\( inning.label ) with a count of \(arrayOfInnings.count) innings")
-        
 
         // act
         let cView = ContentView(game: aGame)
@@ -36,8 +33,6 @@ class ContentViewTests: XCTestCase {
         let name = try cView.inspect().scrollView().lazyVGrid().forEach(0).tupleView(0).section(0).forEach(0).tupleView(0).text(2).string()
         let atBat = try cView.inspect().scrollView().lazyVGrid().forEach(0).tupleView(0).section(0).forEach(0).tupleView(0).text(4).string()
         
-        print( name )
-        print( atBat )
         // TDD - Assert step  (or BDD - THEN)
         XCTAssertEqual(name, "Taylor Swift")    
         XCTAssertEqual(atBat, "1B")
@@ -51,9 +46,9 @@ class ContentViewTests: XCTestCase {
         let taylor = Player(name: "Taylor Swift", number: "17", position: .centerField)
         let bill = Player(name: "Bill Swift", number: "18", position: .pitcher)
         let play1 = Play(game: game, description: "that a great play", batter: taylor)
-        play1.called(.walk)
+        play1.umpCalled(.walk)
         let play2 = Play(game: game, description: "that a great play", batter: bill)
-        play2.called(.strikeoutLooking)
+        play2.umpCalled(.strikeoutLooking)
         
         
         let firstInning = Inning(label: "1", game: game, top: [ play1, play2 ], bottom: [ play1, play2], summary: "0 to 0")
@@ -100,9 +95,9 @@ class ContentViewTests: XCTestCase {
         let taylor = Player(name: "Taylor Swift", number: "17", position: .centerField)
         let bill = Player(name: "Bill Swift", number: "18", position: .pitcher)
         let play1 = Play(game: game, description: "that a great play", batter: taylor)
-        play1.called(.walk)
+        play1.umpCalled(.walk)
         let play2 = Play(game: game, description: "that a great play", batter: bill)
-        play2.called(.strikeoutLooking)
+        play2.umpCalled(.strikeoutLooking)
         
         let inning1 = Inning(label: "1", game: game, top: [play1], bottom: [play2], summary: "0 to 0")
         let inning2 = Inning(label: "0", game: game, top: [play1], bottom: [play2], summary: "0 to 0")

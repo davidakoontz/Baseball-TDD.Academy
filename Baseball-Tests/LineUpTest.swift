@@ -26,23 +26,23 @@ class LineUpTest: XCTestCase {
     func test_add() {
         lineup.add(bob)
 
-        XCTAssertEqual(lineup.next(), bob)
+        XCTAssertEqual(lineup.nextBatterInLineUp(), bob)
     }
 
     func test_add_twoPeople() {
         lineup.add(bob)
         lineup.add(lance)
         
-        XCTAssertEqual(lineup.next().name, bob.name)
-        XCTAssertEqual(lineup.next().name, lance.name)
+        XCTAssertEqual(lineup.nextBatterInLineUp().name, bob.name)
+        XCTAssertEqual(lineup.nextBatterInLineUp().name, lance.name)
     }
 
     func test_read_LineUpWrappsArround() {
         lineup.add(bob)
         lineup.add(lance)
         
-        XCTAssertEqual(lineup.next().name, bob.name)
-        XCTAssertEqual(lineup.next().name, lance.name)
-        XCTAssertEqual(lineup.next().name, bob.name)
+        XCTAssertEqual(lineup.nextBatterInLineUp().name, bob.name)
+        XCTAssertEqual(lineup.nextBatterInLineUp().name, lance.name)
+        XCTAssertEqual(lineup.nextBatterInLineUp().name, bob.name)
     }
 }

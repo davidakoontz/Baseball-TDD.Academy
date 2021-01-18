@@ -18,13 +18,29 @@ public class Game: Sequence, IteratorProtocol {
     var homeLineUp = LineUp()
     var bases: Bases
     var teamAtBat: Team = Team.visitor
-    
-    var score: Int = 0   // for now just a temp construct - need home & away
+    var score: Score 
 
     //var roster: [Player]  // the platters on the team
     // future properties like home & away team names; score; play by play; etc
 
+    // MARK Init
+    init() {
+        self.innings = []
+        self.bases = Bases()
+        self.score = Score()
+    }
+    
+    init(innings: [Inning]) {
+        self.innings = innings
+        self.bases = Bases()
+        self.score = Score()
+    }
 
+    init(first: Inning, second: Inning, thrid: Inning, fourth: Inning, fifth: Inning, sixth: Inning, seventh: Inning, eighth: Inning, nineth: Inning) {
+        self.innings = [ first, second, thrid, fourth, fifth, sixth, seventh, eighth, nineth ]
+        self.bases = Bases()
+        self.score = Score()
+    }
     
     // Iterator & Sequence Protocol requires Public next method.
     public func next() -> Inning? {
@@ -48,11 +64,11 @@ public class Game: Sequence, IteratorProtocol {
     }
     
     /// returns next player to bat
-    func batterUp() -> Player {
+    private func batterUp() -> Player {
         if teamAtBat == Team.visitor {
-            return visitorLineUp.next()
+            return visitorLineUp.nextBatterInLineUp()
         } else {
-            return homeLineUp.next()
+            return homeLineUp.nextBatterInLineUp()
         }
     }
     
@@ -61,43 +77,53 @@ public class Game: Sequence, IteratorProtocol {
         let inning = currentInning()
  
         let batter = batterUp()
+        // Create a NEW Play for this batter
         let thisPlay = Play(game: self, description: "...and up to bat is...\(batter.name) number \(batter.number) playing \(batter.position)", batter: batter)
         // a play should be appended to the proper Inning half
         inning.append(thisPlay, teamAtBat: teamAtBat)
-        
+
         return thisPlay
     }
     
-//    func runnerOn(_ base: BaseNames, action: RunnerActions) {
-//        let inning = currentInning()
-//        //let play = inning.
-//        switch base {
-//        // we do not record runner actions for the box to first base line - that's done in the called()
-//        case BaseNames.firstBase:
-//            if action == RunnerActions.advances {
-//                bases.secondBase = bases.firstBase        // the player moves to second
-//            }
-//            runnerOutcomes.secondBaseLine = action
-//        case BaseNames.secondBase:
-//            if action == RunnerActions.advances {
-//                bases.thirdBase = bases.secondBase        // the player moves to third
-//            }
-//            runnerOutcomes.thirdBaseLine = action
-//        case BaseNames.thirdBase:
-//            if action == RunnerActions.advances {
-//                bases.homePlate = bases.thirdBase        // the player moves to home
-//                score += 1
-//                runnerOutcomes.homeBaseLine = action
-//                runnerOutcomes.homeBaseLine = RunnerActions.scores
-//                
-//            }
-//        case BaseNames.homePlate:
-//            // there is no action for home plate
-//            print("baseball score is \(score)")
-//        }
-//    }
     
+    
+    func runnerOn(_ base: BaseNames, action: RunnerActions) {
+        let inning = currentInning()
 
+        let play = inning.currentPlay()
+        
+        switch base {
+        // we do not record runner actions for the box to first base line - that's done in  Play.called()
+        case BaseNames.firstBase:
+            if action == RunnerActions.advances {
+                bases.secondBase = bases.firstBase        // the player moves to second
+            }
+            play.runnerOutcomes.secondBaseLine = action
+        case BaseNames.secondBase:
+            if action == RunnerActions.advances {
+                bases.thirdBase = bases.secondBase        // the player moves to third
+            }
+            play.runnerOutcomes.thirdBaseLine = action
+        case BaseNames.thirdBase:
+            if action == RunnerActions.advances {
+                bases.homePlate = bases.thirdBase        // the player moves to home
+                score.Add(runs: 1, teamAtBat: teamAtBat)
+                play.runnerOutcomes.homeBaseLine = action
+                play.runnerOutcomes.homeBaseLine = RunnerActions.scores
+            }
+        case BaseNames.homePlate:
+            // there is no action for home plate
+            print("baseball score is \(score.visitor) to \(score.home)")
+        }
+    }
+    
+    func currentPlay() -> Play {
+        return currentInning().currentPlay()
+    }
+    
+    func whosOn() -> Bases {
+        return bases        // should this be a copy?
+    }
     
     // MARK Inning operations
     
@@ -124,8 +150,11 @@ public class Game: Sequence, IteratorProtocol {
     }
     
     func currentInning() -> Inning {
+        // Create the First Inning if none exist. then return it.
         if inningCount() <= 0 {
-            return EmptyInning(game: self)
+            let first = Inning(label: "1", game: self, top: [], bottom: [], summary: "0 to 0")
+            innings.append(first)
+            return first
         }
         return innings[inningCount()-1]
     }
@@ -134,22 +163,7 @@ public class Game: Sequence, IteratorProtocol {
         return innings.count
     }
     
-    // MARK Init
-    
-    init() {
-        self.innings = []
-        self.bases = Bases()
-    }
-    
-    init(innings: [Inning]) {
-        self.innings = innings
-        self.bases = Bases()
-    }
 
-    init(first: Inning, second: Inning, thrid: Inning, fourth: Inning, fifth: Inning, sixth: Inning, seventh: Inning, eighth: Inning, nineth: Inning) {
-        self.innings = [ first, second, thrid, fourth, fifth, sixth, seventh, eighth, nineth ]
-        self.bases = Bases()
-    }
     
     func setVisitorTeamLineUp() {
         let Duke = Player(name: "Duke Java", number: "33", position: .leftField)
@@ -267,6 +281,18 @@ public class Game: Sequence, IteratorProtocol {
 } // end of Game class
 
 
+public struct Score {
+    var visitor = 0
+    var home = 0
+    
+    mutating func Add(runs: Int, teamAtBat: Team) {
+        if teamAtBat == Team.visitor {
+            visitor += runs
+        } else {
+            home += runs
+        }
+    }
+}
 
 public enum Team: String {
     case visitor = "Visitors"

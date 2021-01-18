@@ -39,7 +39,7 @@ class PlayerRowView_UI_Test: XCTestCase {
         XCTAssertTrue( app.staticTexts["#17"].exists )
         XCTAssertTrue( app.staticTexts["Taylor Swift"].exists )
         XCTAssertTrue( app.staticTexts["8"].exists )
-        XCTAssertTrue( app.staticTexts["BB"].exists )
+        XCTAssertTrue( app.staticTexts["W"].exists )
         
     }
 

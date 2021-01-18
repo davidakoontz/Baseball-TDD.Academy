@@ -49,7 +49,7 @@ public class Play: Identifiable {
         runnerOutcomes = RunnerOutcomes()
     }
     
-    func called(_ atBat: AtBat) {        // called by Umpire
+    func umpCalled(_ atBat: AtBat) {        // called by Umpire
         self.atBat = atBat
         switch atBat {
         //        case .balk, .baseOnBalls, .walk:
@@ -67,7 +67,7 @@ public class Play: Identifiable {
         return game.bases        // should this be a copy?
     }
     
-    func runnerOn(_ base: BaseNames, action: RunnerActions) {
+    func playRunnerOn(_ base: BaseNames, action: RunnerActions) {
         switch base {
         // we do not record runner actions for the box to first base line - that's done in the called()
         case BaseNames.firstBase:
@@ -83,10 +83,10 @@ public class Play: Identifiable {
         case BaseNames.thirdBase:
             if action == RunnerActions.advances {
                 game.bases.homePlate = game.bases.thirdBase        // the player moves to home
-                
+
                 runnerOutcomes.homeBaseLine = action
                 runnerOutcomes.homeBaseLine = RunnerActions.scores
-                game.score += 1
+               // game.score.Add(runs: 1, teamAtBat: teamAtBat)
             }
         case BaseNames.homePlate:
             // there is no action for home plate
@@ -114,8 +114,8 @@ struct RunnerOutcomes {
 
 
 enum RunnerActions: String {
-    case blank = "_"        // an empty or blank runner action
-    case advances = "AB"    // with a batter number e.g. AB4 = Advanced by Batter #4 in line up
+    case blank = "_"                // an empty or blank runner action
+    case advances = "AB"            // with a batter number e.g. AB4 = Advanced by Batter #4 in line up
     case caughtStealing = "CS"
     case baseIsHeld = "H"
     case scores = "SCORES"
