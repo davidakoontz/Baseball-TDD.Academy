@@ -15,7 +15,9 @@ Adding other atBat types…
     Requires: getting current Play from Inning and setting RunnerOutcomes
     Requires: Play.whosOn() moving to Game also.
 - [x] Counting of score (Visitor & Home) in Struct on Game.score.
+
     Also:
+    
     Play.called() >> umpCalled();  runnerOn() >> playRunnerOn() - and deprecated ;;
     LineUp.next() >> nextBatterInLineUp() ... to distinguish from other nextBatter methods.
     Inning.appendTop() .appendBottom() made private - use .append( play, teamAtBat)
