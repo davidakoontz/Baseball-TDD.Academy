@@ -97,11 +97,31 @@ public class Game: Sequence, IteratorProtocol {
         case BaseNames.firstBase:
             if action == RunnerActions.advances {
                 bases.secondBase = bases.firstBase        // the player moves to second
+            } else if action == RunnerActions.advances2 {
+                bases.thirdBase = bases.firstBase
+                play.runnerOutcomes.thirdBaseLine = action
+            } else if action == RunnerActions.advances3 {
+                bases.homePlate = bases.firstBase
+                play.runnerOutcomes.homeBaseLine = action
+                play.runnerOutcomes.thirdBaseLine = action
+                play.runnerOutcomes.homeBaseLine = RunnerActions.scores
+                score.Add(runs: 1, teamAtBat: teamAtBat)
             }
             play.runnerOutcomes.secondBaseLine = action
         case BaseNames.secondBase:
             if action == RunnerActions.advances {
                 bases.thirdBase = bases.secondBase        // the player moves to third
+            } else if action == RunnerActions.advances2 {
+                bases.homePlate = bases.secondBase
+                play.runnerOutcomes.homeBaseLine = action
+                play.runnerOutcomes.homeBaseLine = RunnerActions.scores
+                score.Add(runs: 1, teamAtBat: teamAtBat)
+            } else if action == RunnerActions.advances3 {
+                bases.homePlate = bases.secondBase
+                play.runnerOutcomes.thirdBaseLine = action
+                play.runnerOutcomes.homeBaseLine = action
+                play.runnerOutcomes.homeBaseLine = RunnerActions.scores
+                score.Add(runs: 1, teamAtBat: teamAtBat)
             }
             play.runnerOutcomes.thirdBaseLine = action
         case BaseNames.thirdBase:
@@ -110,6 +130,16 @@ public class Game: Sequence, IteratorProtocol {
                 score.Add(runs: 1, teamAtBat: teamAtBat)
                 play.runnerOutcomes.homeBaseLine = action
                 play.runnerOutcomes.homeBaseLine = RunnerActions.scores
+            } else if action == RunnerActions.advances2 {
+                bases.homePlate = bases.thirdBase
+                play.runnerOutcomes.homeBaseLine = action
+                play.runnerOutcomes.homeBaseLine = RunnerActions.scores
+                score.Add(runs: 1, teamAtBat: teamAtBat)
+            } else if action == RunnerActions.advances3 {
+                bases.homePlate = bases.thirdBase
+                play.runnerOutcomes.homeBaseLine = action
+                play.runnerOutcomes.homeBaseLine = RunnerActions.scores
+                score.Add(runs: 1, teamAtBat: teamAtBat)
             }
         case BaseNames.homePlate:
             // there is no action for home plate

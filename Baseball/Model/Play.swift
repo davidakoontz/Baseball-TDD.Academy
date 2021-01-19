@@ -52,6 +52,10 @@ public class Play: Identifiable {
     func umpCalled(_ atBat: AtBat) {        // called by Umpire
         self.atBat = atBat
         switch atBat {
+        case .triple:
+            game.bases.thirdBase = batter
+            runnerOutcomes.firstBaseLine = atBat
+            
         //        case .balk, .baseOnBalls, .walk:
         //            runnerOutcomes.firstBase = batter
         //        case .single:
@@ -83,6 +87,8 @@ struct RunnerOutcomes {
 enum RunnerActions: String {
     case blank = "_"                // an empty or blank runner action
     case advances = "AB"            // with a batter number e.g. AB4 = Advanced by Batter #4 in line up
+    case advances2 = "2xAB"         // Advanced 2 bases by Batter X
+    case advances3 = "3xAB"         // Advances 3 bases by Batter X
     case caughtStealing = "CS"
     case baseIsHeld = "H"
     case scores = "SCORES"

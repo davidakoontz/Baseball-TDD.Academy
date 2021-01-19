@@ -68,9 +68,10 @@ class PlayTest: XCTestCase {
     }
     
     
-    func testRunnerOn_firstBaseSingleBySecondBatter() throws {
+    func test_runnerOn_firstBaseSingleBySecondBatter() throws {
         let game = Game()
         game.setVisitorTeamLineUp()          // game needs a lineUp to populate the next batter
+        
         let firstPlay = game.nextBatter()
         firstPlay.umpCalled(.single)
         
@@ -79,9 +80,7 @@ class PlayTest: XCTestCase {
         XCTAssertEqual(firstPlay.runnerOutcomes.secondBaseLine.rawValue, "_")
 
         let secondPlay = game.nextBatter()
-
         game.runnerOn(.firstBase, action: .advances)
-
         secondPlay.umpCalled(.single)
 
         XCTAssertEqual(game.whosOn().secondBase.name, "Duke Java")
@@ -91,75 +90,87 @@ class PlayTest: XCTestCase {
         XCTAssertEqual(game.currentPlay().runnerOutcomes.secondBaseLine.rawValue, "AB")
     }
     
-    func testRunnerOn_BasesLoadedSituation() throws {
+    func test_runnerOn_BasesLoadedSituation() throws {
         let game = Game()
-        
-        let batter1 = Player(name: "Runner 1", number: "1", position: .centerField)
-        let batter2 = Player(name: "Runner 2", number: "2", position: .rightField)
-        let batter3 = Player(name: "Batter", number: "3", position: .leftField)
-        let firstPlay = Play(game: game, description: "say something on the air", batter: batter1)
-        let secondPlay = Play(game: game, description: "say something on the air", batter: batter2)
-        let thirdPlay = Play(game: game, description: "say something on the air", batter: batter3)
-        
+        game.setVisitorTeamLineUp()          // game needs a lineUp to populate the next batter
+        //        let Duke = Player(name: "Duke Java", number: "33", position: .leftField)
+        //        let James = Player(name: "James Gosling", number: "4", position: .thirdBase)
+        //        let Scott = Player(name: "Scott McNealy", number: "37", position: .centerField)
+        //        let BillJoy = Player(name: "Bill Joy", number: "39", position: .rightField)
+        //        let Andy = Player(name: "Andy Bechtolsheim", number: "41", position: .pitcher)
+        //        let Larry = Player(name: "Larry Ellison", number: "2", position: .catcher)
+        //        let Sun  = Player(name: "Sun Li", number: "62", position: .firstBase)
+        //        let Tzu = Player(name: "Sun Tzu", number: "99", position: .secondBase)
+        //        let Nike = Player(name: "Nike Sun", number: "42", position: .shortStop)
+        let firstPlay = game.nextBatter()
         firstPlay.umpCalled(.single)
 
+        let secondPlay = game.nextBatter()
         game.runnerOn(.firstBase, action: .advances )
         secondPlay.umpCalled(.single)
 
+        let thirdPlay = game.nextBatter()
         game.runnerOn(.secondBase, action: .advances )
         game.runnerOn(.firstBase, action: .advances )
         thirdPlay.umpCalled(.single)
         
+        let fourthPlay = game.nextBatter()
+        game.runnerOn(.thirdBase, action: .advances )
+        game.runnerOn(.secondBase, action: .advances )
+        game.runnerOn(.firstBase, action: .advances )
+        fourthPlay.umpCalled(.single)
         
-        XCTAssertEqual(game.whosOn().thirdBase, batter1)
-        XCTAssertEqual(game.whosOn().secondBase, batter2)
-        XCTAssertEqual(game.whosOn().firstBase, batter3)
+        XCTAssertEqual(game.whosOn().homePlate.name, "Duke Java")
+        XCTAssertEqual(game.whosOn().thirdBase.name, "James Gosling")
+        XCTAssertEqual(game.whosOn().secondBase.name, "Scott McNealy")
+        XCTAssertEqual(game.whosOn().firstBase.name, "Bill Joy")
         
-        // from thrid to home plate
-        XCTAssertEqual(game.currentPlay().runnerOutcomes.thirdBaseLine.rawValue, "AB")      // from second to third
-        XCTAssertEqual(game.currentPlay().runnerOutcomes.secondBaseLine.rawValue, "AB")       // from first to second
-        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine.rawValue, "_")        // from batter's box (arround home plate) to first
-
+        let runners = game.currentPlay().runnerOutcomes
+        XCTAssertEqual(runners.homeBaseLine.rawValue, "SCORES")      // from second to third
+        XCTAssertEqual(runners.thirdBaseLine.rawValue, "AB")      // from second to third
+        XCTAssertEqual(runners.secondBaseLine.rawValue, "AB")       // from first to second
+        XCTAssertEqual(runners.firstBaseLine.rawValue, "1B")        // from batter's box (arround home plate) to first
     }
  
-    func testRunnerOn_BatterWalksBasesLoadedSituation() throws {
+    func test_runnerOn_BatterWalksBasesLoadedSituation() throws {
         let game = Game()
-        
-        let batter1 = Player(name: "Runner 1", number: "1", position: .centerField)
-        let batter2 = Player(name: "Runner 2", number: "2", position: .rightField)
-        let batter3 = Player(name: "Runner 3", number: "3", position: .leftField)
-        
-        let batter4 = Player(name: "Batter 4", number: "4", position: .firstBase)
-        
-        let firstPlay = Play(game: game, description: "say something on the air", batter: batter1)
-        let secondPlay = Play(game: game, description: "say something on the air", batter: batter2)
-        let thirdPlay = Play(game: game, description: "say something on the air", batter: batter3)
-        let fourthPlay = Play(game: game, description: "say something on the air", batter: batter4)
-        
+        game.setVisitorTeamLineUp()          // game needs a lineUp to populate the next batter
+        //        let Duke = Player(name: "Duke Java", number: "33", position: .leftField)
+        //        let James = Player(name: "James Gosling", number: "4", position: .thirdBase)
+        //        let Scott = Player(name: "Scott McNealy", number: "37", position: .centerField)
+        //        let BillJoy = Player(name: "Bill Joy", number: "39", position: .rightField)
+        //        let Andy = Player(name: "Andy Bechtolsheim", number: "41", position: .pitcher)
+        //        let Larry = Player(name: "Larry Ellison", number: "2", position: .catcher)
+        //        let Sun  = Player(name: "Sun Li", number: "62", position: .firstBase)
+        //        let Tzu = Player(name: "Sun Tzu", number: "99", position: .secondBase)
+        //        let Nike = Player(name: "Nike Sun", number: "42", position: .shortStop)
+        let firstPlay = game.nextBatter()
+        firstPlay.umpCalled(.single)
         
         // having to explisitly move players around the bases - via method calls -- SUCKS << FixMe with automatic advancement
-        firstPlay.umpCalled(.single)
-
+        let secondPlay = game.nextBatter()
         game.runnerOn(.firstBase, action: .advances )
         secondPlay.umpCalled(.single)
 
+        let thirdPlay = game.nextBatter()
         game.runnerOn(.secondBase, action: .advances )
         game.runnerOn(.firstBase, action: .advances )
         thirdPlay.umpCalled(.single)
 
         // the ORDER matters a lot - you must advance runners in (play order)
+        let fourthPlay = game.nextBatter()
         game.runnerOn(.thirdBase, action: .advances)
         game.runnerOn(.secondBase, action: .advances)
         game.runnerOn(.firstBase, action: .advances)
         fourthPlay.umpCalled(.walk)
         
-        XCTAssertEqual(game.whosOn().homePlate.name, batter1.name)
-        XCTAssertEqual(game.whosOn().thirdBase.name, batter2.name)
-        XCTAssertEqual(game.whosOn().secondBase.name, batter3.name)
-        XCTAssertEqual(game.whosOn().firstBase.name, batter4.name)
+        XCTAssertEqual(game.whosOn().homePlate.name, "Duke Java")
+        XCTAssertEqual(game.whosOn().thirdBase.name, "James Gosling")
+        XCTAssertEqual(game.whosOn().secondBase.name, "Scott McNealy")
+        XCTAssertEqual(game.whosOn().firstBase.name, "Bill Joy")
         
         let thisPlay = game.currentPlay()
-        XCTAssertEqual(thisPlay.runnerOutcomes.firstBaseLine.rawValue, "_")
+        XCTAssertEqual(thisPlay.runnerOutcomes.firstBaseLine.rawValue, "W")
         XCTAssertEqual(thisPlay.runnerOutcomes.secondBaseLine.rawValue, "AB")
         XCTAssertEqual(thisPlay.runnerOutcomes.thirdBaseLine.rawValue, "AB")
         XCTAssertEqual(thisPlay.runnerOutcomes.homeBaseLine.rawValue, "SCORES")
@@ -169,14 +180,30 @@ class PlayTest: XCTestCase {
     }
     
     
-//    func testrunnerAdvances_RunnerScoresARun() throws {
-//        let batter = Player(name: "Random PlayerName", number: "00", position: .centerField)
-//        let aPlay = Play(description: "say something on the air", batter: batter, atBat: AtBat.single )
-//        aPlay.runnerAdvances(action: .advances, base: Bases.thirdBase )
-//
-//        XCTAssertEqual( aPlay.whosonbase().thirdBase, .advances)
-//        XCTAssertEqual( aPlay.whosonbase()().home, .aRun)
-//    }
+    func test_runnerOn_RunnerScoresARun() throws {
+        let game = Game()
+        game.setVisitorTeamLineUp()          // game needs a lineUp to populate the next batter
+        //        let Duke = Player(name: "Duke Java", number: "33", position: .leftField)
+        //        let James = Player(name: "James Gosling", number: "4", position: .thirdBase)
+        //        let Scott = Player(name: "Scott McNealy", number: "37", position: .centerField)
+        //        let BillJoy = Player(name: "Bill Joy", number: "39", position: .rightField)
+        //        let Andy = Player(name: "Andy Bechtolsheim", number: "41", position: .pitcher)
+        //        let Larry = Player(name: "Larry Ellison", number: "2", position: .catcher)
+        //        let Sun  = Player(name: "Sun Li", number: "62", position: .firstBase)
+        //        let Tzu = Player(name: "Sun Tzu", number: "99", position: .secondBase)
+        //        let Nike = Player(name: "Nike Sun", number: "42", position: .shortStop)
+        let firstPlay = game.nextBatter()
+        firstPlay.umpCalled(.single)
+
+        let secondPlay = game.nextBatter()          // must call nextBatter() before runnerOn()
+        game.runnerOn(.firstBase, action: .advances3)
+        
+        secondPlay.umpCalled(AtBat.triple)
+        
+        XCTAssertEqual( game.whosOn().thirdBase.name, "James Gosling")
+        XCTAssertEqual( game.whosOn().homePlate.name , "Duke Java")
+        XCTAssertEqual( game.score.visitor, 1)
+    }
   
     
     //        func testrunnerAdvances_CaughtStealing() throws {
