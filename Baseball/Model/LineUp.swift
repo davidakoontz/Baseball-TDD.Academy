@@ -19,16 +19,23 @@ class LineUp {
 
 
     func nextBatterInLineUp() -> Player {
-        let player = theLineup[batter]
-        batter += 1
-        if batter >= theLineup.count {
-            batter = 0
+        if theLineup.count >= 1 {               // check for Index out of range Fatal error
+            let player = theLineup[batter]
+            batter += 1
+            if batter >= theLineup.count {
+                batter = 0
+            }
+            return player
+        } else {
+            return EmptyPlayer()
         }
-        return player
-        
     }
     
     func add(_ batter: Player) {
         theLineup.append( batter )
+    }
+    
+    func assign(list: [Player]) {
+        theLineup = list
     }
 }

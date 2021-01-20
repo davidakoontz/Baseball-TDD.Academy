@@ -45,4 +45,9 @@ class LineUpTest: XCTestCase {
         XCTAssertEqual(lineup.nextBatterInLineUp().name, lance.name)
         XCTAssertEqual(lineup.nextBatterInLineUp().name, bob.name)
     }
+    
+    func test_read_LineUpIsEmpty() {
+        
+        XCTAssertEqual(lineup.nextBatterInLineUp().name, "Empty Player")
+    }
 }
