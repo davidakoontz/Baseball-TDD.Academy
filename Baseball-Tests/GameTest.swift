@@ -228,6 +228,18 @@ class GameTest: XCTestCase {
        
     }
     
+    func test_setLineUp_withList() throws {
+        let game = Game()
+        
+        game.setVisitorTeamLineUp()
+        game.setLineUp(lineUp: game.getDefaultTeamLineUp(), team: Team.home)
+        
+        
+        XCTAssertEqual(game.visitorLineUp.theLineup.count, 9)
+        XCTAssertEqual(game.homeLineUp.theLineup.count, 9)
+        
+        XCTAssertEqual(game.nextBatter().batter.name, "Duke Java")
+    }
     
     
 }

@@ -15,13 +15,17 @@ struct Baseball_App: App {
     //let players: [Player] = []
     //let players: [Player] = Bundle.main.decode([Player].self, from: "data.json")
     //let player = Bundle.main.decode(Player.self, from: "data.json")
- 
+    
     var game = Game(innings: Game.exampleInnings)
-
+    
+    // remember which tab View we were on last time we ran the app
+    @SceneStorage("selectedView") var selectedView: String?
+    
     
     var body: some Scene {
         WindowGroup {
-            ContentView(game: game)
+            ContentView()
+                .environmentObject(game)
         }
     }
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class Game: Sequence, IteratorProtocol {
+public class Game: Sequence, IteratorProtocol, ObservableObject {
     
     // Alis for IteratorProtocol requirement
     public typealias Element = Inning
@@ -23,7 +23,7 @@ public class Game: Sequence, IteratorProtocol {
     //var roster: [Player]  // the platters on the team
     // future properties like home & away team names; score; play by play; etc
 
-    // MARK Init
+    // MARK: Init methods
     init() {
         self.innings = []
         self.bases = Bases()
@@ -42,6 +42,7 @@ public class Game: Sequence, IteratorProtocol {
         self.score = Score()
     }
     
+    // MARK: Iterator methods
     // Iterator & Sequence Protocol requires Public next method.
     public func next() -> Inning? {
        
@@ -52,7 +53,13 @@ public class Game: Sequence, IteratorProtocol {
     }
 
 
-
+    // MARK: Inning methods
+    
+    func appendInning(inning: Inning) {
+        let currentInning = innings.count + 1
+        inning.setLabel( String(currentInning) )
+        innings.append(inning)
+    }
     
     public func switchFields() {
         // after 3 outs the teams switch fields
@@ -62,6 +69,38 @@ public class Game: Sequence, IteratorProtocol {
             teamAtBat = Team.visitor
         }
     }
+    
+      func whichTeamAtBat() -> Team {
+          return teamAtBat
+      }
+      
+      func whichInning() -> Int {
+          return innings.count
+      }
+      
+      func whichHalf() -> InningHalf {
+          if teamAtBat == Team.visitor {
+              return InningHalf.top
+          } else {
+              return InningHalf.bottom
+          }
+      }
+      
+      func currentInning() -> Inning {
+          // Create the First Inning if none exist. then return it.
+          if inningCount() <= 0 {
+              let first = Inning(label: "1", game: self, top: [], bottom: [], summary: "0 to 0")
+              innings.append(first)
+              return first
+          }
+          return innings[inningCount()-1]
+      }
+      
+      func inningCount() -> Int {
+          return innings.count
+      }
+    
+    // MARK: Batter methods
     
     /// returns next player to bat
     private func batterUp() -> Player {
@@ -85,7 +124,7 @@ public class Game: Sequence, IteratorProtocol {
         return thisPlay
     }
     
-    
+    // MARK: Runner methods
     
     func runnerOn(_ base: BaseNames, action: RunnerActions) {
         let inning = currentInning()
@@ -155,45 +194,52 @@ public class Game: Sequence, IteratorProtocol {
         return bases        // should this be a copy?
     }
     
-    // MARK Inning operations
-    
-    func appendInning(inning: Inning) {
-        let currentInning = innings.count + 1
-        inning.setLabel( String(currentInning) )
-        innings.append(inning)
-    }
-  
-    func whichTeamAtBat() -> Team {
-        return teamAtBat
-    }
-    
-    func whichInning() -> Int {
-        return innings.count
-    }
-    
-    func whichHalf() -> InningHalf {
-        if teamAtBat == Team.visitor {
-            return InningHalf.top
-        } else {
-            return InningHalf.bottom
-        }
-    }
-    
-    func currentInning() -> Inning {
-        // Create the First Inning if none exist. then return it.
-        if inningCount() <= 0 {
-            let first = Inning(label: "1", game: self, top: [], bottom: [], summary: "0 to 0")
-            innings.append(first)
-            return first
-        }
-        return innings[inningCount()-1]
-    }
-    
-    func inningCount() -> Int {
-        return innings.count
-    }
-    
 
+
+
+    // MARK: Team LineUp methods
+    
+    func setLineUp( lineUp: [Player], team: Team ) {
+        if team == Team.home {
+            homeLineUp.assign(list: lineUp)
+        } else {
+            visitorLineUp.assign(list: lineUp)
+        }
+    }
+    
+    func getDefaultTeamLineUp() ->  [Player]  {
+        let player1 = Player(name: "Player 1", number: "33", position: .shortStop)
+        let player2 = Player(name: "Player 2", number: "4",  position: .leftField)
+        let player3 = Player(name: "Player 3", number: "37", position: .centerField)
+        let player4 = Player(name: "Player 4", number: "39", position: .rightField)
+        let player5 = Player(name: "Player 5", number: "41", position: .pitcher)
+        let player6 = Player(name: "Player 6", number: "2",  position: .catcher)
+        let player7 = Player(name: "Player 7", number: "62", position: .firstBase)
+        let player8 = Player(name: "Player 8", number: "99", position: .secondBase)
+        let player9 = Player(name: "Player 9", number: "42", position: .thirdBase)
+        return [player1, player2, player3, player4, player5, player6, player7, player8, player9]
+    }
+    
+    func setHomeTeamLineUp() {
+        let player1 = Player(name: "Taylor Swift", number: "17", position: .centerField)
+        let player2 = Player(name: "Bill Swift", number: "18",  position: .pitcher)
+        let player3 = Player(name: "Jonathan Swift", number: "67", position: .leftField)
+        let player4 = Player(name: "Bob Swift", number: "8", position: .catcher)
+        let player5 = Player(name: "Kay Swift", number: "87", position: .firstBase)
+        let player6 = Player(name: "Patrick Swift", number: "55",  position: .secondBase)
+        let player7 = Player(name: "Todd Swift", number: "73", position: .thirdBase)
+        let player8 = Player(name: "Connor Swift", number: "6", position: .rightField)
+        let player9 = Player(name: "Ellen Swift", number: "88", position: .shortStop)
+        homeLineUp.add(player1)
+        homeLineUp.add(player2)
+        homeLineUp.add(player3)
+        homeLineUp.add(player4)
+        homeLineUp.add(player5)
+        homeLineUp.add(player6)
+        homeLineUp.add(player7)
+        homeLineUp.add(player8)
+        homeLineUp.add(player9)
+    }
     
     func setVisitorTeamLineUp() {
         let Duke = Player(name: "Duke Java", number: "33", position: .leftField)
@@ -230,7 +276,7 @@ public class Game: Sequence, IteratorProtocol {
         // home team (bottom of innings)
     static let taylor = Player(name: "Taylor Swift", number: "17", position: .centerField)
     static let bill = Player(name: "Bill Swift", number: "18", position: .pitcher)
-    static let jonathan = Player(name: "Jonathan Swift", number: "67", position: .secondBase)
+    static let jonathan = Player(name: "Jonathan Swift", number: "67", position: .leftField)
     static let bob = Player(name: "Bob Swift", number: "8", position: .catcher)
     static let kay = Player(name: "Kay Swift", number: "87", position: .firstBase)
     static let patrick = Player(name: "Patrick Swift", number: "55", position: .secondBase)
