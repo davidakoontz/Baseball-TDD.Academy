@@ -64,6 +64,16 @@
                </Test>
             </SkippedTests>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "6302304525B7D78C00335203"
+               BuildableName = "Baseball-ViewTests.xctest"
+               BlueprintName = "Baseball-ViewTests"
+               ReferencedContainer = "container:Baseball-TDDAcademy.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

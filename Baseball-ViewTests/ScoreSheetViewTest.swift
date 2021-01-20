@@ -12,9 +12,9 @@ import ViewInspector // 1. step ONE of ViewInspector
 @testable import Baseball
 
 
-extension ContentView: Inspectable {} // 2. step TWO Extend the View to be Inspectable
+extension ScoreSheetView: Inspectable {} // 2. step TWO Extend the View to be Inspectable
 
-class ContentViewTests: XCTestCase {
+class ScoreSheetViewTest: XCTestCase {
     
     func test_Has_a_Player() throws {
         // arrange
@@ -28,15 +28,15 @@ class ContentViewTests: XCTestCase {
         let aGame = Game(innings: arrayOfInnings)
 
         // act
-        let cView = ContentView(game: aGame)
+        let cView = ScoreSheetView().environmentObject(game)
         
         let name = try cView.inspect().scrollView().lazyVGrid().forEach(0).tupleView(0).section(0).forEach(0).tupleView(0).text(2).string()
         let atBat = try cView.inspect().scrollView().lazyVGrid().forEach(0).tupleView(0).section(0).forEach(0).tupleView(0).text(4).string()
         
         // TDD - Assert step  (or BDD - THEN)
-        XCTAssertEqual(name, "Taylor Swift")    
+        XCTAssertEqual(name, "Taylor Swift")
         XCTAssertEqual(atBat, "1B")
-        
+
     }
     
 
@@ -58,7 +58,7 @@ class ContentViewTests: XCTestCase {
         print("Inning #\( firstInning.label ) with a count of \(arrayOfInnings.count) innings")
         
         // act
-        let cView = ContentView(game: aGame)
+        let cView = ScoreSheetView().environmentObject(aGame)
 
 
         let jersey = try cView.inspect().scrollView().lazyVGrid().forEach(0).tupleView(0).section(0).forEach(0).tupleView(0).text(1).string()
@@ -109,7 +109,7 @@ class ContentViewTests: XCTestCase {
         
         // Currently the ContentView -> PlayerRowView -> HStack ->  Text...
         // act
-        let cView = ContentView(game: aGame)
+        let cView = ScoreSheetView().environmentObject(aGame)
         
         let inningNo = try cView.inspect().scrollView().lazyVGrid().forEach(0).tupleView(0).section(0).header().text().string()
        

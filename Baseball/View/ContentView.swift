@@ -1,77 +1,60 @@
 //
 //  ContentView.swift
-//  Baseball-TDD
+//  Baseball
 //
-//  Created by David on 10/4/20.
+//  Created by David on 1/18/21.
 //
 
 import SwiftUI
 
 struct ContentView: View {
-    var game: Game
-//    var game: [Inning]
-//    var players : [Player]
-
-    // see: https://swiftwithmajid.com/2020/07/08/mastering-grids-in-swiftui/
-    // layout of our player grid
-    var columns: [GridItem] = [
-        GridItem(.fixed(10)),   // left margin
-        GridItem(.fixed(40), spacing: 16, alignment: .trailing),    // player number
-        GridItem(.fixed(200), spacing: 16, alignment: .leading),    // name
-        GridItem(.fixed(20), spacing: 16),                          // position
-        GridItem(.fixed(80), spacing: 16)                           // atBat outcome
-    ]
     
-    //swiftlint:disable large_tuple
-    fileprivate func playerRowView(plays: [Play])
-        -> ForEach<[Play], String, TupleView<(Spacer, Text, Text, Text, Text)>> {
-        return ForEach(plays) { play in
-            Spacer()
-            Text("#\(play.batter.number)")
-            Text(play.batter.name)
-            Text(play.batter.position.rawValue)
-            Text(play.atBat.rawValue)     //  is a Enum AtBat
-        }
-    }
+    @EnvironmentObject var game: Game
+    
+    // per Scene storage - not App storage - Scene is an instance of the App running on the device
+    // remember which tab View we were on last time we ran the app
+    @SceneStorage("selectedView") var selectedView: String?
     
     var body: some View {
-        
-        if game.innings.isEmpty {
-            Text("No Players!")
-        } else {
-            ScrollView {
-                LazyVGrid(columns: columns,
-                          alignment: .center,
-                          spacing: 16,
-                          pinnedViews: [.sectionHeaders, .sectionFooters]
-                ) {
-                    ForEach(game.innings, id: \.self.label ) { inning in
-                        //let inning = game.next()!       // OUCH! unwrap innings
-                        let visitorsPlays = inning.top
-                        let homeTeamPlays = inning.bottom
-                        
-                        Section(header: Text("Visiting Team" + " - inning #\(inning.label)").font(.title2)) {
-                            playerRowView(plays: visitorsPlays)
-                        }
-                        
-                        
-                        Section(header: Text("Home Team" + " - inning #\(inning.label)").font(.title2), footer: Text("score: \(inning.summary)")) {
-                            playerRowView(plays: homeTeamPlays)
-                        }
-                        
-                    } // for loop
-                    
+        TabView(selection: $selectedView) {
+            ScoreSheetView()
+                .tag(ScoreSheetView.tag)
+                .tabItem {
+                    Image(systemName: "scroll")
+                    Text("ScoreSheet")
                 }
-                //Text("Game final score: 0 to 0")  // game.finalScore
-            } // ScrollView
-        } // if else
+            
+            
+            ScoreGameView()
+                .tag(ScoreGameView.addGameTag)
+                .tabItem {
+                    Image(systemName: "rectangle.stack.badge.plus")
+                    Text("Add Game")
+                }
+            
+            
+            ConfigView()
+                .tag(ConfigView.configTag)
+                .tabItem {
+                    Image(systemName: "slider.horizontal.3")
+                    Text("Config")
+                }
+            
+//            AwardsView()
+//                .tag(AwardsView.tag)
+//                .tabItem {
+//                    Image(systemName: "rosette")
+//                    Text("Awards")
+//                }
+        }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
+  
     static var previews: some View {
-        
-        //ContentView(players: Player.example)
-        ContentView(game: Game.example)
+        ContentView()
+            .environmentObject( Game(innings: Game.exampleInnings) )
     }
+    
 }

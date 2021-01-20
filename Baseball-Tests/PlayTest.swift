@@ -56,7 +56,7 @@ class PlayTest: XCTestCase {
     
 
 
-    func test_called_Single() throws {
+    func test_umpCalled_Single() throws {
         let game = Game()
         let batter = Player(name: "Random PlayerName", number: "00", position: .centerField)
         let aPlay = Play(game: game, description: "say something on the air", batter: batter )
@@ -75,7 +75,7 @@ class PlayTest: XCTestCase {
         let firstPlay = game.nextBatter()
         firstPlay.umpCalled(.single)
         
-        XCTAssertEqual(game.whosOn().secondBase.name, "EMPTY Player")
+        XCTAssertEqual(game.whosOn().secondBase.name, "Empty Player")
         XCTAssertEqual(game.whosOn().firstBase.name, "Duke Java")
         XCTAssertEqual(firstPlay.runnerOutcomes.secondBaseLine.rawValue, "_")
 

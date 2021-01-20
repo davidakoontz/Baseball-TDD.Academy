@@ -67,7 +67,7 @@ extension Player: Equatable {
 
 class EmptyPlayer : Player{
     init() {
-        super.init(name:"EMPTY Player", number: "0", position: .designatedHitter)
+        super.init(name:"Empty Player", number: "0", position: .designatedHitter)
     }
 }
 

@@ -9,12 +9,18 @@
 /* Begin PBXBuildFile section */
 		63022FF825B001D600335203 /* LineUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63022FF725B001D600335203 /* LineUp.swift */; };
 		63022FFD25B001F800335203 /* LineUpTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63022FFC25B001F800335203 /* LineUpTest.swift */; };
-		63215BDF255F3C3E007F006A /* ContentViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63215BDE255F3C3E007F006A /* ContentViewTests.swift */; };
+		6302301125B6885C00335203 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6302301025B6885C00335203 /* ContentView.swift */; };
+		6302301625B688DC00335203 /* ScoreGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6302301525B688DC00335203 /* ScoreGameView.swift */; };
+		6302301B25B689ED00335203 /* SelectSomethingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6302301A25B689ED00335203 /* SelectSomethingView.swift */; };
+		6302302925B74B2600335203 /* ConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6302302825B74B2600335203 /* ConfigView.swift */; };
+		6302304925B7D78C00335203 /* Baseball_ViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6302304825B7D78C00335203 /* Baseball_ViewTests.swift */; };
+		6302305425B7D79F00335203 /* ScoreSheetViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63215BDE255F3C3E007F006A /* ScoreSheetViewTest.swift */; };
+		6302306F25B7DABA00335203 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = 6302306E25B7DABA00335203 /* ViewInspector */; };
 		634837732558CDEE00FA407F /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = 634837722558CDEE00FA407F /* ViewInspector */; };
 		63484B2B259417950011E918 /* GameTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63484B2A259417950011E918 /* GameTest.swift */; };
 		63484B36259419860011E918 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63484B35259419860011E918 /* Game.swift */; };
 		636D5182252AABB000BB80D4 /* Baseball_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636D5181252AABB000BB80D4 /* Baseball_App.swift */; };
-		636D5184252AABB000BB80D4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636D5183252AABB000BB80D4 /* ContentView.swift */; };
+		636D5184252AABB000BB80D4 /* ScoreSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636D5183252AABB000BB80D4 /* ScoreSheetView.swift */; };
 		636D5186252AABB500BB80D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 636D5185252AABB500BB80D4 /* Assets.xcassets */; };
 		636D5189252AABB500BB80D4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 636D5188252AABB500BB80D4 /* Preview Assets.xcassets */; };
 		636D5194252AABB500BB80D4 /* Baseball_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636D5193252AABB500BB80D4 /* Baseball_Tests.swift */; };
@@ -30,6 +36,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		6302304B25B7D78C00335203 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 636D5176252AABB000BB80D4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 636D517D252AABB000BB80D4;
+			remoteInfo = Baseball;
+		};
 		636D5190252AABB500BB80D4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 636D5176252AABB000BB80D4 /* Project object */;
@@ -49,13 +62,20 @@
 /* Begin PBXFileReference section */
 		63022FF725B001D600335203 /* LineUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineUp.swift; sourceTree = "<group>"; };
 		63022FFC25B001F800335203 /* LineUpTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineUpTest.swift; sourceTree = "<group>"; };
-		63215BDE255F3C3E007F006A /* ContentViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewTests.swift; sourceTree = "<group>"; };
+		6302301025B6885C00335203 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		6302301525B688DC00335203 /* ScoreGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreGameView.swift; sourceTree = "<group>"; };
+		6302301A25B689ED00335203 /* SelectSomethingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSomethingView.swift; sourceTree = "<group>"; };
+		6302302825B74B2600335203 /* ConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigView.swift; sourceTree = "<group>"; };
+		6302304625B7D78C00335203 /* Baseball-ViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Baseball-ViewTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6302304825B7D78C00335203 /* Baseball_ViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Baseball_ViewTests.swift; sourceTree = "<group>"; };
+		6302304A25B7D78C00335203 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63215BDE255F3C3E007F006A /* ScoreSheetViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreSheetViewTest.swift; sourceTree = "<group>"; };
 		63484B2A259417950011E918 /* GameTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTest.swift; sourceTree = "<group>"; };
 		63484B35259419860011E918 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		634D3A50255E25810024521D /* PlayerRowView_UI_Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRowView_UI_Test.swift; sourceTree = "<group>"; };
 		636D517E252AABB000BB80D4 /* Baseball.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Baseball.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		636D5181252AABB000BB80D4 /* Baseball_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Baseball_App.swift; sourceTree = "<group>"; };
-		636D5183252AABB000BB80D4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		636D5183252AABB000BB80D4 /* ScoreSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreSheetView.swift; sourceTree = "<group>"; };
 		636D5185252AABB500BB80D4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		636D5188252AABB500BB80D4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		636D518A252AABB500BB80D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -76,6 +96,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		6302304325B7D78C00335203 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6302306F25B7DABA00335203 /* ViewInspector in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		636D517B252AABB000BB80D4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -101,14 +129,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6302304725B7D78C00335203 /* Baseball-ViewTests */ = {
+			isa = PBXGroup;
+			children = (
+				6302304825B7D78C00335203 /* Baseball_ViewTests.swift */,
+				63215BDE255F3C3E007F006A /* ScoreSheetViewTest.swift */,
+				6302304A25B7D78C00335203 /* Info.plist */,
+			);
+			path = "Baseball-ViewTests";
+			sourceTree = "<group>";
+		};
+		6302306D25B7DABA00335203 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		636D5175252AABB000BB80D4 = {
 			isa = PBXGroup;
 			children = (
 				636D51D7252AC5A400BB80D4 /* README.md */,
 				636D5180252AABB000BB80D4 /* Baseball */,
 				636D5192252AABB500BB80D4 /* Baseball-Tests */,
+				6302304725B7D78C00335203 /* Baseball-ViewTests */,
 				636D519D252AABB500BB80D4 /* Baseball-UI-Tests */,
 				636D517F252AABB000BB80D4 /* Products */,
+				6302306D25B7DABA00335203 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -118,6 +165,7 @@
 				636D517E252AABB000BB80D4 /* Baseball.app */,
 				636D518F252AABB500BB80D4 /* Baseball-Tests.xctest */,
 				636D519A252AABB500BB80D4 /* Baseball-UI-Tests.xctest */,
+				6302304625B7D78C00335203 /* Baseball-ViewTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -152,7 +200,6 @@
 				63022FFC25B001F800335203 /* LineUpTest.swift */,
 				63D779BD258C638200EFDC23 /* PlayTest.swift */,
 				637782132555E90F00766772 /* PlayerTest.swift */,
-				63215BDE255F3C3E007F006A /* ContentViewTests.swift */,
 				636D5195252AABB500BB80D4 /* Info.plist */,
 			);
 			path = "Baseball-Tests";
@@ -183,7 +230,11 @@
 		63817A10255656D4007BDECE /* View */ = {
 			isa = PBXGroup;
 			children = (
-				636D5183252AABB000BB80D4 /* ContentView.swift */,
+				6302301025B6885C00335203 /* ContentView.swift */,
+				636D5183252AABB000BB80D4 /* ScoreSheetView.swift */,
+				6302301525B688DC00335203 /* ScoreGameView.swift */,
+				6302302825B74B2600335203 /* ConfigView.swift */,
+				6302301A25B689ED00335203 /* SelectSomethingView.swift */,
 				637782182555F21A00766772 /* FieldView.swift */,
 			);
 			path = View;
@@ -192,6 +243,27 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		6302304525B7D78C00335203 /* Baseball-ViewTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6302304D25B7D78C00335203 /* Build configuration list for PBXNativeTarget "Baseball-ViewTests" */;
+			buildPhases = (
+				6302304225B7D78C00335203 /* Sources */,
+				6302304325B7D78C00335203 /* Frameworks */,
+				6302304425B7D78C00335203 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6302304C25B7D78C00335203 /* PBXTargetDependency */,
+			);
+			name = "Baseball-ViewTests";
+			packageProductDependencies = (
+				6302306E25B7DABA00335203 /* ViewInspector */,
+			);
+			productName = "Baseball-ViewTests";
+			productReference = 6302304625B7D78C00335203 /* Baseball-ViewTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		636D517D252AABB000BB80D4 /* Baseball */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 636D51A3252AABB500BB80D4 /* Build configuration list for PBXNativeTarget "Baseball" */;
@@ -254,9 +326,13 @@
 		636D5176252AABB000BB80D4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1200;
+				LastSwiftUpdateCheck = 1230;
 				LastUpgradeCheck = 1200;
 				TargetAttributes = {
+					6302304525B7D78C00335203 = {
+						CreatedOnToolsVersion = 12.3;
+						TestTargetID = 636D517D252AABB000BB80D4;
+					};
 					636D517D252AABB000BB80D4 = {
 						CreatedOnToolsVersion = 12.0;
 					};
@@ -288,12 +364,20 @@
 			targets = (
 				636D517D252AABB000BB80D4 /* Baseball */,
 				636D518E252AABB500BB80D4 /* Baseball-Tests */,
+				6302304525B7D78C00335203 /* Baseball-ViewTests */,
 				636D5199252AABB500BB80D4 /* Baseball-UI-Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		6302304425B7D78C00335203 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		636D517C252AABB000BB80D4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -320,15 +404,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		6302304225B7D78C00335203 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6302304925B7D78C00335203 /* Baseball_ViewTests.swift in Sources */,
+				6302305425B7D79F00335203 /* ScoreSheetViewTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		636D517A252AABB000BB80D4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				636D5184252AABB000BB80D4 /* ContentView.swift in Sources */,
+				6302302925B74B2600335203 /* ConfigView.swift in Sources */,
+				636D5184252AABB000BB80D4 /* ScoreSheetView.swift in Sources */,
 				63484B36259419860011E918 /* Game.swift in Sources */,
+				6302301625B688DC00335203 /* ScoreGameView.swift in Sources */,
 				636D5182252AABB000BB80D4 /* Baseball_App.swift in Sources */,
 				636D51C4252AAF4E00BB80D4 /* Play.swift in Sources */,
 				63022FF825B001D600335203 /* LineUp.swift in Sources */,
+				6302301125B6885C00335203 /* ContentView.swift in Sources */,
+				6302301B25B689ED00335203 /* SelectSomethingView.swift in Sources */,
 				63E7D8A725831D590059AC9D /* Inning.swift in Sources */,
 				6377820F2555E89300766772 /* Player.swift in Sources */,
 				637782192555F21A00766772 /* FieldView.swift in Sources */,
@@ -339,7 +436,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63215BDF255F3C3E007F006A /* ContentViewTests.swift in Sources */,
 				63484B2B259417950011E918 /* GameTest.swift in Sources */,
 				637782142555E90F00766772 /* PlayerTest.swift in Sources */,
 				636D5194252AABB500BB80D4 /* Baseball_Tests.swift in Sources */,
@@ -361,6 +457,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		6302304C25B7D78C00335203 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 636D517D252AABB000BB80D4 /* Baseball */;
+			targetProxy = 6302304B25B7D78C00335203 /* PBXContainerItemProxy */;
+		};
 		636D5191252AABB500BB80D4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 636D517D252AABB000BB80D4 /* Baseball */;
@@ -374,6 +475,48 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		6302304E25B7D78C00335203 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 99568KA9SE;
+				INFOPLIST_FILE = "Baseball-ViewTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.LifeWorksIQ.Baseball-ViewTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Baseball.app/Baseball";
+			};
+			name = Debug;
+		};
+		6302304F25B7D78C00335203 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 99568KA9SE;
+				INFOPLIST_FILE = "Baseball-ViewTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.LifeWorksIQ.Baseball-ViewTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Baseball.app/Baseball";
+			};
+			name = Release;
+		};
 		636D51A1252AABB500BB80D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -623,6 +766,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		6302304D25B7D78C00335203 /* Build configuration list for PBXNativeTarget "Baseball-ViewTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6302304E25B7D78C00335203 /* Debug */,
+				6302304F25B7D78C00335203 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		636D5179252AABB000BB80D4 /* Build configuration list for PBXProject "Baseball-TDDAcademy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -673,6 +825,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		6302306E25B7DABA00335203 /* ViewInspector */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 634837712558CDEE00FA407F /* XCRemoteSwiftPackageReference "ViewInspector" */;
+			productName = ViewInspector;
+		};
 		634837722558CDEE00FA407F /* ViewInspector */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 634837712558CDEE00FA407F /* XCRemoteSwiftPackageReference "ViewInspector" */;
