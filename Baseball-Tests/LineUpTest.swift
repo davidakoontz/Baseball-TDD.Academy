@@ -18,11 +18,6 @@ class LineUpTest: XCTestCase {
         lineup = LineUp()
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-    
-    
     func test_add() {
         lineup.add(bob)
 
@@ -37,7 +32,7 @@ class LineUpTest: XCTestCase {
         XCTAssertEqual(lineup.nextBatterInLineUp().name, lance.name)
     }
 
-    func test_read_LineUpWrappsArround() {
+    func test_nextBatterInLineUp_LineUpWrappsArround() {
         lineup.add(bob)
         lineup.add(lance)
         
@@ -46,8 +41,17 @@ class LineUpTest: XCTestCase {
         XCTAssertEqual(lineup.nextBatterInLineUp().name, bob.name)
     }
     
-    func test_read_LineUpIsEmpty() {
+    func test_nextBatterInLineUp_LineUpIsEmpty() {
         
         XCTAssertEqual(lineup.nextBatterInLineUp().name, "Empty Player")
     }
+    
+    func test_assign_aListOfPlayers() {
+        //atBatList: [Player] =  [ taylor, bill, jonathan, bob, duke, james, scott, billJoy, andy, larry ]
+        lineup.assign(list: Player.atBatList)
+        
+        XCTAssertEqual(lineup.theLineup.count, 10)
+    }
+    
+    
 }

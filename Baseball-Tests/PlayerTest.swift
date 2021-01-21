@@ -10,17 +10,8 @@ import XCTest
 
 class PlayerTest: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-
     // Test Player ==
-    func testEqualOperator() throws {
+    func testEqualOperator() {
         let playerA = Player(name: "Player A", number: "33", position: .rightField)
         let playerB = Player(name: "Player B", number: "45", position: .pitcher)
         let playerAprime = Player(name: "Player A", number: "33", position: .centerField)   // player may change position

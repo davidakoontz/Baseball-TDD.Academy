@@ -23,7 +23,6 @@
 		636D5184252AABB000BB80D4 /* ScoreSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636D5183252AABB000BB80D4 /* ScoreSheetView.swift */; };
 		636D5186252AABB500BB80D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 636D5185252AABB500BB80D4 /* Assets.xcassets */; };
 		636D5189252AABB500BB80D4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 636D5188252AABB500BB80D4 /* Preview Assets.xcassets */; };
-		636D5194252AABB500BB80D4 /* Baseball_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636D5193252AABB500BB80D4 /* Baseball_Tests.swift */; };
 		636D519F252AABB500BB80D4 /* Baseball_UI_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636D519E252AABB500BB80D4 /* Baseball_UI_Tests.swift */; };
 		636D51C4252AAF4E00BB80D4 /* Play.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636D51C3252AAF4E00BB80D4 /* Play.swift */; };
 		6377820F2555E89300766772 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6377820E2555E89300766772 /* Player.swift */; };
@@ -80,7 +79,6 @@
 		636D5188252AABB500BB80D4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		636D518A252AABB500BB80D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		636D518F252AABB500BB80D4 /* Baseball-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Baseball-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		636D5193252AABB500BB80D4 /* Baseball_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Baseball_Tests.swift; sourceTree = "<group>"; };
 		636D5195252AABB500BB80D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		636D519A252AABB500BB80D4 /* Baseball-UI-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Baseball-UI-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		636D519E252AABB500BB80D4 /* Baseball_UI_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Baseball_UI_Tests.swift; sourceTree = "<group>"; };
@@ -194,7 +192,6 @@
 		636D5192252AABB500BB80D4 /* Baseball-Tests */ = {
 			isa = PBXGroup;
 			children = (
-				636D5193252AABB500BB80D4 /* Baseball_Tests.swift */,
 				63484B2A259417950011E918 /* GameTest.swift */,
 				63E7D8A125831C550059AC9D /* InningTest.swift */,
 				63022FFC25B001F800335203 /* LineUpTest.swift */,
@@ -438,7 +435,6 @@
 			files = (
 				63484B2B259417950011E918 /* GameTest.swift in Sources */,
 				637782142555E90F00766772 /* PlayerTest.swift in Sources */,
-				636D5194252AABB500BB80D4 /* Baseball_Tests.swift in Sources */,
 				63E7D8A225831C550059AC9D /* InningTest.swift in Sources */,
 				63022FFD25B001F800335203 /* LineUpTest.swift in Sources */,
 				63D779BE258C638200EFDC23 /* PlayTest.swift in Sources */,

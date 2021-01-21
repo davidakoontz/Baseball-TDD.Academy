@@ -9,58 +9,44 @@ import XCTest
 @testable import Baseball
 
 class GameTest: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    private func createInning() -> Inning {
-        let game = Game()
-        return Inning(label: "", game: game, top: [], bottom: [], summary: "")
-    }
     
-    
-    func testaNewGamehasZerosInnings() throws {
-        //let first = Inning(number: "", top: [], bottom: [], summary: "")
+    func test_inningCount_aNewGamehasZerosInnings() {
         let aGame = Game(innings: [])
 
         XCTAssertEqual(aGame.inningCount(), 0 )
     }
     
-    func testAddAnInning() throws {
+    func test_appendInning_AddFirstInning() {
         let game = Game()
         let first = Inning(label: "", game: game, top: [], bottom: [], summary: "")
-        let aGame = Game(innings: [first])
-        aGame.appendInning(inning: createInning())
+       
+        game.appendInning(inning: first)
         
-        XCTAssertEqual(aGame.inningCount(), 2)
+        XCTAssertEqual(game.inningCount(), 1)
     }
 
-    func testAddingTwoInning() throws {
+    func test_appendInning_AddingTwoInnings() {
         let game = Game()
         let first = Inning(label: "", game: game, top: [], bottom: [], summary: "")
-        let aGame = Game(innings: [first])
-        aGame.appendInning(inning: createInning())
-        aGame.appendInning(inning: createInning())
         
-        XCTAssertEqual(aGame.inningCount(), 3 )
+        game.appendInning(inning: first)
+        game.appendInning(inning: EmptyInning(game: game))
+        
+        XCTAssertEqual(game.inningCount(), 2 )
     }
     
-    func testSequenceIterator() throws {
+    func test_next_SequenceIterator() {
         let game = Game()
         let first = Inning(label: "1", game: game, top: [], bottom: [], summary: "")
-        let aGame = Game(innings: [first])
-        aGame.appendInning(inning: createInning())
-        aGame.appendInning(inning: createInning())
         
-        XCTAssertEqual(aGame.inningCount(), 3)
-        let firstInning = aGame.next()!
-        let secondInning = aGame.next()!
-        let thridInning = aGame.next()!
+        game.appendInning(inning: first)
+        game.appendInning(inning: EmptyInning(game: game))
+        game.appendInning(inning: EmptyInning(game: game))
+        
+        XCTAssertEqual(game.inningCount(), 3)
+        let firstInning = game.next()!
+        let secondInning = game.next()!
+        let thridInning = game.next()!
         
         XCTAssertEqual( firstInning.label, "1")
         XCTAssertEqual( secondInning.label, "2")
@@ -68,21 +54,29 @@ class GameTest: XCTestCase {
         
     }
     
-    func text_scoreAdd_forVisitorTeam() throws {
+    func test_scoreAdd_forVisitorTeam() {
         let game = Game()
         let first = Inning(label: "1", game: game, top: [], bottom: [], summary: "")
-        let aGame = Game(innings: [first] )
+        
+        game.appendInning(inning: first)
         
         game.score.Add(runs: 1, teamAtBat: Team.visitor)
         
         XCTAssertEqual(game.score.visitor, 1)
     }
 
-    func text_scoreAdd_forHomeTeam() {
+    func test_scoreAdd_forHomeTeam() {
+        let game = Game()
+        let first = Inning(label: "1", game: game, top: [], bottom: [], summary: "")
         
+        game.appendInning(inning: first)
+        
+        game.score.Add(runs: 3, teamAtBat: Team.home)
+        
+        XCTAssertEqual(game.score.home, 3)
     }
     
-    func test_nextBatter_FactoryMethodWrappsArround() throws {
+    func test_nextBatter_FactoryMethodWrappsArround() {
         let game = Game()
         let first = Inning(label: "1", game: game, top: [], bottom: [], summary: "")
         let aGame = Game(innings: [first])
@@ -145,12 +139,12 @@ class GameTest: XCTestCase {
         
         // a LineUp should have no problem wrapping around the front again & again.
         let play10 = aGame.nextBatter()
-        print("batter: \(play10.batter.name) \(play10.batter.number)")
+
         XCTAssertEqual(play10.batter, Duke)
     }
     
     
-    func test_nextBatter_SwitchesTeamsAsHalfInning() throws {
+    func test_switchFields_SwitchesTeamsAsHalfInning() {
         let game = Game()
         let first = Inning(label: "1", game: game, top: [], bottom: [], summary: "")
         let aGame = Game(innings: [first])
@@ -224,11 +218,9 @@ class GameTest: XCTestCase {
         let play6 = aGame.nextBatter()
         
         XCTAssertEqual(play6.batter.name, "Jonathan Swift")
-        
-       
     }
     
-    func test_setLineUp_withList() throws {
+    func test_setLineUp_withList() {
         let game = Game()
         
         game.setVisitorTeamLineUp()

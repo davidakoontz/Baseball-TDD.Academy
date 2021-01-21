@@ -9,17 +9,8 @@ import XCTest
 @testable import Baseball
 
 class PlayTest: XCTestCase {
-    
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
 
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testInit_BasicPlay() throws {
+    func testInit_BasicPlay() {
         let game = Game()
         let batter = Player(name: "Random PlayerName", number: "00", position: .firstBase)
         let aPlay = Play(game: game, description: "say something on the air", batter: batter )
@@ -29,7 +20,7 @@ class PlayTest: XCTestCase {
         XCTAssertTrue(aPlay.batter == batter)
     }
     
-    func testInit_BaseEmptyAtInit() throws {
+    func testInit_BaseEmptyAtInit() {
         let game = Game()
         let batter = Player(name: "Random PlayerName", number: "00", position: .centerField)
         let aPlay = Play(game: game, description: "say something on the air", batter: batter)
@@ -56,7 +47,7 @@ class PlayTest: XCTestCase {
     
 
 
-    func test_umpCalled_Single() throws {
+    func test_umpCalled_Single() {
         let game = Game()
         let batter = Player(name: "Random PlayerName", number: "00", position: .centerField)
         let aPlay = Play(game: game, description: "say something on the air", batter: batter )
@@ -68,7 +59,7 @@ class PlayTest: XCTestCase {
     }
     
     
-    func test_runnerOn_firstBaseSingleBySecondBatter() throws {
+    func test_runnerOn_firstBaseSingleBySecondBatter() {
         let game = Game()
         game.setVisitorTeamLineUp()          // game needs a lineUp to populate the next batter
         
@@ -90,7 +81,7 @@ class PlayTest: XCTestCase {
         XCTAssertEqual(game.currentPlay().runnerOutcomes.secondBaseLine.rawValue, "AB")
     }
     
-    func test_runnerOn_BasesLoadedSituation() throws {
+    func test_runnerOn_BasesLoadedSituation() {
         let game = Game()
         game.setVisitorTeamLineUp()          // game needs a lineUp to populate the next batter
         //        let Duke = Player(name: "Duke Java", number: "33", position: .leftField)
@@ -132,7 +123,7 @@ class PlayTest: XCTestCase {
         XCTAssertEqual(runners.firstBaseLine.rawValue, "1B")        // from batter's box (arround home plate) to first
     }
  
-    func test_runnerOn_BatterWalksBasesLoadedSituation() throws {
+    func test_runnerOn_BatterWalksBasesLoadedSituation() {
         let game = Game()
         game.setVisitorTeamLineUp()          // game needs a lineUp to populate the next batter
         //        let Duke = Player(name: "Duke Java", number: "33", position: .leftField)
@@ -180,7 +171,7 @@ class PlayTest: XCTestCase {
     }
     
     
-    func test_runnerOn_RunnerScoresARun() throws {
+    func test_runnerOn_RunnerScoresARun() {
         let game = Game()
         game.setVisitorTeamLineUp()          // game needs a lineUp to populate the next batter
         //        let Duke = Player(name: "Duke Java", number: "33", position: .leftField)

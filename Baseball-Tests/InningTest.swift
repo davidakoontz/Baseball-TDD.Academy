@@ -10,18 +10,7 @@ import XCTest
 
 class InningTest: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-        // visitors always bat first (top of innings)
-
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-
-    func testInit() throws {
+    func testInit() {
         let game = Game()
         let bob = Player(name: "Bob Swift", number: "3", position: .shortStop)
         let larry = Player(name: "Larry Ellison", number: "2", position: .catcher)
@@ -44,7 +33,7 @@ class InningTest: XCTestCase {
 
     }
 
-    func testInningHasSummary() throws {
+    func testInningHasSummary() {
         let game = Game()
         let firstInning = Inning(label: "1", game: game,
                               top: [],
@@ -55,7 +44,7 @@ class InningTest: XCTestCase {
     
     
     //        static let jonathan = Player(name: "Jonathan Swift", number: "67", position: "4", atBat: "1B")
-    func testInningOneJonathanHitsSingle() throws {
+    func testInningOneJonathanHitsSingle() {
         let game = Game()
         let firstInning = Inning(label: "1", game: game,
                              top: [],
@@ -65,7 +54,7 @@ class InningTest: XCTestCase {
         XCTAssertTrue( firstInning.bottom[0].batter.name.contains("Jonathan") )
     }
     
-    func testInningConsistOfPlays() throws {
+    func testInningConsistOfPlays() {
         let game = Game()
         let aPlayer = Player(name: "Test PlayerName", number: "00", position: .catcher)
         let aPlay = Play(game: game, description: "this is a test", batter: aPlayer)
