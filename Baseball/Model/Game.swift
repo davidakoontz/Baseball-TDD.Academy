@@ -356,6 +356,7 @@ public class Game: Sequence, IteratorProtocol, ObservableObject {
 
 } // end of Game class
 
+// MARK: Related Classes & Structs & Enums
 
 public struct Score {
     var visitor = 0
