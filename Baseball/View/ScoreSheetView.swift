@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ScoreSheetView: View {
-    @EnvironmentObject var game: Game
+    var game: Game
+    //@EnvironmentObject var game: Game
     static let tag: String? = "ScoreSheet"
     
     // see: https://swiftwithmajid.com/2020/07/08/mastering-grids-in-swiftui/
@@ -71,7 +72,7 @@ struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         
         //ContentView(players: Player.example)
-        ScoreSheetView()
-            .environmentObject( Game(innings: Game.exampleInnings) )
+        ScoreSheetView(game: Game.example)
+           // .environmentObject( Game(innings: Game.exampleInnings) )
     }
 }

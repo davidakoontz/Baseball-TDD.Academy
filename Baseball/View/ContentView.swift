@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    
-    @EnvironmentObject var game: Game
+    var game: Game
+    //@EnvironmentObject var game: Game
     
     // per Scene storage - not App storage - Scene is an instance of the App running on the device
     // remember which tab View we were on last time we ran the app
@@ -17,7 +17,7 @@ struct ContentView: View {
     
     var body: some View {
         TabView(selection: $selectedView) {
-            ScoreSheetView()
+            ScoreSheetView(game: game)
                 .tag(ScoreSheetView.tag)
                 .tabItem {
                     Image(systemName: "scroll")
@@ -53,8 +53,8 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
   
     static var previews: some View {
-        ContentView()
-            .environmentObject( Game(innings: Game.exampleInnings) )
+        ContentView(game: Game.example)
+           // .environmentObject( Game(innings: Game.exampleInnings) )
     }
     
 }
