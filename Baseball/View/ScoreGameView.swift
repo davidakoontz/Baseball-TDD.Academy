@@ -9,7 +9,8 @@
 import SwiftUI
 
 struct ScoreGameView: View {
-    @EnvironmentObject var game: Game
+    var game: Game
+    //@EnvironmentObject var game: Game
     static let addGameTag: String? = "AddGame"
     
     var body: some View {
@@ -51,7 +52,7 @@ struct ScoreGameView: View {
             
         // the primary view is the Group
         // the secondary view on iPad or wide screens like iPhone Pro Max
-        SelectSomethingView()
+        //SelectSomethingView()
         
         } // Group
     } // Nav View
@@ -60,7 +61,7 @@ struct ScoreGameView: View {
 struct ScoreGameView_Previews: PreviewProvider {
   
     static var previews: some View {
-        ScoreGameView()
+        ScoreGameView(game: Game.example)
 
     }
 }

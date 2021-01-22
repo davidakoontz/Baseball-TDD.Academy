@@ -25,7 +25,7 @@ struct ContentView: View {
                 }
             
             
-            ScoreGameView()
+            ScoreGameView(game: game)
                 .tag(ScoreGameView.addGameTag)
                 .tabItem {
                     Image(systemName: "rectangle.stack.badge.plus")
@@ -33,7 +33,7 @@ struct ContentView: View {
                 }
             
             
-            ConfigView()
+            ConfigView(game: game)
                 .tag(ConfigView.configTag)
                 .tabItem {
                     Image(systemName: "slider.horizontal.3")

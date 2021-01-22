@@ -27,6 +27,8 @@
 		6377820F2555E89300766772 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6377820E2555E89300766772 /* Player.swift */; };
 		637782142555E90F00766772 /* PlayerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637782132555E90F00766772 /* PlayerTest.swift */; };
 		637782192555F21A00766772 /* FieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637782182555F21A00766772 /* FieldView.swift */; };
+		63A96E8925BA662F005348B4 /* ScoreGameViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A96E8825BA662F005348B4 /* ScoreGameViewTest.swift */; };
+		63A96E8F25BA97BD005348B4 /* ConfigViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A96E8E25BA97BD005348B4 /* ConfigViewTest.swift */; };
 		63D779BE258C638200EFDC23 /* PlayTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D779BD258C638200EFDC23 /* PlayTest.swift */; };
 		63E7D8A225831C550059AC9D /* InningTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7D8A125831C550059AC9D /* InningTest.swift */; };
 		63E7D8A725831D590059AC9D /* Inning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7D8A625831D590059AC9D /* Inning.swift */; };
@@ -86,6 +88,8 @@
 		6377820E2555E89300766772 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		637782132555E90F00766772 /* PlayerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTest.swift; sourceTree = "<group>"; };
 		637782182555F21A00766772 /* FieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldView.swift; sourceTree = "<group>"; };
+		63A96E8825BA662F005348B4 /* ScoreGameViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreGameViewTest.swift; sourceTree = "<group>"; };
+		63A96E8E25BA97BD005348B4 /* ConfigViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigViewTest.swift; sourceTree = "<group>"; };
 		63D779BD258C638200EFDC23 /* PlayTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayTest.swift; sourceTree = "<group>"; };
 		63E7D8A125831C550059AC9D /* InningTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InningTest.swift; sourceTree = "<group>"; };
 		63E7D8A625831D590059AC9D /* Inning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inning.swift; sourceTree = "<group>"; };
@@ -129,6 +133,8 @@
 			isa = PBXGroup;
 			children = (
 				63215BDE255F3C3E007F006A /* ScoreSheetViewTest.swift */,
+				63A96E8825BA662F005348B4 /* ScoreGameViewTest.swift */,
+				63A96E8E25BA97BD005348B4 /* ConfigViewTest.swift */,
 				6302304A25B7D78C00335203 /* Info.plist */,
 			);
 			path = "Baseball-ViewTests";
@@ -403,6 +409,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6302305425B7D79F00335203 /* ScoreSheetViewTest.swift in Sources */,
+				63A96E8925BA662F005348B4 /* ScoreGameViewTest.swift in Sources */,
+				63A96E8F25BA97BD005348B4 /* ConfigViewTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

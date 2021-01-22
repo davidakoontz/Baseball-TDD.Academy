@@ -9,7 +9,8 @@
 import SwiftUI
 
 struct ConfigView: View {
-    @EnvironmentObject var game: Game
+    var game = Game()
+    //@EnvironmentObject var game: Game
 
     static let configTag: String? = "Config"
     
@@ -57,7 +58,7 @@ struct ConfigView: View {
             
         // the primary view is the Group
         // the secondary view on iPad or wide screens like iPhone Pro Max
-        SelectSomethingView()
+        //SelectSomethingView()
         
         } // Group
     } // Nav View
@@ -66,7 +67,7 @@ struct ConfigView: View {
 struct ConfigView_Previews: PreviewProvider {
   
     static var previews: some View {
-        ConfigView()
+        ConfigView(game: Game.example)
 
     }
 }
