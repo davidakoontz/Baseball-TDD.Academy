@@ -13,7 +13,7 @@ public class Game: Sequence, IteratorProtocol, ObservableObject {
     public typealias Element = Inning
     
     var innings: [Inning] = []
-    var nextInning = 0  // the starting index of Innings
+    var inningIndex = 0  // the starting index of Innings
     var visitorLineUp = LineUp()
     var homeLineUp = LineUp()
     var bases: Bases
@@ -23,11 +23,16 @@ public class Game: Sequence, IteratorProtocol, ObservableObject {
     //var roster: [Player]  // the platters on the team
     // future properties like home & away team names; score; play by play; etc
 
-    // MARK: Init methods
+    // MARK: Init Game methods
     init() {
         self.innings = []
         self.bases = Bases()
         self.score = Score()
+        // init all Game properties - then init with 9 innings
+        for i in 1...9  {
+            let inning = Inning(label: "\(i)", game: self, top: [], bottom: [], summary: "0 to 0")
+            appendInning(inning: inning)
+        }
     }
     
     init(innings: [Inning]) {
@@ -42,15 +47,7 @@ public class Game: Sequence, IteratorProtocol, ObservableObject {
         self.score = Score()
     }
     
-    // MARK: Iterator methods
-    // Iterator & Sequence Protocol requires Public next method.
-    public func next() -> Inning? {
-       
-        guard nextInning >= 0 && nextInning < innings.count
-            else { return nil }
-        defer { nextInning += 1 }
-        return innings[nextInning]
-    }
+
 
 
     // MARK: Inning methods
@@ -70,9 +67,9 @@ public class Game: Sequence, IteratorProtocol, ObservableObject {
         }
     }
     
-      func whichTeamAtBat() -> Team {
-          return teamAtBat
-      }
+//      func whichTeamAtBat() -> Team {
+//          return teamAtBat
+//      }
       
       func whichInning() -> Int {
           return innings.count
@@ -89,7 +86,7 @@ public class Game: Sequence, IteratorProtocol, ObservableObject {
       func currentInning() -> Inning {
           // Create the First Inning if none exist. then return it.
           if inningCount() <= 0 {
-              let first = Inning(label: "1", game: self, top: [], bottom: [], summary: "0 to 0")
+              let first = Inning(label: "\(inningCount() + 1)", game: self, top: [], bottom: [], summary: "0 to 0")
               innings.append(first)
               return first
           }
@@ -99,6 +96,18 @@ public class Game: Sequence, IteratorProtocol, ObservableObject {
       func inningCount() -> Int {
           return innings.count
       }
+    
+    // MARK: Iterator Protocol methods
+    // Iterator & Sequence Protocol requires Public next method.
+    // Side effect resets the teamAtBat
+    public func next() -> Inning? {
+       
+        guard inningIndex >= 0 && inningIndex < innings.count
+            else { return nil }
+        defer { inningIndex += 1 }
+        teamAtBat = Team.visitor    // visitor start each inning
+        return innings[inningIndex]
+    }
     
     // MARK: Batter methods
     
@@ -356,82 +365,5 @@ public class Game: Sequence, IteratorProtocol, ObservableObject {
 
 } // end of Game class
 
-// MARK: Related Classes & Structs & Enums
 
-public struct Score {
-    var visitor = 0
-    var home = 0
-    
-    mutating func Add(runs: Int, teamAtBat: Team) {
-        if teamAtBat == Team.visitor {
-            visitor += runs
-        } else {
-            home += runs
-        }
-    }
-}
-
-public enum Team: String {
-    case visitor = "Visitors"
-    case home = "Home"
-}
-
-public enum InningHalf: String {
-    case top = "Top"
-    case bottom = "Bottom"
-}
-
-struct Bases {
-    var firstBase: Player = EmptyPlayer()
-    var secondBase: Player = EmptyPlayer()
-    var thirdBase: Player = EmptyPlayer()
-    var homePlate: Player = EmptyPlayer()
-}
-
-public enum BaseNames: String {
-    case firstBase = "first"
-    case secondBase = "second"
-    case thirdBase = "third"
-    case homePlate = "home"
-}
-
-// The outcome of a batter's attempt to hit
-public enum AtBat: String, CaseIterable {
-    // typical name = Scrorecard shorthand notation
-    case blank = "_"        // blank or empty
-    case inBox = "AT"       // batter still AT bat or inBox
-    // ways to get on base
-    case single = "1B"
-    case double = "2B"
-    case triple = "3B"
-    case homeRun = "HR"
-    
-    case walk = "W"         // base on balls or a walk
-    case baseOnBalls = "BB" // base on balls or a walk
-    
-    case fildersChoice = "FC"   // typicalling a hit, but filder makes a choice to put out the lead runner
-    
-    // types of Outs - numbers are the positions that interact with the ball
-    case doublePlay = "DP"
-    case caughtStealing = "CS"
-    case flyOut = "F"
-    case foulOut = "FO"
-    case groundOut = "G"
-    case strikeoutSwinging = "K"
-    case strikeoutLooking = "K.."  // the two dots are eyes
-    case lineOut = "L"
-    case sacrificeFly = "SF"    // batter is out - but advances the runner
-    case sacrificeHit = "SH"    // also perhaps a bunt
-    case triplePlay = "TP"
-    case unassistedOut = "U"
-    
-    // errors etc
-    case balk = "BK"            // batter goes to first base; a pitching mistake
-    case error = "E"            // filder makes an error allowing batter to get on base
-    case hitByPitch = "HBP"     // batter goes to first base
-    case interference = "I"     // typically a catcher interfers with the swing
-    case intentionalWalk = "IW" // pitcher walks the batter by throwing 4 balls
-    case passedBall = "PB"      // ball get's passed the catcher
-    case wildPitch = "WP"       // pitcher has a bad throw
-}
 

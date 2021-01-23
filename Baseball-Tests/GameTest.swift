@@ -10,6 +10,13 @@ import XCTest
 
 class GameTest: XCTestCase {
     
+    func test_init() {
+        let game = Game()
+        
+        XCTAssertEqual(game.innings.count, 9)
+    }
+    
+    
     func test_inningCount_aNewGamehasZerosInnings() {
         let aGame = Game(innings: [])
 
@@ -144,7 +151,7 @@ class GameTest: XCTestCase {
     }
     
     
-    func test_switchFields_SwitchesTeamsAsHalfInning() {
+    func test_switchFields_SwitchesTeamsAsHalfInningAndEnd() {
         let game = Game()
         let first = Inning(label: "1", game: game, top: [], bottom: [], summary: "")
         let aGame = Game(innings: [first])
@@ -218,6 +225,12 @@ class GameTest: XCTestCase {
         let play6 = aGame.batterUp()
         
         XCTAssertEqual(play6.batter.name, "Jonathan Swift")
+        
+        // end of inning
+        let inning = aGame.next()       // get next inning
+        XCTAssertEqual(aGame.teamAtBat, Team.visitor)
+      //  XCTAssertEqual(aGame.currentInning().label, "2")
+       
     }
     
     func test_setLineUp_withList() {

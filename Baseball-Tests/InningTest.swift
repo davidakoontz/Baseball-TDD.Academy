@@ -77,7 +77,7 @@ class InningTest: XCTestCase {
         aPlay.umpCalled(.baseOnBalls)
         let firstInning = Inning(label: "1", game: game, top: [], bottom: [], summary: "0 to 0")
         game.appendInning(inning: firstInning)
-        firstInning.append(aPlay, teamAtBat: game.whichTeamAtBat() )
+        firstInning.append(aPlay, teamAtBat: game.teamAtBat )
         
         XCTAssertEqual(game.whichHalf(), InningHalf.top)
         XCTAssertEqual(game.currentInning().currentPlay().description, "this is a test")
