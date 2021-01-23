@@ -23,7 +23,7 @@ class ScoreSheetViewTest: XCTestCase {
         let play = Play(game: game, description: "that is a great play", batter: taylor)
         play.umpCalled(.single)
         
-        let inning = Inning(label: "1", game: game, top: [play], bottom: [play], summary: "0 to 0")
+        let inning = Inning(label: "1", game: game, top: [play], bottom: [play])
 
 
         game.appendInning(inning: inning)
@@ -56,7 +56,7 @@ class ScoreSheetViewTest: XCTestCase {
         play2.umpCalled(.strikeoutLooking)
         
         
-        let firstInning = Inning(label: "1", game: game, top: [ play1, play2 ], bottom: [ play1, play2], summary: "0 to 0")
+        let firstInning = Inning(label: "1", game: game, top: [ play1, play2 ], bottom: [ play1, play2])
         
         game.appendInning(inning: firstInning)
         
@@ -108,8 +108,8 @@ class ScoreSheetViewTest: XCTestCase {
         let play2 = Play(game: game, description: "that is a great play", batter: bill)
         play2.umpCalled(.strikeoutLooking)
         
-        let inning1 = Inning(label: "1", game: game, top: [play1], bottom: [play2], summary: "0 to 0")
-        let inning2 = Inning(label: "2", game: game, top: [play1], bottom: [play2], summary: "0 to 0")
+        let inning1 = Inning(label: "1", game: game, top: [play1], bottom: [play2])
+        let inning2 = Inning(label: "2", game: game, top: [play1], bottom: [play2])
 
        
         game.appendInning(inning: inning1)

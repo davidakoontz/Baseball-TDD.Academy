@@ -11,6 +11,11 @@ public struct Score {
     var visitor = 0
     var home = 0
     
+    // read only computed property
+    var summary: String {
+        return String("\(visitor) to \(home)")
+    }
+    
     mutating func Add(runs: Int, teamAtBat: Team) {
         if teamAtBat == Team.visitor {
             visitor += runs
@@ -18,4 +23,6 @@ public struct Score {
             home += runs
         }
     }
+    
+
 }

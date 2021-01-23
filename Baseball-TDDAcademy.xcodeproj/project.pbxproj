@@ -19,6 +19,8 @@
 		6334EE4525BC9F790000C4F7 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6334EE4425BC9F790000C4F7 /* Team.swift */; };
 		6334EE4B25BC9FAB0000C4F7 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6334EE4A25BC9FAB0000C4F7 /* Score.swift */; };
 		6334EE5125BC9FC70000C4F7 /* AtBat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6334EE5025BC9FC70000C4F7 /* AtBat.swift */; };
+		6334EE5725BCA10A0000C4F7 /* ScoreTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6334EE5625BCA10A0000C4F7 /* ScoreTest.swift */; };
+		6334EE6125BCAE490000C4F7 /* Game_Factories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6334EE6025BCAE490000C4F7 /* Game_Factories.swift */; };
 		634837732558CDEE00FA407F /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = 634837722558CDEE00FA407F /* ViewInspector */; };
 		63484B2B259417950011E918 /* GameTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63484B2A259417950011E918 /* GameTest.swift */; };
 		63484B36259419860011E918 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63484B35259419860011E918 /* Game.swift */; };
@@ -77,6 +79,8 @@
 		6334EE4425BC9F790000C4F7 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		6334EE4A25BC9FAB0000C4F7 /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
 		6334EE5025BC9FC70000C4F7 /* AtBat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtBat.swift; sourceTree = "<group>"; };
+		6334EE5625BCA10A0000C4F7 /* ScoreTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreTest.swift; sourceTree = "<group>"; };
+		6334EE6025BCAE490000C4F7 /* Game_Factories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game_Factories.swift; sourceTree = "<group>"; };
 		63484B2A259417950011E918 /* GameTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTest.swift; sourceTree = "<group>"; };
 		63484B35259419860011E918 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		634D3A50255E25810024521D /* PlayerRowView_UI_Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRowView_UI_Test.swift; sourceTree = "<group>"; };
@@ -204,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				63484B2A259417950011E918 /* GameTest.swift */,
+				6334EE5625BCA10A0000C4F7 /* ScoreTest.swift */,
 				63E7D8A125831C550059AC9D /* InningTest.swift */,
 				63022FFC25B001F800335203 /* LineUpTest.swift */,
 				63D779BD258C638200EFDC23 /* PlayTest.swift */,
@@ -227,9 +232,10 @@
 			isa = PBXGroup;
 			children = (
 				63484B35259419860011E918 /* Game.swift */,
+				6334EE6025BCAE490000C4F7 /* Game_Factories.swift */,
 				6334EE5025BC9FC70000C4F7 /* AtBat.swift */,
-				6334EE4A25BC9FAB0000C4F7 /* Score.swift */,
 				6334EE4425BC9F790000C4F7 /* Team.swift */,
+				6334EE4A25BC9FAB0000C4F7 /* Score.swift */,
 				6334EE3E25BC9F390000C4F7 /* Bases.swift */,
 				63E7D8A625831D590059AC9D /* Inning.swift */,
 				63022FF725B001D600335203 /* LineUp.swift */,
@@ -434,6 +440,7 @@
 				636D5184252AABB000BB80D4 /* ScoreSheetView.swift in Sources */,
 				6334EE5125BC9FC70000C4F7 /* AtBat.swift in Sources */,
 				6334EE4525BC9F790000C4F7 /* Team.swift in Sources */,
+				6334EE6125BCAE490000C4F7 /* Game_Factories.swift in Sources */,
 				63484B36259419860011E918 /* Game.swift in Sources */,
 				6334EE4B25BC9FAB0000C4F7 /* Score.swift in Sources */,
 				6302301625B688DC00335203 /* ScoreGameView.swift in Sources */,
@@ -453,6 +460,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6334EE5725BCA10A0000C4F7 /* ScoreTest.swift in Sources */,
 				63484B2B259417950011E918 /* GameTest.swift in Sources */,
 				637782142555E90F00766772 /* PlayerTest.swift in Sources */,
 				63E7D8A225831C550059AC9D /* InningTest.swift in Sources */,

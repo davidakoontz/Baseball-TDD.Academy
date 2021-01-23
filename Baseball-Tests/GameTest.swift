@@ -14,44 +14,27 @@ class GameTest: XCTestCase {
         let game = Game()
         
         XCTAssertEqual(game.innings.count, 9)
+        XCTAssertEqual(game.inningIndex, 0)
     }
     
     
-    func test_inningCount_aNewGamehasZerosInnings() {
-        let aGame = Game(innings: [])
-
-        XCTAssertEqual(aGame.inningCount(), 0 )
-    }
-    
-    func test_appendInning_AddFirstInning() {
-        let game = Game()
-        let first = Inning(label: "", game: game, top: [], bottom: [], summary: "")
+    func test_appendInning_AddExtraInning() {
+        let game = Game()   // upon creation game has 9 innings
+        let extra = Inning(label: "", game: game, top: [], bottom: [])
        
-        game.appendInning(inning: first)
+        game.appendInning(inning: extra)
         
-        XCTAssertEqual(game.inningCount(), 1)
+        XCTAssertEqual(game.inningCount(), 10)
     }
 
-    func test_appendInning_AddingTwoInnings() {
-        let game = Game()
-        let first = Inning(label: "", game: game, top: [], bottom: [], summary: "")
-        
-        game.appendInning(inning: first)
-        game.appendInning(inning: EmptyInning(game: game))
-        
-        XCTAssertEqual(game.inningCount(), 2 )
-    }
     
     func test_next_SequenceIterator() {
-        let game = Game()
-        let first = Inning(label: "1", game: game, top: [], bottom: [], summary: "")
+        let game = Game()   // created with 9 innings
+        let firstInning = game.currentInning()
         
-        game.appendInning(inning: first)
-        game.appendInning(inning: EmptyInning(game: game))
-        game.appendInning(inning: EmptyInning(game: game))
-        
-        XCTAssertEqual(game.inningCount(), 3)
-        let firstInning = game.next()!
+        XCTAssertEqual(game.currentInning().label, "1")
+        XCTAssertEqual(game.inningCount(), 9)
+
         let secondInning = game.next()!
         let thridInning = game.next()!
         
@@ -59,11 +42,15 @@ class GameTest: XCTestCase {
         XCTAssertEqual( secondInning.label, "2")
         XCTAssertEqual( thridInning.label, "3")
         
+        for i in 0..<9 {
+            print("Game: i\(i) Inning #\(game.innings[i].label)")
+        }
+        
     }
     
     func test_scoreAdd_forVisitorTeam() {
         let game = Game()
-        let first = Inning(label: "1", game: game, top: [], bottom: [], summary: "")
+        let first = Inning(label: "1", game: game, top: [], bottom: [])
         
         game.appendInning(inning: first)
         
@@ -74,7 +61,7 @@ class GameTest: XCTestCase {
 
     func test_scoreAdd_forHomeTeam() {
         let game = Game()
-        let first = Inning(label: "1", game: game, top: [], bottom: [], summary: "")
+        let first = Inning(label: "1", game: game, top: [], bottom: [])
         
         game.appendInning(inning: first)
         
@@ -85,8 +72,8 @@ class GameTest: XCTestCase {
     
     func test_nextBatter_FactoryMethodWrappsArround() {
         let game = Game()
-        let first = Inning(label: "1", game: game, top: [], bottom: [], summary: "")
-        let aGame = Game(innings: [first])
+        let first = game.currentInning()
+
         
         let Duke = Player(name: "Duke Java", number: "33", position: .leftField)
         let James = Player(name: "James Gosling", number: "4", position: .thirdBase)
@@ -97,64 +84,63 @@ class GameTest: XCTestCase {
         let Sun  = Player(name: "Sun Li", number: "62", position: .firstBase)
         let Tzu = Player(name: "Sun Tzu", number: "99", position: .secondBase)
         let Nike = Player(name: "Nike Sun", number: "42", position: .shortStop)
-        aGame.visitorLineUp.add(Duke)
-        aGame.visitorLineUp.add(James)
-        aGame.visitorLineUp.add(Scott)
-        aGame.visitorLineUp.add(BillJoy)
-        aGame.visitorLineUp.add(Andy)
-        aGame.visitorLineUp.add(Larry)
-        aGame.visitorLineUp.add(Sun)
-        aGame.visitorLineUp.add(Tzu)
-        aGame.visitorLineUp.add(Nike)
+        game.visitorLineUp.add(Duke)
+        game.visitorLineUp.add(James)
+        game.visitorLineUp.add(Scott)
+        game.visitorLineUp.add(BillJoy)
+        game.visitorLineUp.add(Andy)
+        game.visitorLineUp.add(Larry)
+        game.visitorLineUp.add(Sun)
+        game.visitorLineUp.add(Tzu)
+        game.visitorLineUp.add(Nike)
         
         
-        let play1 = aGame.batterUp()
+        let play1 = game.batterUp()
         
         XCTAssertEqual(play1.batter, Duke)
         
-        let play2 = aGame.batterUp()
+        let play2 = game.batterUp()
         
         XCTAssertEqual(play2.batter.name, "James Gosling")
         
-        let play3 = aGame.batterUp()
+        let play3 = game.batterUp()
         
         XCTAssertEqual(play3.batter, Scott)
         
-        let play4 = aGame.batterUp()
+        let play4 = game.batterUp()
         
         XCTAssertEqual(play4.batter.name, "Bill Joy")
         
-        let play5 = aGame.batterUp()
+        let play5 = game.batterUp()
         
         XCTAssertEqual(play5.batter, Andy)
         
-        let play6 = aGame.batterUp()
+        let play6 = game.batterUp()
         
         XCTAssertEqual(play6.batter.name, "Larry Ellison")
         
-        let play7 = aGame.batterUp()
+        let play7 = game.batterUp()
         
         XCTAssertEqual(play7.batter, Sun)
         
-        let play8 = aGame.batterUp()
+        let play8 = game.batterUp()
         
         XCTAssertEqual(play8.batter.name, "Sun Tzu")
         
-        let play9 = aGame.batterUp()
+        let play9 = game.batterUp()
         
         XCTAssertEqual(play9.batter.name, "Nike Sun")
         
-        // a LineUp should have no problem wrapping around the front again & again.
-        let play10 = aGame.batterUp()
+        // a LineUp should have no problem wrapping around the front gain & gain.
+        let play10 = game.batterUp()
 
         XCTAssertEqual(play10.batter, Duke)
     }
     
     
     func test_switchFields_SwitchesTeamsAsHalfInningAndEnd() {
-        let game = Game()
-        let first = Inning(label: "1", game: game, top: [], bottom: [], summary: "")
-        let aGame = Game(innings: [first])
+        let game = Game()       // created with 9 innings
+        let first = game.currentInning()
         
         let Duke = Player(name: "Duke Java", number: "33", position: .leftField)
         let James = Player(name: "James Gosling", number: "4", position: .thirdBase)
@@ -165,15 +151,15 @@ class GameTest: XCTestCase {
         let Sun  = Player(name: "Sun Li", number: "62", position: .firstBase)
         let Tzu = Player(name: "Sun Tzu", number: "99", position: .secondBase)
         let Nike = Player(name: "Nike Sun", number: "42", position: .shortStop)
-        aGame.visitorLineUp.add(Duke)
-        aGame.visitorLineUp.add(James)
-        aGame.visitorLineUp.add(Scott)
-        aGame.visitorLineUp.add(BillJoy)
-        aGame.visitorLineUp.add(Andy)
-        aGame.visitorLineUp.add(Larry)
-        aGame.visitorLineUp.add(Sun)
-        aGame.visitorLineUp.add(Tzu)
-        aGame.visitorLineUp.add(Nike)
+        game.visitorLineUp.add(Duke)
+        game.visitorLineUp.add(James)
+        game.visitorLineUp.add(Scott)
+        game.visitorLineUp.add(BillJoy)
+        game.visitorLineUp.add(Andy)
+        game.visitorLineUp.add(Larry)
+        game.visitorLineUp.add(Sun)
+        game.visitorLineUp.add(Tzu)
+        game.visitorLineUp.add(Nike)
         
         
         // home team (bottom of innings)
@@ -187,49 +173,49 @@ class GameTest: XCTestCase {
         let Connor = Player(name: "Connor Swift", number: "6", position: .rightField)
         let Ellen = Player(name: "Ellen Swift", number: "88", position: .shortStop)
 
-        aGame.homeLineUp.add(Taylor)
-        aGame.homeLineUp.add(Bill)
-        aGame.homeLineUp.add(Jonathan)
-        aGame.homeLineUp.add(Bob)
-        aGame.homeLineUp.add(Kay)
-        aGame.homeLineUp.add(Patrick)
-        aGame.homeLineUp.add(Todd)
-        aGame.homeLineUp.add(Connor)
-        aGame.homeLineUp.add(Ellen)
+        game.homeLineUp.add(Taylor)
+        game.homeLineUp.add(Bill)
+        game.homeLineUp.add(Jonathan)
+        game.homeLineUp.add(Bob)
+        game.homeLineUp.add(Kay)
+        game.homeLineUp.add(Patrick)
+        game.homeLineUp.add(Todd)
+        game.homeLineUp.add(Connor)
+        game.homeLineUp.add(Ellen)
         
-        let play1 = aGame.batterUp()
+        let play1 = game.batterUp()
         
         XCTAssertEqual(play1.batter, Duke)
         
-        let play2 = aGame.batterUp()
+        let play2 = game.batterUp()
         
         XCTAssertEqual(play2.batter.name, "James Gosling")
         
-        let play3 = aGame.batterUp()
+        let play3 = game.batterUp()
         
         XCTAssertEqual(play3.batter, Scott)
         
         // Need a method to call to make model aware
-        aGame.switchFields()
+        game.switchFields()
         
         // assume 3 outs for Visitors - switch teams at Bat
         
-        let play4 = aGame.batterUp()
+        let play4 = game.batterUp()
         
         XCTAssertEqual(play4.batter.name, "Taylor Swift")
         
-        let play5 = aGame.batterUp()
+        let play5 = game.batterUp()
         
         XCTAssertEqual(play5.batter, Bill)
         
-        let play6 = aGame.batterUp()
+        let play6 = game.batterUp()
         
         XCTAssertEqual(play6.batter.name, "Jonathan Swift")
         
         // end of inning
-        let inning = aGame.next()       // get next inning
-        XCTAssertEqual(aGame.teamAtBat, Team.visitor)
-      //  XCTAssertEqual(aGame.currentInning().label, "2")
+        let inning = game.next()       // get next inning
+        XCTAssertEqual(game.teamAtBat, Team.visitor)
+      //  XCTAssertEqual(game.currentInning().label, "2")
        
     }
     

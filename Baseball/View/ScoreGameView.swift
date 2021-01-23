@@ -61,7 +61,7 @@ struct ScoreGameView: View {
 struct ScoreGameView_Previews: PreviewProvider {
   
     static var previews: some View {
-        ScoreGameView(game: Game.example)
+        ScoreGameView(game: Game.makeStatic())
 
     }
 }

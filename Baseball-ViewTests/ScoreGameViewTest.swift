@@ -27,8 +27,7 @@ class ScoreGameViewTest: XCTestCase {
         let play = Play(game: game, description: "that is a great play", batter: taylor)
         play.umpCalled(.single)
         
-        let inning = Inning(label: "1", game: game, top: [play], bottom: [play], summary: "0 to 0")
-
+        let inning = Inning(label: "1", game: game, top: [play], bottom: [play])
 
         game.appendInning(inning: inning)
 

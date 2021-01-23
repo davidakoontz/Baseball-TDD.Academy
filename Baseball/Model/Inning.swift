@@ -13,26 +13,27 @@ public class Inning {
     var play: Play              // the current Play that is holding all the action
     var top: [Play]             // an array of plays in the TOP half of the inning
     var bottom: [Play]          // an array of Plays in the BOTTOM half of the inning
-    var summary: String         // the inning's score:  Home to Visitor
-    
-    init(label: String, game: Game, top: [Play], bottom: [Play], summary: String) {
-        self.label = label
-        self.play = EmptyPlay(theGame: game)
-        self.top = top
-        self.bottom = bottom
-        self.summary = summary
-
-        self.game = game
-        print("Inning.init() creates an EmptyPlay")
+    var inningScore = Score()   // the inning's score
+    // read only computed property
+    var summary: String {
+        return String("\(inningScore.summary) in \(label) inning")
     }
     
-    init(label: String, top: [Play], bottom: [Play], summary: String) {
+    init(label: String, game: Game, top: [Play], bottom: [Play]) {
         self.label = label
         self.play = EmptyPlay(theGame: game)
         self.top = top
         self.bottom = bottom
-        self.summary = summary
-        print("Inning.init() with nil Game ref. - creates an EmptyPlay")
+        
+
+        self.game = game
+    }
+    
+    init(label: String, top: [Play], bottom: [Play]) {
+        self.label = label
+        self.play = EmptyPlay(theGame: game)
+        self.top = top
+        self.bottom = bottom
     }
     
     func append(_ play: Play, teamAtBat: Team) {
@@ -55,10 +56,6 @@ public class Inning {
         self.label = labelString
     }
 
-    func setSummary(_ summary: String) {
-        self.summary = summary
-    }
-    
     
     private func appendTop(_ play: Play) {
         self.play = play
@@ -82,7 +79,7 @@ public enum InningHalf: String {
 class EmptyInning : Inning {
     init(game: Game) {
         
-        super.init(label: "0", game: game, top: [], bottom: [], summary: "0 to 0")
+        super.init(label: "0", game: game, top: [], bottom: [])
     }
 }
 

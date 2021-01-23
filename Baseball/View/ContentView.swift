@@ -53,7 +53,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
   
     static var previews: some View {
-        ContentView(game: Game.example)
+        ContentView(game: Game.makeStatic())
            // .environmentObject( Game(innings: Game.exampleInnings) )
     }
     

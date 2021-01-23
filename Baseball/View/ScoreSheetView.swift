@@ -72,7 +72,7 @@ struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         
         //ContentView(players: Player.example)
-        ScoreSheetView(game: Game.example)
+        ScoreSheetView(game: Game.makeStatic())
            // .environmentObject( Game(innings: Game.exampleInnings) )
     }
 }

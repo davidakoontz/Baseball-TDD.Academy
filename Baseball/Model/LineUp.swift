@@ -16,6 +16,10 @@ class LineUp {
         theLineup = []
     }
     
+    init(list: [Player]) {
+        theLineup = list
+    }
+    
 
 
     func nextBatterInLineUp() -> Player {
