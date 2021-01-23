@@ -70,130 +70,59 @@ class GameTest: XCTestCase {
         XCTAssertEqual(game.score.home, 3)
     }
     
-    func test_nextBatter_FactoryMethodWrappsArround() {
+    func test_batterUp_FactoryMethodForPlayWrappsArroundLineUp() {
         let game = Game()
         let first = game.currentInning()
 
-        
-        let Duke = Player(name: "Duke Java", number: "33", position: .leftField)
-        let James = Player(name: "James Gosling", number: "4", position: .thirdBase)
-        let Scott = Player(name: "Scott McNealy", number: "37", position: .centerField)
-        let BillJoy = Player(name: "Bill Joy", number: "39", position: .rightField)
-        let Andy = Player(name: "Andy Bechtolsheim", number: "41", position: .pitcher)
-        let Larry = Player(name: "Larry Ellison", number: "2", position: .catcher)
-        let Sun  = Player(name: "Sun Li", number: "62", position: .firstBase)
-        let Tzu = Player(name: "Sun Tzu", number: "99", position: .secondBase)
-        let Nike = Player(name: "Nike Sun", number: "42", position: .shortStop)
-        game.visitorLineUp.add(Duke)
-        game.visitorLineUp.add(James)
-        game.visitorLineUp.add(Scott)
-        game.visitorLineUp.add(BillJoy)
-        game.visitorLineUp.add(Andy)
-        game.visitorLineUp.add(Larry)
-        game.visitorLineUp.add(Sun)
-        game.visitorLineUp.add(Tzu)
-        game.visitorLineUp.add(Nike)
-        
+        game.setVisitorTeamLineUp()
         
         let play1 = game.batterUp()
-        
-        XCTAssertEqual(play1.batter, Duke)
+        XCTAssertEqual(play1.batter.name, "Duke Java")
         
         let play2 = game.batterUp()
-        
         XCTAssertEqual(play2.batter.name, "James Gosling")
         
         let play3 = game.batterUp()
-        
-        XCTAssertEqual(play3.batter, Scott)
+        XCTAssertEqual(play3.batter.name, "Scott McNealy")
         
         let play4 = game.batterUp()
-        
         XCTAssertEqual(play4.batter.name, "Bill Joy")
         
         let play5 = game.batterUp()
-        
-        XCTAssertEqual(play5.batter, Andy)
+        XCTAssertEqual(play5.batter.name, "Andy Bechtolsheim")
         
         let play6 = game.batterUp()
-        
         XCTAssertEqual(play6.batter.name, "Larry Ellison")
         
         let play7 = game.batterUp()
-        
-        XCTAssertEqual(play7.batter, Sun)
+        XCTAssertEqual(play7.batter.name, "Sun Li")
         
         let play8 = game.batterUp()
-        
         XCTAssertEqual(play8.batter.name, "Sun Tzu")
         
         let play9 = game.batterUp()
-        
         XCTAssertEqual(play9.batter.name, "Nike Sun")
         
-        // a LineUp should have no problem wrapping around the front gain & gain.
+        // a LineUp should have no problem wrapping around the front again & again.
         let play10 = game.batterUp()
-
-        XCTAssertEqual(play10.batter, Duke)
+        XCTAssertEqual(play10.batter.name, "Duke Java")
     }
     
     
     func test_switchFields_SwitchesTeamsAsHalfInningAndEnd() {
         let game = Game()       // created with 9 innings
-        let first = game.currentInning()
         
-        let Duke = Player(name: "Duke Java", number: "33", position: .leftField)
-        let James = Player(name: "James Gosling", number: "4", position: .thirdBase)
-        let Scott = Player(name: "Scott McNealy", number: "37", position: .centerField)
-        let BillJoy = Player(name: "Bill Joy", number: "39", position: .rightField)
-        let Andy = Player(name: "Andy Bechtolsheim", number: "41", position: .pitcher)
-        let Larry = Player(name: "Larry Ellison", number: "2", position: .catcher)
-        let Sun  = Player(name: "Sun Li", number: "62", position: .firstBase)
-        let Tzu = Player(name: "Sun Tzu", number: "99", position: .secondBase)
-        let Nike = Player(name: "Nike Sun", number: "42", position: .shortStop)
-        game.visitorLineUp.add(Duke)
-        game.visitorLineUp.add(James)
-        game.visitorLineUp.add(Scott)
-        game.visitorLineUp.add(BillJoy)
-        game.visitorLineUp.add(Andy)
-        game.visitorLineUp.add(Larry)
-        game.visitorLineUp.add(Sun)
-        game.visitorLineUp.add(Tzu)
-        game.visitorLineUp.add(Nike)
-        
-        
-        // home team (bottom of innings)
-        let Taylor = Player(name: "Taylor Swift", number: "17", position: .centerField)
-        let Bill = Player(name: "Bill Swift", number: "18", position: .pitcher)
-        let Jonathan = Player(name: "Jonathan Swift", number: "67", position: .secondBase)
-        let Bob = Player(name: "Bob Swift", number: "8", position: .catcher)
-        let Kay = Player(name: "Kay Swift", number: "87", position: .firstBase)
-        let Patrick = Player(name: "Patrick Swift", number: "55", position: .secondBase)
-        let Todd = Player(name: "Todd Swift", number: "73", position: .thirdBase)
-        let Connor = Player(name: "Connor Swift", number: "6", position: .rightField)
-        let Ellen = Player(name: "Ellen Swift", number: "88", position: .shortStop)
-
-        game.homeLineUp.add(Taylor)
-        game.homeLineUp.add(Bill)
-        game.homeLineUp.add(Jonathan)
-        game.homeLineUp.add(Bob)
-        game.homeLineUp.add(Kay)
-        game.homeLineUp.add(Patrick)
-        game.homeLineUp.add(Todd)
-        game.homeLineUp.add(Connor)
-        game.homeLineUp.add(Ellen)
+        game.setVisitorTeamLineUp()
+        game.setHomeTeamLineUp()
         
         let play1 = game.batterUp()
-        
-        XCTAssertEqual(play1.batter, Duke)
+        XCTAssertEqual(play1.batter.name, "Duke Java")
         
         let play2 = game.batterUp()
-        
         XCTAssertEqual(play2.batter.name, "James Gosling")
         
         let play3 = game.batterUp()
-        
-        XCTAssertEqual(play3.batter, Scott)
+        XCTAssertEqual(play3.batter.name, "Scott McNealy")
         
         // Need a method to call to make model aware
         game.switchFields()
@@ -201,21 +130,19 @@ class GameTest: XCTestCase {
         // assume 3 outs for Visitors - switch teams at Bat
         
         let play4 = game.batterUp()
-        
         XCTAssertEqual(play4.batter.name, "Taylor Swift")
         
         let play5 = game.batterUp()
-        
-        XCTAssertEqual(play5.batter, Bill)
+        XCTAssertEqual(play5.batter.name, "Bill Swift")
         
         let play6 = game.batterUp()
-        
         XCTAssertEqual(play6.batter.name, "Jonathan Swift")
         
         // end of inning
         let inning = game.next()       // get next inning
+        XCTAssertEqual(inning?.label, "2")
         XCTAssertEqual(game.teamAtBat, Team.visitor)
-      //  XCTAssertEqual(game.currentInning().label, "2")
+        XCTAssertEqual(game.currentInning().label, "2")
        
     }
     

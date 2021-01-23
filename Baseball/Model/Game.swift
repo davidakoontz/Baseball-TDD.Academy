@@ -67,11 +67,6 @@ public class Game: Sequence, IteratorProtocol, ObservableObject {
             teamAtBat = Team.visitor
         }
     }
-    
-//      func whichTeamAtBat() -> Team {
-//          return teamAtBat
-//      }
-
       
       func whichHalf() -> InningHalf {
           if teamAtBat == Team.visitor {
