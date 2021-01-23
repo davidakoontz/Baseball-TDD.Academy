@@ -28,7 +28,7 @@ struct ScoreGameView: View {
             .toolbar  {
                 ToolbarItem(placement: .bottomBar) {
                     Button("Hit") {
-                        let play = game.nextBatter()
+                        let play = game.batterUp()
                         play.umpCalled(.single)
                     }
                 }
@@ -43,7 +43,7 @@ struct ScoreGameView: View {
                 }
                 ToolbarItem(placement: .bottomBar) {
                     Button("Out") {
-                        let play = game.nextBatter()
+                        let play = game.batterUp()
                         play.umpCalled(.lineOut)}
                 }
                 

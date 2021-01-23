@@ -103,7 +103,7 @@ public class Game: Sequence, IteratorProtocol, ObservableObject {
     // MARK: Batter methods
     
     /// returns next player to bat
-    private func batterUp() -> Player {
+    private func getNextBatter() -> Player {
         if teamAtBat == Team.visitor {
             return visitorLineUp.nextBatterInLineUp()
         } else {
@@ -112,10 +112,10 @@ public class Game: Sequence, IteratorProtocol, ObservableObject {
     }
     
     /// factory method - creates a Play with next batter, puts the Play in the Inning top/bottom then -> returns the Play
-    func nextBatter() -> Play {
+    func batterUp() -> Play {
         let inning = currentInning()
  
-        let batter = batterUp()
+        let batter = getNextBatter()
         // Create a NEW Play for this batter
         let thisPlay = Play(game: self, description: "...and up to bat is...\(batter.name) number \(batter.number) playing \(batter.position)", batter: batter)
         // a play should be appended to the proper Inning half

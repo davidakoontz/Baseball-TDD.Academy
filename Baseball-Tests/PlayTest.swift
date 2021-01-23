@@ -63,14 +63,14 @@ class PlayTest: XCTestCase {
         let game = Game()
         game.setVisitorTeamLineUp()          // game needs a lineUp to populate the next batter
         
-        let firstPlay = game.nextBatter()
+        let firstPlay = game.batterUp()
         firstPlay.umpCalled(.single)
         
         XCTAssertEqual(game.whosOn().secondBase.name, "Empty Player")
         XCTAssertEqual(game.whosOn().firstBase.name, "Duke Java")
         XCTAssertEqual(firstPlay.runnerOutcomes.secondBaseLine.rawValue, "_")
 
-        let secondPlay = game.nextBatter()
+        let secondPlay = game.batterUp()
         game.runnerOn(.firstBase, action: .advances)
         secondPlay.umpCalled(.single)
 
@@ -93,19 +93,19 @@ class PlayTest: XCTestCase {
         //        let Sun  = Player(name: "Sun Li", number: "62", position: .firstBase)
         //        let Tzu = Player(name: "Sun Tzu", number: "99", position: .secondBase)
         //        let Nike = Player(name: "Nike Sun", number: "42", position: .shortStop)
-        let firstPlay = game.nextBatter()
+        let firstPlay = game.batterUp()
         firstPlay.umpCalled(.single)
 
-        let secondPlay = game.nextBatter()
+        let secondPlay = game.batterUp()
         game.runnerOn(.firstBase, action: .advances )
         secondPlay.umpCalled(.single)
 
-        let thirdPlay = game.nextBatter()
+        let thirdPlay = game.batterUp()
         game.runnerOn(.secondBase, action: .advances )
         game.runnerOn(.firstBase, action: .advances )
         thirdPlay.umpCalled(.single)
         
-        let fourthPlay = game.nextBatter()
+        let fourthPlay = game.batterUp()
         game.runnerOn(.thirdBase, action: .advances )
         game.runnerOn(.secondBase, action: .advances )
         game.runnerOn(.firstBase, action: .advances )
@@ -135,21 +135,21 @@ class PlayTest: XCTestCase {
         //        let Sun  = Player(name: "Sun Li", number: "62", position: .firstBase)
         //        let Tzu = Player(name: "Sun Tzu", number: "99", position: .secondBase)
         //        let Nike = Player(name: "Nike Sun", number: "42", position: .shortStop)
-        let firstPlay = game.nextBatter()
+        let firstPlay = game.batterUp()
         firstPlay.umpCalled(.single)
         
         // having to explisitly move players around the bases - via method calls -- SUCKS << FixMe with automatic advancement
-        let secondPlay = game.nextBatter()
+        let secondPlay = game.batterUp()
         game.runnerOn(.firstBase, action: .advances )
         secondPlay.umpCalled(.single)
 
-        let thirdPlay = game.nextBatter()
+        let thirdPlay = game.batterUp()
         game.runnerOn(.secondBase, action: .advances )
         game.runnerOn(.firstBase, action: .advances )
         thirdPlay.umpCalled(.single)
 
         // the ORDER matters a lot - you must advance runners in (play order)
-        let fourthPlay = game.nextBatter()
+        let fourthPlay = game.batterUp()
         game.runnerOn(.thirdBase, action: .advances)
         game.runnerOn(.secondBase, action: .advances)
         game.runnerOn(.firstBase, action: .advances)
@@ -183,10 +183,10 @@ class PlayTest: XCTestCase {
         //        let Sun  = Player(name: "Sun Li", number: "62", position: .firstBase)
         //        let Tzu = Player(name: "Sun Tzu", number: "99", position: .secondBase)
         //        let Nike = Player(name: "Nike Sun", number: "42", position: .shortStop)
-        let firstPlay = game.nextBatter()
+        let firstPlay = game.batterUp()
         firstPlay.umpCalled(.single)
 
-        let secondPlay = game.nextBatter()          // must call nextBatter() before runnerOn()
+        let secondPlay = game.batterUp()          // must call batterUp() before runnerOn()
         game.runnerOn(.firstBase, action: .advances3)
         
         secondPlay.umpCalled(AtBat.triple)

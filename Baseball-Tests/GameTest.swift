@@ -101,44 +101,44 @@ class GameTest: XCTestCase {
         aGame.visitorLineUp.add(Nike)
         
         
-        let play1 = aGame.nextBatter()
+        let play1 = aGame.batterUp()
         
         XCTAssertEqual(play1.batter, Duke)
         
-        let play2 = aGame.nextBatter()
+        let play2 = aGame.batterUp()
         
         XCTAssertEqual(play2.batter.name, "James Gosling")
         
-        let play3 = aGame.nextBatter()
+        let play3 = aGame.batterUp()
         
         XCTAssertEqual(play3.batter, Scott)
         
-        let play4 = aGame.nextBatter()
+        let play4 = aGame.batterUp()
         
         XCTAssertEqual(play4.batter.name, "Bill Joy")
         
-        let play5 = aGame.nextBatter()
+        let play5 = aGame.batterUp()
         
         XCTAssertEqual(play5.batter, Andy)
         
-        let play6 = aGame.nextBatter()
+        let play6 = aGame.batterUp()
         
         XCTAssertEqual(play6.batter.name, "Larry Ellison")
         
-        let play7 = aGame.nextBatter()
+        let play7 = aGame.batterUp()
         
         XCTAssertEqual(play7.batter, Sun)
         
-        let play8 = aGame.nextBatter()
+        let play8 = aGame.batterUp()
         
         XCTAssertEqual(play8.batter.name, "Sun Tzu")
         
-        let play9 = aGame.nextBatter()
+        let play9 = aGame.batterUp()
         
         XCTAssertEqual(play9.batter.name, "Nike Sun")
         
         // a LineUp should have no problem wrapping around the front again & again.
-        let play10 = aGame.nextBatter()
+        let play10 = aGame.batterUp()
 
         XCTAssertEqual(play10.batter, Duke)
     }
@@ -190,15 +190,15 @@ class GameTest: XCTestCase {
         aGame.homeLineUp.add(Connor)
         aGame.homeLineUp.add(Ellen)
         
-        let play1 = aGame.nextBatter()
+        let play1 = aGame.batterUp()
         
         XCTAssertEqual(play1.batter, Duke)
         
-        let play2 = aGame.nextBatter()
+        let play2 = aGame.batterUp()
         
         XCTAssertEqual(play2.batter.name, "James Gosling")
         
-        let play3 = aGame.nextBatter()
+        let play3 = aGame.batterUp()
         
         XCTAssertEqual(play3.batter, Scott)
         
@@ -207,15 +207,15 @@ class GameTest: XCTestCase {
         
         // assume 3 outs for Visitors - switch teams at Bat
         
-        let play4 = aGame.nextBatter()
+        let play4 = aGame.batterUp()
         
         XCTAssertEqual(play4.batter.name, "Taylor Swift")
         
-        let play5 = aGame.nextBatter()
+        let play5 = aGame.batterUp()
         
         XCTAssertEqual(play5.batter, Bill)
         
-        let play6 = aGame.nextBatter()
+        let play6 = aGame.batterUp()
         
         XCTAssertEqual(play6.batter.name, "Jonathan Swift")
     }
@@ -230,7 +230,7 @@ class GameTest: XCTestCase {
         XCTAssertEqual(game.visitorLineUp.theLineup.count, 9)
         XCTAssertEqual(game.homeLineUp.theLineup.count, 9)
         
-        XCTAssertEqual(game.nextBatter().batter.name, "Duke Java")
+        XCTAssertEqual(game.batterUp().batter.name, "Duke Java")
     }
     
     
