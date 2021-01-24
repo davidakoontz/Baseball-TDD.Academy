@@ -12,13 +12,13 @@ public class Game: Sequence, IteratorProtocol, ObservableObject {
     // Alis for IteratorProtocol requirement
     public typealias Element = Inning
     
-    var innings: [Inning] = []      // array (9) of innings holding top/bottom and summary
-    var inningIndex = 0  // the starting index of Innings
+    var innings: [Inning] = []          // array (9) of innings holding top/bottom and summary
+    var inningIndex = 0                 // the starting index of Innings
     var visitorLineUp = LineUp()
     var homeLineUp = LineUp()
-    var bases = Bases()           // four bases to hold Players
+    var bases = Bases()                 // four bases to hold Players
     var teamAtBat: Team = Team.visitor
-    var score = Score()
+    var score = Score()                 // an Int for visitors & home
 
     //var roster: [Player]  // all the players on the team
 
