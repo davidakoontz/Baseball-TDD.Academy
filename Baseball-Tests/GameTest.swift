@@ -164,4 +164,27 @@ class GameTest: XCTestCase {
     }
     
     
+    func test_threeOutsAndSwitchTeamAtBat() {
+        let game = Game()
+        game.setVisitorTeamLineUp()
+        game.setHomeTeamLineUp()
+        
+        let play1 = game.batterUp()
+        play1.umpCalled(.foulOut)
+        
+        let play2 = game.batterUp()
+        play2.umpCalled(.lineOut)
+        
+        let play3 = game.batterUp()
+        play3.umpCalled(.strikeoutSwinging)
+        
+        let play4 = game.batterUp()
+        
+        XCTAssertEqual(game.teamAtBat, .home)
+        XCTAssertEqual(play4.batter.name, "Taylor Swift")
+
+    }
+    
 }
+
+

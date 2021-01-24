@@ -9,6 +9,7 @@ import Foundation
 
 
 struct Bases {
+    var batter: Player = EmptyPlayer()
     var firstBase: Player = EmptyPlayer()
     var secondBase: Player = EmptyPlayer()
     var thirdBase: Player = EmptyPlayer()
@@ -16,6 +17,7 @@ struct Bases {
 }
 
 public enum BaseNames: String {
+    case batter = "batter"
     case firstBase = "first"
     case secondBase = "second"
     case thirdBase = "third"

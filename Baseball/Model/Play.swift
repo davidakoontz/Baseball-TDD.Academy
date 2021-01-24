@@ -64,38 +64,56 @@ public class Play: Identifiable {
         case .single:
             game.bases.firstBase = batter
             runnerOutcomes.firstBaseLine = atBat
+            
+        // Outs of some kind
         case .doublePlay:
             game.bases.secondBase = EmptyPlayer()
+            game.playerOut()
             game.bases.firstBase = EmptyPlayer()
+            game.playerOut()
             runnerOutcomes.secondBaseLine = RunnerActions.doublePlay
             runnerOutcomes.firstBaseLine = atBat
         case .flyOut:
             runnerOutcomes.firstBaseLine = atBat
+            game.playerOut()
         case .foulOut:
             runnerOutcomes.firstBaseLine = atBat
+            game.playerOut()
         case .groundOut:
             runnerOutcomes.firstBaseLine = atBat
+            game.playerOut()
         case .strikeoutSwinging:
             runnerOutcomes.firstBaseLine = atBat
+            game.playerOut()
         case .strikeoutLooking:
             runnerOutcomes.firstBaseLine = atBat
+            game.playerOut()
         case .lineOut:
             runnerOutcomes.firstBaseLine = atBat
+            game.playerOut()
         case .sacrificeFly:
             //game.bases.firstBase = EmptyPlayer()
             runnerOutcomes.firstBaseLine = atBat
+            game.playerOut()
         case .sacrificeHit:
             //game.bases.firstBase = EmptyPlayer()
             runnerOutcomes.firstBaseLine = atBat
+            game.playerOut()
         case .triplePlay:
             game.bases.thirdBase = EmptyPlayer()
+            game.playerOut()
             game.bases.secondBase = EmptyPlayer()
+            game.playerOut()
             game.bases.firstBase = EmptyPlayer()
+            game.playerOut()
             runnerOutcomes.thirdBaseLine = RunnerActions.triplePlay
             runnerOutcomes.secondBaseLine = RunnerActions.triplePlay
             runnerOutcomes.firstBaseLine = atBat
         case .unassistedOut:
             runnerOutcomes.firstBaseLine = atBat
+            game.playerOut()
+            
+        // batter advances to first
         case .error:
             game.bases.firstBase = batter
             runnerOutcomes.firstBaseLine = atBat

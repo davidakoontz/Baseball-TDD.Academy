@@ -102,6 +102,7 @@ extension Game {
 
         game.innings = exampleInnings       // overwriting with our example plays
         
+        game.inningIndex = 3                // 3rd index is Fourth Inning
         return game
     }
 }

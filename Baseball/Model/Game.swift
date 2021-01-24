@@ -19,6 +19,7 @@ public class Game: Sequence, IteratorProtocol, ObservableObject {
     var bases = Bases()                 // four bases to hold Players
     var teamAtBat: Team = Team.visitor
     var score = Score()                 // an Int for visitors & home
+    var outs = 0                        // number of out's this teams at bat
 
     //var roster: [Player]  // all the players on the team
 
@@ -44,7 +45,15 @@ public class Game: Sequence, IteratorProtocol, ObservableObject {
 //        inningIndex = 0     // start of game
 //    }
     
-
+    // MARK: Game methods
+    func playerOut() {
+        self.outs += 1
+        // do we care which player?? not now.
+        if outs >= 3 {
+            outs = 0
+            switchFields()  // changes team at bat; and inningIndex
+        }
+    }
 
 
     // MARK: Inning methods
@@ -61,6 +70,7 @@ public class Game: Sequence, IteratorProtocol, ObservableObject {
             teamAtBat = Team.home
         } else {
             teamAtBat = Team.visitor
+            inningIndex += 1            // and it's top of the next inning
         }
     }
       
@@ -132,6 +142,8 @@ public class Game: Sequence, IteratorProtocol, ObservableObject {
         
         switch base {
         // we do not record runner actions for the box to first base line - that's done in  Play.called()
+        case BaseNames.batter:
+            if 1 == 1 { /* do nothing  */ }
         case BaseNames.firstBase:
             if action == RunnerActions.advances {
                 bases.secondBase = bases.firstBase        // the player moves to second
