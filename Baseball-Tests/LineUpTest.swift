@@ -47,10 +47,9 @@ class LineUpTest: XCTestCase {
     }
     
     func test_assign_aListOfPlayers() {
-        //atBatList: [Player] =  [ taylor, bill, jonathan, bob, duke, james, scott, billJoy, andy, larry ]
-        lineup.assign(list: Player.atBatList)
+        lineup.assign(list: Player.visitorsAtBatList)
         
-        XCTAssertEqual(lineup.theLineup.count, 10)
+        XCTAssertEqual(lineup.theLineup.count, 9)
     }
     
     

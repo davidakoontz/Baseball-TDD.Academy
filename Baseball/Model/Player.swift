@@ -29,28 +29,6 @@ public class Player: Hashable, Identifiable {
          hasher.combine(name)
      }
     
-    
-    // this code might be usefull for the Xcode Preview Canvas
-    //
-
-    // top of 1st inning
-    static let duke = Player(name: "Duke Java", number: "33", position: .leftField)
-    static let james = Player(name: "James Gosling", number: "4", position: .thirdBase)
-    static let scott = Player(name: "Scott McNealy", number: "37", position: .centerField)
-    static let billJoy = Player(name: "Bill Joy", number: "39", position: .rightField)
-    static let andy = Player(name: "Andy Bechtolsheim", number: "41", position: .pitcher)
-    static let larry = Player(name: "Larry Ellison", number: "2", position: .secondBase)
-    // home team - bottom of inning
-    static let taylor = Player(name: "Taylor Swift", number: "17", position: .centerField)
-    static let bill = Player(name: "Bill Swift", number: "18", position: .pitcher)
-    static let jonathan = Player(name: "Jonathan Swift", number: "67", position: .secondBase)
-    static let bob = Player(name: "Bob Swift", number: "8", position: .catcher)
-    
-    static var atBatList: [Player] =  [
-        taylor, bill, jonathan, bob, duke, james, scott, billJoy, andy, larry
-    ]
-
-    
 } // end of Player class
 
 
@@ -59,7 +37,6 @@ extension Player: Equatable {
         return
             lhs.name == rhs.name &&
             lhs.number == rhs.number
-        
         //  lhs.position == rhs.position &&  Player's may change position!
     }
 }
@@ -71,16 +48,35 @@ class EmptyPlayer : Player{
     }
 }
 
-public enum Position: String, CaseIterable {
-    case pitcher = "1"
-    case catcher = "2"
-    case firstBase = "3"
-    case secondBase = "4"
-    case thirdBase = "5"
-    case shortStop = "6"
-    case leftField = "7"
-    case centerField = "8"
-    case rightField = "9"
-    case extraOutfielder = "10"     // only in Softball - not in baseball
-    case designatedHitter = "DH"    // a batter but doesn't go onto the field - bats instead of pitcher
+extension Player {
+    // this code might be usefull for the Xcode Preview Canvas
+    //
+    static var visitorsAtBatList: [Player] =  [
+        duke, james, scott, billJoy, andy, larry, sun, tzu, nike ]
+    static var homeAtBatList: [Player] =  [
+        taylor, bill, jonathan, bob, kay, patrick, todd, connor, ellen ]
+    
+    // visitors always bat first (top of innings)
+    static let duke = Player(name: "Duke Java", number: "33", position: .leftField)
+    static let james = Player(name: "James Gosling", number: "4", position: .thirdBase)
+    static let scott = Player(name: "Scott McNealy", number: "37", position: .centerField)
+    static let billJoy = Player(name: "Bill Joy", number: "39", position: .rightField)
+    static let andy = Player(name: "Andy Bechtolsheim", number: "41", position: .pitcher)
+    static let larry = Player(name: "Larry Ellison", number: "2", position: .catcher)
+    static let sun  = Player(name: "Sun Li", number: "62", position: .firstBase)
+    static let tzu = Player(name: "Sun Tzu", number: "99", position: .secondBase)
+    static let nike = Player(name: "Nike Sun", number: "42", position: .shortStop)
+    
+    // home team (bat bottom of innings)
+   static let taylor = Player(name: "Taylor Swift", number: "17", position: .centerField)
+   static let bill = Player(name: "Bill Swift", number: "18", position: .pitcher)
+   static let jonathan = Player(name: "Jonathan Swift", number: "67", position: .leftField)
+   static let bob = Player(name: "Bob Swift", number: "8", position: .catcher)
+   static let kay = Player(name: "Kay Swift", number: "87", position: .firstBase)
+   static let patrick = Player(name: "Patrick Swift", number: "55", position: .secondBase)
+   static let todd = Player(name: "Todd Swift", number: "73", position: .thirdBase)
+   static let connor = Player(name: "Connor Swift", number: "6", position: .rightField)
+   static let ellen = Player(name: "Ellen Swift", number: "88", position: .shortStop)
+   
+    
 }
