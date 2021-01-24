@@ -15,6 +15,7 @@ public class Player: Hashable, Identifiable {
     var name: String
     var number: String      // jeresy number
     var position: Position
+    var ongoingPlay: Play?  // OPTIONAL - the play the player batted and runner record
 
     
     init(name: String, number: String, position: Position) {
@@ -22,7 +23,21 @@ public class Player: Hashable, Identifiable {
         self.number = number
         self.position = position
     }
-     
+    
+    init(name: String, number: String, position: Position, play: Play) {
+        self.name = name
+        self.number = number
+        self.position = position
+        self.ongoingPlay = play
+    }
+    
+    func currentPlay() -> Play {
+        if let play = ongoingPlay {
+            return play
+        }
+        return EmptyPlay(theGame: EmptyGame() )
+    }
+    
      // see: https://medium.com/better-programming/what-is-hashable-in-swift-6a51627f904
      public func hash(into hasher: inout Hasher) {
          hasher.combine(number)

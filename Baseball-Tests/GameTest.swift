@@ -70,9 +70,18 @@ class GameTest: XCTestCase {
         XCTAssertEqual(game.score.home, 3)
     }
     
+    func test_batterUp_assignsThePlayToBatter() {
+        let game = Game()
+
+        game.setVisitorTeamLineUp()
+        
+        let play1 = game.batterUp()
+        XCTAssertEqual(play1.batter.name, "Duke Java")
+        XCTAssertTrue(play1.batter.currentPlay().description.contains("Duke Java") )
+    }
+    
     func test_batterUp_FactoryMethodForPlayWrappsArroundLineUp() {
         let game = Game()
-        let first = game.currentInning()
 
         game.setVisitorTeamLineUp()
         

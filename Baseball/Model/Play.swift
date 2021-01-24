@@ -35,6 +35,8 @@ public class Play: Identifiable {
         // more properties
         self.atBat = AtBat.inBox              // Batter in the batter's Box - still at bat
         runnerOutcomes = RunnerOutcomes()
+        // object is setup
+        batter.ongoingPlay = self
     }
     
     
@@ -47,6 +49,8 @@ public class Play: Identifiable {
         // more properties
         self.atBat = atBat                      // Batter in the batter's Box - still at bat
         runnerOutcomes = RunnerOutcomes()
+        // object is setup
+        batter.ongoingPlay = self
     }
     
     func umpCalled(_ atBat: AtBat) {        // called by Umpire

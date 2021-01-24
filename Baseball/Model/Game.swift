@@ -112,8 +112,10 @@ public class Game: Sequence, IteratorProtocol, ObservableObject {
         let inning = currentInning()
  
         let batter = getNextBatter()
-        // Create a NEW Play for this batter
+        // A Factory method: Create a NEW Play for this batter
         let thisPlay = Play(game: self, description: "...and up to bat is...\(batter.name) number \(batter.number) playing \(batter.position)", batter: batter)
+        // now put thisPlay into the batter's memory
+        batter.ongoingPlay = thisPlay
         // a play should be appended to the proper Inning half
         inning.append(thisPlay, teamAtBat: teamAtBat)
 
@@ -304,4 +306,7 @@ public class Game: Sequence, IteratorProtocol, ObservableObject {
 } // end of Game class
 
 
+class EmptyGame: Game {
+    
+}
 

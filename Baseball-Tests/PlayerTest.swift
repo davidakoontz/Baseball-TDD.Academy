@@ -20,6 +20,22 @@ class PlayerTest: XCTestCase {
         XCTAssertFalse( playerA == playerB )  // a negative test for ==
     }
     
+    func test_currentPlay_withAnOngoingPlay() {
+        let playerA = Player(name: "Player A", number: "33", position: .rightField)
+
+        let aPlay = Play(game: EmptyGame(), description: "an ongoing play", batter: playerA)
+        
+        XCTAssertEqual(playerA.currentPlay().description, aPlay.description)
+    }
+    
+    func test_currentPlay_withEmptyPlay() {
+        let playerA = Player(name: "Player A", number: "33", position: .rightField)
+
+        //let aPlay = Play(game: EmptyGame(), description: "an ongoing play", batter: playerA)
+        
+        XCTAssertEqual(playerA.currentPlay().description, "Empty Play")
+ 
+    }
     // see: https://medium.com/better-programming/what-is-hashable-in-swift-6a51627f904
     // this crap got to complex... give up for today.
 //    func testPlayerHashMethod() throws {
