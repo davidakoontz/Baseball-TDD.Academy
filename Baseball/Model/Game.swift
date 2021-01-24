@@ -48,6 +48,7 @@ public class Game: Sequence, IteratorProtocol, ObservableObject {
     // MARK: Game methods
     func playerOut() {
         self.outs += 1
+        print("OUT #\(outs)!!")
         // do we care which player?? not now.
         if outs >= 3 {
             outs = 0
@@ -66,6 +67,7 @@ public class Game: Sequence, IteratorProtocol, ObservableObject {
     
     public func switchFields() {
         // after 3 outs the teams switch fields
+        print("SWITCHFIELDS")
         if teamAtBat == Team.visitor {
             teamAtBat = Team.home
         } else {

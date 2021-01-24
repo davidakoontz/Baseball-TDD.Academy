@@ -125,9 +125,8 @@ class GameTest: XCTestCase {
         XCTAssertEqual(play3.batter.name, "Scott McNealy")
         
         // Need a method to call to make model aware
-        game.switchFields()
+        game.switchFields()     // we now have game.playerOut() for 3 outs.
         XCTAssertEqual(game.teamAtBat, .home)
-        
         // assume 3 outs for Visitors - switch teams at Bat
         
         let play4 = game.batterUp()
@@ -143,8 +142,8 @@ class GameTest: XCTestCase {
         XCTAssertEqual(game.teamAtBat, .visitor)
         
         // end of inning
-        let inning = game.next()       // get next inning
-        XCTAssertEqual(inning?.label, "2")
+        let inning = game.currentInning()
+        XCTAssertEqual(inning.label, "2")
         XCTAssertEqual(game.teamAtBat, Team.visitor)
         XCTAssertEqual(game.currentInning().label, "2")
        
@@ -185,6 +184,38 @@ class GameTest: XCTestCase {
 
     }
     
+    func test_sixOutsAndIncrementInnings() {
+        let game = Game()
+        game.setVisitorTeamLineUp()
+        game.setHomeTeamLineUp()
+        
+        let play1 = game.batterUp()
+        play1.umpCalled(.foulOut)
+        
+        let play2 = game.batterUp()
+        play2.umpCalled(.lineOut)
+        
+        let play3 = game.batterUp()
+        play3.umpCalled(.strikeoutSwinging)
+        
+        let play4 = game.batterUp()
+        XCTAssertEqual(game.teamAtBat, .home)
+        XCTAssertEqual(play4.batter.name, "Taylor Swift")
+        play4.umpCalled(.flyOut)
+        
+        let play5 = game.batterUp()
+        play5.umpCalled(.lineOut)
+        
+        let play6 = game.batterUp()
+        play6.umpCalled(.strikeoutSwinging)
+        XCTAssertEqual(play6.batter.name, "Jonathan Swift")
+        
+        let play7 = game.batterUp()// 4th in visitor's line up
+        XCTAssertEqual(play7.batter.name, "Bill Joy")
+        XCTAssertEqual(game.teamAtBat, .visitor)
+        XCTAssertEqual(game.currentInning().label, "2")
+
+    }
 }
 
 
