@@ -52,14 +52,69 @@ public class Play: Identifiable {
     func umpCalled(_ atBat: AtBat) {        // called by Umpire
         self.atBat = atBat
         switch atBat {
+        case .homeRun:
+            game.bases.homePlate = batter
+            runnerOutcomes.firstBaseLine = atBat
         case .triple:
             game.bases.thirdBase = batter
             runnerOutcomes.firstBaseLine = atBat
-            
-        //        case .balk, .baseOnBalls, .walk:
-        //            runnerOutcomes.firstBase = batter
-        //        case .single:
-        //            runnerOutcome.firstBase = batter
+        case .double:
+            game.bases.secondBase = batter
+            runnerOutcomes.firstBaseLine = atBat
+        case .single:
+            game.bases.firstBase = batter
+            runnerOutcomes.firstBaseLine = atBat
+        case .doublePlay:
+            game.bases.secondBase = EmptyPlayer()
+            game.bases.firstBase = EmptyPlayer()
+            runnerOutcomes.secondBaseLine = RunnerActions.doublePlay
+            runnerOutcomes.firstBaseLine = atBat
+        case .flyOut:
+            runnerOutcomes.firstBaseLine = atBat
+        case .foulOut:
+            runnerOutcomes.firstBaseLine = atBat
+        case .groundOut:
+            runnerOutcomes.firstBaseLine = atBat
+        case .strikeoutSwinging:
+            runnerOutcomes.firstBaseLine = atBat
+        case .strikeoutLooking:
+            runnerOutcomes.firstBaseLine = atBat
+        case .lineOut:
+            runnerOutcomes.firstBaseLine = atBat
+        case .sacrificeFly:
+            //game.bases.firstBase = EmptyPlayer()
+            runnerOutcomes.firstBaseLine = atBat
+        case .sacrificeHit:
+            //game.bases.firstBase = EmptyPlayer()
+            runnerOutcomes.firstBaseLine = atBat
+        case .triplePlay:
+            game.bases.thirdBase = EmptyPlayer()
+            game.bases.secondBase = EmptyPlayer()
+            game.bases.firstBase = EmptyPlayer()
+            runnerOutcomes.thirdBaseLine = RunnerActions.triplePlay
+            runnerOutcomes.secondBaseLine = RunnerActions.triplePlay
+            runnerOutcomes.firstBaseLine = atBat
+        case .unassistedOut:
+            runnerOutcomes.firstBaseLine = atBat
+        case .error:
+            game.bases.firstBase = batter
+            runnerOutcomes.firstBaseLine = atBat
+        case .hitByPitch:
+            game.bases.firstBase = batter
+            runnerOutcomes.firstBaseLine = atBat
+        case .interference:
+            game.bases.firstBase = batter
+            runnerOutcomes.firstBaseLine = atBat
+        case .intentionalWalk:
+            game.bases.firstBase = batter
+            runnerOutcomes.firstBaseLine = atBat
+        case .passedBall:
+            game.bases.firstBase = batter
+            runnerOutcomes.firstBaseLine = atBat
+        case .wildPitch:
+            game.bases.firstBase = batter
+            runnerOutcomes.firstBaseLine = atBat
+  
         default:
             game.bases.firstBase = batter
             runnerOutcomes.firstBaseLine = atBat

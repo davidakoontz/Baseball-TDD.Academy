@@ -205,4 +205,369 @@ class PlayTest: XCTestCase {
     //            XCTAssertEqual( aPlay.whosOn().runnerOutcome.firstBase , "CS" )
     //
     //    }
+    
+    func test_umpCalled_single() {
+        let game = Game()
+        game.setVisitorTeamLineUp()
+        game.setHomeTeamLineUp()
+        
+        let firstPlay = game.batterUp()
+        firstPlay.umpCalled(.single)
+        
+        XCTAssertEqual(game.whosOn().firstBase.name, "Duke Java")
+        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.single)
+    }
+    
+    func test_umpCalled_double() {
+        let game = Game()
+        game.setVisitorTeamLineUp()
+        game.setHomeTeamLineUp()
+        
+        let firstPlay = game.batterUp()
+        firstPlay.umpCalled(.double)
+        
+        XCTAssertEqual(game.whosOn().secondBase.name, "Duke Java")
+        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.double)
+    }
+    
+    func test_umpCalled_triple() {
+        let game = Game()
+        game.setVisitorTeamLineUp()
+        game.setHomeTeamLineUp()
+        
+        let firstPlay = game.batterUp()
+        firstPlay.umpCalled(.triple)
+        
+        XCTAssertEqual(game.whosOn().thirdBase.name, "Duke Java")
+        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.triple)
+    }
+     
+    func test_umpCalled_homeRun() {
+        let game = Game()
+        game.setVisitorTeamLineUp()
+        game.setHomeTeamLineUp()
+        
+        let firstPlay = game.batterUp()
+        firstPlay.umpCalled(.homeRun)
+        
+        XCTAssertEqual(game.whosOn().homePlate.name, "Duke Java")
+        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.homeRun)
+    }
+    
+    func test_umpCalled_walk() {
+        let game = Game()
+        game.setVisitorTeamLineUp()
+        game.setHomeTeamLineUp()
+        
+        let firstPlay = game.batterUp()
+        firstPlay.umpCalled(.walk)
+        
+        XCTAssertEqual(game.whosOn().firstBase.name, "Duke Java")
+        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.walk)
+    }
+    
+    func test_umpCalled_baseOnBalls() {
+        let game = Game()
+        game.setVisitorTeamLineUp()
+        game.setHomeTeamLineUp()
+        
+        let firstPlay = game.batterUp()
+        firstPlay.umpCalled(.baseOnBalls)
+        
+        XCTAssertEqual(game.whosOn().firstBase.name, "Duke Java")
+        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.baseOnBalls)
+    }
+    
+    
+    func test_umpCalled_fildersChoice() {
+        let game = Game()
+        game.setVisitorTeamLineUp()
+        game.setHomeTeamLineUp()
+        
+        let firstPlay = game.batterUp()
+        firstPlay.umpCalled(.fildersChoice)
+        
+        XCTAssertEqual(game.whosOn().firstBase.name, "Duke Java")
+        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.fildersChoice)
+    }
+    
+    
+    func test_umpCalled_doublePlay() {
+        let game = Game()
+        game.setVisitorTeamLineUp()
+        game.setHomeTeamLineUp()
+        
+        let firstPlay = game.batterUp()
+        firstPlay.umpCalled(.single)
+        let secondPlay = game.batterUp()
+        secondPlay.umpCalled(.doublePlay)
+        
+        XCTAssertEqual(game.whosOn().firstBase.name, "Empty Player")
+        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.doublePlay)
+        XCTAssertEqual(game.currentPlay().runnerOutcomes.secondBaseLine, RunnerActions.doublePlay)
+    }
+    
+    
+    func test_umpCalled_triplePlay() {
+        let game = Game()
+        game.setVisitorTeamLineUp()
+        game.setHomeTeamLineUp()
+        
+        let firstPlay = game.batterUp()
+        firstPlay.umpCalled(.single)
+        let secondPlay = game.batterUp()
+        secondPlay.umpCalled(.single)
+        
+        let thirdPlay = game.batterUp()
+        thirdPlay.umpCalled(.triplePlay)
+        
+        XCTAssertEqual(game.whosOn().firstBase.name, "Empty Player")
+        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.triplePlay)
+        XCTAssertEqual(game.currentPlay().runnerOutcomes.secondBaseLine, RunnerActions.triplePlay)
+        XCTAssertEqual(game.whosOn().secondBase.name, "Empty Player")
+        XCTAssertEqual(game.whosOn().thirdBase.name, "Empty Player")
+    }
+    
+    
+    func test_umpCalled_caughtStealing() {
+        let game = Game()
+        game.setVisitorTeamLineUp()
+        game.setHomeTeamLineUp()
+        
+        let firstPlay = game.batterUp()
+        firstPlay.umpCalled(.single)
+        let secondPlay = game.batterUp()
+        game.runnerOn(.firstBase, action: .caughtStealing)
+        
+        XCTAssertEqual(game.whosOn().firstBase.name, "Empty Player")
+        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.blank)
+        XCTAssertEqual(game.currentPlay().runnerOutcomes.secondBaseLine, RunnerActions.caughtStealing)
+    }
+    
+    func test_umpCalled_flyOut() {
+        let game = Game()
+        game.setVisitorTeamLineUp()
+        game.setHomeTeamLineUp()
+        
+        let firstPlay = game.batterUp()
+        firstPlay.umpCalled(.flyOut)
+        
+        XCTAssertEqual(game.whosOn().firstBase.name, "Empty Player")
+        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.flyOut)
+    }
+    
+    
+    func test_umpCalled_foulOut() {
+        let game = Game()
+        game.setVisitorTeamLineUp()
+        game.setHomeTeamLineUp()
+        
+        let firstPlay = game.batterUp()
+        firstPlay.umpCalled(.foulOut)
+        
+        XCTAssertEqual(game.whosOn().firstBase.name, "Empty Player")
+        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.foulOut)
+    }
+    
+    func test_umpCalled_groundOut() {
+        let game = Game()
+        game.setVisitorTeamLineUp()
+        game.setHomeTeamLineUp()
+        
+        let firstPlay = game.batterUp()
+        firstPlay.umpCalled(.groundOut)
+        
+        XCTAssertEqual(game.whosOn().firstBase.name, "Empty Player")
+        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.groundOut)
+    }
+    
+    func test_umpCalled_strikeoutSwinging() {
+        let game = Game()
+        game.setVisitorTeamLineUp()
+        game.setHomeTeamLineUp()
+        
+        let firstPlay = game.batterUp()
+        firstPlay.umpCalled(.strikeoutSwinging)
+        
+        XCTAssertEqual(game.whosOn().firstBase.name, "Empty Player")
+        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.strikeoutSwinging)
+    }
+    
+    func test_umpCalled_strikeoutLooking() {
+        let game = Game()
+        game.setVisitorTeamLineUp()
+        game.setHomeTeamLineUp()
+        
+        let firstPlay = game.batterUp()
+        firstPlay.umpCalled(.strikeoutLooking)
+        
+        XCTAssertEqual(game.whosOn().firstBase.name, "Empty Player")
+        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.strikeoutLooking)
+    }
+    
+    func test_umpCalled_lineOut() {
+        let game = Game()
+        game.setVisitorTeamLineUp()
+        game.setHomeTeamLineUp()
+        
+        let firstPlay = game.batterUp()
+        firstPlay.umpCalled(.lineOut)
+        
+        XCTAssertEqual(game.whosOn().firstBase.name, "Empty Player")
+        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.lineOut)
+    }
+    
+    
+    func test_umpCalled_sacrificeFly() {
+        let game = Game()
+        game.setVisitorTeamLineUp()
+        game.setHomeTeamLineUp()
+        
+        let firstPlay = game.batterUp()
+        firstPlay.umpCalled(.single)
+        
+        
+        game.runnerOn(.firstBase, action: .advances)
+        
+        
+        let secondPlay = game.batterUp()
+        secondPlay.umpCalled(.sacrificeFly)
+        game.runnerOn(.secondBase, action: .advances)
+        
+        XCTAssertEqual(game.whosOn().firstBase.name, "Empty Player")
+        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.sacrificeFly)
+        XCTAssertEqual(game.currentPlay().runnerOutcomes.thirdBaseLine, RunnerActions.advances)
+        XCTAssertEqual(game.whosOn().thirdBase.name, "Duke Java")
+    }
+    
+    func test_umpCalled_sacrificeHit() {
+        let game = Game()
+        game.setVisitorTeamLineUp()
+        game.setHomeTeamLineUp()
+        
+        let firstPlay = game.batterUp()
+        firstPlay.umpCalled(.single)        // Duke on first
+        XCTAssertEqual(game.whosOn().firstBase.name, "Duke Java")
+
+        let secondPlay = game.batterUp()
+        secondPlay.umpCalled(.sacrificeHit) // Duke to 2nd
+        game.runnerOn(.firstBase, action: .advances)
+        
+        XCTAssertEqual(game.whosOn().firstBase.name, "Empty Player")
+        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.sacrificeHit)
+
+        XCTAssertEqual(game.whosOn().secondBase.name, "Duke Java")
+    }
+    
+    
+    func test_umpCalled_unassistedOut() {
+        let game = Game()
+        game.setVisitorTeamLineUp()
+        game.setHomeTeamLineUp()
+        
+        let firstPlay = game.batterUp()
+        firstPlay.umpCalled(.unassistedOut)
+     
+        XCTAssertEqual(game.whosOn().firstBase.name, "Empty Player")
+        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.unassistedOut)
+    }
+
+    
+    func test_umpCalled_balk() {
+        let game = Game()
+        game.setVisitorTeamLineUp()
+        game.setHomeTeamLineUp()
+        
+        let firstPlay = game.batterUp()
+        firstPlay.umpCalled(.balk)
+     
+        XCTAssertEqual(game.whosOn().firstBase.name, "Duke Java")
+        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.balk)
+    }
+
+    
+    
+    func test_umpCalled_error() {
+        let game = Game()
+        game.setVisitorTeamLineUp()
+        game.setHomeTeamLineUp()
+        
+        let firstPlay = game.batterUp()
+        firstPlay.umpCalled(.error)
+     
+        XCTAssertEqual(game.whosOn().firstBase.name, "Duke Java")
+        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.error)
+    }
+    
+    func test_umpCalled_hitByPitch() {
+        let game = Game()
+        game.setVisitorTeamLineUp()
+        game.setHomeTeamLineUp()
+        
+        let firstPlay = game.batterUp()
+        firstPlay.umpCalled(.hitByPitch)
+     
+        XCTAssertEqual(game.whosOn().firstBase.name, "Duke Java")
+        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.hitByPitch)
+    }
+    
+    func test_umpCalled_interference() {
+        let game = Game()
+        game.setVisitorTeamLineUp()
+        game.setHomeTeamLineUp()
+        
+        let firstPlay = game.batterUp()
+        firstPlay.umpCalled(.interference)
+     
+        XCTAssertEqual(game.whosOn().firstBase.name, "Duke Java")
+        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.interference)
+    }
+    
+    
+    func test_umpCalled_intentionalWalk() {
+        let game = Game()
+        game.setVisitorTeamLineUp()
+        game.setHomeTeamLineUp()
+        
+        let firstPlay = game.batterUp()
+        firstPlay.umpCalled(.intentionalWalk)
+     
+        XCTAssertEqual(game.whosOn().firstBase.name, "Duke Java")
+        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.intentionalWalk)
+    }
+    
+    
+    func test_umpCalled_passedBall() {
+        let game = Game()
+        game.setVisitorTeamLineUp()
+        game.setHomeTeamLineUp()
+        
+        let firstPlay = game.batterUp()
+        firstPlay.umpCalled(.passedBall)
+     
+        XCTAssertEqual(game.whosOn().firstBase.name, "Duke Java")
+        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.passedBall)
+    }
+    
+    
+    func test_umpCalled_wildPitch() {
+        let game = Game()
+        game.setVisitorTeamLineUp()
+        game.setHomeTeamLineUp()
+        
+        let firstPlay = game.batterUp()
+        firstPlay.umpCalled(.wildPitch)
+     
+        XCTAssertEqual(game.whosOn().firstBase.name, "Duke Java")
+        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.wildPitch)
+    }
+    
+    
+    
+//    // types of Outs - numbers are the positions that interact with the ball
+
+
+
+//    case passedBall = "PB"      // ball get's passed the catcher
+//    case wildPitch = "WP"       // pitcher has a bad throw
 }

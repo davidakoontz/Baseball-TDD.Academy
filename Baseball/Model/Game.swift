@@ -135,31 +135,45 @@ public class Game: Sequence, IteratorProtocol, ObservableObject {
         case BaseNames.firstBase:
             if action == RunnerActions.advances {
                 bases.secondBase = bases.firstBase        // the player moves to second
+                play.runnerOutcomes.secondBaseLine = action
+                bases.firstBase = EmptyPlayer()
             } else if action == RunnerActions.advances2 {
                 bases.thirdBase = bases.firstBase
                 play.runnerOutcomes.thirdBaseLine = action
+                bases.firstBase = EmptyPlayer()
             } else if action == RunnerActions.advances3 {
                 bases.homePlate = bases.firstBase
                 play.runnerOutcomes.homeBaseLine = action
                 play.runnerOutcomes.thirdBaseLine = action
                 play.runnerOutcomes.homeBaseLine = RunnerActions.scores
                 score.Add(runs: 1, teamAtBat: teamAtBat)
+                bases.firstBase = EmptyPlayer()
+            } else if action == RunnerActions.caughtStealing {
+                bases.firstBase = EmptyPlayer()
+                play.runnerOutcomes.secondBaseLine = action
             }
             play.runnerOutcomes.secondBaseLine = action
         case BaseNames.secondBase:
             if action == RunnerActions.advances {
                 bases.thirdBase = bases.secondBase        // the player moves to third
+                play.runnerOutcomes.thirdBaseLine = action
+                bases.secondBase = EmptyPlayer()
             } else if action == RunnerActions.advances2 {
                 bases.homePlate = bases.secondBase
                 play.runnerOutcomes.homeBaseLine = action
                 play.runnerOutcomes.homeBaseLine = RunnerActions.scores
                 score.Add(runs: 1, teamAtBat: teamAtBat)
+                bases.secondBase = EmptyPlayer()
             } else if action == RunnerActions.advances3 {
                 bases.homePlate = bases.secondBase
                 play.runnerOutcomes.thirdBaseLine = action
                 play.runnerOutcomes.homeBaseLine = action
                 play.runnerOutcomes.homeBaseLine = RunnerActions.scores
                 score.Add(runs: 1, teamAtBat: teamAtBat)
+                bases.secondBase = EmptyPlayer()
+            } else if action == RunnerActions.caughtStealing {
+                bases.secondBase = EmptyPlayer()
+                play.runnerOutcomes.thirdBaseLine = action
             }
             play.runnerOutcomes.thirdBaseLine = action
         case BaseNames.thirdBase:
@@ -168,16 +182,22 @@ public class Game: Sequence, IteratorProtocol, ObservableObject {
                 score.Add(runs: 1, teamAtBat: teamAtBat)
                 play.runnerOutcomes.homeBaseLine = action
                 play.runnerOutcomes.homeBaseLine = RunnerActions.scores
+                bases.thirdBase = EmptyPlayer()
             } else if action == RunnerActions.advances2 {
                 bases.homePlate = bases.thirdBase
                 play.runnerOutcomes.homeBaseLine = action
                 play.runnerOutcomes.homeBaseLine = RunnerActions.scores
                 score.Add(runs: 1, teamAtBat: teamAtBat)
+                bases.thirdBase = EmptyPlayer()
             } else if action == RunnerActions.advances3 {
                 bases.homePlate = bases.thirdBase
                 play.runnerOutcomes.homeBaseLine = action
                 play.runnerOutcomes.homeBaseLine = RunnerActions.scores
                 score.Add(runs: 1, teamAtBat: teamAtBat)
+                bases.thirdBase = EmptyPlayer()
+            } else if action == RunnerActions.caughtStealing {
+                bases.thirdBase = EmptyPlayer()
+                play.runnerOutcomes.homeBaseLine = action
             }
         case BaseNames.homePlate:
             // there is no action for home plate

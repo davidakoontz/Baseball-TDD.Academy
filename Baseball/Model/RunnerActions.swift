@@ -15,5 +15,6 @@ enum RunnerActions: String {
     case caughtStealing = "CS"
     case baseIsHeld = "H"
     case scores = "SCORES"
-    
+    case doublePlay = "DP"
+    case triplePlay = "TP"
 }
