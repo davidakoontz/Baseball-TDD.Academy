@@ -3,12 +3,63 @@
 ## This code is being TDD.Academy test driven - follow along on https://www.twitch.tv/tddacademy
 ## YouTube Channel: https://www.youtube.com/channel/UCU1U6oPscxzKd_IWAIOm60w/featured
 
-## Next Show (Jan 22)
-ToDo: 
+## Jan 23 
+Lots of cleaning up.
+Created new files from Game.swift many aux objects.
+Created a Game_Factories.swift to hold the static content used in Previews
+Added some test and reworked lots of test to better use the Game methods.
 
-Note: automatic advancement of runners on base - now the order of calls to advance runners matters.
 
-Adding other atBat types…
+## Jan 22 Show
+
+Topics:
+
+Testing clean up … in review we had some test that didn’t follow our REF ARCH idea of:
+    func test_methodUnderTest_secnarioDescribedDAMPly
+
+Wonder how much code we are writing and how well we are doing with our Test?
+
+Baseball Model 5 swift files & 5 test files with about 90 Asserts but about 700 lines of implementation code with about 700 lines of testing code.
+
+Ol-skool method of counting lines of code:
+unix>  find . -name "*.swift" -print0 | xargs -0 wc -l
+
+Mac:Model david$ find . -name "*.swift" -print0 | xargs -0 wc -l
+      96 ./Play.swift
+     437 ./Game.swift
+      73 ./Inning.swift
+      86 ./Player.swift
+      41 ./LineUp.swift
+     733 total
+Mac:Model david$
+
+Mac:Baseball-Tests david$ find . -name "*.swift" -print0 | xargs -0 wc -l
+      57 ./LineUpTest.swift
+     208 ./PlayTest.swift
+     237 ./GameTest.swift
+      33 ./PlayerTest.swift
+     120 ./InningTest.swift
+     655 total
+Mac:Baseball-Tests david$
+
+Wonder if there’s a Xcode tool that can help with this type of assessment?
+
+A Code Coverage tool?  Hmmm…
+
+Also - a Editor > MiniMap will help with the Game.swift file that has grown so big…
+
+NEXT STORY
+* Story: Score a Game (record plays) <priority 2>
+As a parent
+I can score the game
+So that later I can send the game to interested parties
+Value: 
+    * could mention our livestream to the game purchaser
+    * Start marketing our App
+    * Credibility of having an App in the App Store
+    * Lean how to submit to the App Store.
+Capabilities Required:  roster of players, concept of teams, 
+Data input concept: [scorer - a role] is presented with a batter (from roster) - they select the At Bat outcome (Picker UI) and Runner (if any) movements.
 
 ## Jan 18th
 - [x] Move Play method runnerOn(base, action) into Game class.
