@@ -13,6 +13,7 @@ enum RunnerActions: String {
     case advances2 = "2xAB"         // Advanced 2 bases by Batter X
     case advances3 = "3xAB"         // Advances 3 bases by Batter X
     case caughtStealing = "CS"
+    case stolenBase = "SB"          // Stolen Base by runner
     case baseIsHeld = "H"
     case scores = "SCORES"
     case doublePlay = "DP"

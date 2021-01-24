@@ -216,6 +216,21 @@ class GameTest: XCTestCase {
         XCTAssertEqual(game.currentInning().label, "2")
 
     }
+    
+    func test_runnerOn_firstBaseStealsSecondBase() {
+        let game = Game()
+        game.setVisitorTeamLineUp()
+        game.setHomeTeamLineUp()
+        
+        let play1 = game.batterUp()
+        play1.umpCalled(.single)
+        
+        _ = game.batterUp()
+        game.runnerOn(.firstBase, action: .stolenBase)
+        
+        XCTAssertEqual(game.whosOn().secondBase.name, "Duke Java")
+        XCTAssertEqual(game.whosOn().firstBase.name, "Empty Player")
+    }
 }
 
 
