@@ -11,12 +11,7 @@ import SwiftUI
 @main
 struct Baseball_App: App {
     
-    // Find our data.json in the Main App Bundle and parse it.
-    //let players: [Player] = []
-    //let players: [Player] = Bundle.main.decode([Player].self, from: "data.json")
-    //let player = Bundle.main.decode(Player.self, from: "data.json")
-    
-    var game = Game()
+    var game = Game.makeStatic()
     
     // remember which tab View we were on last time we ran the app
     @SceneStorage("selectedView") var selectedView: String?

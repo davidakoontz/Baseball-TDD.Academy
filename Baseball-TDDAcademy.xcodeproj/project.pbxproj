@@ -186,8 +186,8 @@
 		636D5180252AABB000BB80D4 /* Baseball */ = {
 			isa = PBXGroup;
 			children = (
-				63817A0C25565687007BDECE /* Model */,
 				636D5181252AABB000BB80D4 /* Baseball_App.swift */,
+				63817A0C25565687007BDECE /* Model */,
 				63817A10255656D4007BDECE /* View */,
 				636D5185252AABB500BB80D4 /* Assets.xcassets */,
 				636D518A252AABB500BB80D4 /* Info.plist */,
