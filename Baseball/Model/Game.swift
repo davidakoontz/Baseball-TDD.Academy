@@ -20,33 +20,29 @@ public class Game: Sequence, IteratorProtocol, ObservableObject {
     var teamAtBat: Team = Team.visitor
     var score = Score()
 
-    //var roster: [Player]  // the platters on the team
-    // future properties like home & away team names; score; play by play; etc
+    //var roster: [Player]  // all the players on the team
+
 
     // MARK: Init Game methods
     init() {
         self.innings = []
-
-
         // init all Game properties - then init with 9 innings
         for i in 1...9  {
             let inning = Inning(label: "\(i)", game: self, top: [], bottom: [])
             appendInning(inning: inning)
         }
-        inningIndex = 0
+        inningIndex = 0     // start of game
     }
     
-    init(innings: [Inning]) {
-        self.innings = innings
-        inningIndex = 0
-    }
-
-    init(first: Inning, second: Inning, thrid: Inning, fourth: Inning, fifth: Inning, sixth: Inning, seventh: Inning, eighth: Inning, nineth: Inning) {
-        self.innings = [ first, second, thrid, fourth, fifth, sixth, seventh, eighth, nineth ]
-        self.bases = Bases()
-        self.score = Score()
-        inningIndex = 0
-    }
+//    init(innings: [Inning]) {
+//        self.innings = innings
+//        inningIndex = 0     // start of game
+//    }
+//
+//    init(first: Inning, second: Inning, thrid: Inning, fourth: Inning, fifth: Inning, sixth: Inning, seventh: Inning, eighth: Inning, nineth: Inning) {
+//        self.innings = [ first, second, thrid, fourth, fifth, sixth, seventh, eighth, nineth ]
+//        inningIndex = 0     // start of game
+//    }
     
 
 
@@ -76,11 +72,11 @@ public class Game: Sequence, IteratorProtocol, ObservableObject {
           }
       }
       
-    func createInning() -> Inning {
-        let inningNumber = innings.count + 1
-        let inning = Inning(label: "\(inningNumber)", game: self, top: [], bottom: [])
-        return inning
-    }
+//    func createInning() -> Inning {
+//        let inningNumber = innings.count + 1
+//        let inning = Inning(label: "\(inningNumber)", game: self, top: [], bottom: [])
+//        return inning
+//    }
     
       func currentInning() -> Inning {
           return innings[inningIndex]

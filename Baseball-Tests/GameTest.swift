@@ -126,6 +126,7 @@ class GameTest: XCTestCase {
         
         // Need a method to call to make model aware
         game.switchFields()
+        XCTAssertEqual(game.teamAtBat, .home)
         
         // assume 3 outs for Visitors - switch teams at Bat
         
@@ -137,6 +138,9 @@ class GameTest: XCTestCase {
         
         let play6 = game.batterUp()
         XCTAssertEqual(play6.batter.name, "Jonathan Swift")
+        
+        game.switchFields()     // this is NOT required - as next innint will reset the teamsn - but it will be tested
+        XCTAssertEqual(game.teamAtBat, .visitor)
         
         // end of inning
         let inning = game.next()       // get next inning
