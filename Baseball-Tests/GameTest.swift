@@ -54,7 +54,7 @@ class GameTest: XCTestCase {
         
         game.appendInning(inning: first)
         
-        game.score.Add(runs: 1, teamAtBat: Team.visitor)
+        game.score.add(1, teamAtBat: Team.visitor)
         
         XCTAssertEqual(game.score.visitor, 1)
     }
@@ -65,7 +65,7 @@ class GameTest: XCTestCase {
         
         game.appendInning(inning: first)
         
-        game.score.Add(runs: 3, teamAtBat: Team.home)
+        game.score.add(3, teamAtBat: Team.home)
         
         XCTAssertEqual(game.score.home, 3)
     }
