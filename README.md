@@ -3,6 +3,22 @@
 ## This code is being TDD.Academy test driven - follow along on https://www.twitch.tv/tddacademy
 ## YouTube Channel: https://www.youtube.com/channel/UCU1U6oPscxzKd_IWAIOm60w/featured
 
+## Jan 29 Next Show
+
+NEXT STORY
+* Story: Score a Game (record plays) <priority 2>
+As a parent
+I can score the game
+So that later I can send the game to interested parties
+Value: 
+    * could mention our livestream to the game purchaser
+    * Start marketing our App
+    * Credibility of having an App in the App Store
+    * Lean how to submit to the App Store.
+Capabilities Required:  roster of players, concept of teams, 
+Data input concept: [scorer - a role] is presented with a batter (from roster) - they select the At Bat outcome (Picker UI) and Runner (if any) movements.
+
+
 ## Jan 23 
 Lots of cleaning up.
 Created new files from Game.swift many aux objects.
@@ -48,18 +64,6 @@ A Code Coverage tool?  Hmmm…
 
 Also - a Editor > MiniMap will help with the Game.swift file that has grown so big…
 
-NEXT STORY
-* Story: Score a Game (record plays) <priority 2>
-As a parent
-I can score the game
-So that later I can send the game to interested parties
-Value: 
-    * could mention our livestream to the game purchaser
-    * Start marketing our App
-    * Credibility of having an App in the App Store
-    * Lean how to submit to the App Store.
-Capabilities Required:  roster of players, concept of teams, 
-Data input concept: [scorer - a role] is presented with a batter (from roster) - they select the At Bat outcome (Picker UI) and Runner (if any) movements.
 
 ## Jan 18th
 - [x] Move Play method runnerOn(base, action) into Game class.
