@@ -16,7 +16,7 @@ public struct Score {
         return String("\(visitor) to \(home)")
     }
     
-    mutating func Add(runs: Int, teamAtBat: Team) {
+    mutating func add(runs: Int, teamAtBat: Team) {
         if teamAtBat == Team.visitor {
             visitor += runs
         } else {

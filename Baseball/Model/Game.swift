@@ -167,7 +167,7 @@ public class Game: Sequence, IteratorProtocol, ObservableObject {
                 play.runnerOutcomes.homeBaseLine = action
                 play.runnerOutcomes.thirdBaseLine = action
                 play.runnerOutcomes.homeBaseLine = RunnerActions.scores
-                score.Add(runs: 1, teamAtBat: teamAtBat)
+                score.add(runs: 1, teamAtBat: teamAtBat)
             } else if action == RunnerActions.caughtStealing {
                 bases.firstBase = EmptyPlayer()
                 play.runnerOutcomes.secondBaseLine = action
@@ -185,7 +185,7 @@ public class Game: Sequence, IteratorProtocol, ObservableObject {
                 runnerAdvances(.thirdBase, _base2: .homePlate)
                 play.runnerOutcomes.homeBaseLine = action
                 play.runnerOutcomes.homeBaseLine = RunnerActions.scores
-                score.Add(runs: 1, teamAtBat: teamAtBat)
+                score.add(runs: 1, teamAtBat: teamAtBat)
             } else if action == RunnerActions.advances3 {
                 bases.homePlate = bases.secondBase
                 runnerAdvances(.secondBase, _base2: .thirdBase)
@@ -194,7 +194,7 @@ public class Game: Sequence, IteratorProtocol, ObservableObject {
                 play.runnerOutcomes.thirdBaseLine = action
                 play.runnerOutcomes.homeBaseLine = action
                 play.runnerOutcomes.homeBaseLine = RunnerActions.scores
-                score.Add(runs: 1, teamAtBat: teamAtBat)
+                score.add(runs: 1, teamAtBat: teamAtBat)
             } else if action == RunnerActions.caughtStealing {
                 bases.secondBase = EmptyPlayer()
                 play.runnerOutcomes.thirdBaseLine = action
@@ -203,19 +203,19 @@ public class Game: Sequence, IteratorProtocol, ObservableObject {
         case BaseNames.thirdBase:
             if action == RunnerActions.advances {
                 runnerAdvances(.thirdBase, _base2: .homePlate)
-                score.Add(runs: 1, teamAtBat: teamAtBat)
+                score.add(runs: 1, teamAtBat: teamAtBat)
                 play.runnerOutcomes.homeBaseLine = action
                 play.runnerOutcomes.homeBaseLine = RunnerActions.scores
             } else if action == RunnerActions.advances2 {
                 runnerAdvances(.thirdBase, _base2: .homePlate)
                 play.runnerOutcomes.homeBaseLine = action
                 play.runnerOutcomes.homeBaseLine = RunnerActions.scores
-                score.Add(runs: 1, teamAtBat: teamAtBat)
+                score.add(runs: 1, teamAtBat: teamAtBat)
             } else if action == RunnerActions.advances3 {
                 runnerAdvances(.thirdBase, _base2: .homePlate)
                 play.runnerOutcomes.homeBaseLine = action
                 play.runnerOutcomes.homeBaseLine = RunnerActions.scores
-                score.Add(runs: 1, teamAtBat: teamAtBat)
+                score.add(runs: 1, teamAtBat: teamAtBat)
             } else if action == RunnerActions.caughtStealing {
                 bases.thirdBase = EmptyPlayer()
                 play.runnerOutcomes.homeBaseLine = action
