@@ -35,15 +35,6 @@ public class Game: Sequence, IteratorProtocol, ObservableObject {
         inningIndex = 0     // start of game
     }
     
-//    init(innings: [Inning]) {
-//        self.innings = innings
-//        inningIndex = 0     // start of game
-//    }
-//
-//    init(first: Inning, second: Inning, thrid: Inning, fourth: Inning, fifth: Inning, sixth: Inning, seventh: Inning, eighth: Inning, nineth: Inning) {
-//        self.innings = [ first, second, thrid, fourth, fifth, sixth, seventh, eighth, nineth ]
-//        inningIndex = 0     // start of game
-//    }
     
     // MARK: Game methods
     func playerOut() {
@@ -83,12 +74,6 @@ public class Game: Sequence, IteratorProtocol, ObservableObject {
               return InningHalf.bottom
           }
       }
-      
-//    func createInning() -> Inning {
-//        let inningNumber = innings.count + 1
-//        let inning = Inning(label: "\(inningNumber)", game: self, top: [], bottom: [])
-//        return inning
-//    }
     
       func currentInning() -> Inning {
           return innings[inningIndex]
