@@ -74,23 +74,4 @@ class EmptyPlay : Play {
     }
 }
 
-/// runner outcomes are displayed on the baseLines (between bases) - there are 4 lines
-struct RunnerOutcomes {
-    
-    var firstBaseLine: AtBat = .blank               // from batter's box (arround home plate) to first
-    var secondBaseLine: RunnerActions = .blank      // from first to second
-    var thirdBaseLine: RunnerActions = .blank       // from second to third
-    var homeBaseLine: RunnerActions = .blank        // from thrid to home plate
-}
 
-
-enum RunnerActions: String {
-    case blank = "_"                // an empty or blank runner action
-    case advances = "AB"            // with a batter number e.g. AB4 = Advanced by Batter #4 in line up
-    case advances2 = "2xAB"         // Advanced 2 bases by Batter X
-    case advances3 = "3xAB"         // Advances 3 bases by Batter X
-    case caughtStealing = "CS"
-    case baseIsHeld = "H"
-    case scores = "SCORES"
-    
-}
