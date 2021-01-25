@@ -58,16 +58,16 @@ public class Play: Identifiable {
         switch atBat {
         case .homeRun:
             game.bases.homePlate = batter
-            runnerOutcomes.firstBaseLine = atBat
+            runnerOutcomes.firstBaseLine.append(atBat)
         case .triple:
             game.bases.thirdBase = batter
-            runnerOutcomes.firstBaseLine = atBat
+            runnerOutcomes.firstBaseLine.append(atBat)
         case .double:
             game.bases.secondBase = batter
-            runnerOutcomes.firstBaseLine = atBat
+            runnerOutcomes.firstBaseLine.append(atBat)
         case .single:
             game.bases.firstBase = batter
-            runnerOutcomes.firstBaseLine = atBat
+            runnerOutcomes.firstBaseLine.append(atBat)
             
         // Outs of some kind
         case .doublePlay:
@@ -75,33 +75,33 @@ public class Play: Identifiable {
             game.playerOut()
             game.bases.firstBase = EmptyPlayer()
             game.playerOut()
-            runnerOutcomes.secondBaseLine = RunnerActions.doublePlay
-            runnerOutcomes.firstBaseLine = atBat
+            runnerOutcomes.secondBaseLine.append(RunnerActions.doublePlay)
+            runnerOutcomes.firstBaseLine.append(atBat)
         case .flyOut:
-            runnerOutcomes.firstBaseLine = atBat
+            runnerOutcomes.firstBaseLine.append(atBat)
             game.playerOut()
         case .foulOut:
-            runnerOutcomes.firstBaseLine = atBat
+            runnerOutcomes.firstBaseLine.append(atBat)
             game.playerOut()
         case .groundOut:
-            runnerOutcomes.firstBaseLine = atBat
+            runnerOutcomes.firstBaseLine.append(atBat)
             game.playerOut()
         case .strikeoutSwinging:
-            runnerOutcomes.firstBaseLine = atBat
+            runnerOutcomes.firstBaseLine.append(atBat)
             game.playerOut()
         case .strikeoutLooking:
-            runnerOutcomes.firstBaseLine = atBat
+            runnerOutcomes.firstBaseLine.append(atBat)
             game.playerOut()
         case .lineOut:
-            runnerOutcomes.firstBaseLine = atBat
+            runnerOutcomes.firstBaseLine.append(atBat)
             game.playerOut()
         case .sacrificeFly:
             //game.bases.firstBase = EmptyPlayer()
-            runnerOutcomes.firstBaseLine = atBat
+            runnerOutcomes.firstBaseLine.append(atBat)
             game.playerOut()
         case .sacrificeHit:
             //game.bases.firstBase = EmptyPlayer()
-            runnerOutcomes.firstBaseLine = atBat
+            runnerOutcomes.firstBaseLine.append(atBat)
             game.playerOut()
         case .triplePlay:
             game.bases.thirdBase = EmptyPlayer()
@@ -110,36 +110,36 @@ public class Play: Identifiable {
             game.playerOut()
             game.bases.firstBase = EmptyPlayer()
             game.playerOut()
-            runnerOutcomes.thirdBaseLine = RunnerActions.triplePlay
-            runnerOutcomes.secondBaseLine = RunnerActions.triplePlay
-            runnerOutcomes.firstBaseLine = atBat
+            runnerOutcomes.thirdBaseLine.append(RunnerActions.triplePlay)
+            runnerOutcomes.secondBaseLine.append(RunnerActions.triplePlay)
+            runnerOutcomes.firstBaseLine.append(atBat)
         case .unassistedOut:
-            runnerOutcomes.firstBaseLine = atBat
+            runnerOutcomes.firstBaseLine.append(atBat)
             game.playerOut()
             
         // batter advances to first
         case .error:
             game.bases.firstBase = batter
-            runnerOutcomes.firstBaseLine = atBat
+            runnerOutcomes.firstBaseLine.append(atBat)
         case .hitByPitch:
             game.bases.firstBase = batter
-            runnerOutcomes.firstBaseLine = atBat
+            runnerOutcomes.firstBaseLine.append(atBat)
         case .interference:
             game.bases.firstBase = batter
-            runnerOutcomes.firstBaseLine = atBat
+            runnerOutcomes.firstBaseLine.append(atBat)
         case .intentionalWalk:
             game.bases.firstBase = batter
-            runnerOutcomes.firstBaseLine = atBat
+            runnerOutcomes.firstBaseLine.append(atBat)
         case .passedBall:
             game.bases.firstBase = batter
-            runnerOutcomes.firstBaseLine = atBat
+            runnerOutcomes.firstBaseLine.append(atBat)
         case .wildPitch:
             game.bases.firstBase = batter
-            runnerOutcomes.firstBaseLine = atBat
+            runnerOutcomes.firstBaseLine.append(atBat)
   
         default:
             game.bases.firstBase = batter
-            runnerOutcomes.firstBaseLine = atBat
+            runnerOutcomes.firstBaseLine.append(atBat)
         }
     }
 

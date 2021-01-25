@@ -28,11 +28,11 @@ class PlayTest: XCTestCase {
         // when no runner on any bases
         XCTAssertEqual( aPlay.atBat, AtBat.inBox)
         XCTAssertEqual( game.whosOn().firstBase, EmptyPlayer())
-        XCTAssertEqual( aPlay.runnerOutcomes.firstBaseLine, .blank )
+        XCTAssertTrue( aPlay.runnerOutcomes.firstBaseLine.contains(.blank) )
         XCTAssertEqual( game.whosOn().secondBase, EmptyPlayer())
-        XCTAssertEqual( aPlay.runnerOutcomes.secondBaseLine, .blank )
+        XCTAssertTrue( aPlay.runnerOutcomes.secondBaseLine.contains(.blank) )
         XCTAssertEqual( game.whosOn().thirdBase, EmptyPlayer())
-        XCTAssertEqual( aPlay.runnerOutcomes.thirdBaseLine, .blank)
+        XCTAssertTrue( aPlay.runnerOutcomes.thirdBaseLine.contains(.blank) )
     }
 /*
     * Story: Runner Advancement <priority 1-A>
@@ -55,7 +55,7 @@ class PlayTest: XCTestCase {
         aPlay.umpCalled(.single)
 
         XCTAssertEqual( game.whosOn().firstBase, batter )
-        XCTAssertEqual( aPlay.runnerOutcomes.firstBaseLine.rawValue, "1B")
+        XCTAssertTrue( aPlay.runnerOutcomes.firstBaseLine.contains(.single) )
     }
     
     
@@ -68,7 +68,7 @@ class PlayTest: XCTestCase {
         
         XCTAssertEqual(game.whosOn().secondBase.name, "Empty Player")
         XCTAssertEqual(game.whosOn().firstBase.name, "Duke Java")
-        XCTAssertEqual(firstPlay.runnerOutcomes.secondBaseLine.rawValue, "_")
+        XCTAssertTrue(firstPlay.runnerOutcomes.secondBaseLine.contains(.blank))
 
         let secondPlay = game.batterUp()
         game.runnerOn(.firstBase, action: .advances)
@@ -76,9 +76,9 @@ class PlayTest: XCTestCase {
 
         XCTAssertEqual(game.whosOn().secondBase.name, "Duke Java")
         XCTAssertEqual(game.whosOn().firstBase.name, "James Gosling")
-        XCTAssertEqual(secondPlay.runnerOutcomes.secondBaseLine.rawValue, "AB")
+        XCTAssertTrue(secondPlay.runnerOutcomes.secondBaseLine.contains(.advances) )
         
-        XCTAssertEqual(game.currentPlay().runnerOutcomes.secondBaseLine.rawValue, "AB")
+        XCTAssertTrue(game.currentPlay().runnerOutcomes.secondBaseLine.contains(.advances) )
     }
     
     func test_runnerOn_BasesLoadedSituation() {
@@ -117,10 +117,10 @@ class PlayTest: XCTestCase {
         XCTAssertEqual(game.whosOn().firstBase.name, "Bill Joy")
         
         let runners = game.currentPlay().runnerOutcomes
-        XCTAssertEqual(runners.homeBaseLine.rawValue, "SCORES")      // from second to third
-        XCTAssertEqual(runners.thirdBaseLine.rawValue, "AB")      // from second to third
-        XCTAssertEqual(runners.secondBaseLine.rawValue, "AB")       // from first to second
-        XCTAssertEqual(runners.firstBaseLine.rawValue, "1B")        // from batter's box (arround home plate) to first
+        XCTAssertTrue(runners.homeBaseLine.contains(.scores) )     // from second to third
+        XCTAssertTrue(runners.thirdBaseLine.contains(.advances) )      // from second to third
+        XCTAssertTrue(runners.secondBaseLine.contains(.advances) )      // from first to second
+        XCTAssertTrue(runners.firstBaseLine.contains(.single) )       // from batter's box (arround home plate) to first
     }
  
     func test_runnerOn_BatterWalksBasesLoadedSituation() {
@@ -161,10 +161,10 @@ class PlayTest: XCTestCase {
         XCTAssertEqual(game.whosOn().firstBase.name, "Bill Joy")
         
         let thisPlay = game.currentPlay()
-        XCTAssertEqual(thisPlay.runnerOutcomes.firstBaseLine.rawValue, "W")
-        XCTAssertEqual(thisPlay.runnerOutcomes.secondBaseLine.rawValue, "AB")
-        XCTAssertEqual(thisPlay.runnerOutcomes.thirdBaseLine.rawValue, "AB")
-        XCTAssertEqual(thisPlay.runnerOutcomes.homeBaseLine.rawValue, "SCORES")
+        XCTAssertTrue(thisPlay.runnerOutcomes.firstBaseLine.contains(.walk))
+        XCTAssertTrue(thisPlay.runnerOutcomes.secondBaseLine.contains(.advances) )
+        XCTAssertTrue(thisPlay.runnerOutcomes.thirdBaseLine.contains(.advances))
+        XCTAssertTrue(thisPlay.runnerOutcomes.homeBaseLine.contains(.scores))
         
         XCTAssertEqual(game.score.visitor, 1)
         XCTAssertEqual(game.score.home, 0)
@@ -215,7 +215,7 @@ class PlayTest: XCTestCase {
         firstPlay.umpCalled(.single)
         
         XCTAssertEqual(game.whosOn().firstBase.name, "Duke Java")
-        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.single)
+        XCTAssertTrue(game.currentPlay().runnerOutcomes.firstBaseLine.contains( AtBat.single) )
     }
     
     func test_umpCalled_double() {
@@ -227,7 +227,7 @@ class PlayTest: XCTestCase {
         firstPlay.umpCalled(.double)
         
         XCTAssertEqual(game.whosOn().secondBase.name, "Duke Java")
-        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.double)
+        XCTAssertTrue(game.currentPlay().runnerOutcomes.firstBaseLine.contains( AtBat.double) )
     }
     
     func test_umpCalled_triple() {
@@ -239,7 +239,7 @@ class PlayTest: XCTestCase {
         firstPlay.umpCalled(.triple)
         
         XCTAssertEqual(game.whosOn().thirdBase.name, "Duke Java")
-        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.triple)
+        XCTAssertTrue(game.currentPlay().runnerOutcomes.firstBaseLine.contains( AtBat.triple) )
     }
      
     func test_umpCalled_homeRun() {
@@ -251,7 +251,7 @@ class PlayTest: XCTestCase {
         firstPlay.umpCalled(.homeRun)
         
         XCTAssertEqual(game.whosOn().homePlate.name, "Duke Java")
-        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.homeRun)
+        XCTAssertTrue(game.currentPlay().runnerOutcomes.firstBaseLine.contains(AtBat.homeRun))
     }
     
     func test_umpCalled_walk() {
@@ -263,7 +263,7 @@ class PlayTest: XCTestCase {
         firstPlay.umpCalled(.walk)
         
         XCTAssertEqual(game.whosOn().firstBase.name, "Duke Java")
-        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.walk)
+        XCTAssertTrue(game.currentPlay().runnerOutcomes.firstBaseLine.contains(AtBat.walk))
     }
     
     func test_umpCalled_baseOnBalls() {
@@ -275,7 +275,7 @@ class PlayTest: XCTestCase {
         firstPlay.umpCalled(.baseOnBalls)
         
         XCTAssertEqual(game.whosOn().firstBase.name, "Duke Java")
-        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.baseOnBalls)
+        XCTAssertTrue(game.currentPlay().runnerOutcomes.firstBaseLine.contains(AtBat.baseOnBalls))
     }
     
     
@@ -288,7 +288,7 @@ class PlayTest: XCTestCase {
         firstPlay.umpCalled(.fildersChoice)
         
         XCTAssertEqual(game.whosOn().firstBase.name, "Duke Java")
-        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.fildersChoice)
+        XCTAssertTrue(game.currentPlay().runnerOutcomes.firstBaseLine.contains(AtBat.fildersChoice))
     }
     
     
@@ -303,8 +303,8 @@ class PlayTest: XCTestCase {
         secondPlay.umpCalled(.doublePlay)
         
         XCTAssertEqual(game.whosOn().firstBase.name, "Empty Player")
-        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.doublePlay)
-        XCTAssertEqual(game.currentPlay().runnerOutcomes.secondBaseLine, RunnerActions.doublePlay)
+        XCTAssertTrue(game.currentPlay().runnerOutcomes.firstBaseLine.contains(AtBat.doublePlay))
+        XCTAssertTrue(game.currentPlay().runnerOutcomes.secondBaseLine.contains(RunnerActions.doublePlay))
     }
     
     
@@ -322,8 +322,8 @@ class PlayTest: XCTestCase {
         thirdPlay.umpCalled(.triplePlay)
         
         XCTAssertEqual(game.whosOn().firstBase.name, "Empty Player")
-        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.triplePlay)
-        XCTAssertEqual(game.currentPlay().runnerOutcomes.secondBaseLine, RunnerActions.triplePlay)
+        XCTAssertTrue(game.currentPlay().runnerOutcomes.firstBaseLine.contains(AtBat.triplePlay))
+        XCTAssertTrue(game.currentPlay().runnerOutcomes.secondBaseLine.contains(RunnerActions.triplePlay))
         XCTAssertEqual(game.whosOn().secondBase.name, "Empty Player")
         XCTAssertEqual(game.whosOn().thirdBase.name, "Empty Player")
     }
@@ -340,8 +340,8 @@ class PlayTest: XCTestCase {
         game.runnerOn(.firstBase, action: .caughtStealing)
         
         XCTAssertEqual(game.whosOn().firstBase.name, "Empty Player")
-        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.blank)
-        XCTAssertEqual(game.currentPlay().runnerOutcomes.secondBaseLine, RunnerActions.caughtStealing)
+        XCTAssertTrue(game.currentPlay().runnerOutcomes.firstBaseLine.contains(AtBat.blank))
+        XCTAssertTrue(game.currentPlay().runnerOutcomes.secondBaseLine.contains(RunnerActions.caughtStealing))
     }
     
     func test_umpCalled_flyOut() {
@@ -353,7 +353,7 @@ class PlayTest: XCTestCase {
         firstPlay.umpCalled(.flyOut)
         
         XCTAssertEqual(game.whosOn().firstBase.name, "Empty Player")
-        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.flyOut)
+        XCTAssertTrue(game.currentPlay().runnerOutcomes.firstBaseLine.contains(AtBat.flyOut))
     }
     
     
@@ -366,7 +366,7 @@ class PlayTest: XCTestCase {
         firstPlay.umpCalled(.foulOut)
         
         XCTAssertEqual(game.whosOn().firstBase.name, "Empty Player")
-        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.foulOut)
+        XCTAssertTrue(game.currentPlay().runnerOutcomes.firstBaseLine.contains(AtBat.foulOut))
     }
     
     func test_umpCalled_groundOut() {
@@ -378,7 +378,7 @@ class PlayTest: XCTestCase {
         firstPlay.umpCalled(.groundOut)
         
         XCTAssertEqual(game.whosOn().firstBase.name, "Empty Player")
-        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.groundOut)
+        XCTAssertTrue(game.currentPlay().runnerOutcomes.firstBaseLine.contains(AtBat.groundOut))
     }
     
     func test_umpCalled_strikeoutSwinging() {
@@ -390,7 +390,7 @@ class PlayTest: XCTestCase {
         firstPlay.umpCalled(.strikeoutSwinging)
         
         XCTAssertEqual(game.whosOn().firstBase.name, "Empty Player")
-        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.strikeoutSwinging)
+        XCTAssertTrue(game.currentPlay().runnerOutcomes.firstBaseLine.contains(AtBat.strikeoutSwinging))
     }
     
     func test_umpCalled_strikeoutLooking() {
@@ -402,7 +402,7 @@ class PlayTest: XCTestCase {
         firstPlay.umpCalled(.strikeoutLooking)
         
         XCTAssertEqual(game.whosOn().firstBase.name, "Empty Player")
-        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.strikeoutLooking)
+        XCTAssertTrue(game.currentPlay().runnerOutcomes.firstBaseLine.contains(AtBat.strikeoutLooking))
     }
     
     func test_umpCalled_lineOut() {
@@ -414,7 +414,7 @@ class PlayTest: XCTestCase {
         firstPlay.umpCalled(.lineOut)
         
         XCTAssertEqual(game.whosOn().firstBase.name, "Empty Player")
-        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.lineOut)
+        XCTAssertTrue(game.currentPlay().runnerOutcomes.firstBaseLine.contains(AtBat.lineOut))
     }
     
     
@@ -435,8 +435,8 @@ class PlayTest: XCTestCase {
         game.runnerOn(.secondBase, action: .advances)
         
         XCTAssertEqual(game.whosOn().firstBase.name, "Empty Player")
-        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.sacrificeFly)
-        XCTAssertEqual(game.currentPlay().runnerOutcomes.thirdBaseLine, RunnerActions.advances)
+        XCTAssertTrue(game.currentPlay().runnerOutcomes.firstBaseLine.contains(AtBat.sacrificeFly))
+        XCTAssertTrue(game.currentPlay().runnerOutcomes.thirdBaseLine.contains(RunnerActions.advances))
         XCTAssertEqual(game.whosOn().thirdBase.name, "Duke Java")
     }
     
@@ -454,7 +454,7 @@ class PlayTest: XCTestCase {
         game.runnerOn(.firstBase, action: .advances)
         
         XCTAssertEqual(game.whosOn().firstBase.name, "Empty Player")
-        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.sacrificeHit)
+        XCTAssertTrue(game.currentPlay().runnerOutcomes.firstBaseLine.contains(AtBat.sacrificeHit))
 
         XCTAssertEqual(game.whosOn().secondBase.name, "Duke Java")
     }
@@ -469,7 +469,7 @@ class PlayTest: XCTestCase {
         firstPlay.umpCalled(.unassistedOut)
      
         XCTAssertEqual(game.whosOn().firstBase.name, "Empty Player")
-        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.unassistedOut)
+        XCTAssertTrue(game.currentPlay().runnerOutcomes.firstBaseLine.contains(AtBat.unassistedOut))
     }
 
     
@@ -482,7 +482,7 @@ class PlayTest: XCTestCase {
         firstPlay.umpCalled(.balk)
      
         XCTAssertEqual(game.whosOn().firstBase.name, "Duke Java")
-        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.balk)
+        XCTAssertTrue(game.currentPlay().runnerOutcomes.firstBaseLine.contains(AtBat.balk))
     }
 
     
@@ -496,7 +496,7 @@ class PlayTest: XCTestCase {
         firstPlay.umpCalled(.error)
      
         XCTAssertEqual(game.whosOn().firstBase.name, "Duke Java")
-        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.error)
+        XCTAssertTrue(game.currentPlay().runnerOutcomes.firstBaseLine.contains(AtBat.error))
     }
     
     func test_umpCalled_hitByPitch() {
@@ -508,7 +508,7 @@ class PlayTest: XCTestCase {
         firstPlay.umpCalled(.hitByPitch)
      
         XCTAssertEqual(game.whosOn().firstBase.name, "Duke Java")
-        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.hitByPitch)
+        XCTAssertTrue(game.currentPlay().runnerOutcomes.firstBaseLine.contains(AtBat.hitByPitch))
     }
     
     func test_umpCalled_interference() {
@@ -520,7 +520,7 @@ class PlayTest: XCTestCase {
         firstPlay.umpCalled(.interference)
      
         XCTAssertEqual(game.whosOn().firstBase.name, "Duke Java")
-        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.interference)
+        XCTAssertTrue(game.currentPlay().runnerOutcomes.firstBaseLine.contains(AtBat.interference))
     }
     
     
@@ -533,7 +533,7 @@ class PlayTest: XCTestCase {
         firstPlay.umpCalled(.intentionalWalk)
      
         XCTAssertEqual(game.whosOn().firstBase.name, "Duke Java")
-        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.intentionalWalk)
+        XCTAssertTrue(game.currentPlay().runnerOutcomes.firstBaseLine.contains(AtBat.intentionalWalk))
     }
     
     
@@ -546,7 +546,7 @@ class PlayTest: XCTestCase {
         firstPlay.umpCalled(.passedBall)
      
         XCTAssertEqual(game.whosOn().firstBase.name, "Duke Java")
-        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.passedBall)
+        XCTAssertTrue(game.currentPlay().runnerOutcomes.firstBaseLine.contains(AtBat.passedBall))
     }
     
     
@@ -559,7 +559,7 @@ class PlayTest: XCTestCase {
         firstPlay.umpCalled(.wildPitch)
      
         XCTAssertEqual(game.whosOn().firstBase.name, "Duke Java")
-        XCTAssertEqual(game.currentPlay().runnerOutcomes.firstBaseLine, AtBat.wildPitch)
+        XCTAssertTrue(game.currentPlay().runnerOutcomes.firstBaseLine.contains(AtBat.wildPitch))
     }
     
     
