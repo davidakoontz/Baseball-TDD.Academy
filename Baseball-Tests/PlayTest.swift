@@ -64,9 +64,9 @@ class PlayTest: XCTestCase {
 
         XCTAssertEqual(game.whosOn().secondBase.name, "Duke Java")
         XCTAssertEqual(game.whosOn().firstBase.name, "James Gosling")
-        XCTAssertTrue(secondPlay.runnerOutcomes.secondBaseLine.contains(.advances) )
+        XCTAssertTrue(firstPlay.runnerOutcomes.secondBaseLine.contains(.advances) )
         
-        XCTAssertTrue(game.currentPlay().runnerOutcomes.secondBaseLine.contains(.advances) )
+        XCTAssertTrue(game.currentPlay().runnerOutcomes.firstBaseLine.contains(.single) )
     }
     
     func test_runnerOn_BasesLoadedSituation() {
@@ -104,11 +104,11 @@ class PlayTest: XCTestCase {
         XCTAssertEqual(game.whosOn().secondBase.name, "Scott McNealy")
         XCTAssertEqual(game.whosOn().firstBase.name, "Bill Joy")
         
-        let runners = game.currentPlay().runnerOutcomes
-        XCTAssertTrue(runners.homeBaseLine.contains(.scores) )     // from second to third
-        XCTAssertTrue(runners.thirdBaseLine.contains(.advances) )      // from second to third
-        XCTAssertTrue(runners.secondBaseLine.contains(.advances) )      // from first to second
-        XCTAssertTrue(runners.firstBaseLine.contains(.single) )       // from batter's box (arround home plate) to first
+        
+        XCTAssertTrue(firstPlay.runnerOutcomes.homeBaseLine.contains(.scores) )     // from second to third
+        XCTAssertTrue(secondPlay.runnerOutcomes.thirdBaseLine.contains(.advances) )      // from second to third
+        XCTAssertTrue(thirdPlay.runnerOutcomes.secondBaseLine.contains(.advances) )      // from first to second
+        XCTAssertTrue(fourthPlay.runnerOutcomes.firstBaseLine.contains(.single) )       // from batter's box (arround home plate) to first
     }
  
     func test_runnerOn_BatterWalksBasesLoadedSituation() {
@@ -148,11 +148,10 @@ class PlayTest: XCTestCase {
         XCTAssertEqual(game.whosOn().secondBase.name, "Scott McNealy")
         XCTAssertEqual(game.whosOn().firstBase.name, "Bill Joy")
         
-        let thisPlay = game.currentPlay()
-        XCTAssertTrue(thisPlay.runnerOutcomes.firstBaseLine.contains(.walk))
-        XCTAssertTrue(thisPlay.runnerOutcomes.secondBaseLine.contains(.advances) )
-        XCTAssertTrue(thisPlay.runnerOutcomes.thirdBaseLine.contains(.advances))
-        XCTAssertTrue(thisPlay.runnerOutcomes.homeBaseLine.contains(.scores))
+        XCTAssertTrue(fourthPlay.runnerOutcomes.firstBaseLine.contains(.walk))
+        XCTAssertTrue(thirdPlay.runnerOutcomes.secondBaseLine.contains(.advances) )
+        XCTAssertTrue(secondPlay.runnerOutcomes.thirdBaseLine.contains(.advances))
+        XCTAssertTrue(firstPlay.runnerOutcomes.homeBaseLine.contains(.scores))
         
         XCTAssertEqual(game.score.visitor, 1)
         XCTAssertEqual(game.score.home, 0)
@@ -314,12 +313,12 @@ class PlayTest: XCTestCase {
         
         let firstPlay = game.batterUp()
         firstPlay.umpCalled(.single)
-        let secondPlay = game.batterUp()
+        _ = game.batterUp()
         game.runnerOn(.firstBase, action: .caughtStealing)
         
         XCTAssertEqual(game.whosOn().firstBase.name, "Empty Player")
         XCTAssertTrue(game.currentPlay().runnerOutcomes.firstBaseLine.contains(AtBat.blank))
-        XCTAssertTrue(game.currentPlay().runnerOutcomes.secondBaseLine.contains(RunnerActions.caughtStealing))
+        XCTAssertTrue(firstPlay.runnerOutcomes.secondBaseLine.contains(RunnerActions.caughtStealing))
     }
     
     func test_umpCalled_flyOut() {
@@ -414,7 +413,7 @@ class PlayTest: XCTestCase {
         
         XCTAssertEqual(game.whosOn().firstBase.name, "Empty Player")
         XCTAssertTrue(game.currentPlay().runnerOutcomes.firstBaseLine.contains(AtBat.sacrificeFly))
-        XCTAssertTrue(game.currentPlay().runnerOutcomes.thirdBaseLine.contains(RunnerActions.advances))
+        XCTAssertTrue(firstPlay.runnerOutcomes.thirdBaseLine.contains(RunnerActions.advances))
         XCTAssertEqual(game.whosOn().thirdBase.name, "Duke Java")
     }
     

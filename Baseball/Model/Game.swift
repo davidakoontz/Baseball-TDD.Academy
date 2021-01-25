@@ -153,76 +153,81 @@ public class Game: Sequence, IteratorProtocol, ObservableObject {
         case BaseNames.batter:
             if 1 == 1 { /* do nothing  */ }  // FIXME: empyt case BaseNames.batter
         case BaseNames.firstBase:
+            let previousPlay = self.bases.firstBase.currentPlay()
             if action == RunnerActions.advances {
                 runnerAdvances(.firstBase, _base2: .secondBase)
-                play.runnerOutcomes.secondBaseLine.append(action)
+                previousPlay.runnerOutcomes.secondBaseLine.append(action)
             } else if action == RunnerActions.advances2 {
                 runnerAdvances(.firstBase, _base2: .secondBase)
                 runnerAdvances(.secondBase, _base2: .thirdBase)
-                play.runnerOutcomes.thirdBaseLine.append(action)
+                previousPlay.runnerOutcomes.secondBaseLine.append(action)
+                previousPlay.runnerOutcomes.thirdBaseLine.append(action)
             } else if action == RunnerActions.advances3 {
                 runnerAdvances(.firstBase, _base2: .secondBase)
                 runnerAdvances(.secondBase, _base2: .thirdBase)
                 runnerAdvances(.thirdBase, _base2: .homePlate)
-                play.runnerOutcomes.homeBaseLine.append(action)
-                play.runnerOutcomes.thirdBaseLine.append(action)
-                play.runnerOutcomes.homeBaseLine.append(.scores)
+                previousPlay.runnerOutcomes.secondBaseLine.append(action)
+                previousPlay.runnerOutcomes.thirdBaseLine.append(action)
+                previousPlay.runnerOutcomes.homeBaseLine.append(action)
+                previousPlay.runnerOutcomes.homeBaseLine.append(.scores)
                 score.add(1, teamAtBat: teamAtBat)
             } else if action == RunnerActions.caughtStealing {
                 bases.firstBase = EmptyPlayer()
-                play.runnerOutcomes.secondBaseLine.append(action)
+                previousPlay.runnerOutcomes.secondBaseLine.append(action)
             } else if action == RunnerActions.stolenBase {
                 runnerAdvances(.firstBase, _base2: .secondBase)
-                play.runnerOutcomes.secondBaseLine.append(action)
+                previousPlay.runnerOutcomes.secondBaseLine.append(action)
             }
-            play.runnerOutcomes.secondBaseLine.append(action)
+            previousPlay.runnerOutcomes.secondBaseLine.append(action)
         case BaseNames.secondBase:
+            let previousPlay = self.bases.secondBase.currentPlay()
             if action == RunnerActions.advances {
                 runnerAdvances(.secondBase, _base2: .thirdBase)
-                play.runnerOutcomes.thirdBaseLine.append(action)
+                previousPlay.runnerOutcomes.thirdBaseLine.append(action)
             } else if action == RunnerActions.advances2 {
                 runnerAdvances(.secondBase, _base2: .thirdBase)
                 runnerAdvances(.thirdBase, _base2: .homePlate)
-                play.runnerOutcomes.homeBaseLine.append(action)
-                play.runnerOutcomes.homeBaseLine.append(.scores)
+                previousPlay.runnerOutcomes.homeBaseLine.append(action)
+                previousPlay.runnerOutcomes.homeBaseLine.append(.scores)
                 score.add(1, teamAtBat: teamAtBat)
             } else if action == RunnerActions.advances3 {
                 bases.homePlate = bases.secondBase
                 runnerAdvances(.secondBase, _base2: .thirdBase)
                 runnerAdvances(.thirdBase,  _base2: .homePlate)
                 //runnerAdvances(.homePlate, _base2: .nowhere)
-                play.runnerOutcomes.thirdBaseLine.append(action)
-                play.runnerOutcomes.homeBaseLine.append(action)
-                play.runnerOutcomes.homeBaseLine.append(.scores)
+                previousPlay.runnerOutcomes.thirdBaseLine.append(action)
+                previousPlay.runnerOutcomes.homeBaseLine.append(action)
+                previousPlay.runnerOutcomes.homeBaseLine.append(.scores)
                 score.add(1, teamAtBat: teamAtBat)
             } else if action == RunnerActions.caughtStealing {
                 bases.secondBase = EmptyPlayer()
-                play.runnerOutcomes.thirdBaseLine.append(action)
+                previousPlay.runnerOutcomes.thirdBaseLine.append(action)
             }
-            play.runnerOutcomes.thirdBaseLine.append(action)
+            previousPlay.runnerOutcomes.thirdBaseLine.append(action)
         case BaseNames.thirdBase:
+            let previousPlay = self.bases.thirdBase.currentPlay()
             if action == RunnerActions.advances {
                 runnerAdvances(.thirdBase, _base2: .homePlate)
+                previousPlay.runnerOutcomes.homeBaseLine.append(action)
+                previousPlay.runnerOutcomes.homeBaseLine.append(.scores)
                 score.add(1, teamAtBat: teamAtBat)
-                play.runnerOutcomes.homeBaseLine.append(action)
-                play.runnerOutcomes.homeBaseLine.append(.scores)
             } else if action == RunnerActions.advances2 {
                 runnerAdvances(.thirdBase, _base2: .homePlate)
-                play.runnerOutcomes.homeBaseLine.append(action)
-                play.runnerOutcomes.homeBaseLine.append(.scores)
+                previousPlay.runnerOutcomes.homeBaseLine.append(action)
+                previousPlay.runnerOutcomes.homeBaseLine.append(.scores)
                 score.add(1, teamAtBat: teamAtBat)
             } else if action == RunnerActions.advances3 {
                 runnerAdvances(.thirdBase, _base2: .homePlate)
-                play.runnerOutcomes.homeBaseLine.append(action)
-                play.runnerOutcomes.homeBaseLine.append(.scores)
+                previousPlay.runnerOutcomes.homeBaseLine.append(action)
+                previousPlay.runnerOutcomes.homeBaseLine.append(.scores)
                 score.add(1, teamAtBat: teamAtBat)
             } else if action == RunnerActions.caughtStealing {
                 bases.thirdBase = EmptyPlayer()
-                play.runnerOutcomes.homeBaseLine.append(action)
+                previousPlay.runnerOutcomes.homeBaseLine.append(action)
             }
         case BaseNames.homePlate:
             // there is no action for home plate
-            print("baseball score is \(score.visitor) to \(score.home)")
+            if 1 == 1 { /* do nothing */ }
         }
     }
     
