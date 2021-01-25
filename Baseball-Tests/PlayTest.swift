@@ -280,8 +280,10 @@ class PlayTest: XCTestCase {
         secondPlay.umpCalled(.doublePlay)
         
         XCTAssertEqual(game.whosOn().firstBase.name, "Empty Player")
+        XCTAssertEqual(game.whosOn().secondBase.name, "Empty Player")
+        XCTAssertEqual(game.outs, 2)
         XCTAssertTrue(game.currentPlay().runnerOutcomes.firstBaseLine.contains(AtBat.doublePlay))
-        XCTAssertTrue(game.currentPlay().runnerOutcomes.secondBaseLine.contains(RunnerActions.doublePlay))
+        XCTAssertTrue(firstPlay.runnerOutcomes.secondBaseLine.contains(RunnerActions.doublePlay))
     }
     
     
@@ -293,16 +295,21 @@ class PlayTest: XCTestCase {
         let firstPlay = game.batterUp()
         firstPlay.umpCalled(.single)
         let secondPlay = game.batterUp()
+        game.runnerOn(.firstBase, action: .advances)
         secondPlay.umpCalled(.single)
+        
+        XCTAssertEqual(game.whosOn().firstBase.name,  "James Gosling")
+        XCTAssertEqual(game.whosOn().secondBase.name, "Duke Java")
         
         let thirdPlay = game.batterUp()
         thirdPlay.umpCalled(.triplePlay)
         
-        XCTAssertEqual(game.whosOn().firstBase.name, "Empty Player")
-        XCTAssertTrue(game.currentPlay().runnerOutcomes.firstBaseLine.contains(AtBat.triplePlay))
-        XCTAssertTrue(game.currentPlay().runnerOutcomes.secondBaseLine.contains(RunnerActions.triplePlay))
+        XCTAssertEqual(game.whosOn().firstBase.name,  "Empty Player")
         XCTAssertEqual(game.whosOn().secondBase.name, "Empty Player")
-        XCTAssertEqual(game.whosOn().thirdBase.name, "Empty Player")
+        XCTAssertEqual(game.whosOn().thirdBase.name,  "Empty Player")
+        XCTAssertTrue(game.currentPlay().runnerOutcomes.firstBaseLine.contains(AtBat.triplePlay))
+        XCTAssertTrue(secondPlay.runnerOutcomes.secondBaseLine.contains(RunnerActions.triplePlay))
+        XCTAssertTrue(firstPlay.runnerOutcomes.thirdBaseLine.contains(RunnerActions.triplePlay))
     }
     
     

@@ -71,12 +71,25 @@ public class Play: Identifiable {
             
         // Outs of some kind
         case .doublePlay:
+            let previousPlay = game.bases.firstBase.currentPlay()
             game.bases.secondBase = EmptyPlayer()
             game.playerOut()
             game.bases.firstBase = EmptyPlayer()
             game.playerOut()
-            runnerOutcomes.secondBaseLine.append(RunnerActions.doublePlay)
+            previousPlay.runnerOutcomes.secondBaseLine.append(RunnerActions.doublePlay)
             runnerOutcomes.firstBaseLine.append(atBat)
+        case .triplePlay:
+            let previousPlay = game.bases.firstBase.currentPlay()
+            let previousPreviousPlay = game.bases.secondBase.currentPlay()
+            game.bases.thirdBase = EmptyPlayer()
+            game.playerOut()
+            game.bases.secondBase = EmptyPlayer()
+            game.playerOut()
+            game.bases.firstBase = EmptyPlayer()
+            game.playerOut()
+            previousPreviousPlay.runnerOutcomes.thirdBaseLine.append(RunnerActions.triplePlay)
+            previousPlay.runnerOutcomes.secondBaseLine.append(RunnerActions.triplePlay)
+            runnerOutcomes.firstBaseLine.append(atBat) 
         case .flyOut:
             runnerOutcomes.firstBaseLine.append(atBat)
             game.playerOut()
@@ -103,16 +116,6 @@ public class Play: Identifiable {
             //game.bases.firstBase = EmptyPlayer()
             runnerOutcomes.firstBaseLine.append(atBat)
             game.playerOut()
-        case .triplePlay:
-            game.bases.thirdBase = EmptyPlayer()
-            game.playerOut()
-            game.bases.secondBase = EmptyPlayer()
-            game.playerOut()
-            game.bases.firstBase = EmptyPlayer()
-            game.playerOut()
-            runnerOutcomes.thirdBaseLine.append(RunnerActions.triplePlay)
-            runnerOutcomes.secondBaseLine.append(RunnerActions.triplePlay)
-            runnerOutcomes.firstBaseLine.append(atBat)
         case .unassistedOut:
             runnerOutcomes.firstBaseLine.append(atBat)
             game.playerOut()
