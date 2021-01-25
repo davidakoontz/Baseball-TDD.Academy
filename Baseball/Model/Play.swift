@@ -56,6 +56,7 @@ public class Play: Identifiable {
     func umpCalled(_ atBat: AtBat) {        // called by Umpire
         self.atBat = atBat
         switch atBat {
+        // Batter Hits & advances
         case .homeRun:
             game.bases.homePlate = batter
             runnerOutcomes.firstBaseLine.append(atBat)
@@ -120,7 +121,7 @@ public class Play: Identifiable {
             runnerOutcomes.firstBaseLine.append(atBat)
             game.playerOut()
             
-        // batter advances to first
+        // batter advances to first on EXCEPTIONAL Play
         case .error:
             game.bases.firstBase = batter
             runnerOutcomes.firstBaseLine.append(atBat)

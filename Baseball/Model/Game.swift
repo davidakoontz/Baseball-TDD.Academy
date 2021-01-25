@@ -144,10 +144,6 @@ public class Game: Sequence, IteratorProtocol, ObservableObject {
     
     
     func runnerOn(_ base: BaseNames, action: RunnerActions) {
-        let inning = currentInning()
-
-        let play = inning.currentPlay()
-        
         switch base {
         // we do not record runner actions for the box to first base line - that's done in  Play.called()
         case BaseNames.batter:
@@ -225,6 +221,7 @@ public class Game: Sequence, IteratorProtocol, ObservableObject {
                 bases.thirdBase = EmptyPlayer()
                 previousPlay.runnerOutcomes.homeBaseLine.append(action)
             }
+            previousPlay.runnerOutcomes.homeBaseLine.append(action)
         case BaseNames.homePlate:
             // there is no action for home plate
             if 1 == 1 { /* do nothing */ }
