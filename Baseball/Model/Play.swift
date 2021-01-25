@@ -60,6 +60,7 @@ public class Play: Identifiable {
         case .homeRun:
             game.bases.homePlate = batter
             runnerOutcomes.firstBaseLine.append(atBat)
+            game.score.add(1, teamAtBat: game.teamAtBat)
         case .triple:
             game.bases.thirdBase = batter
             runnerOutcomes.firstBaseLine.append(atBat)

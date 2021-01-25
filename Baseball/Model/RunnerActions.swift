@@ -18,4 +18,5 @@ enum RunnerActions: String {
     case scores = "SCORES"
     case doublePlay = "DP"
     case triplePlay = "TP"
+    case homeRun = "HR"
 }

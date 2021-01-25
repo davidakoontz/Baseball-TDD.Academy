@@ -231,6 +231,49 @@ class PlayTest: XCTestCase {
         XCTAssertTrue(game.currentPlay().runnerOutcomes.firstBaseLine.contains(AtBat.homeRun))
     }
     
+    func test_umpCalled_homeRunWhileBasesLoadedAGrandSlam() {
+
+        let game = Game()
+        game.setVisitorTeamLineUp()
+        game.setHomeTeamLineUp()
+        
+        let firstPlay = game.batterUp()     // Duke
+        firstPlay.umpCalled(.single)
+        
+        XCTAssertEqual(game.whosOn().firstBase.name, "Duke Java")
+        XCTAssertTrue(firstPlay.runnerOutcomes.firstBaseLine.contains(AtBat.single))
+        
+        
+        let secondPlay = game.batterUp()    // James
+        game.runnerOn(.firstBase, action: .advances)
+        secondPlay.umpCalled(.single)
+        
+        XCTAssertEqual(game.whosOn().firstBase.name,  "James Gosling")
+        XCTAssertEqual(game.whosOn().secondBase.name, "Duke Java")
+        
+        let thirdPlay = game.batterUp()     // Scott
+        game.runnerOn(.secondBase, action: .advances)
+        game.runnerOn(.firstBase, action: .advances)
+        thirdPlay.umpCalled(.single)
+        
+        XCTAssertEqual(game.whosOn().firstBase.name,  "Scott McNealy")
+        XCTAssertEqual(game.whosOn().secondBase.name, "James Gosling")
+        XCTAssertEqual(game.whosOn().thirdBase.name,  "Duke Java")
+        
+        let fourthPlay = game.batterUp()
+        game.runnerOn(.thirdBase, action: .homeRun)
+        game.runnerOn(.secondBase, action: .homeRun)
+        game.runnerOn(.firstBase, action: .homeRun)
+        fourthPlay.umpCalled(.homeRun)
+        
+        XCTAssertEqual(game.score.visitor, 4)
+        XCTAssertTrue(game.currentPlay().runnerOutcomes.firstBaseLine.contains(AtBat.homeRun))
+        XCTAssertTrue(thirdPlay.runnerOutcomes.secondBaseLine.contains(RunnerActions.homeRun))
+        XCTAssertTrue(secondPlay.runnerOutcomes.thirdBaseLine.contains(RunnerActions.homeRun))
+        XCTAssertTrue(firstPlay.runnerOutcomes.homeBaseLine.contains(RunnerActions.homeRun))
+    }
+   
+    
     func test_umpCalled_walk() {
         let game = Game()
         game.setVisitorTeamLineUp()

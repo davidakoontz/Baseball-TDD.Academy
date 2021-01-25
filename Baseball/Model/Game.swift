@@ -167,6 +167,11 @@ public class Game: Sequence, IteratorProtocol, ObservableObject {
                 previousPlay.runnerOutcomes.homeBaseLine.append(action)
                 previousPlay.runnerOutcomes.homeBaseLine.append(.scores)
                 score.add(1, teamAtBat: teamAtBat)
+            } else if action == RunnerActions.homeRun {
+                runnerAdvances(.firstBase, _base2: .homePlate)
+                previousPlay.runnerOutcomes.homeBaseLine.append(action)
+                previousPlay.runnerOutcomes.homeBaseLine.append(.scores)
+                score.add(1, teamAtBat: teamAtBat)
             } else if action == RunnerActions.caughtStealing {
                 bases.firstBase = EmptyPlayer()
                 previousPlay.runnerOutcomes.secondBaseLine.append(action)
@@ -187,7 +192,6 @@ public class Game: Sequence, IteratorProtocol, ObservableObject {
                 previousPlay.runnerOutcomes.homeBaseLine.append(.scores)
                 score.add(1, teamAtBat: teamAtBat)
             } else if action == RunnerActions.advances3 {
-                bases.homePlate = bases.secondBase
                 runnerAdvances(.secondBase, _base2: .thirdBase)
                 runnerAdvances(.thirdBase,  _base2: .homePlate)
                 //runnerAdvances(.homePlate, _base2: .nowhere)
@@ -195,8 +199,16 @@ public class Game: Sequence, IteratorProtocol, ObservableObject {
                 previousPlay.runnerOutcomes.homeBaseLine.append(action)
                 previousPlay.runnerOutcomes.homeBaseLine.append(.scores)
                 score.add(1, teamAtBat: teamAtBat)
+            } else if action == RunnerActions.homeRun {
+                runnerAdvances(.secondBase, _base2: .homePlate)
+                previousPlay.runnerOutcomes.homeBaseLine.append(action)
+                previousPlay.runnerOutcomes.homeBaseLine.append(.scores)
+                score.add(1, teamAtBat: teamAtBat)
             } else if action == RunnerActions.caughtStealing {
                 bases.secondBase = EmptyPlayer()
+                previousPlay.runnerOutcomes.thirdBaseLine.append(action)
+            } else if action == RunnerActions.stolenBase {
+                runnerAdvances(.secondBase, _base2: .thirdBase)
                 previousPlay.runnerOutcomes.thirdBaseLine.append(action)
             }
             previousPlay.runnerOutcomes.thirdBaseLine.append(action)
@@ -217,8 +229,16 @@ public class Game: Sequence, IteratorProtocol, ObservableObject {
                 previousPlay.runnerOutcomes.homeBaseLine.append(action)
                 previousPlay.runnerOutcomes.homeBaseLine.append(.scores)
                 score.add(1, teamAtBat: teamAtBat)
+            } else if action == RunnerActions.homeRun {
+                runnerAdvances(.thirdBase, _base2: .homePlate)
+                previousPlay.runnerOutcomes.homeBaseLine.append(action)
+                previousPlay.runnerOutcomes.homeBaseLine.append(.scores)
+                score.add(1, teamAtBat: teamAtBat)
             } else if action == RunnerActions.caughtStealing {
                 bases.thirdBase = EmptyPlayer()
+                previousPlay.runnerOutcomes.homeBaseLine.append(action)
+            } else if action == RunnerActions.stolenBase {
+                runnerAdvances(.thirdBase, _base2: .homePlate)
                 previousPlay.runnerOutcomes.homeBaseLine.append(action)
             }
             previousPlay.runnerOutcomes.homeBaseLine.append(action)
