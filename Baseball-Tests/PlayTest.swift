@@ -34,18 +34,6 @@ class PlayTest: XCTestCase {
         XCTAssertEqual( game.whosOn().thirdBase, EmptyPlayer())
         XCTAssertTrue( aPlay.runnerOutcomes.thirdBaseLine.contains(.blank) )
     }
-/*
-    * Story: Runner Advancement <priority 1-A>
-    As a parent viewing a game
-    I can associate the runner actions with the batter (e.g.  AB4)
-    So that I can track the in play action 
-        Could be done on data entry screen in text - example: “AB4”
-        Could be done on a simulated interactive baseball diamond - drag player icon.
-        perhaps Play needs a property for each base 1 - 3; where a runner can occupy
-*/
-
-    
-
 
     func test_umpCalled_Single() {
         let game = Game()
@@ -195,16 +183,6 @@ class PlayTest: XCTestCase {
         XCTAssertEqual( game.whosOn().homePlate.name , "Duke Java")
         XCTAssertEqual( game.score.visitor, 1)
     }
-  
-    
-    //        func testrunnerAdvances_CaughtStealing() throws {
-    //        let batter = Player(name: "Random PlayerName", number: "00", position: .firstBase)
-    //        let aPlay = Play(description: "say something on the air", batter: batter, atBat: AtBat.single )
-    //        aPlay.runnerAdvances(action: .caughtStealing, base: Bases.firstBase )
-    //
-    //            XCTAssertEqual( aPlay.whosOn().runnerOutcome.firstBase , "CS" )
-    //
-    //    }
     
     func test_umpCalled_single() {
         let game = Game()
@@ -561,13 +539,5 @@ class PlayTest: XCTestCase {
         XCTAssertEqual(game.whosOn().firstBase.name, "Duke Java")
         XCTAssertTrue(game.currentPlay().runnerOutcomes.firstBaseLine.contains(AtBat.wildPitch))
     }
-    
-    
-    
-//    // types of Outs - numbers are the positions that interact with the ball
 
-
-
-//    case passedBall = "PB"      // ball get's passed the catcher
-//    case wildPitch = "WP"       // pitcher has a bad throw
 }
