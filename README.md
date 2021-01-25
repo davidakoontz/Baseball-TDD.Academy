@@ -1,4 +1,4 @@
-#  Baseball-TDD-Kata-Swift5 Release v1.0 Starter Project
+#  Baseball-TDD.Academy - Release v1.0 Starter Project
 
 ## This code is being TDD.Academy test driven - follow along on https://www.twitch.tv/tddacademy
 ## YouTube Channel: https://www.youtube.com/channel/UCU1U6oPscxzKd_IWAIOm60w/featured
