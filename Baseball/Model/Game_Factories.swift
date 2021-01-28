@@ -96,7 +96,7 @@ extension Game {
         let eighth = Inning(label: "8", game: game, top: [], bottom: [])
         let ninth = Inning(label: "9", game: game, top: [], bottom: [])
         
-        var exampleInnings: [Inning] =  [
+        let exampleInnings: [Inning] =  [
             /* zero, */ firstInning, second, third, fourth, fifth, sixth, seventh, eighth, ninth
         ]
 

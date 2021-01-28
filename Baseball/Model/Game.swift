@@ -13,12 +13,12 @@ public class Game: Sequence, IteratorProtocol, ObservableObject {
     public typealias Element = Inning
     
     var innings: [Inning] = []          // array (9) of innings holding top/bottom and summary
-    var inningIndex = 0                 // the starting index of Innings
     var visitorLineUp = LineUp()
     var homeLineUp = LineUp()
     var bases = Bases()                 // four bases to hold Players
-    var teamAtBat: Team = Team.visitor
     var score = Score()                 // an Int for visitors & home
+    var teamAtBat: Team = Team.visitor
+    var inningIndex = 0                 // the starting index of Innings
     var outs = 0                        // number of out's this teams at bat
 
     //var roster: [Player]  // all the players on the team
@@ -137,7 +137,7 @@ public class Game: Sequence, IteratorProtocol, ObservableObject {
         case BaseNames.thirdBase:
             bases.homePlate = bases.thirdBase       // the player moves to second
             bases.thirdBase = EmptyPlayer()         // opening up first
-        case BaseNames.homePlate:
+        case BaseNames.homePlate:                   // Home Plate may have multiple Players on it durning a play - do we care yet?
             if 1 == 1 { /* do nothing  */ }  // FIXME: empyt case BaseNames.batter
         }
     }
@@ -194,7 +194,6 @@ public class Game: Sequence, IteratorProtocol, ObservableObject {
             } else if action == RunnerActions.advances3 {
                 runnerAdvances(.secondBase, _base2: .thirdBase)
                 runnerAdvances(.thirdBase,  _base2: .homePlate)
-                //runnerAdvances(.homePlate, _base2: .nowhere)
                 previousPlay.runnerOutcomes.thirdBaseLine.append(action)
                 previousPlay.runnerOutcomes.homeBaseLine.append(action)
                 previousPlay.runnerOutcomes.homeBaseLine.append(.scores)
@@ -243,6 +242,8 @@ public class Game: Sequence, IteratorProtocol, ObservableObject {
             }
             previousPlay.runnerOutcomes.homeBaseLine.append(action)
         case BaseNames.homePlate:
+            // Home Plate may have multiple Player - each tag the plate - during a Play
+            // Scoring is not handled here - yet!!
             // there is no action for home plate
             if 1 == 1 { /* do nothing */ }
         }
