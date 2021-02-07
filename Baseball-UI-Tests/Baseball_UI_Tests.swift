@@ -29,6 +29,11 @@ class Baseball_UI_Tests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
+    func test_recordSomething() throws {
+        
+    }
+    
+    
 //    func testMeun_threeStrikeYourOut() throws {
 //        
 //        let app = XCUIApplication()

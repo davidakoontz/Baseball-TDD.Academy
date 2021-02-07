@@ -245,7 +245,7 @@ class GameTest: XCTestCase {
         let game = Game()
         game.setVisitorTeamLineUp()
         game.setHomeTeamLineUp()
-        let play1 = game.batterUp()
+        _ = game.batterUp()
         
         game.umpCalls(.ball)
         XCTAssertEqual(game.balls, 1)
@@ -281,7 +281,7 @@ class GameTest: XCTestCase {
         let game = Game()
         game.setVisitorTeamLineUp()
         game.setHomeTeamLineUp()
-        let play1 = game.batterUp()
+        _ = game.batterUp()
         
         game.umpCalls(.ball)
         XCTAssertEqual(game.balls, 1)
@@ -312,7 +312,7 @@ class GameTest: XCTestCase {
         XCTAssertEqual(game.strikes, 3)
         XCTAssertEqual(game.outs, 1)
         
-        game.batterUp()             // clears count
+        _ = game.batterUp()             // clears count
         
         XCTAssertEqual(game.balls, 0)
         XCTAssertEqual(game.strikes, 0)
@@ -323,7 +323,7 @@ class GameTest: XCTestCase {
         let game = Game()
         game.setVisitorTeamLineUp()
         game.setHomeTeamLineUp()
-        let play1 = game.batterUp()
+        _ = game.batterUp()
         
         game.umpCalls(.strike)
         
@@ -348,7 +348,7 @@ class GameTest: XCTestCase {
         XCTAssertEqual(game.strikes, 3)
         XCTAssertEqual(game.outs, 1)
         
-        game.batterUp()             // clears count
+        _ = game.batterUp()             // clears count
         
         XCTAssertEqual(game.balls, 0)
         XCTAssertEqual(game.strikes, 0)
@@ -359,7 +359,7 @@ class GameTest: XCTestCase {
         let game = Game()
         game.setVisitorTeamLineUp()
         game.setHomeTeamLineUp()
-        let play1 = game.batterUp()
+        _ = game.batterUp()
         
         game.umpCalls(.ball)
         
@@ -385,7 +385,7 @@ class GameTest: XCTestCase {
         XCTAssertEqual(game.strikes, 0)
         XCTAssertEqual(game.outs, 0)
         
-        game.batterUp()
+         _ = game.batterUp()
         
         XCTAssertEqual(game.balls, 0)
         XCTAssertEqual(game.strikes, 0)
