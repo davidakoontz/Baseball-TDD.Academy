@@ -67,7 +67,7 @@ struct ConfigView: View {
 struct ConfigView_Previews: PreviewProvider {
   
     static var previews: some View {
-        ConfigView(game: Game.makeStatic())
+        ConfigView(game: Game.makeStaticGame())
 
     }
 }

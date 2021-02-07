@@ -29,51 +29,51 @@ class Baseball_UI_Tests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testMeun_threeStrikeYourOut() throws {
-        
-        let app = XCUIApplication()
-        app.tabBars["Tab Bar"].buttons["ScoreSheet"].tap()
-        let tabBar = app.tabBars["Tab Bar"]
-        let addGameButton = tabBar.buttons["Add Game"]
-        addGameButton.tap()
-        
-        app.toolbars["Toolbar"].buttons["Strike"].tap()
-        app.toolbars["Toolbar"].buttons["Strike"].tap()
-        app.toolbars["Toolbar"].buttons["Strike"].tap()
+//    func testMeun_threeStrikeYourOut() throws {
+//        
+//        let app = XCUIApplication()
+//        app.tabBars["Tab Bar"].buttons["ScoreSheet"].tap()
+//        let tabBar = app.tabBars["Tab Bar"]
+//        let addGameButton = tabBar.buttons["Add Game"]
+//        addGameButton.tap()
+//        
+//        app.toolbars["Toolbar"].buttons["Strike"].tap()
+//        app.toolbars["Toolbar"].buttons["Strike"].tap()
+//        app.toolbars["Toolbar"].buttons["Strike"].tap()
+//
+//        // Find the label
+//        let omg = app.otherElements["Outs:"]
+//        
+//        // Check the string displayed on the label is correct
+//        XCTAssertEqual("Outs: 1", omg.label )
+//    
+//    }
 
-        // Find the label
-        let omg = app.otherElements["Outs:"]
-        
-        // Check the string displayed on the label is correct
-        XCTAssertEqual("Outs: 1", omg.label )
-    
-    }
-
-    func test_record() throws {
-        
-        let app = XCUIApplication()
-        let tabBar = app.tabBars["Tab Bar"]
-        tabBar.buttons["ScoreSheet"].tap()
-        
-        let addGameButton = tabBar.buttons["Add Game"]
-        addGameButton.tap()
-        tabBar.buttons["Config"].tap()
-        addGameButton.tap()
-        
-        let strikeButton = app.toolbars["Toolbar"].buttons["Strike"]
-        strikeButton.tap()
-        strikeButton.tap()
-        strikeButton.tap()
-
-        
-        // Find the label
-        let omg = app.staticTexts["out_indicator"]
-        
-        // Check the string displayed on the label is correct
-        XCTAssertEqual("You're Out!", omg.label)
-        
-        
-    }
+//    func test_record() throws {
+//
+//        let app = XCUIApplication()
+//        let tabBar = app.tabBars["Tab Bar"]
+//        tabBar.buttons["ScoreSheet"].tap()
+//
+//        let addGameButton = tabBar.buttons["Add Game"]
+//        addGameButton.tap()
+//        tabBar.buttons["Config"].tap()
+//        addGameButton.tap()
+//
+//        let strikeButton = app.toolbars["Toolbar"].buttons["Strike"]
+//        strikeButton.tap()
+//        strikeButton.tap()
+//        strikeButton.tap()
+//
+//
+//        // Find the label
+//        let omg = app.staticTexts["out_indicator"]
+//
+//        // Check the string displayed on the label is correct
+//        XCTAssertEqual("You're Out!", omg.label)
+//
+//
+//    }
 
     
 //    func testLaunchPerformance() throws {

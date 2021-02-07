@@ -8,7 +8,7 @@
 import Foundation
 
 extension Game {
-    static func makeStatic() -> Game {
+    static func makeStaticGame() -> Game {
         let game = Game()
         
         // visitors always bat first (top of innings)

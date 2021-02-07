@@ -33,8 +33,9 @@ class PlayerRowView_UI_Test: XCTestCase {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         
-        let app = XCUIApplication()
+        let app = XCUIApplication()     // should have a static Game()
 
+        app.buttons["scroll"].tap()     // ScoreSheet has label "scroll"
         
         XCTAssertTrue( app.staticTexts["#17"].exists )
         XCTAssertTrue( app.staticTexts["Taylor Swift"].exists )
