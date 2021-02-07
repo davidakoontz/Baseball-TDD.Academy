@@ -49,12 +49,13 @@ public class Play: Identifiable {
         // more properties
         self.atBat = atBat                      // Batter in the batter's Box - still at bat
         runnerOutcomes = RunnerOutcomes()
+        runnerOutcomes.firstBaseLine.append( atBat)    // this may be undesired & redundant
         // object is setup
         batter.ongoingPlay = self
     }
     
     func umpCalled(_ atBat: AtBat) {        // called by Umpire
-        self.atBat = atBat
+//self.atBat = atBat
         switch atBat {
         // Batter Hits & advances
         case .homeRun:
@@ -68,6 +69,9 @@ public class Play: Identifiable {
             game.bases.secondBase = batter
             runnerOutcomes.firstBaseLine.append(atBat)
         case .single:
+            game.bases.firstBase = batter
+            runnerOutcomes.firstBaseLine.append(atBat)
+        case .walk:
             game.bases.firstBase = batter
             runnerOutcomes.firstBaseLine.append(atBat)
             

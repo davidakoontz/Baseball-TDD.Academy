@@ -69,7 +69,6 @@ public class Game: Sequence, IteratorProtocol, ObservableObject {
             currentPlay().umpCalled(AtBat.walk)
         } else if strikes >= 3 {
             currentPlay().umpCalled(AtBat.strikeoutLooking)
-            self.playerOut()
         }
     }
     

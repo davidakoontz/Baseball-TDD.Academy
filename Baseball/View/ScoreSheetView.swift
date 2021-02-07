@@ -30,7 +30,8 @@ struct ScoreSheetView: View {
             Text("#\(play.batter.number)")
             Text(play.batter.name)
             Text(play.batter.position.rawValue)
-            Text(play.atBat.rawValue)     //  is a Enum AtBat
+            //Text(play.atBat.rawValue)     //  is a Enum AtBat
+            Text(play.runnerOutcomes.firstBaseLine.last?.rawValue ?? play.atBat.rawValue)
         }
     }
     

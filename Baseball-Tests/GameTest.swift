@@ -240,6 +240,159 @@ class GameTest: XCTestCase {
         XCTAssertEqual(game.whosOn().secondBase.name, "Duke Java")
         XCTAssertEqual(game.whosOn().firstBase.name, "Empty Player")
     }
+    
+    func test_umpCalls_BallStrikeStrikeBallStrike3() {
+        let game = Game()
+        game.setVisitorTeamLineUp()
+        game.setHomeTeamLineUp()
+        let play1 = game.batterUp()
+        
+        game.umpCalls(.ball)
+        XCTAssertEqual(game.balls, 1)
+        XCTAssertEqual(game.strikes, 0)
+        XCTAssertEqual(game.outs, 0)
+        
+        game.umpCalls(.strike)
+        
+        XCTAssertEqual(game.balls, 1)
+        XCTAssertEqual(game.strikes, 1)
+        XCTAssertEqual(game.outs, 0)
+        
+        game.umpCalls(.strike)
+        
+        XCTAssertEqual(game.balls, 1)
+        XCTAssertEqual(game.strikes, 2)
+        XCTAssertEqual(game.outs, 0)
+        
+        game.umpCalls(.ball)
+        
+        XCTAssertEqual(game.balls, 2)
+        XCTAssertEqual(game.strikes, 2)
+        XCTAssertEqual(game.outs, 0)
+        
+        game.umpCalls(.strike)      // strike 3 - increment outs - does NOT clear count
+        
+        XCTAssertEqual(game.balls, 2)
+        XCTAssertEqual(game.strikes, 3)
+        XCTAssertEqual(game.outs, 1)
+    }
+    
+    func test_umpCalls_BallStrikeStrikeBallStrike3ThenBatterUp() {
+        let game = Game()
+        game.setVisitorTeamLineUp()
+        game.setHomeTeamLineUp()
+        let play1 = game.batterUp()
+        
+        game.umpCalls(.ball)
+        XCTAssertEqual(game.balls, 1)
+        XCTAssertEqual(game.strikes, 0)
+        XCTAssertEqual(game.outs, 0)
+        
+        game.umpCalls(.strike)
+        
+        XCTAssertEqual(game.balls, 1)
+        XCTAssertEqual(game.strikes, 1)
+        XCTAssertEqual(game.outs, 0)
+        
+        game.umpCalls(.strike)
+        
+        XCTAssertEqual(game.balls, 1)
+        XCTAssertEqual(game.strikes, 2)
+        XCTAssertEqual(game.outs, 0)
+        
+        game.umpCalls(.ball)
+        
+        XCTAssertEqual(game.balls, 2)
+        XCTAssertEqual(game.strikes, 2)
+        XCTAssertEqual(game.outs, 0)
+        
+        game.umpCalls(.strike)      // strike 3 - increment outs - does NOT clear count
+        
+        XCTAssertEqual(game.balls, 2)
+        XCTAssertEqual(game.strikes, 3)
+        XCTAssertEqual(game.outs, 1)
+        
+        game.batterUp()             // clears count
+        
+        XCTAssertEqual(game.balls, 0)
+        XCTAssertEqual(game.strikes, 0)
+        XCTAssertEqual(game.outs, 1)
+    }
+    
+    func test_umpCalls_StrikeFoulballFoulballStrikeThenBatterUp() {
+        let game = Game()
+        game.setVisitorTeamLineUp()
+        game.setHomeTeamLineUp()
+        let play1 = game.batterUp()
+        
+        game.umpCalls(.strike)
+        
+        XCTAssertEqual(game.balls, 0)
+        XCTAssertEqual(game.strikes, 1)
+        XCTAssertEqual(game.outs, 0)
+        
+        game.umpCalls(.foulball)
+        
+        XCTAssertEqual(game.balls, 0)
+        XCTAssertEqual(game.strikes, 2)
+        XCTAssertEqual(game.outs, 0)
+        
+        game.umpCalls(.foulball)
+        XCTAssertEqual(game.balls, 0)
+        XCTAssertEqual(game.strikes, 2)
+        XCTAssertEqual(game.outs, 0)
+        
+        game.umpCalls(.strike)      // strike 3 - increment outs - does NOT clear count
+        
+        XCTAssertEqual(game.balls, 0)
+        XCTAssertEqual(game.strikes, 3)
+        XCTAssertEqual(game.outs, 1)
+        
+        game.batterUp()             // clears count
+        
+        XCTAssertEqual(game.balls, 0)
+        XCTAssertEqual(game.strikes, 0)
+        XCTAssertEqual(game.outs, 1)
+    }
+    
+    func test_umpCalls_fourBallsIsAWalk() {
+        let game = Game()
+        game.setVisitorTeamLineUp()
+        game.setHomeTeamLineUp()
+        let play1 = game.batterUp()
+        
+        game.umpCalls(.ball)
+        
+        XCTAssertEqual(game.balls, 1)
+        XCTAssertEqual(game.strikes, 0)
+        XCTAssertEqual(game.outs, 0)
+        
+        game.umpCalls(.ball)
+        
+        XCTAssertEqual(game.balls, 2)
+        XCTAssertEqual(game.strikes, 0)
+        XCTAssertEqual(game.outs, 0)
+        
+        game.umpCalls(.ball)
+        
+        XCTAssertEqual(game.balls, 3)
+        XCTAssertEqual(game.strikes, 0)
+        XCTAssertEqual(game.outs, 0)
+        
+        game.umpCalls(.ball)
+        
+        XCTAssertEqual(game.balls, 4)
+        XCTAssertEqual(game.strikes, 0)
+        XCTAssertEqual(game.outs, 0)
+        
+        game.batterUp()
+        
+        XCTAssertEqual(game.balls, 0)
+        XCTAssertEqual(game.strikes, 0)
+        XCTAssertEqual(game.outs, 0)
+        XCTAssertEqual(game.whosOn().firstBase.name, "Duke Java")
+        
+    }
 }
 
 

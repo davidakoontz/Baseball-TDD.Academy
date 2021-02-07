@@ -65,7 +65,7 @@ class InningTest: XCTestCase {
                              bottom: [play])
         
         XCTAssertTrue( firstInning.bottom[0].batter.name.contains("Jonathan") )
-        XCTAssertEqual( firstInning.bottom[0].atBat.rawValue, "1B" )
+        XCTAssertEqual( game.whosOn().firstBase.ongoingPlay?.runnerOutcomes.firstBaseLine[1], .single)
     }
     
     func testInningConsistOfPlays() {
