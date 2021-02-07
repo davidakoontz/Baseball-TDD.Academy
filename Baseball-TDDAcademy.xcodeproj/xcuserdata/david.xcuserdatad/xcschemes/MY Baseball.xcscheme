@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scheme
+   LastUpgradeVersion = "1250"
+   version = "1.3">
+   <BuildAction
+      parallelizeBuildables = "YES"
+      buildImplicitDependencies = "YES">
+      <BuildActionEntries>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "636D517D252AABB000BB80D4"
+               BuildableName = "Baseball.app"
+               BlueprintName = "Baseball"
+               ReferencedContainer = "container:Baseball-TDDAcademy.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "636D518E252AABB500BB80D4"
+               BuildableName = "Baseball-Tests.xctest"
+               BlueprintName = "Baseball-Tests"
+               ReferencedContainer = "container:Baseball-TDDAcademy.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "636D5199252AABB500BB80D4"
+               BuildableName = "Baseball-UI-Tests.xctest"
+               BlueprintName = "Baseball-UI-Tests"
+               ReferencedContainer = "container:Baseball-TDDAcademy.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "6302304525B7D78C00335203"
+               BuildableName = "Baseball-ViewTests.xctest"
+               BlueprintName = "Baseball-ViewTests"
+               ReferencedContainer = "container:Baseball-TDDAcademy.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+      </BuildActionEntries>
+   </BuildAction>
+   <TestAction
+      buildConfiguration = "Debug"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      codeCoverageEnabled = "YES">
+      <CodeCoverageTargets>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "ViewInspector"
+            BuildableName = "ViewInspector"
+            BlueprintName = "ViewInspector"
+            ReferencedContainer = "container:../../../../../Developer/Xcode/DerivedData/Baseball-TDDAcademy-ccsfzddwawbukoceqygnnlxoqogw/SourcePackages/checkouts/ViewInspector">
+         </BuildableReference>
+      </CodeCoverageTargets>
+      <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "636D518E252AABB500BB80D4"
+               BuildableName = "Baseball-Tests.xctest"
+               BlueprintName = "Baseball-Tests"
+               ReferencedContainer = "container:Baseball-TDDAcademy.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "6302304525B7D78C00335203"
+               BuildableName = "Baseball-ViewTests.xctest"
+               BlueprintName = "Baseball-ViewTests"
+               ReferencedContainer = "container:Baseball-TDDAcademy.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "636D5199252AABB500BB80D4"
+               BuildableName = "Baseball-UI-Tests.xctest"
+               BlueprintName = "Baseball-UI-Tests"
+               ReferencedContainer = "container:Baseball-TDDAcademy.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+      </Testables>
+   </TestAction>
+   <LaunchAction
+      buildConfiguration = "Debug"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      launchStyle = "0"
+      useCustomWorkingDirectory = "NO"
+      ignoresPersistentStateOnLaunch = "NO"
+      debugDocumentVersioning = "YES"
+      debugServiceExtension = "internal"
+      allowLocationSimulation = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "636D517D252AABB000BB80D4"
+            BuildableName = "Baseball.app"
+            BlueprintName = "Baseball"
+            ReferencedContainer = "container:Baseball-TDDAcademy.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
+   </LaunchAction>
+   <ProfileAction
+      buildConfiguration = "Release"
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      savedToolIdentifier = ""
+      useCustomWorkingDirectory = "NO"
+      debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "636D517D252AABB000BB80D4"
+            BuildableName = "Baseball.app"
+            BlueprintName = "Baseball"
+            ReferencedContainer = "container:Baseball-TDDAcademy.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
+   </ProfileAction>
+   <AnalyzeAction
+      buildConfiguration = "Debug">
+   </AnalyzeAction>
+   <ArchiveAction
+      buildConfiguration = "Release"
+      revealArchiveInOrganizer = "YES">
+   </ArchiveAction>
+</Scheme>
