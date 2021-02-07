@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 public class Game: Sequence, IteratorProtocol, ObservableObject {
     
     // Alis for IteratorProtocol requirement
@@ -15,11 +16,13 @@ public class Game: Sequence, IteratorProtocol, ObservableObject {
     var innings: [Inning] = []          // array (9) of innings holding top/bottom and summary
     var visitorLineUp = LineUp()
     var homeLineUp = LineUp()
-    var bases = Bases()                 // four bases to hold Players
-    var score = Score()                 // an Int for visitors & home
-    var teamAtBat: Team = Team.visitor
+    @Published var bases = Bases()                 // four bases to hold Players
+    @Published var score = Score()                 // an Int for visitors & home
+    @Published var teamAtBat: Team = Team.visitor
     var inningIndex = 0                 // the starting index of Innings
-    var outs = 0                        // number of out's this teams at bat
+    @Published var outs = 0                        // number of out's this teams at bat
+    @Published var balls = 0
+    @Published var strikes = 0
 
     //var roster: [Player]  // all the players on the team
 
@@ -42,12 +45,35 @@ public class Game: Sequence, IteratorProtocol, ObservableObject {
         print("OUT #\(outs)!!")
         // do we care which player?? not now.
         if outs >= 3 {
-            outs = 0
             switchFields()  // changes team at bat; and inningIndex
+            outs = 0
         }
     }
-
-
+    
+    func umpCalls(_ call: BallsAndStrikes) {
+        switch call {
+        case .ball:
+            self.balls += 1
+        case .strike:
+            self.strikes += 1
+        case .foulball:
+            if self.strikes >= 2 {
+                // no strike - rules
+            } else {
+                self.strikes += 1
+            }
+        }
+        print ("umpCalls \(balls) : \(strikes) : \(outs)")
+        // now check for walk or out
+        if balls >= 4 {
+            currentPlay().umpCalled(AtBat.walk)
+        } else if strikes >= 3 {
+            currentPlay().umpCalled(AtBat.strikeoutLooking)
+            self.playerOut()
+        }
+    }
+    
+    
     // MARK: Inning methods
     
     func appendInning(inning: Inning) {
@@ -118,7 +144,10 @@ public class Game: Sequence, IteratorProtocol, ObservableObject {
         batter.ongoingPlay = thisPlay
         // a play should be appended to the proper Inning half
         inning.append(thisPlay, teamAtBat: teamAtBat)
-
+        // reset counters for balls & strikes, etc.
+        balls = 0
+        strikes = 0
+        
         return thisPlay
     }
     

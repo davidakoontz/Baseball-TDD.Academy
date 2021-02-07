@@ -27,6 +27,9 @@
 		634837732558CDEE00FA407F /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = 634837722558CDEE00FA407F /* ViewInspector */; };
 		63484B2B259417950011E918 /* GameTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63484B2A259417950011E918 /* GameTest.swift */; };
 		63484B36259419860011E918 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63484B35259419860011E918 /* Game.swift */; };
+		6369F44725C7921D00EE8248 /* BallsAndStrikes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6369F44625C7921D00EE8248 /* BallsAndStrikes.swift */; };
+		6369F45125C7A6B600EE8248 /* Example_UI_ViewInspector_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6369F45025C7A6B600EE8248 /* Example_UI_ViewInspector_Tests.swift */; };
+		6369F45725C7ACAC00EE8248 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = 6369F45625C7ACAC00EE8248 /* ViewInspector */; };
 		636D5182252AABB000BB80D4 /* Baseball_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636D5181252AABB000BB80D4 /* Baseball_App.swift */; };
 		636D5184252AABB000BB80D4 /* ScoreSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636D5183252AABB000BB80D4 /* ScoreSheetView.swift */; };
 		636D5186252AABB500BB80D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 636D5185252AABB500BB80D4 /* Assets.xcassets */; };
@@ -90,6 +93,8 @@
 		63484B2A259417950011E918 /* GameTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTest.swift; sourceTree = "<group>"; };
 		63484B35259419860011E918 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		634D3A50255E25810024521D /* PlayerRowView_UI_Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRowView_UI_Test.swift; sourceTree = "<group>"; };
+		6369F44625C7921D00EE8248 /* BallsAndStrikes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallsAndStrikes.swift; sourceTree = "<group>"; };
+		6369F45025C7A6B600EE8248 /* Example_UI_ViewInspector_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example_UI_ViewInspector_Tests.swift; sourceTree = "<group>"; };
 		636D517E252AABB000BB80D4 /* Baseball.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Baseball.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		636D5181252AABB000BB80D4 /* Baseball_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Baseball_App.swift; sourceTree = "<group>"; };
 		636D5183252AABB000BB80D4 /* ScoreSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreSheetView.swift; sourceTree = "<group>"; };
@@ -141,6 +146,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6369F45725C7ACAC00EE8248 /* ViewInspector in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				636D519E252AABB500BB80D4 /* Baseball_UI_Tests.swift */,
+				6369F45025C7A6B600EE8248 /* Example_UI_ViewInspector_Tests.swift */,
 				634D3A50255E25810024521D /* PlayerRowView_UI_Test.swift */,
 				636D51A0252AABB500BB80D4 /* Info.plist */,
 			);
@@ -247,6 +254,7 @@
 				63022FF725B001D600335203 /* LineUp.swift */,
 				6377820E2555E89300766772 /* Player.swift */,
 				6334EE7225BD06740000C4F7 /* Position.swift */,
+				6369F44625C7921D00EE8248 /* BallsAndStrikes.swift */,
 				636D51C3252AAF4E00BB80D4 /* Play.swift */,
 				6334EE7E25BD0B4F0000C4F7 /* RunnerOutcomes.swift */,
 				6334EE7825BD0B2D0000C4F7 /* RunnerActions.swift */,
@@ -343,6 +351,9 @@
 				636D519C252AABB500BB80D4 /* PBXTargetDependency */,
 			);
 			name = "Baseball-UI-Tests";
+			packageProductDependencies = (
+				6369F45625C7ACAC00EE8248 /* ViewInspector */,
+			);
 			productName = "Baseball-TDDUITests";
 			productReference = 636D519A252AABB500BB80D4 /* Baseball-UI-Tests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -462,6 +473,7 @@
 				6334EE3F25BC9F390000C4F7 /* Bases.swift in Sources */,
 				6334EE7925BD0B2D0000C4F7 /* RunnerActions.swift in Sources */,
 				6302301B25B689ED00335203 /* SelectSomethingView.swift in Sources */,
+				6369F44725C7921D00EE8248 /* BallsAndStrikes.swift in Sources */,
 				63E7D8A725831D590059AC9D /* Inning.swift in Sources */,
 				6377820F2555E89300766772 /* Player.swift in Sources */,
 				637782192555F21A00766772 /* FieldView.swift in Sources */,
@@ -485,6 +497,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6369F45125C7A6B600EE8248 /* Example_UI_ViewInspector_Tests.swift in Sources */,
 				63E9BBFD256F35B4001C9114 /* PlayerRowView_UI_Test.swift in Sources */,
 				636D519F252AABB500BB80D4 /* Baseball_UI_Tests.swift in Sources */,
 			);
@@ -660,6 +673,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				"IPHONEOS_DEPLOYMENT_TARGET[arch=*]" = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -672,6 +686,7 @@
 		636D51A4252AABB500BB80D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = arm64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -679,7 +694,7 @@
 				DEVELOPMENT_TEAM = 99568KA9SE;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Baseball/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -694,6 +709,7 @@
 		636D51A5252AABB500BB80D4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = arm64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -701,7 +717,7 @@
 				DEVELOPMENT_TEAM = 99568KA9SE;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Baseball/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -867,6 +883,11 @@
 			productName = ViewInspector;
 		};
 		634837722558CDEE00FA407F /* ViewInspector */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 634837712558CDEE00FA407F /* XCRemoteSwiftPackageReference "ViewInspector" */;
+			productName = ViewInspector;
+		};
+		6369F45625C7ACAC00EE8248 /* ViewInspector */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 634837712558CDEE00FA407F /* XCRemoteSwiftPackageReference "ViewInspector" */;
 			productName = ViewInspector;

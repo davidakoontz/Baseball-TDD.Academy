@@ -19,8 +19,9 @@ class ScoreGameViewTest: XCTestCase {
     //            check for proper extension VIEW_FILE: Inspectable {}
     //            check for proper let VUT = VIEW_FILE()
     // substitute a good string to find and print the view hierarchy
-    // 
-    func testBeginingViewScoreGame() throws {  // 3. Third requirement for ViewInspector e.g. throws
+    //
+    // Talyor Swift was here!
+    func test_ScoreGame_View_hasImage() throws {  // 3. Third requirement for ViewInspector e.g. throws
         // arrange
         let game = Game()
         let taylor = Player(name: "Taylor Swift", number: "17", position: .centerField)
@@ -34,19 +35,21 @@ class ScoreGameViewTest: XCTestCase {
         // act
         let VUT = ScoreGameView(game: game) //.environmentObject(game)      // VUT = View Under Test
         
-        let imageName = try VUT.inspect().navigationView().group(0).image(0).actualImage().name()
+        let imageName = try VUT.inspect().navigationView().geometryReader(0).zStack().vStack(0).image(0).actualImage().name()
         
         XCTAssertEqual(imageName, "baseball-diamond-field")
         
-        let nothing = try VUT.inspect().navigationView().group(0).text(1).string()
-        
-        XCTAssertEqual(nothing,  "nothing here yet...")
-        
-        let x = try VUT.inspect().navigationView().group(0).text(2).string()
-        
-        XCTAssertTrue(x.contains("toolbar") )
+//        NavigationView {
+//            GeometryReader { geometry in
+//                ZStack {
+//                    //Color(.gray)
+//                    VStack {
+//                        Image("baseball-diamond-field")
+
 
 	// see: https://github.com/nalexn/ViewInspector/blob/master/guide.md the View Inspector Guide.
     }
+
+
 
 }

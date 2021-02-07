@@ -11,7 +11,7 @@ import SwiftUI
 @main
 struct Baseball_App: App {
     
-    var game = Game.makeStatic()
+    public var game = Game.makeStatic()
     
     // remember which tab View we were on last time we ran the app
     @SceneStorage("selectedView") var selectedView: String?

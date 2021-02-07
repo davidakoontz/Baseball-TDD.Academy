@@ -77,6 +77,7 @@ class ScoreSheetViewTest: XCTestCase {
         XCTAssertEqual(jersey, "#17")
         XCTAssertEqual(atBat, "W")
         
+        // Taly
         // try ViewInspector find()
         let textView2 = try VUT.inspect().find(text: "Bill Swift")         // use find() to print the hiearchy
         print ( "** Found Bill Swift in view path: \(textView2.pathToRoot)" )
