@@ -23,15 +23,15 @@ struct ContentView: View {
                     Image(systemName: "scroll")
                     Text("ScoreSheet")
                 }
-            
-            
+                .accessibilityElement().accessibility(identifier: "scoresheet_button_tabbar") // works
+
             ScoreGameView(game: game)
                 .tag(ScoreGameView.addGameTag)
                 .tabItem {
                     Image(systemName: "rectangle.stack.badge.plus")
                     Text("Add Game")
                 }
-            
+                .accessibilityElement().accessibility(identifier: "addGame_button_tabbar") // works
             
             ConfigView(game: game)
                 .tag(ConfigView.configTag)
@@ -39,6 +39,7 @@ struct ContentView: View {
                     Image(systemName: "slider.horizontal.3")
                     Text("Config")
                 }
+                .accessibilityElement().accessibility(identifier: "config_button_tabbar") // works
             
 //            AwardsView()
 //                .tag(AwardsView.tag)
