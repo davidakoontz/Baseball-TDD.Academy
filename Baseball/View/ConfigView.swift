@@ -24,6 +24,8 @@ struct ConfigView: View {
                             .listItemTint(.pink)
                         Button(action: {}, label:  {
                             Text("Baseball")
+                        })
+                        Button(action: {}, label:  {
                             Text("Softball")
                         })
                         
@@ -33,6 +35,8 @@ struct ConfigView: View {
                             .listItemTint(.purple)
                         Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label:  {
                             Text("9")
+                        })
+                        Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label:  {
                             Text("10")
                         })
                     }
@@ -41,6 +45,8 @@ struct ConfigView: View {
                             .listItemTint(.orange)
                         Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label:  {
                             Text("6")
+                        })
+                        Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label:  {
                             Text("9")
                         })
                     }
